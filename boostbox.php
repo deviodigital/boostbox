@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Build popups for lead generation, content promotion and more.
  * Version:           0.0.1
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
