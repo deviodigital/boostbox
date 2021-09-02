@@ -1,32 +1,21 @@
-(function( $ ) {
-	'use strict';
+jQuery(document).ready(function ($) {
+	// Cookies.remove('boostbox_popup_236', { path: '/' });
+	// @todo make the ID number dynamic via localize script.
+	var cookieCheck = Cookies.get( 'boostbox_popup_236' );
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+	// If there's a cookie saved, bail early.
+	if ( cookieCheck != null ) { return; }
 
-})( jQuery );
+	// Add class after X seconds.
+	window.setTimeout(function(){
+        $(".boostbox-popup-overlay").addClass('active');
+	}, 2000); //<-- Delay in milliseconds
+
+	// Close popup when 'close' button is clicked.
+	$(".boostbox-close").on("click", function() {
+		$(".boostbox-popup-overlay").removeClass("active");
+		// @todo make the ID number dynamic via localize script.
+		// @todo make the '30' dynamic via localize script (using user option via admin settings).
+		Cookies.set( 'boostbox_popup_236', 'hidden', 30 );
+	});
+});

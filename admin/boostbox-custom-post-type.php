@@ -72,7 +72,7 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
             'can_export'            => true,
             'has_archive'           => false,
             'exclude_from_search'   => true,
-            'publicly_queryable'    => false,
+            'publicly_queryable'    => true,
             'query_var'             => 'popups',
             'rewrite'               => $rewrite,
             'capability_type'       => 'post',

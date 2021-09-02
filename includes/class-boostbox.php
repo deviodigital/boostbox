@@ -132,6 +132,11 @@ class BoostBox {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-boostbox-public.php';
 
+		/**
+		 * The file responsible for defining the popup HTML
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/boostbox-popups.php';
+
 		$this->loader = new BoostBox_Loader();
 
 	}
