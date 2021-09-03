@@ -1002,6 +1002,8 @@ img.icon {
     position: relative;
 }
 
+/** Settings - Screen viewport CSS */
+
 .viewport-main {
     display: flex;
     flex-direction: column;
@@ -1074,10 +1076,21 @@ img.icon {
     padding: 15px;
 }
 
+/** Settings - Section Title */
+
 .section-title {
     flex-basis: 100%;
 }
 
 .section-title h2 {
     margin: 1em 0 !important;
+}
+
+/** Metabox - Popup Settings */
+
+.boostbox-field select {
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    width: 100%;
 }

@@ -29,7 +29,7 @@ function boostbox_popup_settings_metabox() {
             esc_attr__( 'BoostBox Settings', 'boostbox' ),
             'boostbox_popup_settings_metabox_content',
             $screen,
-            'normal',
+            'side',
             'default'
         );
     }
@@ -72,16 +72,11 @@ function boostbox_popup_settings_metabox_content() {
 
 	// Popup selected.
 	$popup_selected = get_post_meta( $post->ID, 'boostbox_popup_selected', true );
-	// Runtime.
-	$runtime = get_post_meta( $post->ID, 'runtime', true );
-	// Release date.
-    $release_date = get_post_meta( $post->ID, 'release_date', true );
-    // Condition.
-    $condition  = get_post_meta( $post->ID, 'condition', true );
 
-    echo '<div class="input-field">';
+    // Build the field.
+    echo '<div class="boostbox-field">';
 	echo '<p>' . __( 'Select popup to display', 'boostbox' ) . '</p>';
-    echo '<select id="boostbox_popup_selected" name="boostbox_popup_selected" class="widefat">';
+    echo '<select id="boostbox_popup_selected" name="boostbox_popup_selected">';
     echo '<option value=""></option>';
     // Loop through popups.
     if ( ! empty( $popups ) ) {
@@ -95,17 +90,6 @@ function boostbox_popup_settings_metabox_content() {
         }
     }
     echo '</select>';
-    echo '</div>';
-
-	// Runtime field.
-    echo '<div class="input-field">';
-	echo '<p>' . __( 'Runtime', 'boostbox' ) . '</p>';
-	echo '<input type="text" name="runtime" value="' . esc_html( $runtime ) . '" class="widefat" />';
-    echo '</div>';
-	// Release Date field.
-    echo '<div class="input-field">';
-	echo '<p>' . __( 'Release Date', 'boostbox' ) . '</p>';
-	echo '<input type="date" name="release_date" value="' . esc_html( $release_date ) . '" class="widefat" />';
     echo '</div>';
 
 }
