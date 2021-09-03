@@ -1,7 +1,12 @@
 jQuery(document).ready(function ($) {
-	// Cookies.remove('boostbox_popup_236', { path: '/' });
+	// Popup ID.
+	var popupID = boostbox_settings.popup_id;
+
+	// Remove cookie?
+	Cookies.remove('boostbox_popup_' + popupID + '', { path: '/' });
+
 	// @todo make the ID number dynamic via localize script.
-	var cookieCheck = Cookies.get( 'boostbox_popup_236' );
+	var cookieCheck = Cookies.get( 'boostbox_popup_' + popupID + '' );
 
 	// If there's a cookie saved, bail early.
 	if ( cookieCheck != null ) { return; }
@@ -16,6 +21,6 @@ jQuery(document).ready(function ($) {
 		$(".boostbox-popup-overlay").removeClass("active");
 		// @todo make the ID number dynamic via localize script.
 		// @todo make the '30' dynamic via localize script (using user option via admin settings).
-		Cookies.set( 'boostbox_popup_236', 'hidden', 30 );
+		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', 30 );
 	});
 });

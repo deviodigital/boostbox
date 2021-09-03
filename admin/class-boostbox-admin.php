@@ -60,21 +60,8 @@ class BoostBox_Admin {
 	 * @since    0.0.1
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in BoostBox_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The BoostBox_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+		// Admin CSS.
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-admin.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -83,21 +70,8 @@ class BoostBox_Admin {
 	 * @since    0.0.1
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in BoostBox_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The BoostBox_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+		// Admin JS.
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery' ), $this->version, false );
-
 	}
 
 }

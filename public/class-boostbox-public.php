@@ -44,13 +44,13 @@ class BoostBox_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.1
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param    string    $plugin_name    The name of the plugin.
+	 * @param    string    $version        The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -60,21 +60,8 @@ class BoostBox_Public {
 	 * @since    0.0.1
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in BoostBox_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The BoostBox_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+		// Publc CSS.
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -83,21 +70,11 @@ class BoostBox_Public {
 	 * @since    0.0.1
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in BoostBox_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The BoostBox_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+		// Public JS.
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_localize_script( $this->plugin_name, 'boostbox_settings', array(
+			'popup_id' => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
+		) );
 	}
 
 }
