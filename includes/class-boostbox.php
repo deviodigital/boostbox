@@ -122,6 +122,11 @@ class BoostBox {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-custom-post-type.php';
 
 		/**
+		 * The file responsible for defining the popups metaboxes
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-metaboxes.php';
+
+		/**
 		 * The file responsible for defining the plugin settings page
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-admin-settings.php';
