@@ -38,8 +38,8 @@ function boostbox_settings_page() {
 	<div class="wrap boostbox">
 		<div class="intro-wrap">
 			<div class="intro">
-				<a href="<?php echo esc_url( 'https://deviodigital.com/' ); ?>"><img class="dispensary-logo" src="<?php echo esc_url( plugins_url( 'images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Devio Digital', 'boostbox' ); ?>" /></a>
-				<h3><?php printf( esc_html__( 'Getting started with', 'boostbox' ) ); ?> <strong><?php printf( esc_html__( 'BoostBox', 'boostbox' ) ); ?></strong></h3>
+				<a href="<?php echo esc_url( 'https://deviodigital.com/' ); ?>"><img class="devio-digital-logo" src="<?php echo esc_url( plugins_url( 'images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Devio Digital', 'boostbox' ); ?>" /></a>
+				<h3><strong><?php printf( esc_html__( 'BoostBox', 'boostbox' ) ); ?></strong> <?php printf( esc_html__( 'Settings', 'boostbox' ) ); ?></h3>
 			</div>
 		</div>
 

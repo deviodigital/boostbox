@@ -1,5 +1,11 @@
-body.boostbox_popups_page_boostbox_settings #wpcontent {
+body.boostbox_popups_page_boostbox_settings #wpcontent,
+body.boostbox_popups_page_boostbox_analytics #wpcontent {
     padding-left: 0;
+}
+
+body.boostbox_popups_page_boostbox_settings ul#adminmenu a.wp-has-current-submenu:after,
+body.boostbox_popups_page_boostbox_analytics ul#adminmenu>li.current>a.current:after {
+    display: none;
 }
 
 .clearfix:before, .clearfix:after {
@@ -17,7 +23,8 @@ body.boostbox_popups_page_boostbox_settings #wpcontent {
 	box-sizing: border-box;
 }
 
-.toplevel_page_boostbox_settings #wpcontent {
+.toplevel_page_boostbox_settings #wpcontent,
+.toplevel_page_boostbox_analytics #wpcontent {
 	padding-left: 0;
 }
 
@@ -285,7 +292,7 @@ img.icon {
 	display: inline-block;
 }
 
-.boostbox .dispensary-logo {
+.boostbox .devio-digital-logo {
 	max-width: 245px;
 	float: right;
 	margin-top: 2px;
@@ -295,17 +302,17 @@ img.icon {
 }
 
 @media only screen and (max-width:800px) {
-	.boostbox .dispensary-logo {
+	.boostbox .devio-digital-logo {
 		float: none;
 		margin-bottom: 6%;
 	}
 }
 
-.boostbox .dispensary-logo:hover {
+.boostbox .devio-digital-logo:hover {
 	transform: scale(1.03);
 }
 
-.boostbox .dispensary-logo:active {
+.boostbox .devio-digital-logo:active {
 	transform: scale(1);
 }
 
@@ -953,7 +960,8 @@ img.icon {
 	display: none;
 }
 
-#boostbox-panel {
+#boostbox-panel,
+#boostbox-analytics-panel {
 	width: 100%;
 }
 
@@ -992,7 +1000,8 @@ img.icon {
 	}
 }
 
-.boostbox-charts {
+.boostbox-charts,
+.boostbox-analytics-charts {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

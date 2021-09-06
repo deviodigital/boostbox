@@ -73,15 +73,37 @@ function boostbox_popup_settings_metabox_content() {
 	// Popup selected.
 	$popup_selected = get_post_meta( $post->ID, 'boostbox_popup_selected', true );
 
-    // Build the field.
+    // Popup alt selected (for A/B testing).
+	$popup_alt_selected = get_post_meta( $post->ID, 'boostbox_popup_alt_selected', true );
+
+    // Select a Popup: Build the field.
     echo '<div class="boostbox-field">';
 	echo '<p>' . __( 'Select popup to display', 'boostbox' ) . '</p>';
     echo '<select id="boostbox_popup_selected" name="boostbox_popup_selected">';
-    echo '<option value=""></option>';
+    echo '<option value="">' . __( 'Global Popup', 'boostbox' ) . '</option>';
     // Loop through popups.
     if ( ! empty( $popups ) ) {
         foreach ( $popups as $popup ) {
             if ( $popup->ID == $popup_selected ) {
+                $selected = 'selected="selected"';
+            } else {
+                $selected = '';
+            }
+            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
+        }
+    }
+    echo '</select>';
+    echo '</div>';
+
+    // Select a Popup for A/B Testing: Build the field.
+    echo '<div class="boostbox-field">';
+	echo '<p>' . __( 'Select popup for A/B testing', 'boostbox' ) . '</p>';
+    echo '<select id="boostbox_popup_alt_selected" name="boostbox_popup_alt_selected">';
+    echo '<option value=""></option>';
+    // Loop through popups.
+    if ( ! empty( $popups ) ) {
+        foreach ( $popups as $popup ) {
+            if ( $popup->ID == $popup_alt_selected ) {
                 $selected = 'selected="selected"';
             } else {
                 $selected = '';

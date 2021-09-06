@@ -16,6 +16,16 @@ jQuery(document).ready(function ($) {
         $(".boostbox-popup-overlay").addClass('active');
 	}, 2000); //<-- Delay in milliseconds
 
+	// Add class after scrolling X pixels (not working yet).
+	$(window).scroll(function () {
+		var windowY = 100; // @todo make this number dynamic
+		var scrolledY = $(window).scrollTop();
+	 
+		if (scrolledY > windowY) {
+//			$(".boostbox-popup-overlay").addClass('active');
+		}
+	});
+
 	// Close popup when 'close' button is clicked.
 	$(".boostbox-close").on("click", function() {
 		$(".boostbox-popup-overlay").removeClass("active");
