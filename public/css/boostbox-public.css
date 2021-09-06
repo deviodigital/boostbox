@@ -35,3 +35,57 @@
     right: -6px;
     z-index: 999;
 }
+
+/** @todo when creating custom gutenberg blocks for people to use, 
+    make sure to add custom classes to the wrappers so we can style 
+    each form type accordingly */
+
+/** Gravity Forms - field wrapper */
+.boostbox-popup-content .gform_fields {
+    list-style-type: none;
+    margin: 0;
+}
+
+/** WPForms - label */
+.wpforms-field-label,
+.wpforms-field-sublabel.after {
+    display: block;
+}
+
+.wpforms-field-label.wpforms-label-hide {
+    display: none;
+}
+
+/** WPForms - input fields */
+.wpforms-field-small,
+.wpforms-field-medium,
+.wpforms-field-large,
+.wpforms-field-row-block.wpforms-one-half input {
+    width: 100%;
+}
+
+.wpforms-field-container {
+    margin: 6px 0;
+}
+
+.wpforms-field-row,
+.wpforms-field.wpforms-field-name,
+.wpforms-field.wpforms-field-email {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.wpforms-field-row-block.wpforms-one-half {
+    flex-basis: 49%;
+    margin: 6px 0;
+}
+
+.wpforms-field-sublabel.after.wpforms-sublabel-hide {
+    display: none;
+}
+
+.wpforms-submit-container {
+    margin: 12px 0 0 0;
+}
