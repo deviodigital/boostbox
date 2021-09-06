@@ -21,13 +21,10 @@
 function boostbox_popup_html() {
     // @todo make the ID in wp_remote_get dynamic.
     $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
-    echo '<pre>';
-    var_dump( $popup_id );
-    echo '</pre>';
     // Bail early?
     if ( ! $popup_id ) { return; }
     // Get blog post from rest API.
-    $response = wp_remote_get( 'https://deviodigital.dev.cc/wp-json/wp/v2/popups/' . $popup_id );
+    $response = wp_remote_get( get_bloginfo( 'home' ) . '/wp-json/wp/v2/popups/' . $popup_id );
     // Exit if error.
     if ( is_wp_error( $response ) ) {
         return;
