@@ -67,6 +67,8 @@ function boostbox_popup_settings_metabox_content() {
         'post_status'  => 'publish'
     );
 
+    $args = apply_filters( 'boostbox_popup_settings_args', $args );
+
     // Get all popups.
     $popups = get_posts( $args );
 
