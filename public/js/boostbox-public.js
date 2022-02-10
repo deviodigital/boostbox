@@ -12,6 +12,7 @@ jQuery(document).ready(function ($) {
 	if ( cookieCheck != null ) { return; }
 
 	// Add class after X seconds.
+	// @todo make the milliseconds option dynamic via localize script.
 	window.setTimeout(function(){
         $(".boostbox-popup-overlay").addClass('active');
 	}, 2000); //<-- Delay in milliseconds

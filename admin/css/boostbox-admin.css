@@ -1097,6 +1097,10 @@ img.icon {
 
 /** Metabox - Popup Settings */
 
+.boostbox-field {
+	padding: 12px;
+}
+
 .boostbox-field select {
     box-sizing: border-box;
     display: block;
