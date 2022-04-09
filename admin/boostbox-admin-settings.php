@@ -29,7 +29,7 @@ function boostbox_settings_page_menu() {
 add_action( 'admin_menu', 'boostbox_settings_page_menu', 99 );
 
 /**
- * Outputs the markup used on the Getting Started
+ * Outputs the markup used on the Settings page
  *
  * since 0.0.1
  */

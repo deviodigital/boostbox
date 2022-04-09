@@ -8,7 +8,7 @@
  * @since      0.0.1
  *
  * @package    BoostBox
- * @subpackage BoostBox/admin/partials
+ * @subpackage BoostBox/admin/metaboxes
  */
 
 
