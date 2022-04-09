@@ -61,7 +61,7 @@ class BoostBox_Public {
 	 */
 	public function enqueue_styles() {
 		// Publc CSS.
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -71,9 +71,12 @@ class BoostBox_Public {
 	 */
 	public function enqueue_scripts() {
 		// Public JS.
+		wp_enqueue_script( $this->plugin_name . '-js-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-public.js', array( 'jquery' ), $this->version, false );
 		wp_localize_script( $this->plugin_name, 'boostbox_settings', array(
-			'popup_id' => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
+			'popup_id'     => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
+			'milliseconds' => '',
+			'cookie_days'  => '',
 		) );
 	}
 
