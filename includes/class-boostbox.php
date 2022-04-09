@@ -117,22 +117,27 @@ class BoostBox {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-boostbox-admin.php';
 
 		/**
-		 * The file responsible for defining the popups custom post type
+		 * The file responsible for defining the popups custom post type.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-custom-post-type.php';
 
 		/**
-		 * The file responsible for defining the popups metaboxes
+		 * The file responsible for defining the popups metaboxes.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-metaboxes.php';
 
 		/**
-		 * The file responsible for defining the plugin settings page
+		 * The file responsible for defining the custom popup patterns.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-block-patterns.php';
+
+		/**
+		 * The file responsible for defining the plugin settings page.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-admin-settings.php';
 
 		/**
-		 * The file responsible for defining the plugin analytics page
+		 * The file responsible for defining the plugin analytics page.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-admin-analytics.php';
 
