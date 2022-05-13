@@ -80,9 +80,9 @@ function boostbox_popup_settings_metabox_content() {
 
     // Select a Popup: Build the field.
     echo '<div class="boostbox-field">';
-	echo '<p>' . __( 'Select popup to display', 'boostbox' ) . '</p>';
+	echo '<p>' . esc_attr__( 'Select popup to display', 'boostbox' ) . '</p>';
     echo '<select id="boostbox_popup_selected" name="boostbox_popup_selected">';
-    echo '<option value="">' . __( 'Global Popup', 'boostbox' ) . '</option>';
+    echo '<option value="">' . esc_attr__( 'Global Popup', 'boostbox' ) . '</option>';
     // Loop through popups.
     if ( ! empty( $popups ) ) {
         foreach ( $popups as $popup ) {
@@ -91,7 +91,7 @@ function boostbox_popup_settings_metabox_content() {
             } else {
                 $selected = '';
             }
-            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
+            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr__( $popup->ID ), esc_html( $popup->post_title ) );
         }
     }
     echo '</select>';
@@ -99,7 +99,7 @@ function boostbox_popup_settings_metabox_content() {
 
     // Select a Popup for A/B Testing: Build the field.
     echo '<div class="boostbox-field">';
-	echo '<p>' . __( 'Select popup for A/B testing', 'boostbox' ) . '</p>';
+	echo '<p>' . esc_attr__( 'Select popup for A/B testing', 'boostbox' ) . '</p>';
     echo '<select id="boostbox_popup_alt_selected" name="boostbox_popup_alt_selected">';
     echo '<option value=""></option>';
     // Loop through popups.
@@ -110,7 +110,7 @@ function boostbox_popup_settings_metabox_content() {
             } else {
                 $selected = '';
             }
-            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
+            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr__( $popup->ID ), esc_html( $popup->post_title ) );
         }
     }
     echo '</select>';
@@ -131,7 +131,7 @@ function boostbox_popup_settings_metabox_save( $post_id, $post ) {
 	 * Verify this came from the our screen and with proper authorization,
 	 * because save_post can be triggered at other times
 	 */
-	if ( ! isset( $_POST['boostbox_popup_settings_meta_noncename' ] ) || ! wp_verify_nonce( $_POST['boostbox_popup_settings_meta_noncename'], plugin_basename( __FILE__ ) ) ) {
+	if ( null == filter_input( INPUT_POST, 'boostbox_popup_settings_meta_noncename' ) || ! wp_verify_nonce( filter_input( INPUT_POST, 'boostbox_popup_settings_meta_noncename' ), plugin_basename( __FILE__ ) ) ) {
 		return $post->ID;
 	}
 
@@ -141,7 +141,7 @@ function boostbox_popup_settings_metabox_save( $post_id, $post ) {
 	}
 
     // Popup settings.
-	$settings_meta['boostbox_popup_selected'] = esc_html( $_POST['boostbox_popup_selected'] );
+	$settings_meta['boostbox_popup_selected'] = filter_input( INPUT_POST, 'boostbox_popup_selected' );
 
 	// Save $settings_meta as metadata.
 	foreach ( $settings_meta as $key => $value ) {

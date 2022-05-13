@@ -22,7 +22,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+	wp_die();
 }
 
 // Current plugin version.
@@ -103,3 +103,22 @@ function boostbox_redirect() {
     }
 }
 add_action( 'admin_init', 'boostbox_redirect' );
+
+/**
+ * Custom CSS
+ * 
+ * @return string
+ * @since  0.0.1
+ */
+function boostbox_custom_css() {
+	global $content_width;
+
+	// Set a content width if it's not already set.
+	if ( ! isset( $content_width ) ) {
+		$content_width = 1200;
+	}
+
+	// Custom CSS.
+	echo '<style type="text/css">.alignwide { max-width: ' . $content_width . 'px; }</style>';
+}
+add_action( 'wp_head', 'boostbox_custom_css' );
