@@ -12,7 +12,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	wp_die();
+    wp_die();
 }
 
 if ( ! function_exists( 'boostbox_popups' ) ) {

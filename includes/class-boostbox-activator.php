@@ -22,20 +22,20 @@
  */
 class BoostBox_Activator {
 
-	/**
-	 * Activate.
-	 *
-	 * @since    0.0.1
-	 */
-	public static function activate() {
-		// Add option for activation redirect.
-		add_option( 'boostbox_do_activation_redirect', true );
-		// Custom post type.
-		boostbox_popups();
-		// Flush Rewrite Rules
-		global $wp_rewrite;
-		$wp_rewrite->init();
-		$wp_rewrite->flush_rules();
-	}
+    /**
+     * Activate.
+     *
+     * @since    0.0.1
+     */
+    public static function activate() {
+        // Add option for activation redirect.
+        add_option( 'boostbox_do_activation_redirect', true );
+        // Custom post type.
+        boostbox_popups();
+        // Flush Rewrite Rules
+        global $wp_rewrite;
+        $wp_rewrite->init();
+        $wp_rewrite->flush_rules();
+    }
 
 }

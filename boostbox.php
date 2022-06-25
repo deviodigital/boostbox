@@ -3,9 +3,11 @@
 /**
  * The plugin bootstrap file
  *
- * @link              https://deviodigital.com
- * @since             0.0.1
- * @package           BoostBox
+ * @package BoostBox
+ * @author  Devio Digital <contact@deviodigital.com>
+ * @license GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
+ * @link    https://deviodigital.com
+ * @since   0.0.1
  *
  * @wordpress-plugin
  * Plugin Name:       BoostBox
@@ -22,7 +24,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	wp_die();
+    wp_die();
 }
 
 // Current plugin version.
@@ -34,19 +36,23 @@ $plugin_name = plugin_basename( __FILE__ );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-boostbox-activator.php
+ * 
+ * @return void
  */
 function activate_boostbox() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-boostbox-activator.php';
-	BoostBox_Activator::activate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-boostbox-activator.php';
+    BoostBox_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-boostbox-deactivator.php
+ * 
+ * @return void
  */
 function deactivate_boostbox() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-boostbox-deactivator.php';
-	BoostBox_Deactivator::deactivate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-boostbox-deactivator.php';
+    BoostBox_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_boostbox' );
@@ -65,12 +71,13 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-boostbox.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    0.0.1
+ * @since  0.0.1
+ * @return void
  */
 function run_boostbox() {
 
-	$plugin = new BoostBox();
-	$plugin->run();
+    $plugin = new BoostBox();
+    $plugin->run();
 
 }
 run_boostbox();
@@ -78,47 +85,30 @@ run_boostbox();
 /**
  * Add settings link on plugin page
  *
+ * @param array $links an array of links related to the plugin.
+ * 
  * @since  0.0.1
- * @param  array $links an array of links related to the plugin.
  * @return array updatead array of links related to the plugin.
  */
 function boostbox_settings_link( $links ) {
-	$settings_link = '<a href="admin.php?page=boostbox_settings">' . esc_attr__( 'Settings', 'boostbox' ) . '</a>';
-	array_unshift( $links, $settings_link );
-	return $links;
+    $settings_link = '<a href="admin.php?page=boostbox_settings">' . esc_attr__( 'Settings', 'boostbox' ) . '</a>';
+    array_unshift( $links, $settings_link );
+    return $links;
 }
 add_filter( "plugin_action_links_$plugin_name", 'boostbox_settings_link' );
 
 /**
  * Redirect to the BoostBox Settings page on single plugin activation
  *
- * @since 0.0.1
+ * @since  0.0.1
+ * @return void
  */
 function boostbox_redirect() {
     if ( get_option( 'boostbox_do_activation_redirect', false ) ) {
         delete_option( 'boostbox_do_activation_redirect' );
         if ( ! isset( $_GET['activate-multi'] ) ) {
-            wp_redirect( 'admin.php?page=boostbox_settings' );
+            wp_safe_redirect( 'admin.php?page=boostbox_settings' );
         }
     }
 }
 add_action( 'admin_init', 'boostbox_redirect' );
-
-/**
- * Custom CSS
- * 
- * @return string
- * @since  0.0.1
- */
-function boostbox_custom_css() {
-	global $content_width;
-
-	// Set a content width if it's not already set.
-	if ( ! isset( $content_width ) ) {
-		$content_width = 1200;
-	}
-
-	// Custom CSS.
-	echo '<style type="text/css">.alignwide { max-width: ' . $content_width . 'px; }</style>';
-}
-add_action( 'wp_head', 'boostbox_custom_css' );

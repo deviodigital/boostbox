@@ -11,7 +11,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	wp_die();
+    wp_die();
 }
 
 // Popup settings metabox.

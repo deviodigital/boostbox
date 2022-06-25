@@ -16,14 +16,14 @@
  */
 function boostbox_analytics_page_menu() {
 
-	add_submenu_page(
-		'edit.php?post_type=boostbox_popups',
-		__( 'BoostBox Analytics', 'boostbox' ),
-		__( 'Analytics', 'boostbox' ),
-		'manage_options',
-		'boostbox_analytics',
-		'boostbox_analytics_page'
-	);
+    add_submenu_page(
+        'edit.php?post_type=boostbox_popups',
+        __( 'BoostBox Analytics', 'boostbox' ),
+        __( 'Analytics', 'boostbox' ),
+        'manage_options',
+        'boostbox_analytics',
+        'boostbox_analytics_page'
+    );
 
 }
 add_action( 'admin_menu', 'boostbox_analytics_page_menu', 99 );
@@ -35,19 +35,19 @@ add_action( 'admin_menu', 'boostbox_analytics_page_menu', 99 );
  */
 function boostbox_analytics_page() {
 ?>
-	<div class="wrap boostbox analytics">
-		<div class="intro-wrap">
-			<div class="intro">
-				<a href="<?php echo esc_url( 'https://deviodigital.com/' ); ?>"><img class="devio-digital-logo" src="<?php echo esc_url( plugins_url( 'images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Devio Digital', 'boostbox' ); ?>" /></a>
-				<h3><strong><?php printf( esc_html__( 'BoostBox', 'boostbox' ) ); ?></strong> <?php printf( esc_html__( 'Analytics', 'boostbox' ) ); ?></h3>
-			</div>
-		</div>
+    <div class="wrap boostbox analytics">
+        <div class="intro-wrap">
+            <div class="intro">
+                <a href="<?php echo esc_url( 'https://deviodigital.com/' ); ?>"><img class="devio-digital-logo" src="<?php echo esc_url( plugins_url( 'images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Devio Digital', 'boostbox' ); ?>" /></a>
+                <h3><strong><?php printf( esc_html__( 'BoostBox', 'boostbox' ) ); ?></strong> <?php printf( esc_html__( 'Analytics', 'boostbox' ) ); ?></h3>
+            </div>
+        </div>
 
-		<div class="panels">
-			<div id="panel" class="panel">
-				<div id="boostbox-analytics-panel" class="panel-left visible">
-					<div class="block-feature-wrap clear">
-						<div class="boostbox-analytics-charts">
+        <div class="panels">
+            <div id="panel" class="panel">
+                <div id="boostbox-analytics-panel" class="panel-left visible">
+                    <div class="block-feature-wrap clear">
+                        <div class="boostbox-analytics-charts">
 
                             <div class="section-title">
                                 <h2><?php _e( 'Popup Statistics', 'boostbox' ); ?></h2>
@@ -93,21 +93,21 @@ function boostbox_analytics_page() {
                                 </div><!-- /.viewport-body -->
                             </div><!-- /.viewport-main.two -->
 
-						</div><!-- .boostbox-analytics-charts -->
-					</div><!-- .block-feature-wrap -->
-				</div><!-- .panel-left -->
+                        </div><!-- .boostbox-analytics-charts -->
+                    </div><!-- .block-feature-wrap -->
+                </div><!-- .panel-left -->
 
-				<div class="footer-wrap">
-					<div class="footer">
-						<div class="footer-links">
-							<a href="https://deviodigital.com/" target="_blank"><?php esc_html_e( 'Devio Digital', 'boostbox' ); ?></a>
-							<a href="https://deviodigial.com/documentation/" target="_blank"><?php esc_html_e( 'Docs', 'boostbox' ); ?></a>
-							<a href="https://twitter.com/deviodigital" target="_blank"><?php esc_html_e( 'Twitter', 'boostbox' ); ?></a>
-						</div>
-					</div>
-				</div><!-- .footer-wrap -->
-			</div><!-- .panel -->
-		</div><!-- .panels -->
-	</div><!-- .boostbox-analytics -->
+                <div class="footer-wrap">
+                    <div class="footer">
+                        <div class="footer-links">
+                            <a href="https://deviodigital.com/" target="_blank"><?php esc_html_e( 'Devio Digital', 'boostbox' ); ?></a>
+                            <a href="https://deviodigial.com/documentation/" target="_blank"><?php esc_html_e( 'Docs', 'boostbox' ); ?></a>
+                            <a href="https://twitter.com/deviodigital" target="_blank"><?php esc_html_e( 'Twitter', 'boostbox' ); ?></a>
+                        </div>
+                    </div>
+                </div><!-- .footer-wrap -->
+            </div><!-- .panel -->
+        </div><!-- .panels -->
+    </div><!-- .boostbox-analytics -->
 <?php
 }
