@@ -36,14 +36,15 @@ function boostbox_popup_html() {
     if ( empty( $popup ) ) {
         return;
     }
+    $close_icon = apply_filters( 'boostbox_popup_close_icon', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>' );
     ?>
     <!--Creates the popup body-->
     <div class="boostbox-popup-overlay">
     <!--Creates the popup content-->
     <div class="boostbox-popup-content">
-        <?php echo $popup->content->rendered; ?>
+        <?php print_r( $popup->content->rendered ); ?>
         <!--popup's close button-->
-        <button class="boostbox-close"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></button>
+        <button class="boostbox-close"><?php print_r( $close_icon ); ?></button>
     </div>
     </div>
     <?php

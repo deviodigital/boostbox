@@ -78,11 +78,18 @@ class BoostBox_Public {
      * @return void
      */
     public function enqueue_scripts() {
+        // Create localize script args.
+        $localize_args = array(
+            'popup_id'     => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
+            'milliseconds' => '',
+            'cookie_days'  => '',
+        );
+        // Filter the args.
+        $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );
         // Public JS.
+        wp_enqueue_script( $this->plugin_name . '-js-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.min.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-public.js', array( 'jquery' ), $this->version, false );
-        wp_localize_script( $this->plugin_name, 'boostbox_settings', array(
-            'popup_id' => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
-        ) );
+        wp_localize_script( $this->plugin_name, 'boostbox_settings', $localize_args );
     }
 
 }
