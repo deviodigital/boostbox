@@ -3,12 +3,13 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://deviodigital.com
- * @since      0.0.1
- *
  * @package    BoostBox
  * @subpackage BoostBox/admin
- */
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
+  */
 
 /**
  * The admin-specific functionality of the plugin.
@@ -19,45 +20,48 @@
  * @package    BoostBox
  * @subpackage BoostBox/admin
  * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
 class BoostBox_Admin {
 
     /**
      * The ID of this plugin.
      *
-     * @since    0.0.1
-     * @access   private
-     * @var      string    $plugin_name    The ID of this plugin.
+     * @since  0.0.1
+     * @access private
+     * @var    string  $_plugin_name - The ID of this plugin.
      */
-    private $plugin_name;
+    private $_plugin_name;
 
     /**
      * The version of this plugin.
      *
-     * @since    0.0.1
-     * @access   private
-     * @var      string    $version    The current version of this plugin.
+     * @since  0.0.1
+     * @access private
+     * @var    string  $_version - The current version of this plugin.
      */
-    private $version;
+    private $_version;
 
     /**
      * Initialize the class and set its properties.
      *
-     * @since    0.0.1
-     * @param    string    $plugin_name    The name of this plugin.
-     * @param    string    $version        The version of this plugin.
+     * @param string $_plugin_name - The name of this plugin.
+     * @param string $_version     - The version of this plugin.
      */
-    public function __construct( $plugin_name, $version ) {
+    public function __construct( $_plugin_name, $_version ) {
 
-        $this->plugin_name = $plugin_name;
-        $this->version     = $version;
+        $this->plugin_name = $_plugin_name;
+        $this->version     = $_version;
 
     }
 
     /**
      * Register the stylesheets for the admin area.
      *
-     * @since    0.0.1
+     * @since  0.0.1
+     * @return void
      */
     public function enqueue_styles() {
         // General: Admin CSS.
@@ -67,8 +71,9 @@ class BoostBox_Admin {
     /**
      * Register the JavaScript for the admin area.
      *
-     * @todo get the chart vars mapped in correctly.
-     * @since    0.0.1
+     * @todo   get the chart vars mapped in correctly.
+     * @since  0.0.1
+     * @return void
      */
     public function enqueue_scripts() {
         // General: Admin JS.

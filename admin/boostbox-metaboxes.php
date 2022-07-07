@@ -1,12 +1,13 @@
 <?php
 /**
- * The file that defines the metaboxes used by the Tape Tracker plugin
- *
- * @link       https://deviodigital.com
- * @since      0.0.1
+ * The file that defines the metaboxes used by the BoostBox plugin
  *
  * @package    BoostBox
  * @subpackage BoostBox/admin
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
 
 // Exit if accessed directly.

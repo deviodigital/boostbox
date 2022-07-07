@@ -6,7 +6,7 @@
  * @package    BoostBox
  * @subpackage BoostBox/public
  * @author     Devio Digital <contact@deviodigital.com>
- * @license    GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
  * @since      0.0.1
  */
@@ -20,7 +20,7 @@
  * @package    BoostBox
  * @subpackage BoostBox/public
  * @author     Devio Digital <contact@deviodigital.com>
- * @license    GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
  * @since      0.0.1
  */
@@ -50,7 +50,8 @@ class BoostBox_Public {
      * @param string $_plugin_name - The name of the plugin.
      * @param string $_version     - The version of this plugin.
      * 
-     * @since 0.0.1
+     * @since  0.0.1
+     * @return void
      */
     public function __construct( $_plugin_name, $_version ) {
 
@@ -67,7 +68,7 @@ class BoostBox_Public {
      */
     public function enqueue_styles() {
         // Publc CSS.
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', array(), $this->version, 'all' );
+        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.css', array(), $this->version, 'all' );
     }
 
     /**
@@ -77,18 +78,11 @@ class BoostBox_Public {
      * @return void
      */
     public function enqueue_scripts() {
-        // Create localize script args.
-        $localize_args = array(
-            'popup_id'     => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
-            'milliseconds' => '',
-            'cookie_days'  => '',
-        );
-        // Filter the args.
-        $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );
         // Public JS.
-        wp_enqueue_script( $this->plugin_name . '-js-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.min.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-public.js', array( 'jquery' ), $this->version, false );
-        wp_localize_script( $this->plugin_name, 'boostbox_settings', $localize_args );
+        wp_localize_script( $this->plugin_name, 'boostbox_settings', array(
+            'popup_id' => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
+        ) );
     }
 
 }

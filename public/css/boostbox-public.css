@@ -1,35 +1,37 @@
-/** @todo This overlay needs to be customizable by the website admin */
 .boostbox-popup-overlay {
-    background: rgba(0,0,0,0.8);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     visibility: hidden;
-    z-index: 9999;
 }
 
 .boostbox-popup-overlay.active {
     visibility: visible;
 }
 
+/** @todo This overlay needs to be customizable by the website admin */
+.boostbox-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+}
+
 .boostbox-popup-content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .boostbox-popup-content .boostbox-close {
-    background: transparent;
+    background: #FFF;
     border-radius: 50%;
-    border: 0;
     display: block;
     height: 34px;
-    padding: 0;
+    padding: 0px;
     position: absolute;
-    top: -36px;
+    top: -6px;
     right: -6px;
     z-index: 999;
 }
@@ -38,38 +40,13 @@
     make sure to add custom classes to the wrappers so we can style 
     each form type accordingly */
 
-/** BoostBox Popup #1 */
-
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns {
-    display: flex;
-}
-
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns h1,
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns h2,
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns h3,
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns h4,
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns h5,
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns h6 {
-    margin-top: 0;
-}
-
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns .wp-block-video {
-    margin: 0;
-}
-
-.boostbox-popup-content .boostbox-popup-1 .wp-block-columns video {
-    max-width: 100%;
-}
-
 /** Gravity Forms - field wrapper */
-
 .boostbox-popup-content .gform_fields {
     list-style-type: none;
     margin: 0;
 }
 
 /** WPForms - label */
-
 .wpforms-field-label,
 .wpforms-field-sublabel.after {
     display: block;
@@ -80,7 +57,6 @@
 }
 
 /** WPForms - input fields */
-
 .wpforms-field-small,
 .wpforms-field-medium,
 .wpforms-field-large,

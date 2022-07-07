@@ -4,20 +4,25 @@
  *
  * This file is used to define the popup settings metabox of the plugin.
  *
- * @link       https://deviodigital.com
- * @since      0.0.1
- *
  * @package    BoostBox
  * @subpackage BoostBox/admin/metaboxes
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
-
 
 /**
  * Popup Settings metabox
  *
- * Adds a settings metabox to the tapes post type.
+ * Adds a settings metabox to the BoostBox post type.
  *
- * @since    0.0.1
+ * @package    BoostBox
+ * @subpackage BoostBox/admin
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
 function boostbox_popup_settings_metabox() {
     $screens = apply_filters( 'boostbox_popup_settings_metabox_post_types', array( 'products', 'post', 'page' ) );
@@ -91,7 +96,7 @@ function boostbox_popup_settings_metabox_content() {
             } else {
                 $selected = '';
             }
-            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr__( $popup->ID ), esc_html( $popup->post_title ) );
+            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
         }
     }
     echo '</select>';
@@ -110,7 +115,7 @@ function boostbox_popup_settings_metabox_content() {
             } else {
                 $selected = '';
             }
-            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr__( $popup->ID ), esc_html( $popup->post_title ) );
+            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
         }
     }
     echo '</select>';
@@ -121,8 +126,9 @@ function boostbox_popup_settings_metabox_content() {
 /**
  * Save the Metabox Data
  * 
- * @param  int    $post_id
- * @param  object $post
+ * @param int    $post_id 
+ * @param object $post 
+ * 
  * @return void
  */
 function boostbox_popup_settings_metabox_save( $post_id, $post ) {
@@ -131,7 +137,7 @@ function boostbox_popup_settings_metabox_save( $post_id, $post ) {
      * Verify this came from the our screen and with proper authorization,
      * because save_post can be triggered at other times
      */
-    if ( null == filter_input( INPUT_POST, 'boostbox_popup_settings_meta_noncename' ) || ! wp_verify_nonce( filter_input( INPUT_POST, 'boostbox_popup_settings_meta_noncename' ), plugin_basename( __FILE__ ) ) ) {
+    if ( ! isset( $_POST['boostbox_popup_settings_meta_noncename' ] ) || ! wp_verify_nonce( $_POST['boostbox_popup_settings_meta_noncename'], plugin_basename( __FILE__ ) ) ) {
         return $post->ID;
     }
 
@@ -141,7 +147,7 @@ function boostbox_popup_settings_metabox_save( $post_id, $post ) {
     }
 
     // Popup settings.
-    $settings_meta['boostbox_popup_selected'] = filter_input( INPUT_POST, 'boostbox_popup_selected' );
+    $settings_meta['boostbox_popup_selected'] = esc_html( $_POST['boostbox_popup_selected'] );
 
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {

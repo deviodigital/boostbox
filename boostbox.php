@@ -5,7 +5,7 @@
  *
  * @package BoostBox
  * @author  Devio Digital <contact@deviodigital.com>
- * @license GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
+ * @license GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link    https://deviodigital.com
  * @since   0.0.1
  *
@@ -17,7 +17,7 @@
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       boostbox
  * Domain Path:       /languages
  */
@@ -61,6 +61,8 @@ register_deactivation_hook( __FILE__, 'deactivate_boostbox' );
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
+ * 
+ * @return void
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-boostbox.php';
 
@@ -100,14 +102,13 @@ add_filter( "plugin_action_links_$plugin_name", 'boostbox_settings_link' );
 /**
  * Redirect to the BoostBox Settings page on single plugin activation
  *
- * @since  0.0.1
- * @return void
+ * @since 0.0.1
  */
 function boostbox_redirect() {
     if ( get_option( 'boostbox_do_activation_redirect', false ) ) {
         delete_option( 'boostbox_do_activation_redirect' );
         if ( ! isset( $_GET['activate-multi'] ) ) {
-            wp_safe_redirect( 'admin.php?page=boostbox_settings' );
+            wp_redirect( 'admin.php?page=boostbox_settings' );
         }
     }
 }

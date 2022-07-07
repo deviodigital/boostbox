@@ -3,11 +3,12 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       https://deviodigital.com
- * @since      0.0.1
- *
  * @package    BoostBox
  * @subpackage BoostBox/includes
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
 
 /**
@@ -15,19 +16,20 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      0.0.1
  * @package    BoostBox
  * @subpackage BoostBox/includes
  * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
 class BoostBox_Deactivator {
 
     /**
-     * Short Description. (use period)
+     * Deactivate.
      *
-     * Long Description.
-     *
-     * @since    0.0.1
+     * @since  0.0.1
+     * @return void
      */
     public static function deactivate() {
 

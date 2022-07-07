@@ -2,24 +2,26 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://deviodigital.com
- * @since      0.0.1
- *
  * @package    BoostBox
  * @subpackage BoostBox/admin
- */
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
+ * @link       https://deviodigital.com
+ * @since      0.0.1
+  */
 
 /**
  * Adds a menu item for the BoostBox page.
  *
- * since 0.0.1
+ * @since  0.0.1
+ * @return void
  */
 function boostbox_settings_page_menu() {
 
     add_submenu_page(
         'edit.php?post_type=boostbox_popups',
-        __( 'BoostBox Settings', 'boostbox' ),
-        __( 'Settings', 'boostbox' ),
+        esc_attr__( 'BoostBox Settings', 'boostbox' ),
+        esc_attr__( 'Settings', 'boostbox' ),
         'manage_options',
         'boostbox_settings',
         'boostbox_settings_page'
@@ -29,9 +31,10 @@ function boostbox_settings_page_menu() {
 add_action( 'admin_menu', 'boostbox_settings_page_menu', 99 );
 
 /**
- * Outputs the markup used on the Settings page
+ * Outputs the markup used on the Getting Started
  *
- * since 0.0.1
+ * @since  0.0.1
+ * @return string
  */
 function boostbox_settings_page() {
 ?>
@@ -39,7 +42,7 @@ function boostbox_settings_page() {
         <div class="intro-wrap">
             <div class="intro">
                 <a href="<?php echo esc_url( 'https://deviodigital.com/' ); ?>"><img class="devio-digital-logo" src="<?php echo esc_url( plugins_url( 'images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Devio Digital', 'boostbox' ); ?>" /></a>
-                <h3><strong><?php printf( esc_html__( 'BoostBox', 'boostbox' ) ); ?></strong> <?php printf( esc_html__( 'Settings', 'boostbox' ) ); ?></h3>
+                <h3><strong><?php esc_html_e( 'BoostBox', 'boostbox' ); ?></strong> <?php esc_html_e( 'Settings', 'boostbox' ); ?></h3>
             </div>
         </div>
 
@@ -65,5 +68,5 @@ function boostbox_settings_page() {
             </div><!-- .panel -->
         </div><!-- .panels -->
     </div><!-- .boostbox -->
-<?php
+    <?php
 }

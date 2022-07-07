@@ -1,5 +1,5 @@
 === BoostBox ===
-Contributors: deviodigital
+Contributors: @deviodigital
 Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, modal, exit-intent
 Requires at least: 3.0.1

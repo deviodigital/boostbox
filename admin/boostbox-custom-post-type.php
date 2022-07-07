@@ -3,16 +3,16 @@
 /**
  * The custom post type functionality of the plugin.
  *
- * @link       https://deviodigital.com
- * @since      0.0.1
- *
  * @package    BoostBox
  * @subpackage BoostBox/admin
+ * @author     Devio Digital <contact@deviodigital.com>
+ * @link       https://deviodigital.com
+ * @since      0.0.1
  */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-    wp_die();
+    exit;
 }
 
 if ( ! function_exists( 'boostbox_popups' ) ) {
@@ -21,43 +21,43 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
     function boostbox_popups() {
 
         $labels = array(
-            'name'                  => esc_attr_x( 'Popups', 'Post Type General Name', 'boostbox' ),
-            'singular_name'         => esc_attr_x( 'Popup', 'Post Type Singular Name', 'boostbox' ),
-            'menu_name'             => esc_attr__( 'Popups', 'boostbox' ),
-            'name_admin_bar'        => esc_attr__( 'Popup', 'boostbox' ),
-            'archives'              => esc_attr__( 'Popup Archives', 'boostbox' ),
-            'attributes'            => esc_attr__( 'Popup Attributes', 'boostbox' ),
-            'parent_item_colon'     => esc_attr__( 'Parent Popup:', 'boostbox' ),
-            'all_items'             => esc_attr__( 'All Popups', 'boostbox' ),
-            'add_new_item'          => esc_attr__( 'Add New Popup', 'boostbox' ),
-            'add_new'               => esc_attr__( 'Add New', 'boostbox' ),
-            'new_item'              => esc_attr__( 'New Popup', 'boostbox' ),
-            'edit_item'             => esc_attr__( 'Edit Popup', 'boostbox' ),
-            'update_item'           => esc_attr__( 'Update Popup', 'boostbox' ),
-            'view_item'             => esc_attr__( 'View Popup', 'boostbox' ),
-            'view_items'            => esc_attr__( 'View Popup', 'boostbox' ),
-            'search_items'          => esc_attr__( 'Search Popup', 'boostbox' ),
-            'not_found'             => esc_attr__( 'Not found', 'boostbox' ),
-            'not_found_in_trash'    => esc_attr__( 'Not found in Trash', 'boostbox' ),
-            'featured_image'        => esc_attr__( 'Featured Image', 'boostbox' ),
-            'set_featured_image'    => esc_attr__( 'Set featured image', 'boostbox' ),
-            'remove_featured_image' => esc_attr__( 'Remove featured image', 'boostbox' ),
-            'use_featured_image'    => esc_attr__( 'Use as featured image', 'boostbox' ),
-            'insert_into_item'      => esc_attr__( 'Insert into tape', 'boostbox' ),
-            'uploaded_to_this_item' => esc_attr__( 'Uploaded to this tape', 'boostbox' ),
-            'items_list'            => esc_attr__( 'Popups list', 'boostbox' ),
-            'items_list_navigation' => esc_attr__( 'Popups list navigation', 'boostbox' ),
-            'filter_items_list'     => esc_attr__( 'Filter popups list', 'boostbox' ),
+            'name'                  => _x( 'Popups', 'Post Type General Name', 'boostbox' ),
+            'singular_name'         => _x( 'Popup', 'Post Type Singular Name', 'boostbox' ),
+            'menu_name'             => esc_html__( 'BoostBox', 'boostbox' ),
+            'name_admin_bar'        => esc_html__( 'Popup', 'boostbox' ),
+            'archives'              => esc_html__( 'Popup Archives', 'boostbox' ),
+            'attributes'            => esc_html__( 'Popup Attributes', 'boostbox' ),
+            'parent_item_colon'     => esc_html__( 'Parent Popup:', 'boostbox' ),
+            'all_items'             => esc_html__( 'All Popups', 'boostbox' ),
+            'add_new_item'          => esc_html__( 'Add New Popup', 'boostbox' ),
+            'add_new'               => esc_html__( 'Add New', 'boostbox' ),
+            'new_item'              => esc_html__( 'New Popup', 'boostbox' ),
+            'edit_item'             => esc_html__( 'Edit Popup', 'boostbox' ),
+            'update_item'           => esc_html__( 'Update Popup', 'boostbox' ),
+            'view_item'             => esc_html__( 'View Popup', 'boostbox' ),
+            'view_items'            => esc_html__( 'View Popup', 'boostbox' ),
+            'search_items'          => esc_html__( 'Search Popup', 'boostbox' ),
+            'not_found'             => esc_html__( 'Not found', 'boostbox' ),
+            'not_found_in_trash'    => esc_html__( 'Not found in Trash', 'boostbox' ),
+            'featured_image'        => esc_html__( 'Featured Image', 'boostbox' ),
+            'set_featured_image'    => esc_html__( 'Set featured image', 'boostbox' ),
+            'remove_featured_image' => esc_html__( 'Remove featured image', 'boostbox' ),
+            'use_featured_image'    => esc_html__( 'Use as featured image', 'boostbox' ),
+            'insert_into_item'      => esc_html__( 'Insert into popup', 'boostbox' ),
+            'uploaded_to_this_item' => esc_html__( 'Uploaded to this popup', 'boostbox' ),
+            'items_list'            => esc_html__( 'Popups list', 'boostbox' ),
+            'items_list_navigation' => esc_html__( 'Popups list navigation', 'boostbox' ),
+            'filter_items_list'     => esc_html__( 'Filter popups list', 'boostbox' ),
         );
         $rewrite = array(
-            'slug'                  => 'tape',
+            'slug'                  => 'boostbox',
             'with_front'            => true,
             'pages'                 => true,
             'feeds'                 => true,
         );
         $args = array(
-            'label'                 => esc_attr__( 'BoostBox Popups', 'boostbox' ),
-            'description'           => esc_attr__( 'Build custom popups with Gutenberg', 'boostbox' ),
+            'label'                 => esc_html__( 'BoostBox Popups', 'boostbox' ),
+            'description'           => esc_html__( 'Build custom popups with Gutenberg', 'boostbox' ),
             'labels'                => $labels,
             'supports'              => array( 'title', 'editor', 'thumbnail' ),
             'taxonomies'            => array(),
