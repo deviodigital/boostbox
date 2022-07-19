@@ -25,13 +25,14 @@
 }
 
 .boostbox-popup-content .boostbox-close {
-    background: #FFF;
+    background: 0 0;
     border-radius: 50%;
+    border: 0;
     display: block;
     height: 34px;
-    padding: 0px;
+    padding: 0;
     position: absolute;
-    top: -6px;
+    top: -36px;
     right: -6px;
     z-index: 999;
 }
