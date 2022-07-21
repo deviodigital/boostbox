@@ -93,7 +93,7 @@ run_boostbox();
  * @return array updatead array of links related to the plugin.
  */
 function boostbox_settings_link( $links ) {
-    $settings_link = '<a href="admin.php?page=boostbox_settings">' . esc_attr__( 'Settings', 'boostbox' ) . '</a>';
+    $settings_link = '<a href="edit.php?post_type=boostbox_popups&page=settings">' . esc_attr__( 'Settings', 'boostbox' ) . '</a>';
     array_unshift( $links, $settings_link );
     return $links;
 }
@@ -108,7 +108,7 @@ function boostbox_redirect() {
     if ( get_option( 'boostbox_do_activation_redirect', false ) ) {
         delete_option( 'boostbox_do_activation_redirect' );
         if ( ! isset( $_GET['activate-multi'] ) ) {
-            wp_redirect( 'admin.php?page=boostbox_settings' );
+            wp_redirect( 'edit.php?post_type=boostbox_popups&page=settings' );
         }
     }
 }
