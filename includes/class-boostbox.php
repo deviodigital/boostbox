@@ -132,6 +132,11 @@ class BoostBox {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-metaboxes.php';
 
         /**
+         * The class responsible for defining the admin settings.
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-boostbox-admin-settings.php';
+
+        /**
          * The file responsible for defining the plugin settings page
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-admin-settings.php';

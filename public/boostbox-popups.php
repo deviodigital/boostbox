@@ -20,8 +20,14 @@
  * @return void
  */
 function boostbox_popup_html() {
+    // Settings.
+    $settings = get_option( 'boostbox_general' );
     // @todo make the ID in wp_remote_get dynamic.
     $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
+    // Check for global popup.
+    if ( '' == $popup_id ) {
+        $popup_id = $settings['boostbox_global_popup'];
+    }
     // Bail early?
     if ( ! $popup_id ) { return; }
     // Get blog post from rest API.

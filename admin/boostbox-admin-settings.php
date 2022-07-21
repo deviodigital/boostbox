@@ -8,188 +8,85 @@
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
  * @since      0.0.1
-  */
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    wp_die();
+}
 
 /**
- * Adds a menu item for the BoostBox page.
+ * Actions/Filters
  *
- * @since  0.0.1
- * @return void
- */
-function boostbox_settings_page_menu() {
-
-    add_submenu_page(
-        'edit.php?post_type=boostbox_popups',
-        esc_attr__( 'BoostBox Settings', 'boostbox' ),
-        esc_attr__( 'Settings', 'boostbox' ),
-        'manage_options',
-        'boostbox_settings',
-        'boostbox_settings_page'
-    );
-
-}
-add_action( 'admin_menu', 'boostbox_settings_page_menu', 99 );
-
-/**
- * Outputs the markup used on the Getting Started
+ * Related to all settings API.
  *
- * @since  0.0.1
- * @return string
+ * @since 1.0.0
  */
-function boostbox_settings_page() {
-    ?>
-    <div class="wrap boostbox">
-        <div class="intro-wrap">
-            <div class="intro">
-                <a href="<?php echo esc_url( 'https://deviodigital.com/' ); ?>"><img class="devio-digital-logo" src="<?php echo esc_url( plugins_url( 'images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Devio Digital', 'boostbox' ); ?>" /></a>
-                <h3><strong><?php esc_html_e( 'BoostBox', 'boostbox' ); ?></strong> <?php esc_html_e( 'Settings', 'boostbox' ); ?></h3>
-            </div>
-        </div>
+if ( class_exists( 'BoostBox_OSA' ) ) {
+    /**
+     * Function Name
+     * 
+     * @return string
+     */
+    function boostbox_initialize_admin_settings() {
+        /**
+         * Object Instantiation.
+         *
+         * Object for the class `BoostBox_OSA`.
+         */
+        $boostbox_obj = new BoostBox_OSA();
 
-        <div class="panels">
-            <div id="panel" class="panel">
-                <div id="boostbox-panel" class="panel-left visible">
-                    <div class="block-feature-wrap clear">
-                        <div class="boostbox-content">
-                        <form action="options.php" method="post">
-                            <?php 
-                            settings_fields( 'boostbox_admin_settings' );
-                            do_settings_sections( 'boostbox_admin' );
-                            ?>
-                            <input
-                            type="submit"
-                            name="submit"
-                            class="button button-primary"
-                            value="<?php esc_attr_e( 'Save' ); ?>"
-                            />
-                        </form>
-                        </div><!-- .boostbox-content -->
-                    </div><!-- .block-feature-wrap -->
-                </div><!-- .panel-left -->
+        // Args for popups.
+        $args = array(
+            'sort_order'   => 'asc',
+            'sort_column'  => 'post_title',
+            'hierarchical' => 1,
+            'exclude'      => '',
+            'include'      => '',
+            'meta_key'     => '',
+            'meta_value'   => '',
+            'authors'      => '',
+            'child_of'     => 0,
+            'parent'       => -1,
+            'exclude_tree' => '',
+            'number'       => '',
+            'offset'       => 0,
+            'post_type'    => 'boostbox_popups',
+            'post_status'  => 'publish'
+        );
 
-                <div class="footer-wrap">
-                    <div class="footer">
-                        <div class="footer-links">
-                            <a href="https://deviodigital.com/" target="_blank"><?php esc_html_e( 'Devio Digital', 'boostbox' ); ?></a>
-                            <a href="https://deviodigial.com/documentation/" target="_blank"><?php esc_html_e( 'Docs', 'boostbox' ); ?></a>
-                            <a href="https://twitter.com/deviodigital" target="_blank"><?php esc_html_e( 'Twitter', 'boostbox' ); ?></a>
-                        </div>
-                    </div>
-                </div><!-- .footer-wrap -->
-            </div><!-- .panel -->
-        </div><!-- .panels -->
-    </div><!-- .boostbox -->
-    <?php
-}
+        $args = apply_filters( 'boostbox_popup_settings_args', $args );
 
-/**
- * Register settings
- * 
- * @since  1.0.0
- * @return void
- */
-function boostbox_register_settings() {
-    register_setting(
-        'boostbox_admin_settings',
-        'boostbox_admin_settings',
-        'boostbox_validate_admin_settings'
-    );
-    add_settings_section(
-        'global_settings',
-        '',
-        'boostbox_global_settings_text',
-        'boostbox_admin'
-    );
-    add_settings_field(
-        'global_popup_field',
-        esc_attr__( 'Global popup', 'boostbox' ),
-        'boostbox_render_global_popup_field',
-        'boostbox_admin',
-        'global_settings'
-    );
-}
-add_action( 'admin_init', 'boostbox_register_settings' );
+        // Get all popups.
+        $popups = get_posts( $args );
 
-/**
- * Validate admin settings
- * 
- * @param [type] $input 
- * 
- * @since  1.0.0
- * @return array
- */
-function boostbox_validate_admin_settings( $input ) {
-    $output['global_popup_field'] = sanitize_text_field( $input['global_popup_field'] );
+        $options = array(
+            '' => esc_attr__( '--', 'boostbox' )
+        );
 
-    return $output;
-}
-
-/**
- * Global Settins text (if any)
- * 
- * @since  1.0.0
- * @return string
- */
-function boostbox_global_settings_text() {
-    // Uncomment if more text needs added to the section.
-    //echo '<p>' . esc_attr__( 'Global Settings', 'boostbox' ) . '</p>';
-}
-
-/**
- * Render the global popup field
- * 
- * @since  1.0.0
- * @return string
- */
-function boostbox_render_global_popup_field() {
-    $options = get_option( 'boostbox_admin_settings' );
-
-    // Args for popups.
-    $args = array(
-        'sort_order'   => 'asc',
-        'sort_column'  => 'post_title',
-        'hierarchical' => 1,
-        'exclude'      => '',
-        'include'      => '',
-        'meta_key'     => '',
-        'meta_value'   => '',
-        'authors'      => '',
-        'child_of'     => 0,
-        'parent'       => -1,
-        'exclude_tree' => '',
-        'number'       => '',
-        'offset'       => 0,
-        'post_type'    => 'boostbox_popups',
-        'post_status'  => 'publish'
-    );
-
-    $args = apply_filters( 'boostbox_popup_settings_args', $args );
-
-    // Get all popups.
-    $popups = get_posts( $args );
-
-
-    printf(
-        '<select id="boostbox_popup_selected" name="boostbox_popup_selected">'
-    );
-
-    printf(
-        '<option value="">' . esc_attr__( '--', 'boostbox' ) . '</option>'
-    );
-
-    // Loop through popups.
-    if ( ! empty( $popups ) ) {
         foreach ( $popups as $popup ) {
-            if ( $popup->ID == $popup_selected ) {
-                $selected = 'selected="selected"';
-            } else {
-                $selected = '';
-            }
-            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
+            $options[$popup->ID] = get_the_title( $popup->ID );
         }
-    }
-    printf(
-        '</select>'
-    );
 
+        // Section: General.
+        $boostbox_obj->add_section(
+            array(
+                'id'    => 'boostbox_general',
+                'title' => esc_attr__( 'General Settings', 'boostbox' ),
+            )
+        );
+
+        // Field: Global popup.
+        $boostbox_obj->add_field(
+            'boostbox_general',
+            array(
+                'id'      => 'boostbox_global_popup',
+                'type'    => 'select',
+                'name'    => esc_attr__( 'Global popup', 'boostbox' ),
+                'desc'    => esc_attr__( 'Select the popup used whenever the global option is set on posts/pages', 'boostbox' ),
+                'options' => $options,
+            )
+        );
+    }
+    add_action( 'init', 'boostbox_initialize_admin_settings', 100 );
 }

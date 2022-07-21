@@ -1,10 +1,10 @@
-body.boostbox_popups_page_boostbox_settings #wpcontent,
-body.boostbox_popups_page_boostbox_analytics #wpcontent {
+body.boostbox_popups_page_settings #wpcontent,
+body.boostbox_popups_page_analytics #wpcontent {
     padding-left: 0;
 }
 
-body.boostbox_popups_page_boostbox_settings ul#adminmenu a.wp-has-current-submenu:after,
-body.boostbox_popups_page_boostbox_analytics ul#adminmenu>li.current>a.current:after {
+body.boostbox_popups_page_settings ul#adminmenu a.wp-has-current-submenu:after,
+body.boostbox_popups_page_analytics ul#adminmenu>li.current>a.current:after {
     display: none;
 }
 
@@ -24,7 +24,7 @@ body.boostbox_popups_page_boostbox_analytics ul#adminmenu>li.current>a.current:a
 }
 
 .toplevel_page_boostbox_settings #wpcontent,
-.toplevel_page_boostbox_analytics #wpcontent {
+.toplevel_page_analytics #wpcontent {
 	padding-left: 0;
 }
 
@@ -95,11 +95,6 @@ img.icon {
     -moz-animation: smoothFade .3s;
     -webkit-animation: smoothFade .3s;
     -o-animation: smoothFade .3s;
-}
-
-.boostbox .panel p {
-	font-size: 19px;
-	line-height: 1.7;
 }
 
 .boostbox .panel-right p {
@@ -657,9 +652,11 @@ img.icon {
 }
 
 .boostbox h2 {
-	font-size: 33px;
-	font-weight: 400;
-	line-height: 1.2;
+    margin-top: 0;
+}
+
+.boostbox .form-table th {
+    padding-left: 0;
 }
 
 .boostbox p.wp-caption-text {
