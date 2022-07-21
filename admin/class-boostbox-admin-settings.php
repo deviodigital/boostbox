@@ -803,10 +803,10 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                     <div id="<?php echo esc_attr( $form['id'] ); ?>" class="group" >
                         <form method="post" action="options.php">
                             <?php
-                            do_action( 'cannabiz_form_top_' . $form['id'], $form );
+                            do_action( 'boostbox_form_top_' . $form['id'], $form );
                             settings_fields( $form['id'] );
                             do_settings_sections( $form['id'] );
-                            do_action( 'cannabiz_form_bottom_' . $form['id'], $form );
+                            do_action( 'boostbox_form_bottom_' . $form['id'], $form );
                             ?>
                             <div>
                                 <?php submit_button( null, 'primary', 'submit_'.$form['id'] ); ?>
