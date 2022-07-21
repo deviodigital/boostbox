@@ -1,5 +1,5 @@
 === BoostBox ===
-Contributors: @deviodigital
+Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, modal, exit-intent
 Requires at least: 3.0.1
@@ -19,6 +19,12 @@ Build popups for lead generation, content promotion and more using Gutenberg.
 1. Go to `Plugins - Add New` in your WordPress admin panel and search for **BoostBox**
 2. Install and activate the plugin directly in your admin panel
 3. Pat yourself on the back for a job well done :)
+
+== Screenshots ==
+
+1. Example popup display
+2. BoostBox metabox settings
+3. BoostBox admin settings
 
 == Changelog ==
 

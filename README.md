@@ -1,3 +1,3 @@
 # BoostBox by Devio Digital
 
-:rocket: Coming soon.
+:rocket: Build popups for lead generation, content promotion and more using Gutenberg.
