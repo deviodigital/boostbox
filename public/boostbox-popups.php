@@ -29,7 +29,7 @@ function boostbox_popup_html() {
         $popup_id = $settings['boostbox_global_popup'];
     }
     // Bail early?
-    if ( ! $popup_id ) { return; }
+    if ( ! $popup_id || 'popup_disabled' == $popup_id ) { return; }
     // Get blog post from rest API.
     $response = wp_remote_get( get_bloginfo( 'home' ) . '/wp-json/wp/v2/popups/' . $popup_id );
     // Exit if error.
