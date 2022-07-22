@@ -421,7 +421,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $type = isset( $args['type'] ) ? $args['type'] : 'title';
 
             $html = '';
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
 
@@ -439,7 +439,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html  = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"placeholder="%6$s" step="any"/>', $type, $size, $args['section'], $args['id'], $value, $args['placeholder'] );
             $html .= $this->get_field_description( $args );
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
 
@@ -477,7 +477,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= sprintf( '%1$s</label>', $args['desc'] );
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -499,7 +499,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= $this->get_field_description( $args );
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -520,7 +520,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= $this->get_field_description( $args );
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -540,7 +540,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= sprintf( '</select>' );
             $html .= $this->get_field_description( $args );
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -556,7 +556,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html  = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]">%4$s</textarea>', $size, $args['section'], $args['id'], $value );
             $html .= $this->get_field_description( $args );
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -616,7 +616,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
             $html .= $this->get_field_description( $args );
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -638,7 +638,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= $this->get_field_description( $args );
             $html .= '<p class="wpsa-image-preview"><img src=""/></p>';
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -654,7 +654,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html  = sprintf( '<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
             $html .= $this->get_field_description( $args );
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**
@@ -670,7 +670,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html  = sprintf( '<input type="text" class="%1$s-text color-picker" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" placeholder="%6$s" />', $size, $args['section'], $args['id'], $value, $args['std'], $args['placeholder'] );
             $html .= $this->get_field_description( $args );
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
 
@@ -684,7 +684,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             $html  = '';
             $html .= '<div class="wpsa-settings-separator"></div>';
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
 
@@ -787,7 +787,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             $html .= '</h2>';
 
-            echo $html;
+            echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
         /**

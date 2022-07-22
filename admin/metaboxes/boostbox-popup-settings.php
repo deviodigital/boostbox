@@ -126,7 +126,7 @@ function boostbox_popup_settings_metabox_save( $post_id, $post ) {
     }
 
     // Popup settings.
-    $settings_meta['boostbox_popup_selected'] = esc_html( $_POST['boostbox_popup_selected'] );
+    $settings_meta['boostbox_popup_selected'] = filter_input( INPUT_POST, 'boostbox_popup_selected' );
 
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {
