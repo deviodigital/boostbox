@@ -50,6 +50,7 @@ function boostbox_allowed_tags() {
     // select options
     $my_allowed['option'] = array(
         'selected' => array(),
+        'value'    => array(),
     );
     // style
     $my_allowed['style'] = array(
