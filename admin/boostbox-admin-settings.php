@@ -38,8 +38,6 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
 
         // Args for popups.
         $args = array(
-            'sort_order'   => 'asc',
-            'sort_column'  => 'post_title',
             'hierarchical' => 1,
             'exclude'      => '',
             'include'      => '',
@@ -52,7 +50,9 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
             'number'       => '',
             'offset'       => 0,
             'post_type'    => 'boostbox_popups',
-            'post_status'  => 'publish'
+            'post_status'  => 'publish',
+            'orderby'      => 'title',
+            'order'        => 'ASC'
         );
 
         $args = apply_filters( 'boostbox_popup_settings_args', $args );
