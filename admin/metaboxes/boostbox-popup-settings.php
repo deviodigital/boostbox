@@ -55,8 +55,6 @@ function boostbox_popup_settings_metabox_content() {
 
     // Args for popups.
     $args = array(
-        'sort_order'   => 'asc',
-        'sort_column'  => 'post_title',
         'hierarchical' => 1,
         'exclude'      => '',
         'include'      => '',
@@ -69,7 +67,9 @@ function boostbox_popup_settings_metabox_content() {
         'number'       => '',
         'offset'       => 0,
         'post_type'    => 'boostbox_popups',
-        'post_status'  => 'publish'
+        'post_status'  => 'publish',
+        'orderby'      => 'title',
+        'order'        => 'ASC'
     );
 
     $args = apply_filters( 'boostbox_popup_settings_args', $args );
