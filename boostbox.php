@@ -7,13 +7,13 @@
  * @author  Devio Digital <contact@deviodigital.com>
  * @license GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link    https://deviodigital.com
- * @since   0.0.1
+ * @since   1.0.0
  *
  * @wordpress-plugin
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
- * Description:       Build popups for lead generation, content promotion and more.
- * Version:           0.0.1
+ * Description:       Build popups for lead generation, content promotion and more using the Gutenberg editor.
+ * Version:           1.0.0
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Current plugin version.
-define( 'BOOSTBOX_VERSION', '0.0.1' );
+define( 'BOOSTBOX_VERSION', '1.0.0' );
 
 // Plugin basename.
 $plugin_name = plugin_basename( __FILE__ );
@@ -73,7 +73,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-boostbox.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since  0.0.1
+ * @since  1.0.0
  * @return void
  */
 function run_boostbox() {
@@ -89,7 +89,7 @@ run_boostbox();
  *
  * @param array $links an array of links related to the plugin.
  * 
- * @since  0.0.1
+ * @since  1.0.0
  * @return array updatead array of links related to the plugin.
  */
 function boostbox_settings_link( $links ) {
@@ -102,7 +102,7 @@ add_filter( "plugin_action_links_$plugin_name", 'boostbox_settings_link' );
 /**
  * Redirect to the BoostBox Settings page on single plugin activation
  *
- * @since 0.0.1
+ * @since 1.0.0
  */
 function boostbox_redirect() {
     if ( get_option( 'boostbox_do_activation_redirect', false ) ) {

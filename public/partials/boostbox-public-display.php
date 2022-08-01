@@ -6,7 +6,7 @@
  * This file is used to markup the public-facing aspects of the plugin.
  *
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  *
  * @package    BoostBox
  * @subpackage BoostBox/public/partials

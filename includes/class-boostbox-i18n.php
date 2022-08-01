@@ -11,7 +11,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 
 /**
@@ -25,7 +25,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 class BoostBox_i18n {
 
@@ -33,7 +33,7 @@ class BoostBox_i18n {
     /**
      * Load the plugin text domain for translation.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @return void
      */
     public function load_plugin_textdomain() {

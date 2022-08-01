@@ -8,7 +8,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 
 /**
@@ -18,7 +18,7 @@
  * a handful of additional HTML fields that are used throughout
  * this plugin
  * 
- * @since  0.0.1
+ * @since  1.0.0
  * @return array
  */
 function boostbox_allowed_tags() {

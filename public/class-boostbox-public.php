@@ -8,7 +8,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 
 /**
@@ -22,14 +22,14 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 class BoostBox_Public {
 
     /**
      * The ID of this plugin.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access private
      * @var    string  $_plugin_name - The ID of this plugin.
      */
@@ -38,7 +38,7 @@ class BoostBox_Public {
     /**
      * The version of this plugin.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access private
      * @var    string  $_version - The current version of this plugin.
      */
@@ -50,7 +50,7 @@ class BoostBox_Public {
      * @param string $_plugin_name - The name of the plugin.
      * @param string $_version     - The version of this plugin.
      * 
-     * @since  0.0.1
+     * @since  1.0.0
      * @return void
      */
     public function __construct( $_plugin_name, $_version ) {
@@ -63,7 +63,7 @@ class BoostBox_Public {
     /**
      * Register the stylesheets for the public-facing side of the site.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @return void
      */
     public function enqueue_styles() {
@@ -74,7 +74,7 @@ class BoostBox_Public {
     /**
      * Register the JavaScript for the public-facing side of the site.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @return void
      */
     public function enqueue_scripts() {

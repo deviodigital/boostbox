@@ -7,7 +7,7 @@
  * @subpackage BoostBox/admin
  * @author     Devio Digital <contact@deviodigital.com>
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 
 // Exit if accessed directly.

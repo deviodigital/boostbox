@@ -9,7 +9,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 
 /**
@@ -22,7 +22,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 function boostbox_popup_settings_metabox() {
     $screens = apply_filters( 'boostbox_popup_settings_metabox_post_types', array( 'products', 'post', 'page' ) );

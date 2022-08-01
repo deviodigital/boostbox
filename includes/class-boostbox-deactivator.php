@@ -8,7 +8,7 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 
 /**
@@ -21,14 +21,14 @@
  * @author     Devio Digital <contact@deviodigital.com>
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
- * @since      0.0.1
+ * @since      1.0.0
  */
 class BoostBox_Deactivator {
 
     /**
      * Deactivate.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @return void
      */
     public static function deactivate() {

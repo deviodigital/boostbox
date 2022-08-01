@@ -1,0 +1,216 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BoostBox\n"
+"POT-Creation-Date: 2022-08-01 16:36-0400\n"
+"PO-Revision-Date: 2022-08-01 16:36-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: boostbox.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: admin/boostbox-admin-settings.php:64
+msgid "--"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:75
+msgid "General Settings"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:85
+msgid "Global popup"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:86
+msgid "Select the popup used whenever the global option is set on posts/pages"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:24
+msgctxt "Post Type General Name"
+msgid "Popups"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:25
+msgctxt "Post Type Singular Name"
+msgid "Popup"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: admin/boostbox-custom-post-type.php:26
+#: admin/class-boostbox-admin-settings.php:745
+msgid "BoostBox"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:27
+msgid "Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:28
+msgid "Popup Archives"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:29
+msgid "Popup Attributes"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:30
+msgid "Parent Popup:"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:31
+msgid "All Popups"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:32
+msgid "Add New Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:33
+msgid "Add New"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:34
+msgid "New Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:35
+msgid "Edit Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:36
+msgid "Update Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:37
+#: admin/boostbox-custom-post-type.php:38
+msgid "View Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:39
+msgid "Search Popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:40
+msgid "Not found"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:41
+msgid "Not found in Trash"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:42
+msgid "Featured Image"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:43
+msgid "Set featured image"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:44
+msgid "Remove featured image"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:45
+msgid "Use as featured image"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:46
+msgid "Insert into popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:47
+msgid "Uploaded to this popup"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:48
+msgid "Popups list"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:49
+msgid "Popups list navigation"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:50
+msgid "Filter popups list"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:59
+msgid "BoostBox Popups"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:60
+msgid "Build custom popups with Gutenberg"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:613
+msgid "Choose File"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:634
+msgid "Choose Image"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:727
+#: admin/metaboxes/boostbox-popup-settings.php:34
+msgid "BoostBox Settings"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:728
+#: admin/class-boostbox-admin-settings.php:745 boostbox.php:96
+msgid "Settings"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:744
+msgid "Visit Devio Digital"
+msgstr ""
+
+#. Author of the plugin/theme
+#: admin/class-boostbox-admin-settings.php:764
+msgid "Devio Digital"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:765
+msgid "Docs"
+msgstr ""
+
+#: admin/class-boostbox-admin-settings.php:766
+msgid "Twitter"
+msgstr ""
+
+#: admin/metaboxes/boostbox-popup-settings.php:85
+msgid "Select popup to display"
+msgstr ""
+
+#: admin/metaboxes/boostbox-popup-settings.php:87
+msgid "Disable Popup"
+msgstr ""
+
+#: admin/metaboxes/boostbox-popup-settings.php:88
+msgid "Global Popup"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://deviodigital.com/boostbox-lead-generation-plugin"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Build popups for lead generation, content promotion and more using the "
+"Gutenberg editor."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://deviodigital.com"
+msgstr ""
