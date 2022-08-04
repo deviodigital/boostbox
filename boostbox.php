@@ -102,7 +102,8 @@ add_filter( "plugin_action_links_$plugin_name", 'boostbox_settings_link' );
 /**
  * Redirect to the BoostBox Settings page on single plugin activation
  *
- * @since 1.0.0
+ * @since  1.0.0
+ * @return void
  */
 function boostbox_redirect() {
     if ( get_option( 'boostbox_do_activation_redirect', false ) ) {
