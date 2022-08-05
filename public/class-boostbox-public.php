@@ -78,11 +78,19 @@ class BoostBox_Public {
      * @return void
      */
     public function enqueue_scripts() {
+        // Popup ID.
+        $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
+        // Milliseconds.
+        $milliseconds = get_post_meta( $popup_id, 'boostbox_display_speed', true );
+        if ( ! $milliseconds ) {
+            $milliseconds = 0;
+        }
         // Create localize script args.
         $localize_args = array(
-            'popup_id'     => get_post_meta( get_the_ID(), 'boostbox_popup_selected', true ),
-            'milliseconds' => '',
+            'popup_id'     => $popup_id,
+            'milliseconds' => $milliseconds,
             'cookie_days'  => '',
+            'trigger'      => get_post_meta( $popup_id, 'boostbox_trigger_type', true )
         );
         // Filter the args.
         $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );
