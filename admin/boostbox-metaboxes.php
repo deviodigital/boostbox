@@ -17,3 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Popup settings metabox.
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/metaboxes/boostbox-popup-settings.php';
+
+// Post Type settings metabox.
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/metaboxes/boostbox-post-type-settings.php';

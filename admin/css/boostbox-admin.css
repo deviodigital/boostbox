@@ -1082,3 +1082,11 @@ img.icon {
     margin: 0;
     width: 100%;
 }
+
+/** BoostBox Post Type Settings - Metabox */
+
+#boostbox_post_type_settings .inside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
