@@ -38,6 +38,8 @@ function boostbox_popup_html() {
     }
     // Get the body.
     $popup = json_decode( wp_remote_retrieve_body( $response ) );
+    // Popup position.
+    $popup_position = get_post_meta( $popup_id, 'boostbox_display_location', true );
     // Exit if nothing is returned.
     if ( empty( $popup ) ) {
         return;
@@ -47,7 +49,7 @@ function boostbox_popup_html() {
     <!--Creates the popup body-->
     <div class="boostbox-popup-overlay">
     <!--Creates the popup content-->
-    <div class="boostbox-popup-content">
+    <div class="boostbox-popup-content <?php echo $popup_position; ?>">
         <?php print_r( $popup->content->rendered ); ?>
         <!--popup's close button-->
         <button class="boostbox-close"><?php print_r( $close_icon ); ?></button>
