@@ -52,8 +52,7 @@ jQuery(document).ready(function ($) {
 	// Close popup when 'close' button is clicked.
 	$(".boostbox-close").on("click", function() {
 		$(".boostbox-popup-overlay").removeClass("active");
-		// @todo make the '30' dynamic via localize script (using user option via admin settings).
-		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', 30 );
+		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', boostbox_settings.cookie_days );
     });
 
     // Get percentage of number.

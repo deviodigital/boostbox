@@ -78,6 +78,12 @@ class BoostBox_Public {
      * @return void
      */
     public function enqueue_scripts() {
+        // Cookie days.
+        $settings    = get_option( 'boostbox_general' );
+        $cookie_days = $settings['boostbox_cookie_days'];
+        if ( ! isset( $cookie_days ) ) {
+            $cookie_days = 30;
+        }
         // Popup ID.
         $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
         // Milliseconds.
@@ -89,7 +95,7 @@ class BoostBox_Public {
         $localize_args = array(
             'popup_id'     => $popup_id,
             'milliseconds' => $milliseconds,
-            'cookie_days'  => '',
+            'cookie_days'  => $cookie_days,
             'trigger'      => get_post_meta( $popup_id, 'boostbox_trigger_type', true )
         );
         // Filter the args.
