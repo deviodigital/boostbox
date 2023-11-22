@@ -1,9 +1,11 @@
 .boostbox-popup-overlay {
     visibility: hidden;
+    opacity: 0;
 }
 
 .boostbox-popup-overlay.active {
     visibility: visible;
+    opacity: 1;
 }
 
 /** @todo This overlay needs to be customizable by the website admin */
@@ -43,7 +45,7 @@
     top: 50%;
     left: auto;
     right: 0%;
-    transform: translate(0%,-100%);
+    transform: translate(0,-50%);
 }
 
 .boostbox-popup-content.top-left {
@@ -57,7 +59,7 @@
     position: absolute;
     top: 0%;
     left: 50%;
-    transform: translate(0%, -50%);
+    transform: translate(-50%,0%);
 }
 
 .boostbox-popup-content.top-right {
@@ -92,6 +94,193 @@
     bottom: 0%;
     transform: none;
 }
+
+/** Animation - Slide down */
+
+.boostbox-popup-content.slide-down {
+    top: -50%;
+    transition: all .5s ease-in-out; /*make it smooth*/
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down {
+    top: 50%;
+}
+
+/** Animation - Slide up */
+
+.boostbox-popup-content.slide-up {
+    top: inherit;
+    bottom: -50%;
+    transition: all .5s ease-in-out; /*make it smooth*/
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up {
+    bottom: 50%;
+    transform: translate(inherit);
+}
+
+/** Animation - Slide left */
+
+.boostbox-popup-content.slide-left {
+    right: -50%;
+    left: auto;
+    transition: all .5s ease-in-out; /*make it smooth*/
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-left {
+    right: 50%;
+    left: auto;
+    transform: translate(50%,-50%);
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.bottom-right.slide-left {
+    right: 0%;
+    transform: none;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.bottom-left.slide-left {
+    left: 0%;
+    right: auto;
+    transform: none;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.bottom-center.slide-left {
+    transform: translate(50%,0%);
+}
+
+/** Animation - Slide right */
+
+.boostbox-popup-content.slide-right {
+    left: -50%;
+    transition: all .5s ease-in-out; /*make it smooth*/
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-right {
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.bottom-right.slide-right {
+    left: 50%;
+    transform: none;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.bottom-left.slide-right {
+    left: 0%;
+    transform: none;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.bottom-center.slide-right {
+    transform: translate(-50%,0%);
+}
+
+/** Animation - Fade in */
+
+.boostbox-popup-content.fade-in {
+    opacity: 0;
+    transition: all .5s ease-in-out; /*make it smooth*/
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.fade-in {
+    opacity: 1;
+}
+
+/** Animations - Pop swirl */
+
+@keyframes pop-swirl {
+    0% {
+        transform: translate(-50%,-50%) scale(0) rotate(360deg);
+    }
+    60% {
+        transform: translate(-50%,-50%) scale(0.8) rotate(-10deg);
+    }
+    100% {
+        transform: translate(-50%,-50%) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes pop-swirl-center-right {
+    0% {
+        transform: translate(-50%,0%) scale(0) rotate(360deg);
+    }
+    60% {
+        transform: translate(-50%,0%) scale(0.8) rotate(-10deg);
+    }
+    100% {
+        transform: translate(-50%,0%) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes pop-swirl-center-left {
+    0% {
+        transform: translate(-50%,0%) scale(0) rotate(360deg);
+    }
+    60% {
+        transform: translate(-50%,0%) scale(0.8) rotate(-10deg);
+    }
+    100% {
+        transform: translate(-50%,0%) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes pop-swirl-bottom-right {
+    0% {
+        transform: translate(0%,-50%) scale(0) rotate(360deg);
+    }
+    60% {
+        transform: translate(0%,-50%) scale(0.8) rotate(-10deg);
+    }
+    100% {
+        transform: translate(0%,-50%) scale(1) rotate(0deg);
+    }
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.pop-swirl {
+    -webkit-animation: pop-swirl .5s ease;
+}
+
+.boostbox-popup-overlay .boostbox-popup-content.pop-swirl.pop-swirl.center-right {
+    -webkit-animation: pop-swirl-center-right .5s ease;
+}
+
+.boostbox-popup-overlay .boostbox-popup-content.pop-swirl.pop-swirl.center-right {
+    -webkit-animation: pop-swirl-center-right .5s ease;
+}
+
+.boostbox-popup-overlay .boostbox-popup-content.pop-swirl.pop-swirl.bottom-right {
+    -webkit-animation: pop-swirl-bottom-right .5s ease;
+}
+
+/** Animations - Anvil */
+
+@keyframes anvil {
+    0% {
+      transform: scale(5) rotate(0);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+    50% {
+      transform: scale(1) rotate(-0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+    }
+    75% {
+      transform: scale(1) rotate(0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+    }
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.anvil {
+    -webkit-animation: anvil 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+
+/** Close */
 
 .boostbox-popup-content .boostbox-close {
     background: 0 0;
