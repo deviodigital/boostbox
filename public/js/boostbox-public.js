@@ -7,9 +7,6 @@ jQuery(document).ready(function ($) {
 	var milliseconds = boostbox_settings.milliseconds;
     // Window inner height.
     var innerHeight = window.innerHeight;
-    console.log( innerHeight );
-    console.log( triggerType );
-    console.log( milliseconds );
 
 	// Remove cookie?
 	Cookies.remove('boostbox_popup_' + popupID + '', { path: '/' });
@@ -60,7 +57,7 @@ jQuery(document).ready(function ($) {
 
     // Track conversion when any button/link within the popup is clicked.
     // @TODO figure ways to make the tracking dynamic between buttons, links, form submissions, etc.
-    $(".boostbox-popup-overlay").on("click", ":button, a, [role='button']", function () {
+    $(".boostbox-popup-overlay").on("click", ":button, a, input[type='submit'], [role='button']", function () {
         trackConversion();
     });
 
@@ -69,25 +66,29 @@ jQuery(document).ready(function ($) {
         return ((percent/ 100) * total)
     }
 
+    // Increment popup view count.
     function incrementPopupViewCount() {
         // AJAX request to increment view count.
         $.ajax({
-            url: boostbox_settings.ajax_url, // Set the AJAX endpoint URL
+            url: boostbox_settings.ajax_url,
             type: 'POST',
             data: {
                 action: 'increment_popup_view_count',
                 popup_id: popupID,
-                nonce: boostbox_settings.nonce, // Pass the nonce
+                nonce: boostbox_settings.nonce,
             },
             success: function (response) {
-                // Handle success if needed.
+                console.log('[SUCCESS] Impression tracking complete!');
+                console.log(response);
             },
             error: function (error) {
-                // Handle error if needed.
+                console.log('[SUCCESS] Impression tracking failed!');
+                console.log(response);
             }
         });
     }
 
+    // Increment popup conversion count.
     function trackConversion() {
         // AJAX request to track conversion.
         $.ajax({
@@ -99,10 +100,12 @@ jQuery(document).ready(function ($) {
                 nonce: boostbox_settings.nonce,
             },
             success: function (response) {
-                // Handle success if needed.
+                console.log('[SUCCESS] Conversion tracking complete!');
+                console.log(response);
             },
             error: function (error) {
-                // Handle error if needed.
+                console.log('[ERROR] Conversion tracking failed!');
+                console.log(response);
             }
         });
     }
