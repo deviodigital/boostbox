@@ -24,6 +24,7 @@ jQuery(document).ready(function ($) {
         // Add class after X seconds.
         window.setTimeout(function(){
             $(".boostbox-popup-overlay").addClass('active');
+            incrementPopupViewCount();
         }, 0);
     }
 
@@ -32,6 +33,7 @@ jQuery(document).ready(function ($) {
         // Add class after X seconds.
         window.setTimeout(function(){
             $(".boostbox-popup-overlay").addClass('active');
+            incrementPopupViewCount();
         }, milliseconds);
     }
 
@@ -45,6 +47,7 @@ jQuery(document).ready(function ($) {
 
             if (scrolledY > percentResult) {
                 $(".boostbox-popup-overlay").addClass('active');
+                incrementPopupViewCount();
             }
         });
     }
@@ -55,8 +58,53 @@ jQuery(document).ready(function ($) {
 		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', boostbox_settings.cookie_days );
     });
 
+    // Track conversion when any button/link within the popup is clicked.
+    // @TODO figure ways to make the tracking dynamic between buttons, links, form submissions, etc.
+    $(".boostbox-popup-overlay").on("click", ":button, a, [role='button']", function () {
+        trackConversion();
+    });
+
     // Get percentage of number.
     function percentage(percent, total) {
         return ((percent/ 100) * total)
     }
+
+    function incrementPopupViewCount() {
+        // AJAX request to increment view count.
+        $.ajax({
+            url: boostbox_settings.ajax_url, // Set the AJAX endpoint URL
+            type: 'POST',
+            data: {
+                action: 'increment_popup_view_count',
+                popup_id: popupID,
+                nonce: boostbox_settings.nonce, // Pass the nonce
+            },
+            success: function (response) {
+                // Handle success if needed.
+            },
+            error: function (error) {
+                // Handle error if needed.
+            }
+        });
+    }
+
+    function trackConversion() {
+        // AJAX request to track conversion.
+        $.ajax({
+            url: boostbox_settings.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'track_popup_conversion',
+                popup_id: popupID,
+                nonce: boostbox_settings.nonce,
+            },
+            success: function (response) {
+                // Handle success if needed.
+            },
+            error: function (error) {
+                // Handle error if needed.
+            }
+        });
+    }
+
 });

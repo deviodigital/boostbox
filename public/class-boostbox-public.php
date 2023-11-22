@@ -96,7 +96,9 @@ class BoostBox_Public {
             'popup_id'     => $popup_id,
             'milliseconds' => $milliseconds,
             'cookie_days'  => $cookie_days,
-            'trigger'      => get_post_meta( $popup_id, 'boostbox_trigger_type', true )
+            'trigger'      => get_post_meta( $popup_id, 'boostbox_trigger_type', true ),
+            'ajax_url'     => admin_url( 'admin-ajax.php' ),
+            'nonce'        => wp_create_nonce( 'boostbox_nonce' ),        
         );
         // Filter the args.
         $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );
@@ -107,3 +109,53 @@ class BoostBox_Public {
     }
 
 }
+
+/**
+ * Increment popup view count callback
+ * 
+ * @return void
+ */
+function boostbox_increment_popup_view_count_callback() {
+    // Verify nonce.
+    $nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
+    if ( ! wp_verify_nonce( $nonce, 'boostbox_nonce' ) ) {
+        wp_die( 'Invalid nonce' );
+    }
+
+    // Get the popup ID from the AJAX request.
+    $popup_id = isset( $_POST['popup_id'] ) ? intval( $_POST['popup_id'] ) : 0;
+
+    // Increment view count meta field.
+    $current_count = get_post_meta( $popup_id, 'boostbox_popup_impressions', true );
+    $new_count     = $current_count + 1;
+    update_post_meta( $popup_id, 'boostbox_popup_impressions', $new_count );
+
+    wp_die();
+}
+add_action( 'wp_ajax_increment_popup_view_count', 'boostbox_increment_popup_view_count_callback' );
+add_action( 'wp_ajax_nopriv_increment_popup_view_count', 'boostbox_increment_popup_view_count_callback' );
+
+/**
+ * Track popup conversion callback
+ * 
+ * @return void
+ */
+function boostbox_track_popup_conversion_callback() {
+    // Verify nonce.
+    $nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
+    if ( ! wp_verify_nonce( $nonce, 'boostbox_nonce' ) ) {
+        wp_die( 'Invalid nonce' );
+    }
+
+    // Get the popup ID from the AJAX request.
+    $popup_id = isset( $_POST['popup_id'] ) ? intval( $_POST['popup_id'] ) : 0;
+
+    // Increment conversion count meta field.
+    $current_count = get_post_meta( $popup_id, 'boostbox_popup_conversions', true );
+    $new_count     = $current_count + 1;
+    update_post_meta( $popup_id, 'boostbox_popup_conversions', $new_count );
+
+    wp_die();
+}
+add_action( 'wp_ajax_track_popup_conversion', 'boostbox_track_popup_conversion_callback' );
+add_action( 'wp_ajax_nopriv_track_popup_conversion', 'boostbox_track_popup_conversion_callback' );
