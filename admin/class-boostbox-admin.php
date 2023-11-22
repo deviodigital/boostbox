@@ -71,19 +71,59 @@ class BoostBox_Admin {
     /**
      * Register the JavaScript for the admin area.
      *
-     * @todo   get the chart vars mapped in correctly.
      * @since  1.0.0
      * @return void
      */
     public function enqueue_scripts() {
+        // Args for popups.
+        $args = array(
+            'hierarchical' => 1,
+            'exclude'      => '',
+            'include'      => '',
+            'meta_key'     => '',
+            'meta_value'   => '',
+            'authors'      => '',
+            'child_of'     => 0,
+            'parent'       => -1,
+            'exclude_tree' => '',
+            'number'       => '',
+            'offset'       => 0,
+            'post_type'    => 'boostbox_popups',
+            'post_status'  => 'publish',
+            'orderby'      => 'title',
+            'order'        => 'ASC'
+        );
+
+        $args = apply_filters( 'boostbox_popup_settings_args', $args );
+
+        // Get all popups.
+        $popups = get_posts( $args );
+
+        // Generate empty arrays.
+        $popup_conversions = array();
+        $popup_impressions = array();
+        // Initialize total counters.
+        $total_impressions = 0;
+        $total_conversions = 0;
+
+        // Loop through popups.
+        foreach ( $popups as $popup ) {
+            // Popup Conversions.
+            $popup_conversions[$popup->ID] = get_post_meta( $popup->ID, 'boostbox_popup_conversions', true );
+            // Popup Impressions.
+            $popup_impressions[$popup->ID] = get_post_meta( $popup->ID, 'boostbox_popup_impressions', true );
+            // Increment total counters.
+            $total_impressions += $popup_impressions[$popup->ID];
+            $total_conversions += $popup_conversions[$popup->ID];
+        }
         // General: Admin JS.
         wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/chart.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery' ), $this->version, false );
         wp_localize_script( $this->plugin_name, 'chart_vars', array(
-            'total_impressions' => '',
-            'total_conversions' => '',
-            'popup_impressions' => '',
-            'popup_conversions' => ''
+            'total_impressions' => $total_impressions,
+            'total_conversions' => $total_conversions,
+            'popup_impressions' => $popup_impressions,
+            'popup_conversions' => $popup_conversions
         ) );
     }
 
