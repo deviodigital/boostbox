@@ -22,7 +22,7 @@
 function boostbox_popup_html() {
     // Settings.
     $settings = get_option( 'boostbox_general' );
-    // @todo make the ID in wp_remote_get dynamic.
+    // Get the popup ID.
     $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
     // Check for global popup.
     if ( '' == $popup_id ) {
@@ -40,6 +40,8 @@ function boostbox_popup_html() {
     $popup = json_decode( wp_remote_retrieve_body( $response ) );
     // Popup position.
     $popup_position = get_post_meta( $popup_id, 'boostbox_display_location', true );
+    // Popup animation.
+    $popup_animation = get_post_meta( $popup_id, 'boostbox_animation_type', true );
     // Exit if nothing is returned.
     if ( empty( $popup ) ) {
         return;
@@ -49,7 +51,7 @@ function boostbox_popup_html() {
     <!--Creates the popup body-->
     <div class="boostbox-popup-overlay">
     <!--Creates the popup content-->
-    <div class="boostbox-popup-content <?php echo $popup_position; ?>">
+    <div class="boostbox-popup-content <?php echo $popup_position . ' ' . $popup_animation; ?>">
         <?php print_r( $popup->content->rendered ); ?>
         <!--popup's close button-->
         <button class="boostbox-close"><?php print_r( $close_icon ); ?></button>
