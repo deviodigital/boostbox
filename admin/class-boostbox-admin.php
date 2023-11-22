@@ -77,7 +77,7 @@ class BoostBox_Admin {
      */
     public function enqueue_scripts() {
         // General: Admin JS.
-        wp_enqueue_script( $this->plugin_name . '-charts', 'js/chart.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/chart.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery' ), $this->version, false );
         wp_localize_script( $this->plugin_name, 'chart_vars', array(
             'total_impressions' => '',
