@@ -25,15 +25,20 @@
  * @since      1.0.0
  */
 function boostbox_popup_settings_metabox() {
-    $screens = apply_filters( 'boostbox_popup_settings_metabox_post_types', array( 'products', 'post', 'page' ) );
-
-    foreach ( $screens as $screen ) {
+    // Get all registered post types.
+    $post_types = get_post_types();
+    // Remove unnecessary post types.
+    $post_types = array_diff( $post_types, array( 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache', 'user_request', 'wp_block' ) );
+    // Filter the post types.
+    $post_types = apply_filters( 'boostbox_popup_settings_metabox_post_types', array( 'products', 'post', 'page' ) );
+    // Loop through the post types.
+    foreach ( $post_types as $post_type ) {
         // Add Metabox.
         add_meta_box(
             'boostbox_popup_settings',
             esc_attr__( 'BoostBox Settings', 'boostbox' ),
             'boostbox_popup_settings_metabox_content',
-            $screen,
+            $post_type,
             'side',
             'default'
         );
