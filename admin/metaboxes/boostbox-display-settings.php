@@ -136,12 +136,12 @@ function boostbox_display_settings_metabox_content() {
     $animations = array(
         ''            => esc_attr__( '--', 'boostbox' ),
         'fade-in'     => esc_attr__( 'Fade in', 'boostbox' ),
-        'bounce-up'   => esc_attr__( 'Bounce up', 'boostbox' ),
-        'bounce-down' => esc_attr__( 'Bounce down', 'boostbox' ),
         'slide-up'    => esc_attr__( 'Slide up', 'boostbox' ),
         'slide-down'  => esc_attr__( 'Slide down', 'boostbox' ),
         'slide-left'  => esc_attr__( 'Slide left', 'boostbox' ),
         'slide-right' => esc_attr__( 'Slide right', 'boostbox' ),
+        'pop-swirl'   => esc_attr__( 'Pop swirl', 'boostbox' ),
+        'anvil'       => esc_attr__( 'Anvil', 'boostbox' ),
     );
 
     $animations = apply_filters( 'boostbox_animation_type_animations', $animations );
