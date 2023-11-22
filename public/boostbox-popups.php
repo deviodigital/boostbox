@@ -46,12 +46,18 @@ function boostbox_popup_html() {
     if ( empty( $popup ) ) {
         return;
     }
+    // @TODO set custom icon options in the settings for users to choose from.
     $close_icon = apply_filters( 'boostbox_popup_close_icon', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>' );
+
+    // Popup overlay classes.
+    $popup_overlay_classes = apply_filters( 'boostbox_popup_overlay_classes', 'boostbox-popup-overlay' );
+    // Popup content classes.
+    $popup_content_classes = apply_filters( 'boostbox_popup_content_classes', 'boostbox-popup-content' );
     ?>
     <!--Creates the popup body-->
-    <div class="boostbox-popup-overlay">
+    <div class="<?php echo $popup_overlay_classes; ?>">
     <!--Creates the popup content-->
-    <div class="boostbox-popup-content <?php echo $popup_position . ' ' . $popup_animation; ?>">
+    <div class="<?php echo $popup_content_classes; ?> <?php echo $popup_position . ' ' . $popup_animation; ?>">
         <?php print_r( $popup->content->rendered ); ?>
         <!--popup's close button-->
         <button class="boostbox-close"><?php print_r( $close_icon ); ?></button>
