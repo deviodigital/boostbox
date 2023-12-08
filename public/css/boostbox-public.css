@@ -195,37 +195,61 @@
 
 @keyframes pop-swirl-center-right {
     0% {
-        transform: translate(-50%,0%) scale(0) rotate(360deg);
+        transform: scale(0) rotate(360deg);
     }
     60% {
-        transform: translate(-50%,0%) scale(0.8) rotate(-10deg);
+        transform: scale(0.8) rotate(-10deg);
     }
     100% {
-        transform: translate(-50%,0%) scale(1) rotate(0deg);
+        transform: scale(1) rotate(0deg);
     }
 }
 
 @keyframes pop-swirl-center-left {
     0% {
-        transform: translate(-50%,0%) scale(0) rotate(360deg);
+        transform: scale(0) rotate(360deg);
     }
     60% {
-        transform: translate(-50%,0%) scale(0.8) rotate(-10deg);
+        transform: scale(0.8) rotate(-10deg);
     }
     100% {
-        transform: translate(-50%,0%) scale(1) rotate(0deg);
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes pop-swirl-bottom-center {
+    0% {
+        transform: translate(-50%,-50%) scale(0) rotate(360deg);
+    }
+    60% {
+        transform: translate(-50%,-50%) scale(0.8) rotate(-10deg);
+    }
+    100% {
+        transform: translate(-50%,-50%) scale(1) rotate(0deg);
     }
 }
 
 @keyframes pop-swirl-bottom-right {
     0% {
-        transform: translate(0%,-50%) scale(0) rotate(360deg);
+        transform: scale(0) rotate(360deg);
     }
     60% {
-        transform: translate(0%,-50%) scale(0.8) rotate(-10deg);
+        transform: scale(0.8) rotate(-10deg);
     }
     100% {
-        transform: translate(0%,-50%) scale(1) rotate(0deg);
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes pop-swirl-bottom-left {
+    0% {
+        transform: scale(0) rotate(360deg);
+    }
+    60% {
+        transform: scale(0.8) rotate(-10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
     }
 }
 
@@ -233,16 +257,24 @@
     -webkit-animation: pop-swirl .5s ease;
 }
 
-.boostbox-popup-overlay .boostbox-popup-content.pop-swirl.pop-swirl.center-right {
-    -webkit-animation: pop-swirl-center-right .5s ease;
+.boostbox-popup-overlay.active .boostbox-popup-content.pop-swirl-center-right {
+    animation: pop-swirl-center-right .5s ease;
 }
 
-.boostbox-popup-overlay .boostbox-popup-content.pop-swirl.pop-swirl.center-left {
-    -webkit-animation: pop-swirl-center-left .5s ease;
+.boostbox-popup-overlay.active .boostbox-popup-content.pop-swirl-center-left {
+    animation: pop-swirl-center-left .5s ease;
 }
 
-.boostbox-popup-overlay .boostbox-popup-content.pop-swirl.pop-swirl.bottom-right {
-    -webkit-animation: pop-swirl-bottom-right .5s ease;
+.boostbox-popup-overlay.active .boostbox-popup-content.pop-swirl-bottom-left {
+    animation: pop-swirl-bottom-left .5s ease;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.pop-swirl-bottom-center {
+    animation: pop-swirl-bottom-center .5s ease;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.pop-swirl-bottom-right {
+    animation: pop-swirl-bottom-right .5s ease;
 }
 
 /** Animations - Anvil */
