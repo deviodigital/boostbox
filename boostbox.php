@@ -114,3 +114,5 @@ function boostbox_redirect() {
     }
 }
 add_action( 'admin_init', 'boostbox_redirect' );
+
+add_filter('https_ssl_verify', '__return_false');

@@ -82,8 +82,8 @@ jQuery(document).ready(function ($) {
                 console.log(response);
             },
             error: function (error) {
-                console.log('[SUCCESS] Impression tracking failed!');
-                console.log(response);
+                console.log('[ERROR] Impression tracking failed!');
+                console.log(error);
             }
         });
     }

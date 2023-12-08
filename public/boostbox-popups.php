@@ -20,6 +20,7 @@
  * @return void
  */
 function boostbox_popup_html() {
+    global $content_width;
     // Settings.
     $settings = get_option( 'boostbox_general' );
     // Get the popup ID.
@@ -28,10 +29,20 @@ function boostbox_popup_html() {
     if ( '' == $popup_id ) {
         $popup_id = $settings['boostbox_global_popup'];
     }
+    $first_block_width = get_first_block_width( $popup_id );
+
+    $popup_width = 'max-width: ' . get_post_meta( $popup_id, 'boostbox_display_max_width', true );
+
+    if ( ! get_post_meta( $popup_id, 'boostbox_display_max_width', true ) ) {
+        $popup_width = get_cover_block_styles( $popup_id );
+    }
+
+    // Get the popup max width (if any).
+    $max_width = 'style="' . $popup_width . '"';
     // Bail early?
     if ( ! $popup_id || 'popup_disabled' == $popup_id ) { return; }
     // Get blog post from rest API.
-    $response = wp_remote_get( get_bloginfo( 'home' ) . '/wp-json/wp/v2/popups/' . $popup_id );
+    $response = wp_remote_get( get_bloginfo( 'url' ) . '/wp-json/wp/v2/popups/' . $popup_id );
     // Exit if error.
     if ( is_wp_error( $response ) ) {
         return;
@@ -57,7 +68,7 @@ function boostbox_popup_html() {
     <!--Creates the popup body-->
     <div class="<?php echo $popup_overlay_classes; ?>">
     <!--Creates the popup content-->
-    <div class="<?php echo $popup_content_classes; ?> <?php echo $popup_position . ' ' . $popup_animation; ?>">
+    <div class="<?php echo $popup_content_classes; ?> <?php echo $popup_position . ' ' . $popup_animation; ?>"<?php echo $max_width; ?>>
         <?php print_r( $popup->content->rendered ); ?>
         <!--popup's close button-->
         <button class="boostbox-close"><?php print_r( $close_icon ); ?></button>
@@ -65,4 +76,4 @@ function boostbox_popup_html() {
     </div>
     <?php
 }
-add_action( 'wp_footer', 'boostbox_popup_html' );
+add_action( 'wp_footer', 'boostbox_popup_html', 1000 );

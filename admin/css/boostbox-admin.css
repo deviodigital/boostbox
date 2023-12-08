@@ -1085,9 +1085,23 @@ img.icon {
 
 /** BoostBox Post Type Settings - Metabox */
 
-#boostbox_display_settings .inside {
+.edit-post-meta-boxes-area #boostbox_display_settings .inside {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    flex-direction: row;
+}
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .boostbox-field {
+    flex-basis: 13%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     flex-direction: column;
+}
+
+@media screen and (max-width:782px) {
+    .edit-post-meta-boxes-area #boostbox_display_settings .inside {
+        flex-direction: column;
+    }
 }

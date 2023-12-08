@@ -24,9 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 if ( class_exists( 'BoostBox_OSA' ) ) {
     /**
-     * Function Name
+     * Initialize admin settings
      * 
-     * @return string
+     * @return void
      */
     function boostbox_initialize_admin_settings() {
         /**
@@ -91,11 +91,10 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
         $boostbox_obj->add_field(
             'boostbox_general',
             array(
-                'id'      => 'boostbox_cookie_days',
-                'type'    => 'number',
-                'name'    => esc_attr__( 'Cookie days', 'boostbox' ),
-                'desc'    => esc_attr__( 'Set the days a cookie is stored after user closes popup', 'boostbox' ),
-                'options' => $options,
+                'id'   => 'boostbox_cookie_days',
+                'type' => 'text',
+                'name' => esc_attr__( 'Cookie days', 'boostbox' ),
+                'desc' => esc_attr__( 'Set the days a cookie is stored after user closes popup', 'boostbox' ),
             )
         );
     }

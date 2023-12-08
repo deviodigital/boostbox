@@ -85,3 +85,21 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
     add_action( 'init', 'boostbox_popups', 0 );
 
 }
+
+/**
+ * Function to check and redirect single posts with the post type "boostbox."
+ */
+function restrict_boostbox_posts() {
+    // Check if it's a single post.
+    if (is_single()) {
+        global $post;
+
+        // Check if the post type is "boostbox_popups".
+        if ( $post->post_type === 'boostbox_popups' ) {
+            // Redirect to the homepage or a custom URL.
+            wp_redirect( home_url() ); // @TODO make a filter?
+            exit();
+        }
+    }
+}
+add_action( 'template_redirect', 'restrict_boostbox_posts' );

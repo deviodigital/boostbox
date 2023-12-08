@@ -180,6 +180,17 @@ function boostbox_display_settings_metabox_content() {
 
     echo $field;
 
+    // Max width.
+    $max_width = get_post_meta( $post->ID, 'boostbox_display_max_width', true );
+
+    // Max width: Build the field.
+    $field  = '<div class="boostbox-field">';
+    $field .= '<p>' . esc_attr__( 'Max width', 'boostbox' ) . '</p>';
+    $field .= '<input type="text" name="boostbox_display_max_width" value="' . esc_attr( $max_width ) . '" class="widefat" />';
+    $field .= '</div>';
+
+    echo $field;
+
 }
 
 /**
@@ -206,11 +217,12 @@ function boostbox_display_settings_metabox_save( $post_id, $post ) {
     }
 
     // Display settings.
-    $settings_meta['boostbox_display_location'] = filter_input( INPUT_POST, 'boostbox_display_location' );
-    $settings_meta['boostbox_trigger_type']     = filter_input( INPUT_POST, 'boostbox_trigger_type' );
-    $settings_meta['boostbox_display_speed']    = filter_input( INPUT_POST, 'boostbox_display_speed' );
-    $settings_meta['boostbox_animation_type']   = filter_input( INPUT_POST, 'boostbox_animation_type' );
-    $settings_meta['boostbox_animation_speed']  = filter_input( INPUT_POST, 'boostbox_animation_speed' );
+    $settings_meta['boostbox_display_location']  = filter_input( INPUT_POST, 'boostbox_display_location' );
+    $settings_meta['boostbox_trigger_type']      = filter_input( INPUT_POST, 'boostbox_trigger_type' );
+    $settings_meta['boostbox_display_speed']     = filter_input( INPUT_POST, 'boostbox_display_speed' );
+    $settings_meta['boostbox_animation_type']    = filter_input( INPUT_POST, 'boostbox_animation_type' );
+    $settings_meta['boostbox_animation_speed']   = filter_input( INPUT_POST, 'boostbox_animation_speed' );
+    $settings_meta['boostbox_display_max_width'] = filter_input( INPUT_POST, 'boostbox_display_max_width' );
 
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {

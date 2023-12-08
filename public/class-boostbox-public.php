@@ -68,6 +68,8 @@ class BoostBox_Public {
      */
     public function enqueue_styles() {
         // Publc CSS.
+//        wp_enqueue_style( 'wp-block-library', bloginfo( 'url' ) . '/wp-includes/css/dist/block-library/style.min.css', array(), $this->version, 'all' );
+//        wp_enqueue_style( 'wp-block-core-library', bloginfo( 'url' ) . '/wp-includes/css/dist/block-library/core.min.css', array(), $this->version, 'all' );
         wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', array(), $this->version, 'all' );
     }
 
@@ -80,9 +82,9 @@ class BoostBox_Public {
     public function enqueue_scripts() {
         // Cookie days.
         $settings    = get_option( 'boostbox_general' );
-        $cookie_days = $settings['boostbox_cookie_days'];
-        if ( ! isset( $cookie_days ) ) {
-            $cookie_days = 30;
+        $cookie_days = 30;
+        if ( isset( $settings['boostbox_cookie_days'] ) ) {
+            $cookie_days = $settings['boostbox_cookie_days'];
         }
         // Popup ID.
         $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
@@ -127,7 +129,7 @@ function boostbox_increment_popup_view_count_callback() {
 
     // Increment view count meta field.
     $current_count = get_post_meta( $popup_id, 'boostbox_popup_impressions', true );
-    $new_count     = $current_count + 1;
+    $new_count     = (int)$current_count + 1;
     update_post_meta( $popup_id, 'boostbox_popup_impressions', $new_count );
 
     wp_die();
@@ -152,7 +154,7 @@ function boostbox_track_popup_conversion_callback() {
 
     // Increment conversion count meta field.
     $current_count = get_post_meta( $popup_id, 'boostbox_popup_conversions', true );
-    $new_count     = $current_count + 1;
+    $new_count     = (int)$current_count + 1;
     update_post_meta( $popup_id, 'boostbox_popup_conversions', $new_count );
 
     wp_die();

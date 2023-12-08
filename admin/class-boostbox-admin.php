@@ -113,12 +113,12 @@ class BoostBox_Admin {
             // Popup Impressions.
             $popup_impressions[$popup->ID] = get_post_meta( $popup->ID, 'boostbox_popup_impressions', true );
             // Increment total counters.
-            $total_impressions += $popup_impressions[$popup->ID];
-            $total_conversions += $popup_conversions[$popup->ID];
+            $total_impressions += (int)$popup_impressions[$popup->ID];
+            $total_conversions += (int)$popup_conversions[$popup->ID];
         }
         // General: Admin JS.
-        wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/chart.js', array( 'jquery' ), $this->version, false );
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/charts.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery', 'wp-hooks', 'wp-blocks' ), $this->version, false );
         wp_localize_script( $this->plugin_name, 'chart_vars', array(
             'total_impressions' => $total_impressions,
             'total_conversions' => $total_conversions,
