@@ -92,25 +92,78 @@
 /** Animation - Slide down */
 
 .boostbox-popup-content.slide-down {
-    top: -50%;
-    transition: all .5s ease-in-out; /*make it smooth*/
-}
-
-.boostbox-popup-overlay.active .boostbox-popup-content.slide-down {
-    top: 50%;
-}
-
-/** Animation - Slide up */
-
-.boostbox-popup-content.slide-up {
     top: inherit;
     bottom: -50%;
     transition: all .5s ease-in-out; /*make it smooth*/
 }
 
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down {
+    top: 50%;
+    bottom: inherit;
+}
+
+/** Animation - Slide up */
+
+.boostbox-popup-content.slide-up {
+    bottom: -100%;
+    top: 100%;
+    transition: all .5s ease-in-out; /*make it smooth*/
+}
+
 .boostbox-popup-overlay.active .boostbox-popup-content.slide-up {
-    bottom: 50%;
-    transform: translate(inherit);
+    bottom: initial;
+    top: 50%;
+    left: 50%;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.center-left {
+    transform: translate(0,-50%);
+    left:0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.center-right {
+    transform: translate(0,-50%);
+    left: initial;
+    right: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.top-left {
+    transform: translate(0,0);
+    top: 0;
+    left:0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.top-center {
+    transform: translate(-50%,0%);
+    top: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.top-right {
+    transform: translate(0,0);
+    top: 0;
+    left: initial;
+    right: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.bottom-left {
+    transform: translate(0,0);
+    bottom: 0;
+    top: initial;
+    left: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.bottom-center {
+    transform: translate(-50%,0%);
+    bottom: 0;
+    top: initial;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-up.bottom-right {
+    transform: translate(0,0);
+    bottom: 0;
+    top: initial;
+    left: initial;
+    right: 0;
 }
 
 /** Animation - Slide left */
