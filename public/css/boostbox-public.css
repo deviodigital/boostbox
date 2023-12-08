@@ -92,14 +92,71 @@
 /** Animation - Slide down */
 
 .boostbox-popup-content.slide-down {
-    top: inherit;
-    bottom: -50%;
-    transition: all .5s ease-in-out; /*make it smooth*/
+    top: -50%;
+    bottom: inherit;
+    transition: all .5s ease-in-out;
 }
 
 .boostbox-popup-overlay.active .boostbox-popup-content.slide-down {
+    bottom: initial;
     top: 50%;
-    bottom: inherit;
+    left: 50%;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.center-left {
+    transform: translate(0,-50%);
+    left: 0;
+    top: 50%;
+    bottom: initial;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.center-right {
+    transform: translate(0, -50%);
+    left: initial;
+    right: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.top-left {
+    transform: translate(0, 0);
+    top: 0;
+    left: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.top-center {
+    transform: translate(-50%, 0);
+    top: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.top-right {
+    transform: translate(0, 0);
+    top: 0;
+    left: initial;
+    right: 0;
+}
+
+.boostbox-popup-overlay .boostbox-popup-content.slide-down.bottom-left,
+.boostbox-popup-overlay .boostbox-popup-content.slide-down.bottom-center,
+.boostbox-popup-overlay .boostbox-popup-content.slide-down.bottom-right {
+    bottom: 100%;
+    top: -100%;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.bottom-left {
+    bottom: 0;
+    top: initial;
+    left: 0;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.bottom-center {
+    bottom: 0;
+    top: initial;
+}
+
+.boostbox-popup-overlay.active .boostbox-popup-content.slide-down.bottom-right {
+    bottom: 0;
+    top: initial;
+    left: initial;
+    right: 0;
 }
 
 /** Animation - Slide up */
