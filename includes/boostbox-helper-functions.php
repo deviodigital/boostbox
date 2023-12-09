@@ -77,29 +77,30 @@ function boostbox_allowed_tags() {
  * Get the width of the first block in WordPress post content.
  *
  * @param int $post_id Post ID.
+ * 
  * @return int|false Width of the first block, or false on failure.
  */
-function get_first_block_width($post_id) {
+function get_first_block_width( $post_id ) {
     // Get the post content
-    $post_content = get_post_field('post_content', $post_id);
+    $post_content = get_post_field( 'post_content', $post_id );
 
     // Check if the post content is not empty
-    if (!empty($post_content)) {
+    if ( ! empty( $post_content ) ) {
         // Parse the post content to get blocks
-        $blocks = parse_blocks($post_content);
+        $blocks = parse_blocks( $post_content );
 
-        echo '<pre>';
-var_dump( $blocks );
-echo '</pre>';
+
         // Check if there are blocks
         if (!empty($blocks)) {
             // Get the first block
             $first_block = $blocks[0];
 
             // Check if the block has attributes and a width attribute
-            if (isset($first_block['attrs']['width'])) {
-                // Return the width of the first block
+            if ( isset( $first_block['attrs']['width'] ) ) {
+                // Return the width of the first block.
                 return $first_block['attrs']['width'];
+            } elseif ( isset( $first_block['attrs']['align'] ) ) {
+                return $first_block['attrs']['align'];
             }
         }
     }
@@ -129,45 +130,36 @@ function get_cover_block_styles( $post_id ) {
 
         // Check if there are blocks.
         if ( ! empty( $blocks ) ) {
-            // Loop through the blocks to find the first cover block.
-            foreach ( $blocks as $block ) {
-                if ( $block['blockName'] === 'core/cover' ) {
-                    // Check if the cover block has an 'align' attribute.
-                    if ( isset( $block['attrs']['align'] ) ) {
-                        // Get the alignment value.
-                        $alignment = $block['attrs']['align'];
+            // Check if the cover block has an 'align' attribute.
+            if ( isset( $blocks[0]['attrs']['align'] ) ) {
+                // Get the alignment value.
+                $alignment = $blocks[0]['attrs']['align'];
 
-                        // Check if the theme has set a content width.
-                        if ( isset( $content_width ) && is_numeric( $content_width ) ) {
-                            $default_width = $content_width;
-                            // Calculate the wide width based on the theme's content width.
-                            $wide_width = $content_width * 1.5;
-                        } else {
-                            // Use a default wide width if content_width is not set.
-                            $default_width = 980;
-                            $wide_width    = 980;
-                        }
+                // Check if the theme has set a content width.
+                if ( isset( $content_width ) && is_numeric( $content_width ) ) {
+                    $default_width = $content_width;
+                    // Calculate the wide width based on the theme's content width.
+                    $wide_width = $content_width * 1.5;
+                } else {
+                    // Use a default wide width if content_width is not set.
+                    $default_width = apply_filters( 'boostbox_popup_default_width', 980 );
+                    $wide_width    = apply_filters( 'boostbox_popup_default_wide_width', 980 );
+                }
 
-                        echo '<pre>';
-                        var_dump( $alignment );
-                        echo '</pre>';
-
-                        // Map alignment values to corresponding CSS styles.
-                        switch ( $alignment ) {
-                            case 'wide':
-                                return 'margin-left: auto; margin-right: auto; max-width: ' . esc_html( $wide_width ) . 'px;';
-                            case 'full':
-                                return 'width: 100%; max-width: 100%;';
-                            case 'center':
-                                return 'width: 100%; max-width: ' . esc_html( $default_width ) . 'px;';
-                            case 'left':
-                                return 'width: 100%; max-width: ' . esc_html( $default_width ) . 'px;';
-                            case 'right':
-                                return 'width: 100%; max-width: ' . esc_html( $default_width ) . 'px;';
-                            case 'none':
-                                return 'width: 100%; max-width: ' . esc_html( $default_width ) . 'px;';
-                        }
-                    }
+                // Map alignment values to corresponding CSS styles.
+                switch ( $alignment ) {
+                    case 'wide':
+                        return 'margin-left: auto; margin-right: auto; width: ' . esc_html( $wide_width ) . 'px; max-width: 100%;';
+                    case 'full':
+                        return 'width: 100%; max-width: 100%;';
+                    case 'center':
+                        return 'width: ' . esc_html( $default_width ) . 'px; max-width: 100%;';
+                    case 'left':
+                        return 'width: ' . esc_html( $default_width ) . 'px; max-width: 100%;';
+                    case 'right':
+                        return 'width: ' . esc_html( $default_width ) . 'px; max-width: 100%;';
+                    case 'none':
+                        return 'width: ' . esc_html( $default_width ) . 'px; max-width: 100%;';
                 }
             }
         }
