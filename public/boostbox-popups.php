@@ -29,14 +29,12 @@ function boostbox_popup_html() {
     if ( '' == $popup_id ) {
         $popup_id = $settings['boostbox_global_popup'];
     }
-    $first_block_width = get_first_block_width( $popup_id );
-
+    // Set popup width from popup meta.
     $popup_width = 'max-width: ' . get_post_meta( $popup_id, 'boostbox_display_max_width', true );
-
+    // Set width based on the first block, or defaults as a fallback.
     if ( ! get_post_meta( $popup_id, 'boostbox_display_max_width', true ) ) {
         $popup_width = get_cover_block_styles( $popup_id );
     }
-
     // Get the popup max width (if any).
     $max_width = 'style="' . $popup_width . '"';
     // Bail early?
