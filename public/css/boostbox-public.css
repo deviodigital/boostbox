@@ -237,9 +237,9 @@
 }
 
 .boostbox-popup-overlay.active .boostbox-popup-content.slide-left {
-    right: 0;
+    right: 50%;
     left: auto;
-    transform: translate(-50%, -50%);
+    transform: translate(50%, -50%);
 }
 
 .boostbox-popup-overlay .boostbox-popup-content.center-left.slide-left {
