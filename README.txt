@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, modal, exit-intent
 Requires at least: 3.0.1
-Tested up to: 6.0
-Stable tag: 1.0.0
+Tested up to: 6.4.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,5 +47,19 @@ Using Gutenberg blocks, columns, groups and patterns, the style possibilities fo
 
 == Changelog ==
 
+= 1.1.0 =
+*   Added `boostbox_popup_default_width`, `boostbox_popup_default_wide_width`, `boostbox_popup_content_classes` and `boostbox_popup_overlay_classes` filters in `public/boostbox-popups.php`
+*   Added popup-swirl and anvil animation types in `admin/metaboxes/boostbox-display-settings.php`
+*   Added class names to popup based on selected position in `public/boostbox-popups.php`
+*   Added max-width option to the popup metabox settings in ``
+*   Added Cookie JS script in `public/js/js.cookie.min.js`
+*   Updated settings to include cookie days in `admin/boostbox-admin-settings.php`
+*   Updated popup wrapper to include animation type class name in `public/boostbox-popups.php`
+*   Updated popup to set dynamic cookie days from settings in `public/class-boostbox-public.php`
+*   Updated localize_script with impression and conversion data in `admin/class-boostbox-admin.php`
+*   Updated popups to include tracking of impressions and conversions in `public/class-boostbox-public.php`
+*   Updated usage of `get_bloginfo( 'home' )` with `get_bloginfo( 'url' )` in `public/boostbox-popups.php`
+*   Updated styles for all popups and animation styles in `public/css/boostbox-public.css`
+
 = 1.0.0 =
-Initial commit
+*   Initial commit

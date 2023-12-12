@@ -13,7 +13,7 @@
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
  * Description:       Build popups for lead generation, content promotion and more using the Gutenberg editor.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Current plugin version.
-define( 'BOOSTBOX_VERSION', '1.0.0' );
+define( 'BOOSTBOX_VERSION', '1.1.0' );
 
 // Plugin basename.
 $plugin_name = plugin_basename( __FILE__ );
@@ -114,5 +114,3 @@ function boostbox_redirect() {
     }
 }
 add_action( 'admin_init', 'boostbox_redirect' );
-
-add_filter('https_ssl_verify', '__return_false');
