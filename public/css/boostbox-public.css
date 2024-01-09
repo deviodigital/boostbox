@@ -760,6 +760,10 @@
     bottom: -36px;
 }
 
+.boostbox-popup-content .boostbox-close:hover {
+    cursor: pointer;
+}
+
 /** @todo when creating custom gutenberg blocks for people to use, 
     make sure to add custom classes to the wrappers so we can style 
     each form type accordingly */
