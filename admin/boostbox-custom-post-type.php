@@ -88,6 +88,8 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
 
 /**
  * Function to check and redirect single posts with the post type "boostbox."
+ * 
+ * @return void
  */
 function restrict_boostbox_posts() {
     // Check if it's a single post.
