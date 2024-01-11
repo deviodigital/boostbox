@@ -1,4 +1,39 @@
 jQuery(document).ready(function ($) {
+    // Construct the path to the theme.json file.
+    const themeJsonPath = script_vars.stylesheet_url + '/theme.json';
+    // Declare colorPalette outside the fetch scope.
+    let colorPalette;
+
+    // Fetch the theme.json file.
+    fetch(themeJsonPath)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Access the color palette data.
+        colorPalette = data.settings.color.palette;
+
+        // Convert colorPalette to an array of hex values
+        var presetColors = colorPalette.map(function (color) {
+            return color.color;
+        });
+
+        // Add a color picker to the close icon color picker.
+        $('.boostbox-close-icon-color-picker').wpColorPicker({
+            defaultColor: presetColors[1],
+            palettes: presetColors
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching theme.json:', error);
+        // Add a color picker to the close icon color picker.
+        $('.boostbox-close-icon-color-picker').wpColorPicker({
+            defaultColor: '#010101'
+        });
+    });
 
 	// Tabs
 	$( ".inline-list" ).each( function() {
