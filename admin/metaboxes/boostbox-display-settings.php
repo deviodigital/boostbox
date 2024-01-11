@@ -191,6 +191,20 @@ function boostbox_display_settings_metabox_content() {
 
     echo $field;
 
+    // Close color.
+    $close_color = get_post_meta( $post->ID, 'boostbox_close_icon_color', true );
+    // Set default color to #FFFFFF if no value is saved.
+    if ( empty( $close_color ) ) {
+        $close_color = '#FFFFFF';
+    }
+
+    // Close Color: Build the field with WordPress color picker.
+    $field  = '<div class="boostbox-field">';
+    $field .= '<p>' . esc_attr__( 'Close icon color', 'boostbox' ) . '</p>';
+    $field .= '<input type="text" class="boostbox-close-icon-color-picker" name="boostbox_close_icon_color" value="' . esc_attr( $close_color ) . '" />';
+    $field .= '</div>';
+
+    echo $field;
 }
 
 /**
@@ -223,6 +237,7 @@ function boostbox_display_settings_metabox_save( $post_id, $post ) {
     $settings_meta['boostbox_animation_type']    = filter_input( INPUT_POST, 'boostbox_animation_type' );
     $settings_meta['boostbox_animation_speed']   = filter_input( INPUT_POST, 'boostbox_animation_speed' );
     $settings_meta['boostbox_display_max_width'] = filter_input( INPUT_POST, 'boostbox_display_max_width' );
+    $settings_meta['boostbox_close_icon_color']  = sanitize_hex_color( filter_input( INPUT_POST, 'boostbox_close_icon_color' ) );
 
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {
