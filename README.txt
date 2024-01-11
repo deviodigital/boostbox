@@ -1,20 +1,20 @@
-=== BoostBox ===
+=== BoostBox - Popup Builder for the Core Editor ===
 Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, modal, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Build popups for lead generation, content promotion and more.
+Build popups with the core editor for lead generation, content promotion and more.
 
 == Description ==
 
 **BoostBox** helps you increase conversion rates, customer retention and revenue.
 
-Build popups for lead generation, content promotion and more using the Gutenberg editor. 
+Build popups for lead generation, content promotion and more using the core WordPress editor. 
 
 Easily style your popups, modals, and content overlays in the editor you are already used to. No more trying to learn *another popup plugin* and their unique design experience.
 
@@ -27,11 +27,11 @@ With **BoostBox**, the type of popup you build is limitless.
 *   Promote upcoming events
 *   ... and more!
 
-### Using Gutenberg to style popups
+### FSE popup builder
 
-The **BoostBox** plugin was created to give website owners the ability to create popups within the Gutenberg editor, and it succeeds flawlessly in this mission.
+The **BoostBox** plugin was created to give website owners the ability to create popups within the core editor, and it succeeds flawlessly in this mission.
 
-Using Gutenberg blocks, columns, groups and patterns, the style possibilities for the popups you build with the **BoostBox** plugin are endless.
+Using WordPress blocks, columns, groups and patterns, the style possibilities for the popups you build with the **BoostBox** plugin are endless.
 
 == Installation ==
 
@@ -46,6 +46,15 @@ Using Gutenberg blocks, columns, groups and patterns, the style possibilities fo
 3. BoostBox admin settings
 
 == Changelog ==
+
+= 1.2.0 =
+*   Updated CPT file to escape if accessed directly in `admin/boostbox-custom-post-type.php`
+*   Updated popup to use WP_Query instead of REST API in `public/boostbox-popups.php`
+*   Updated JS enqueue and localization in `admin/class-boostbox-admin.php`
+*   Updated display metabox to include close icon color picker in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated close icon color to use metabox settings in `public/boostbox-popups.php`
+*   Updated banner and icon assets for WP directory in `assets/`
+*   Updated various styles for the core boostbox popup codes
 
 = 1.1.0 =
 *   Added `boostbox_popup_default_width`, `boostbox_popup_default_wide_width`, `boostbox_popup_content_classes` and `boostbox_popup_overlay_classes` filters in `public/boostbox-popups.php`
