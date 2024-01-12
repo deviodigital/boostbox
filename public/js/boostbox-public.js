@@ -8,9 +8,6 @@ jQuery(document).ready(function ($) {
     // Window inner height.
     var innerHeight = window.innerHeight;
 
-	// Remove cookie?
-	Cookies.remove('boostbox_popup_' + popupID + '', { path: '/' });
-
 	var cookieCheck = Cookies.get( 'boostbox_popup_' + popupID + '' );
 
 	// If there's a cookie saved, bail early.
@@ -18,41 +15,49 @@ jQuery(document).ready(function ($) {
 
     // Trigger - auto open.
     if ( triggerType === "auto-open" ) {
-        // Add class after X seconds.
-        window.setTimeout(function(){
-            $(".boostbox-popup-overlay").addClass('active');
-            incrementPopupViewCount();
-        }, 0);
+        if (!Cookies.get( 'boostbox_popup_' + popupID + '' )) {
+            // Add class after X seconds.
+            window.setTimeout(function(){
+                $(".boostbox-popup-overlay").addClass('active');
+                incrementPopupViewCount();
+            }, 0);
+        }
     }
 
     // Trigger - time.
     if ( triggerType === "time" ) {
-        // Add class after X seconds.
-        window.setTimeout(function(){
-            $(".boostbox-popup-overlay").addClass('active');
-            incrementPopupViewCount();
-        }, milliseconds);
+        if (!Cookies.get( 'boostbox_popup_' + popupID + '' )) {
+            // Add class after X seconds.
+            window.setTimeout(function(){
+                $(".boostbox-popup-overlay").addClass('active');
+                incrementPopupViewCount();
+            }, milliseconds);
+        }
     }
 
     // Trigger - on scroll.
     if ( triggerType === "on-scroll" ) {
-        // Add class after scrolling X pixels.
-        $(window).scroll(function () {
-            var windowY = 32; //<-- Make this number dynamic
-            var scrolledY = $(window).scrollTop();
-            var percentResult = percentage(windowY, innerHeight);
+        if (!Cookies.get( 'boostbox_popup_' + popupID + '' )) {
+            // Add class after scrolling X pixels.
+            $(window).scroll(function () {
+                var windowY = 32; //<-- Make this number dynamic
+                var scrolledY = $(window).scrollTop();
+                var percentResult = percentage(windowY, innerHeight);
 
-            if (scrolledY > percentResult) {
-                $(".boostbox-popup-overlay").addClass('active');
-                incrementPopupViewCount();
-            }
-        });
+                if (scrolledY > percentResult) {
+                    $(".boostbox-popup-overlay").addClass('active');
+                    incrementPopupViewCount();
+                }
+            });
+        }
     }
 
 	// Close popup when 'close' button is clicked.
 	$(".boostbox-close").on("click", function() {
 		$(".boostbox-popup-overlay").removeClass("active");
-		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', boostbox_settings.cookie_days );
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
+		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', { expires: expirationDate } );
     });
 
     // Track conversion when any button/link within the popup is clicked.
