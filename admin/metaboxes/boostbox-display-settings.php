@@ -191,6 +191,36 @@ function boostbox_display_settings_metabox_content() {
 
     echo $field;
 
+    $placements = array(
+        'outside' => esc_attr__( 'Outside', 'boostbox' ),
+        'inside'  => esc_attr__( 'Inside', 'boostbox' ),
+    );
+
+    $close_icon_placement = apply_filters( 'boostbox_close_icon_placements', $placements );
+
+    // Icon placement.
+    $icon_placement = get_post_meta( $post->ID, 'boostbox_close_icon_placement', true );
+
+    // Select close icon placement: Build the field.
+    $field  = '<div class="boostbox-field">';
+    $field .= '<p>' . esc_attr__( 'Close icon placement', 'boostbox' ) . '</p>';
+    $field .= '<select id="boostbox_close_icon_placement" name="boostbox_close_icon_placement">';
+    // Loop through animations.
+    if ( ! empty( $close_icon_placement ) ) {
+        foreach ( $close_icon_placement as $placement => $value ) {
+            if ( $placement == $icon_placement ) {
+                $selected = 'selected="selected"';
+            } else {
+                $selected = '';
+            }
+            $field .= '<option value="' . esc_attr( $placement ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
+        }
+    }
+    $field .= '</select>';
+    $field .= '</div>';
+
+    echo $field;
+
     // Close color.
     $close_color = get_post_meta( $post->ID, 'boostbox_close_icon_color', true );
     // Set default color to #FFFFFF if no value is saved.
@@ -231,13 +261,14 @@ function boostbox_display_settings_metabox_save( $post_id, $post ) {
     }
 
     // Display settings.
-    $settings_meta['boostbox_display_location']  = filter_input( INPUT_POST, 'boostbox_display_location' );
-    $settings_meta['boostbox_trigger_type']      = filter_input( INPUT_POST, 'boostbox_trigger_type' );
-    $settings_meta['boostbox_display_speed']     = filter_input( INPUT_POST, 'boostbox_display_speed' );
-    $settings_meta['boostbox_animation_type']    = filter_input( INPUT_POST, 'boostbox_animation_type' );
-    $settings_meta['boostbox_animation_speed']   = filter_input( INPUT_POST, 'boostbox_animation_speed' );
-    $settings_meta['boostbox_display_max_width'] = filter_input( INPUT_POST, 'boostbox_display_max_width' );
-    $settings_meta['boostbox_close_icon_color']  = sanitize_hex_color( filter_input( INPUT_POST, 'boostbox_close_icon_color' ) );
+    $settings_meta['boostbox_display_location']     = filter_input( INPUT_POST, 'boostbox_display_location' );
+    $settings_meta['boostbox_trigger_type']         = filter_input( INPUT_POST, 'boostbox_trigger_type' );
+    $settings_meta['boostbox_display_speed']        = filter_input( INPUT_POST, 'boostbox_display_speed' );
+    $settings_meta['boostbox_animation_type']       = filter_input( INPUT_POST, 'boostbox_animation_type' );
+    $settings_meta['boostbox_animation_speed']      = filter_input( INPUT_POST, 'boostbox_animation_speed' );
+    $settings_meta['boostbox_display_max_width']    = filter_input( INPUT_POST, 'boostbox_display_max_width' );
+    $settings_meta['boostbox_close_icon_color']     = sanitize_hex_color( filter_input( INPUT_POST, 'boostbox_close_icon_color' ) );
+    $settings_meta['boostbox_close_icon_placement'] = filter_input( INPUT_POST, 'boostbox_close_icon_placement' );
 
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {
