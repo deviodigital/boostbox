@@ -54,6 +54,11 @@ function boostbox_popup_html() {
     if ( ! $close_color ) {
         $close_color = '#FFFFFF';
     }
+    // Close icon placement.
+    $close_placement = get_post_meta( $popup_id, 'boostbox_close_icon_placement', true );
+    if ( ! $close_placement ) {
+        $close_placement = 'outside';
+    }
     // @TODO set custom icon options in the settings for users to choose from.
     $close_icon = apply_filters( 'boostbox_popup_close_icon', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="' . $close_color . '" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>', $close_color );
     // Popup overlay classes.
@@ -93,7 +98,7 @@ function boostbox_popup_html() {
         }
         ?>
         <!--popup's close button-->
-        <button class="boostbox-close"><?php print_r( $close_icon ); ?></button>
+        <button class="boostbox-close <?php if ( $close_placement == 'inside' ) { echo 'inside'; } ?>"><?php print_r( $close_icon ); ?></button>
     </div>
     </div>
     <?php
