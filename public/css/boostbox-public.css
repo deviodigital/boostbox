@@ -753,18 +753,30 @@
     z-index: 999;
 }
 
+.boostbox-popup-content .boostbox-close.inside {
+    top: 12px;
+    right: 12px;
+}
+
 .boostbox-popup-content.top-left .boostbox-close,
 .boostbox-popup-content.top-center .boostbox-close,
 .boostbox-popup-content.top-right .boostbox-close {
     top: auto;
     bottom: -36px;
 }
+.boostbox-popup-content.top-left .boostbox-close.inside,
+.boostbox-popup-content.top-center .boostbox-close.inside,
+.boostbox-popup-content.top-right .boostbox-close.inside {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+}
 
 .boostbox-popup-content .boostbox-close:hover {
     cursor: pointer;
 }
 
-/** @todo when creating custom gutenberg blocks for people to use, 
+/** @todo when creating custom blocks for people to use, 
     make sure to add custom classes to the wrappers so we can style 
     each form type accordingly */
 
