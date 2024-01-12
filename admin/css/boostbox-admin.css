@@ -1093,11 +1093,12 @@ img.icon {
 }
 
 .edit-post-meta-boxes-area #boostbox_display_settings .inside .boostbox-field {
-    flex-basis: 13%;
+    flex-basis: 23%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width:782px) {
