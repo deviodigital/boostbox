@@ -12,7 +12,7 @@
  * @wordpress-plugin
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
- * Description:       Build popups for lead generation, content promotion and more using the Gutenberg editor.
+ * Description:       Build popups for lead generation, content promotion and more using the core editor.
  * Version:           1.2.0
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com

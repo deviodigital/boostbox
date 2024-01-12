@@ -57,7 +57,7 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
         );
         $args = array(
             'label'                 => esc_html__( 'BoostBox Popups', 'boostbox' ),
-            'description'           => esc_html__( 'Build custom popups with Gutenberg', 'boostbox' ),
+            'description'           => esc_html__( 'Build popups with the core editor', 'boostbox' ),
             'labels'                => $labels,
             'supports'              => array( 'title', 'editor', 'thumbnail' ),
             'taxonomies'            => array(),

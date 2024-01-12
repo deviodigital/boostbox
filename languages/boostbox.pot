@@ -151,7 +151,7 @@ msgid "BoostBox Popups"
 msgstr ""
 
 #: admin/boostbox-custom-post-type.php:60
-msgid "Build custom popups with Gutenberg"
+msgid "Build custom popups with the core editor"
 msgstr ""
 
 #: admin/class-boostbox-admin-settings.php:613
@@ -208,7 +208,7 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "Build popups for lead generation, content promotion and more using the "
-"Gutenberg editor."
+"core editor."
 msgstr ""
 
 #. Author URI of the plugin/theme
