@@ -91,10 +91,11 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
         $boostbox_obj->add_field(
             'boostbox_general',
             array(
-                'id'   => 'boostbox_cookie_days',
-                'type' => 'text',
-                'name' => esc_attr__( 'Cookie days', 'boostbox' ),
-                'desc' => esc_attr__( 'Set the days a cookie is stored after user closes popup', 'boostbox' ),
+                'id'          => 'boostbox_cookie_days',
+                'type'        => 'number',
+                'name'        => esc_attr__( 'Cookie days', 'boostbox' ),
+                'desc'        => esc_attr__( 'Set the days a cookie is stored after the user closes a popup', 'boostbox' ),
+                'placeholder' => '',
             )
         );
     }
