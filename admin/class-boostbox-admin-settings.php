@@ -436,7 +436,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
             $type  = isset( $args['type'] ) ? $args['type'] : 'text';
 
-            $html  = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"placeholder="%6$s" step="any"/>', $type, $size, $args['section'], $args['id'], $value, $args['placeholder'] );
+            $html  = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s" placeholder="%6$s" step="any"/>', $type, $size, $args['section'], $args['id'], $value, $args['placeholder'] );
             $html .= $this->get_field_description( $args );
 
             echo wp_kses( $html, boostbox_allowed_tags() );
