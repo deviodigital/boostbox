@@ -35,11 +35,14 @@ jQuery(document).ready(function ($) {
         }
     }
 
+    // Variable to track if the popup is closed
+    var popupClosed = false;
+
     // Trigger - on scroll.
-    if ( triggerType === "on-scroll" ) {
-        if (!Cookies.get( 'boostbox_popup_' + popupID + '' )) {
-            // Add class after scrolling X pixels.
-            $(window).scroll(function () {
+    if (triggerType === "on-scroll" && !Cookies.get('boostbox_popup_' + popupID)) {
+        // Add class after scrolling X pixels.
+        $(window).scroll(function () {
+            if (!popupClosed) { // Check if the popup is not closed
                 var windowY = 32; //<-- Make this number dynamic
                 var scrolledY = $(window).scrollTop();
                 var percentResult = percentage(windowY, innerHeight);
@@ -48,21 +51,22 @@ jQuery(document).ready(function ($) {
                     $(".boostbox-popup-overlay").addClass('active');
                     incrementPopupViewCount();
                 }
-            });
-        }
+            }
+        });
     }
 
-	// Close popup when 'close' button is clicked.
-	$(".boostbox-close").on("click", function() {
-		$(".boostbox-popup-overlay").removeClass("active");
+    // Close popup when 'close' button is clicked.
+    $(".boostbox-close").on("click", function() {
+        $(".boostbox-popup-overlay").removeClass("active");
+        popupClosed = true; // Set the variable to true when the popup is closed
         var expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
-		Cookies.set( 'boostbox_popup_' + popupID + '', 'hidden', { expires: expirationDate } );
+        Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
     });
 
     // Track conversion when any button/link within the popup is clicked.
     // @TODO figure ways to make the tracking dynamic between buttons, links, form submissions, etc.
-    $(".boostbox-popup-overlay").on("click", ":button, a, input[type='submit'], [role='button']", function () {
+    $(".boostbox-popup-overlay").on("click", ":button, button, a, input[type='submit'], [role='button']", function () {
         trackConversion();
     });
 
