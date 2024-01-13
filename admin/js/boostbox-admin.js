@@ -56,7 +56,7 @@ jQuery(document).ready(function ($) {
 		}, 'slow', 'swing' );
 	} );
 
-	// Back to top links
+	// Back to top links.
 	$( "#help-panel h3" ).append( $( "<a class='back-to-top' href='#panel'><i class='fa fa-angle-up'></i> Back to top</a>" ) );
 });
 

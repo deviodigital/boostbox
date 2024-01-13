@@ -1096,7 +1096,6 @@ img.icon {
     flex-basis: 23%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     flex-direction: column;
     box-sizing: border-box;
 }
