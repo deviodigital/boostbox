@@ -15,8 +15,8 @@ With **BoostBox**, the type of popup you build is limitless.
 *   Promote upcoming events
 *   ... and more!
 
-### FSE popup builder
+### FSE popup builder for WordPress
 
-The **BoostBox** plugin was created to give website owners the ability to create popups within the core editor, and it succeeds flawlessly in this mission.
+The **BoostBox** plugin was created to give website owners the ability to create popups within the WordPress core editor, and it succeeds flawlessly in this mission.
 
-Using WordPress blocks, columns, groups and patterns, the style possibilities for the popups you build with the **BoostBox** plugin are endless.
+Using WordPress blocks, columns, groups and your favorite patterns, the style possibilities for the popups you build with the **BoostBox** plugin are endless.

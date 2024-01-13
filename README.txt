@@ -1,10 +1,10 @@
 === BoostBox - Popup Builder for the Core Editor ===
 Contributors: deviodigital
 Donate link: https://deviodigital.com
-Tags: popup, lead-generation, marketing, modal, exit-intent
+Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,11 +41,23 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 
 == Screenshots ==
 
-1. Example popup display
-2. BoostBox metabox settings
-3. BoostBox admin settings
+1. Example popup display using a simple pattern
+2. Example popup using a pattern from the Powder theme
+3. BoostBox admin settings page
+4. BoostBox popup display settings
 
 == Changelog ==
+
+= 1.2.1 =
+*   Added 'close icon placement' to display settings in `admin/metaboxes/boostbox-display-settings.php`
+*   Added select2 integration for display settings (to be used in upcoming releases) in `admin/class-boostbox-admin.php`
+*   Bugfix for cookie days setting so the value shows up in the field after you save it in `admin/class-boostbox-admin-settings.php`
+*   Bugfix for cookies not keeping popup hidden after closing it in `public/js/boostbox-public.js`
+*   Bugfix for on-scroll trigger continuing to display even after popup is closed in `public/js/boostbox-public.js`
+*   Updated text for the cookie days option in the settings page in `admin/boostbox-admin-settings.php`
+*   Updated popup HTML to include class name for close icon position in `public/boostbox-popups.php`
+*   Updated display settings metabox field grid styles in `admin/css/boostbox-admin.css`
+*   Updated 'Gutenberg' references to use 'the core editor' instead in various files throughout the plugin
 
 = 1.2.0 =
 *   Updated CPT file to escape if accessed directly in `admin/boostbox-custom-post-type.php`
