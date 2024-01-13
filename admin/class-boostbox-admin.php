@@ -64,6 +64,13 @@ class BoostBox_Admin {
      * @return void
      */
     public function enqueue_styles() {
+        // Get current screen.
+        $current_screen = get_current_screen();
+        // Check if you're on the edit screen for BoostBox popups.
+        if ( is_admin() && $current_screen && 'edit' === $current_screen->base && 'boostbox_popups' === $current_screen->post_type ) {    
+            // General: Select2 CSS.
+            wp_enqueue_style( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'css/select2.min.css', array(), $this->version, 'all' );
+        }
         // General: Admin CSS.
         wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-admin.min.css', array(), $this->version, 'all' );
     }
@@ -75,6 +82,9 @@ class BoostBox_Admin {
      * @return void
      */
     public function enqueue_scripts() {
+        // Get current screen.
+        $current_screen = get_current_screen();
+
         // Args for popups.
         $args = array(
             'hierarchical' => 1,
@@ -116,7 +126,7 @@ class BoostBox_Admin {
             $total_impressions += (int)$popup_impressions[$popup->ID];
             $total_conversions += (int)$popup_conversions[$popup->ID];
         }
-        // General: Admin JS.
+        // General: Charts JS.
         wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/charts.js', array( 'jquery' ), $this->version, false );
         wp_localize_script( $this->plugin_name . '-charts', 'chart_vars', array(
             'total_impressions' => $total_impressions,
@@ -124,6 +134,12 @@ class BoostBox_Admin {
             'popup_impressions' => $popup_impressions,
             'popup_conversions' => $popup_conversions
         ) );
+        // Check if you're on the edit screen for the "boostbox_popups" Custom Post Type
+        if ( is_admin() && $current_screen && 'edit' === $current_screen->base && 'boostbox_popups' === $current_screen->post_type ) {    
+            // General: Select2 JS.
+            wp_enqueue_script( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'js/select2.min.js', array( 'jquery' ), $this->version, false );
+        }
+        // General: Admin JS.
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery', 'wp-hooks', 'wp-blocks', 'wp-color-picker' ), $this->version, false );
         wp_localize_script( $this->plugin_name, 'script_vars', array(
             'stylesheet_url' => get_stylesheet_directory_uri(),
