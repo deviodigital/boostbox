@@ -58,6 +58,12 @@ jQuery(document).ready(function ($) {
 
 	// Back to top links.
 	$( "#help-panel h3" ).append( $( "<a class='back-to-top' href='#panel'><i class='fa fa-angle-up'></i> Back to top</a>" ) );
+
+    // Add select2 to metabox fields.
+    $( '#boostbox_display_location' ).select2();
+    $( '#boostbox_animation_type' ).select2();
+    $( '#boostbox_trigger_type' ).select2();
+    $( '#boostbox_close_icon_placement' ).select2();
 });
 
 // Add a filter to modify the group variations
