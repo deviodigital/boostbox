@@ -1,3 +1,7 @@
+body.boostbox_popups_page_settings {
+    background: #FFFFFF;
+}
+
 body.boostbox_popups_page_settings #wpcontent,
 body.boostbox_popups_page_analytics #wpcontent {
     padding-left: 0;
