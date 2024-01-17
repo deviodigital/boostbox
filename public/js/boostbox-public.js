@@ -37,19 +37,24 @@ jQuery(document).ready(function ($) {
 
     // Variable to track if the popup is closed
     var popupClosed = false;
+    // Set a flag to track whether incrementPopupViewCount has been executed
+    let popupViewCountIncremented = false;
 
     // Trigger - on scroll.
     if (triggerType === "on-scroll" && !Cookies.get('boostbox_popup_' + popupID)) {
         // Add class after scrolling X pixels.
         $(window).scroll(function () {
-            if (!popupClosed) { // Check if the popup is not closed
-                var windowY = 32; //<-- Make this number dynamic
-                var scrolledY = $(window).scrollTop();
-                var percentResult = percentage(windowY, innerHeight);
+            if (!popupClosed && !popupViewCountIncremented) { // Check if the popup is not closed and the count has not been incremented
+                if (!popupClosed) { // Check if the popup is not closed
+                    var windowY = 32; //<-- Make this number dynamic
+                    var scrolledY = $(window).scrollTop();
+                    var percentResult = percentage(windowY, innerHeight);
 
-                if (scrolledY > percentResult) {
-                    $(".boostbox-popup-overlay").addClass('active');
-                    incrementPopupViewCount();
+                    if (scrolledY > percentResult) {
+                        $(".boostbox-popup-overlay").addClass('active');
+                        incrementPopupViewCount();
+                        popupViewCountIncremented = true; // Set the flag to true.
+                    }
                 }
             }
         });
@@ -68,16 +73,19 @@ jQuery(document).ready(function ($) {
             // Check if the clicked element is not within the .boostbox-popup-content class
             if (!$(event.target).closest('.boostbox-popup-content').length) {
                 $(".boostbox-popup-overlay").removeClass("active");
+                popupClosed = true; // Set the variable to true when the popup is closed
+                var expirationDate = new Date();
+                expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
+                Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
             }
         } else {
             // Check if the clicked element is .boostbox-close
             $(".boostbox-popup-overlay").removeClass("active");
+            popupClosed = true; // Set the variable to true when the popup is closed
+            var expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
+            Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
         }
-
-        popupClosed = true; // Set the variable to true when the popup is closed
-        var expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
-        Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
     });
 
     // Track conversion when any button/link within the popup is clicked.
