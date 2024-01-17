@@ -194,6 +194,7 @@ function boostbox_display_settings_metabox_content() {
     $placements = array(
         'outside' => esc_attr__( 'Outside', 'boostbox' ),
         'inside'  => esc_attr__( 'Inside', 'boostbox' ),
+        'hidden'  => esc_attr__( 'Hidden', 'boostbox' )
     );
 
     $close_icon_placement = apply_filters( 'boostbox_close_icon_placements', $placements );
