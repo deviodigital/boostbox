@@ -13,7 +13,7 @@
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
- * Version:           1.2.1
+ * Version:           1.2.2
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Current plugin version.
-define( 'BOOSTBOX_VERSION', '1.2.1' );
+define( 'BOOSTBOX_VERSION', '1.2.2' );
 
 // Plugin basename.
 $plugin_name = plugin_basename( __FILE__ );

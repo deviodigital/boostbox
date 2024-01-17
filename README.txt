@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,19 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 4. BoostBox popup display settings
 
 == Changelog ==
+
+= 1.2.2 =
+*   Added 'hidden' placement option for close icon in `admin/metaboxes/boostbox-display-settings.php`
+*   Bugfix for impression count continuously running on scroll trigger in `public/js/boostbox-public.js`
+*   Updated display settings metabox with tabbed settings fields in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated display settings metabox tabbed settings fields styles in `admin/css/boostbox-admin.css`
+*   Updated metabox dropdowns to use select2 in `admin/js/boostbox-admin.js`
+*   Updated localize script array to include close icon placement in `public/class-boostbox-public.php`
+*   Updated close icon to hide itself if placement is 'hidden' in `public/boostbox-popups.php`
+*   Updated popup to close when overlay is clicked when close icon is hidden in `public/js/boostbox-public.js`
+*   Updated popup so overlay clicks trigger popup closure when icon is hidden in `public/js/boostbox-public.js`
+*   Updated popup HTML to use role='dialog' in `public/boostbox-popups.php`
+*   Updated settings page background color in `admin/css/boostbox-admin.css`
 
 = 1.2.1 =
 *   Added 'close icon placement' to display settings in `admin/metaboxes/boostbox-display-settings.php`

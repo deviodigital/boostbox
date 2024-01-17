@@ -46,7 +46,7 @@ jQuery(document).ready(function ($) {
         $(window).scroll(function () {
             if (!popupClosed && !popupViewCountIncremented) { // Check if the popup is not closed and the count has not been incremented
                 if (!popupClosed) { // Check if the popup is not closed
-                    var windowY = 32; //<-- Make this number dynamic
+                    var windowY = 32; //<-- @TODO Make this number dynamic
                     var scrolledY = $(window).scrollTop();
                     var percentResult = percentage(windowY, innerHeight);
 
