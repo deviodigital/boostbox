@@ -1077,7 +1077,7 @@ img.icon {
 /** Metabox - Popup Settings */
 
 .boostbox-field {
-	padding: 12px;
+	padding: 12px 0;
 }
 
 .boostbox-field select {
@@ -1094,6 +1094,8 @@ img.icon {
     flex-wrap: wrap;
     justify-content: space-between;
     flex-direction: row;
+    padding: 0;
+    margin-top: 0;
 }
 
 .edit-post-meta-boxes-area #boostbox_display_settings .inside .boostbox-field {
@@ -1104,8 +1106,103 @@ img.icon {
     box-sizing: border-box;
 }
 
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .boostbox-field p {
+    font-weight: 600;
+}
+
 @media screen and (max-width:782px) {
     .edit-post-meta-boxes-area #boostbox_display_settings .inside {
         flex-direction: column;
     }
+}
+
+/** Metabox - Display Settings */
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .radio-tabs {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid #ddd;
+}
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .radio-tabs .state {
+    position: absolute;
+    left: -10000px;
+}
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio1:focus ~ .tabs #first-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio2:focus ~ .tabs #second-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio3:focus ~ .tabs #third-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:focus ~ .tabs #fourth-tab  {
+}
+
+/* Tab button container */
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .tabs {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-self: flex-start;
+    text-align: left;
+    min-width: 200px;
+}
+
+@media (max-width: 620px) {
+    .edit-post-meta-boxes-area #boostbox_display_settings .inside .tabs {
+        min-width: auto;
+    }
+}
+
+/* Tab button */
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .radio-tabs .tab {
+    flex: none;
+    display: flex;
+    flex-flow: column;
+    padding: 0 12px;
+    background-color: transparent;
+    cursor: hand;
+    cursor: pointer;
+}
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .radio-tabs .tab:hover {
+    background-color: #f0f0f0;
+}
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio1:checked ~ .tabs #first-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio2:checked ~ .tabs #second-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio3:checked ~ .tabs #third-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:checked ~ .tabs #fourth-tab{
+    background-color: #007cba;
+    color: #fff;
+    cursor: default;
+}
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .tab-label {
+    font-size: 14px;
+    line-height: 1.4rem;
+    padding: 12px;
+    font-weight: 600;
+}
+
+/** Metabox - Display Settings - Panels */
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .radio-tabs .panels {
+    flex: 1;
+    border-left: 1px solid #ddd;
+}
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .radio-tabs .panel {
+    display: none;
+    margin: 0 24px;
+    padding: 12px 0;
+}
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio1:checked ~ .panels #first-panel,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio2:checked ~ .panels #second-panel,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio3:checked ~ .panels #third-panel,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:checked ~ .panels #fourth-panel{
+    display: block;
+}
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .left {
+  text-align: left;
+}
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .slide-item {
+
 }
