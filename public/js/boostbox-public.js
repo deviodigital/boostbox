@@ -56,15 +56,24 @@ jQuery(document).ready(function ($) {
     }
 
     // Set the click class used to close the popup.
-    if ( boostbox_settings.close_icon_placement == 'hidden' ) {
+    if (boostbox_settings.close_icon_placement == 'hidden') {
         var closeClickClass = '.boostbox-popup-overlay';
     } else {
         var closeClickClass = '.boostbox-close';
     }
 
     // Close popup when 'close' button is clicked.
-    $(closeClickClass).on("click", function() {
-        $(".boostbox-popup-overlay").removeClass("active");
+    $(closeClickClass).on("click", function (event) {
+        if (boostbox_settings.close_icon_placement == 'hidden') {
+            // Check if the clicked element is not within the .boostbox-popup-content class
+            if (!$(event.target).closest('.boostbox-popup-content').length) {
+                $(".boostbox-popup-overlay").removeClass("active");
+            }
+        } else {
+            // Check if the clicked element is .boostbox-close
+            $(".boostbox-popup-overlay").removeClass("active");
+        }
+
         popupClosed = true; // Set the variable to true when the popup is closed
         var expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
