@@ -95,12 +95,13 @@ class BoostBox_Public {
         }
         // Create localize script args.
         $localize_args = array(
-            'popup_id'     => $popup_id,
-            'milliseconds' => $milliseconds,
-            'cookie_days'  => $cookie_days,
-            'trigger'      => get_post_meta( $popup_id, 'boostbox_trigger_type', true ),
-            'ajax_url'     => admin_url( 'admin-ajax.php' ),
-            'nonce'        => wp_create_nonce( 'boostbox_nonce' ),        
+            'popup_id'             => $popup_id,
+            'milliseconds'         => $milliseconds,
+            'cookie_days'          => $cookie_days,
+            'trigger'              => get_post_meta( $popup_id, 'boostbox_trigger_type', true ),
+            'close_icon_placement' => get_post_meta( $popup_id, 'boostbox_close_icon_placement', true ),
+            'ajax_url'             => admin_url( 'admin-ajax.php' ),
+            'nonce'                => wp_create_nonce( 'boostbox_nonce' ),        
         );
         // Filter the args.
         $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );
