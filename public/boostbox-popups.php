@@ -67,7 +67,7 @@ function boostbox_popup_html() {
     $popup_content_classes = apply_filters( 'boostbox_popup_content_classes', 'boostbox-popup-content' );
     ?>
     <!--Creates the popup body-->
-    <div class="<?php echo $popup_overlay_classes; ?>">
+    <div class="<?php echo $popup_overlay_classes; ?>" role="dialog">
     <!--Creates the popup content-->
     <div class="<?php echo $popup_content_classes; ?> <?php echo $popup_position . ' ' . $popup_animation; ?>"<?php echo $max_width; ?>>
         <?php
