@@ -55,8 +55,15 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    // Set the click class used to close the popup.
+    if ( boostbox_settings.close_icon_placement == 'hidden' ) {
+        var closeClickClass = '.boostbox-popup-overlay';
+    } else {
+        var closeClickClass = '.boostbox-close';
+    }
+
     // Close popup when 'close' button is clicked.
-    $(".boostbox-close").on("click", function() {
+    $(closeClickClass).on("click", function() {
         $(".boostbox-popup-overlay").removeClass("active");
         popupClosed = true; // Set the variable to true when the popup is closed
         var expirationDate = new Date();
