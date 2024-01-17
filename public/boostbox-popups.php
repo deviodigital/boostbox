@@ -98,7 +98,9 @@ function boostbox_popup_html() {
         }
         ?>
         <!--popup's close button-->
+        <?php if ( $close_placement !== 'hidden' ) { ?>
         <button class="boostbox-close <?php if ( $close_placement == 'inside' ) { echo 'inside'; } ?>"><?php print_r( $close_icon ); ?></button>
+        <?php } ?>
     </div>
     </div>
     <?php
