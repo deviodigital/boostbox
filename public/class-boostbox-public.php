@@ -68,8 +68,6 @@ class BoostBox_Public {
      */
     public function enqueue_styles() {
         // Publc CSS.
-//        wp_enqueue_style( 'wp-block-library', bloginfo( 'url' ) . '/wp-includes/css/dist/block-library/style.min.css', array(), $this->version, 'all' );
-//        wp_enqueue_style( 'wp-block-core-library', bloginfo( 'url' ) . '/wp-includes/css/dist/block-library/core.min.css', array(), $this->version, 'all' );
         wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', array(), $this->version, 'all' );
     }
 
