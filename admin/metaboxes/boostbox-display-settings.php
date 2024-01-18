@@ -31,7 +31,7 @@ function boostbox_display_settings_metabox() {
         esc_attr__( 'Display Settings', 'boostbox' ),
         'boostbox_display_settings_metabox_content',
         'boostbox_popups',
-        'side',
+        'normal',
         'default'
     );
 }
