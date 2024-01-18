@@ -1212,3 +1212,15 @@ img.icon {
 #boostbox_display_settings.closed .inside {
     display: none;
 }
+
+/** Metabox - Metrics */
+
+.boostbox-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ddd;
+}

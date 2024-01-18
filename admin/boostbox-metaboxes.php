@@ -20,3 +20,6 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/metaboxes/boostbox-
 
 // Display settings metabox.
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/metaboxes/boostbox-display-settings.php';
+
+// Popup metrics metabox.
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/metaboxes/boostbox-metrics-settings.php';
