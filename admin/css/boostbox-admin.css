@@ -1206,3 +1206,9 @@ img.icon {
 .edit-post-meta-boxes-area #boostbox_display_settings .inside .slide-item {
 
 }
+
+/** Hide metabox content when user clicks to close the metabox */
+
+#boostbox_display_settings.closed .inside {
+    display: none;
+}
