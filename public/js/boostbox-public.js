@@ -73,9 +73,10 @@ jQuery(document).ready(function ($) {
             // Check if the clicked element is not within the .boostbox-popup-content class
             if (!$(event.target).closest('.boostbox-popup-content').length) {
                 $(".boostbox-popup-overlay").removeClass("active");
-                popupClosed = true; // Set the variable to true when the popup is closed
+                popupClosed = true; // Set the variable to true when the popup is closed.
                 var expirationDate = new Date();
-                expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
+                var expirationMilliseconds = expirationDate.getTime() + (boostbox_settings.cookie_days * 24 * 60 * 60 * 1000);
+                expirationDate.setTime(expirationMilliseconds);
                 Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
             }
         } else {
@@ -83,7 +84,8 @@ jQuery(document).ready(function ($) {
             $(".boostbox-popup-overlay").removeClass("active");
             popupClosed = true; // Set the variable to true when the popup is closed
             var expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + boostbox_settings.cookie_days);
+            var expirationMilliseconds = expirationDate.getTime() + (boostbox_settings.cookie_days * 24 * 60 * 60 * 1000);
+            expirationDate.setTime(expirationMilliseconds);
             Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
         }
     });
