@@ -64,6 +64,40 @@ jQuery(document).ready(function ($) {
     $( '#boostbox_animation_type' ).select2();
     $( '#boostbox_trigger_type' ).select2();
     $( '#boostbox_close_icon_placement' ).select2();
+
+    // Reset the metrics when button is clicked in metabox.
+    $('#reset-metrics').on('click', function () {
+        var postId = script_vars.popup_id;
+        var nonce = script_vars.metrics_reset_nonce;
+    
+        // AJAX request to reset metrics
+        $.ajax({
+            type: 'POST',
+            url: ajaxurl,
+            data: {
+                action: 'reset_boostbox_metrics',
+                post_id: postId,
+                security: nonce,
+            },
+            success: function (response) {
+                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                //console.log(response);
+            
+                // Update the specific elements within the metabox
+                var container = $('#boostbox-metrics-container');
+                container.replaceWith($(response).find('#boostbox-metrics-container'));
+            
+                // Update the nonce
+                script_vars.metrics_reset_nonce = $(response).find('#boostbox_metrics_reset_nonce').val();
+            },
+            error: function (error) {
+                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                //console.log('[ERROR] Metrics resets failed!');
+                //console.log(error);
+            }
+        });
+    });
+            
 });
 
 // Add a filter to modify the group variations

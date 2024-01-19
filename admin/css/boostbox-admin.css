@@ -1224,3 +1224,7 @@ img.icon {
     margin-bottom: 6px;
     border-bottom: 1px solid #ddd;
 }
+
+button#reset-metrics {
+    margin-top: 6px;
+}

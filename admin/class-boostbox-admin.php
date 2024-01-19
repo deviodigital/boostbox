@@ -142,7 +142,9 @@ class BoostBox_Admin {
         // General: Admin JS.
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery', 'wp-hooks', 'wp-blocks', 'wp-color-picker', 'boostbox-select2' ), $this->version, false );
         wp_localize_script( $this->plugin_name, 'script_vars', array(
-            'stylesheet_url' => get_stylesheet_directory_uri(),
+            'stylesheet_url'      => get_stylesheet_directory_uri(),
+            'popup_id'            => json_encode( get_the_ID() ),
+            'metrics_reset_nonce' => wp_create_nonce( 'boostbox_metrics_reset_nonce' ),
         ) );
     }
 

@@ -47,8 +47,7 @@ function boostbox_metrics_metabox_content() {
     global $post;
 
     // Noncename needed to verify where the data originated.
-    echo '<input type="hidden" name="boostbox_metrics_meta_noncename" id="boostbox_metrics_meta_noncename" value="' .
-    wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
+    wp_nonce_field( 'boostbox_metrics_reset_nonce', 'boostbox_metrics_reset_nonce' );
 
     // Get the impression count.
     $impressions = get_post_meta( $post->ID, 'boostbox_popup_impressions', true );
@@ -67,32 +66,44 @@ function boostbox_metrics_metabox_content() {
     // Format the percentage with 2 decimal places and add the percentage symbol.
     $formatted_percentage = number_format( $conversion_percentage, 2 ) . '%';
 
-    echo '<div class="boostbox-metrics"><div clas="metric-name"><strong>Impressions:</strong></div><div class="metric-value">' . $impressions . '</div></div>';
-    echo '<div class="boostbox-metrics"><div clas="metric-name"><strong>Conversions:</strong></div><div class="metric-value">' . $conversions . '</div></div>';
-    echo '<div class="boostbox-metrics"><div clas="metric-name"><strong>Conversion Rate:</strong></div><div class="metric-value">' . $formatted_percentage  . '</div></div>';
+    $html  = '<div id="boostbox-metrics-container-wrapper">';
+    $html .= '<div id="boostbox-metrics-container">';
+    $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Impressions', 'boostbox' ) . ':</strong></div><div class="metric-value">' . $impressions . '</div></div>';
+    $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Conversions', 'boostbox' ) . ':</strong></div><div class="metric-value">' . $conversions . '</div></div>';
+    $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Conversion Rate', 'boostbox' ) . ':</strong></div><div class="metric-value">' . $formatted_percentage  . '</div></div>';
+    $html .= '</div><!-- /.boostbox-metrics-container -->';
+    $html .= '</div><!-- /.boostbox-metrics-container-wrapper -->';
+    $html .= '<button id="reset-metrics" class="button is-primary" type="button">' . esc_html__( 'Reset Metrics', 'boostbox' ) . '</button>';
+
+    echo $html;
 }
 
 /**
- * Save the Metabox Data
+ * Reset metrics
  * 
- * @param int    $post_id 
- * @param object $post 
+ * Used in an ajax request in the Metrics metabox
  * 
  * @since  1.3.0
  * @return void
  */
-function boostbox_metrics_metabox_save( $post_id, $post ) {
-    /**
-     * Verify this came from the our screen and with proper authorization,
-     * because save_post can be triggered at other times
-     */
-    if ( ! isset( $_POST['boostbox_metrics_meta_noncename' ] ) || ! wp_verify_nonce( $_POST['boostbox_metrics_meta_noncename'], plugin_basename( __FILE__ ) ) ) {
-        return $post->ID;
-    }
+function boostbox_reset_metrics() {
+    // Check the ajax referrer.
+    check_ajax_referer( 'boostbox_metrics_reset_nonce', 'security' );
 
-    // Is the user allowed to edit the post or page?
-    if ( ! current_user_can( 'edit_post', $post->ID ) ) {
-        return $post->ID;
-    }
+    // Get the post ID.
+    $post_id = isset( $_POST['post_id'] ) ? absint( $_POST['post_id'] ) : 0;
+
+    // Reset metrics to zero.
+    update_post_meta( $post_id, 'boostbox_popup_impressions', 0 );
+    update_post_meta( $post_id, 'boostbox_popup_conversions', 0 );
+    
+    // Render the updated metabox content
+    boostbox_metrics_metabox_content();
+
+    // Include the updated nonce in the response
+    echo '<input type="hidden" name="boostbox_metrics_reset_nonce" id="boostbox_metrics_reset_nonce" value="' .
+        wp_create_nonce( 'boostbox_metrics_reset_nonce' ) . '" />';
+    
+    exit;
 }
-add_action( 'save_post', 'boostbox_metrics_metabox_save', 1, 2 );
+add_action( 'wp_ajax_reset_boostbox_metrics', 'boostbox_reset_metrics' );
