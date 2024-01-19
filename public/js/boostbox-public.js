@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
 	var milliseconds = boostbox_settings.milliseconds;
     // Window inner height.
     var innerHeight = window.innerHeight;
-
+    // Check to see if the cookie exists already.
 	var cookieCheck = Cookies.get( 'boostbox_popup_' + popupID + '' );
 
 	// If there's a cookie saved, bail early.
@@ -92,7 +92,7 @@ jQuery(document).ready(function ($) {
 
     // Track conversion when any button/link within the popup is clicked.
     // @TODO figure ways to make the tracking dynamic between buttons, links, form submissions, etc.
-    $(".boostbox-popup-overlay").on("click", ":button, button, a, input[type='submit'], [role='button']", function () {
+    $(".boostbox-popup-overlay").on("click", ":button:not('.boostbox-close'), button:not('.boostbox-close'), a, input[type='submit'], [role='button']", function () {
         trackConversion();
     });
 
@@ -113,12 +113,14 @@ jQuery(document).ready(function ($) {
                 nonce: boostbox_settings.nonce,
             },
             success: function (response) {
-                console.log('[SUCCESS] Impression tracking complete!');
-                console.log(response);
+                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                //console.log('[SUCCESS] Impression tracking complete!');
+                //console.log(response);
             },
             error: function (error) {
-                console.log('[ERROR] Impression tracking failed!');
-                console.log(error);
+                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                //console.log('[ERROR] Impression tracking failed!');
+                //console.log(error);
             }
         });
     }
@@ -135,14 +137,15 @@ jQuery(document).ready(function ($) {
                 nonce: boostbox_settings.nonce,
             },
             success: function (response) {
-                console.log('[SUCCESS] Conversion tracking complete!');
-                console.log(response);
+                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                //console.log('[SUCCESS] Conversion tracking complete!');
+                //console.log(response);
             },
             error: function (error) {
-                console.log('[ERROR] Conversion tracking failed!');
-                console.log(response);
+                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                //console.log('[ERROR] Conversion tracking failed!');
+                //console.log(error);
             }
         });
     }
-
 });
