@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,17 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 4. BoostBox popup display settings
 
 == Changelog ==
+
+= 1.3.0 =
+*   Added cookie days setting to popup display settings in `admin/metaboxes/boostbox-display-settings.php`
+*   Added 'Metrics' metabox to display popup impressions and conversions in `admin/metaboxes/boostbox-metrics-settings.php`
+*   Bugfix when setting cookie date and miscalculating the days from current date in `public/class-boostbox-public.php`
+*   Bugfix when setting cookie date and miscalculating the days from current date in `public/js/boostbox-public.js`
+*   Bugfix for conversion tracking to not run when close icon is clicked in `public/js/boostbox-public.js`
+*   Updated screen check for select2 script enqueue in `admin/class-boostbox-admin.php`
+*   Updated metabox display placement to 'normal' instead of 'side' in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated styles to hide metabox content when clicked closed in `admin/css/boostbox-admin.css`
+*   General code cleanup throughout multiple files of the plugin
 
 = 1.2.2 =
 *   Added 'hidden' placement option for close icon in `admin/metaboxes/boostbox-display-settings.php`
