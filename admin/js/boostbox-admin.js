@@ -98,28 +98,37 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // Assuming boostbox_trigger_type is the ID of the input field
+    // Assuming boostbox_trigger_type is the ID of the input field.
     var boostboxTriggerType = $('#boostbox_trigger_type');
     var timeTriggerDiv = $('.display-speed');
+    var onScrollTriggerDiv = $('.on-scroll');
 
-    // Initial check on page load
+    // Initial check on page load.
     if (boostboxTriggerType.val() === 'time') {
-        timeTriggerDiv.removeClass('hidden');
+        onScrollTriggerDiv.addClass('hidden');
         timeTriggerDiv.addClass('active');
-    } else {
-        timeTriggerDiv.removeClass('active');
+    } else if (boostboxTriggerType.val() === 'on-scroll') {
+        onScrollTriggerDiv.addClass('active');
         timeTriggerDiv.addClass('hidden');
+    } else {
+        timeTriggerDiv.removeClass('hidden');
+        onScrollTriggerDiv.addClass('hidden');
     }
 
-    // Add an event listener for changes in the boostbox_trigger_type field
+    // Add an event listener for changes in the boostbox_trigger_type field.
     boostboxTriggerType.change(function() {
-       if ($(this).val() === 'time') {
-            timeTriggerDiv.removeClass('hidden');
+        if ($(this).val() === 'time') {
             timeTriggerDiv.addClass('active');
+            onScrollTriggerDiv.removeClass('active');
+            onScrollTriggerDiv.addClass('hidden');
+        } else if ($(this).val() === 'on-scroll') {
+            onScrollTriggerDiv.addClass('active');
+            timeTriggerDiv.removeClass('active');
+            timeTriggerDiv.hiddenClass('hidden');
         } else {
             timeTriggerDiv.removeClass('active');
-            timeTriggerDiv.addClass('hidden');
-        } 
+            onScrollTriggerDiv.removeClass('active');
+        }
     });
 });
 

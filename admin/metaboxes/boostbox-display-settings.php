@@ -53,7 +53,7 @@ function boostbox_display_settings_metabox_content() {
     echo '<div class="radio-tabs">
 
     <input class="state" type="radio" title="' . esc_attr__( 'General', 'boostbox' ) . '" name="input-state" id="radio1" checked />
-    <input class="state" type="radio" title="' . esc_attr__( 'Triggers', 'boostbox' ) . '" name="input-state" id="radio2" />
+    <input class="state" type="radio" title="' . esc_attr__( 'Trigger', 'boostbox' ) . '" name="input-state" id="radio2" />
     <input class="state" type="radio" title="' . esc_attr__( 'Close Button', 'boostbox' ) . '" name="input-state" id="radio3" />
 
     <div class="tabs">
@@ -222,6 +222,17 @@ function boostbox_display_settings_metabox_content() {
             $field  = '<div class="boostbox-field display-speed">';
             $field .= '<p>' . esc_attr__( 'Display speed (milliseconds)', 'boostbox' ) . '</p>';
             $field .= '<input type="number" name="boostbox_display_speed" value="' . esc_attr( $display_speed ) . '" class="widefat" />';
+            $field .= '</div>';
+
+            echo $field;
+
+            // Scroll distance.
+            $scroll_distance = get_post_meta( $post->ID, 'boostbox_scroll_distance', true );
+
+            // Scroll distance: Build the field.
+            $field  = '<div class="boostbox-field on-scroll">';
+            $field .= '<p>' . esc_attr__( 'Scroll distance', 'boostbox' ) . '</p>';
+            $field .= '<input type="number" name="boostbox_scroll_distance" value="' . esc_attr( $scroll_distance ) . '" class="widefat" />';
             $field .= '</div>';
 
             echo $field;
