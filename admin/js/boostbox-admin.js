@@ -97,7 +97,30 @@ jQuery(document).ready(function ($) {
             }
         });
     });
-            
+
+    // Assuming boostbox_trigger_type is the ID of the input field
+    var boostboxTriggerType = $('#boostbox_trigger_type');
+    var timeTriggerDiv = $('.display-speed');
+
+    // Initial check on page load
+    if (boostboxTriggerType.val() === 'time') {
+        timeTriggerDiv.removeClass('hidden');
+        timeTriggerDiv.addClass('active');
+    } else {
+        timeTriggerDiv.removeClass('active');
+        timeTriggerDiv.addClass('hidden');
+    }
+
+    // Add an event listener for changes in the boostbox_trigger_type field
+    boostboxTriggerType.change(function() {
+       if ($(this).val() === 'time') {
+            timeTriggerDiv.removeClass('hidden');
+            timeTriggerDiv.addClass('active');
+        } else {
+            timeTriggerDiv.removeClass('active');
+            timeTriggerDiv.addClass('hidden');
+        } 
+    });
 });
 
 // Add a filter to modify the group variations

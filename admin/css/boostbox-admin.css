@@ -1080,6 +1080,14 @@ img.icon {
 	padding: 12px 0;
 }
 
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .boostbox-field.hidden {
+    display: none;
+}
+
+.edit-post-meta-boxes-area #boostbox_display_settings .inside .boostbox-field.active {
+    display: block;
+}
+
 .boostbox-field select {
     box-sizing: border-box;
     display: block;
