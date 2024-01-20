@@ -52,15 +52,19 @@ function boostbox_display_settings_metabox_content() {
 
     echo '<div class="radio-tabs">
 
-    <input class="state" type="radio" title="General" name="input-state" id="radio1" checked />
-    <input class="state" type="radio" title="Close Button" name="input-state" id="radio2" />
+    <input class="state" type="radio" title="' . esc_attr__( 'General', 'boostbox' ) . '" name="input-state" id="radio1" checked />
+    <input class="state" type="radio" title="' . esc_attr__( 'Triggers', 'boostbox' ) . '" name="input-state" id="radio2" />
+    <input class="state" type="radio" title="' . esc_attr__( 'Close Button', 'boostbox' ) . '" name="input-state" id="radio3" />
 
     <div class="tabs">
         <label for="radio1" id="first-tab" class="tab">
             <div class="tab-label">' . esc_attr__( 'General', 'boostbox' ) . '</div>
         </label>
         <label for="radio2" id="second-tab" class="tab">
-            <div  class="tab-label">' . esc_attr__( 'Close Button', 'boostbox' ) . '</div>
+            <div class="tab-label">' . esc_attr__( 'Triggers', 'boostbox' ) . '</div>
+        </label>
+        <label for="radio3" id="third-tab" class="tab">
+            <div class="tab-label">' . esc_attr__( 'Close Button', 'boostbox' ) . '</div>
         </label>
     </div>
 
@@ -103,48 +107,6 @@ function boostbox_display_settings_metabox_content() {
                 }
             }
             $field .= '</select>';
-            $field .= '</div>';
-
-            echo $field;
-
-            $triggers = array(
-                'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
-                'on-scroll'   => esc_attr__( 'On Scroll', 'boostbox' ),
-                'time'        => esc_attr__( 'Time', 'boostbox' ),
-            );
-
-            $triggers = apply_filters( 'boostbox_trigger_type_triggers', $triggers );
-
-            // Popup trigger.
-            $trigger_type = get_post_meta( $post->ID, 'boostbox_trigger_type', true );
-
-            // Select an trigger type: Build the field.
-            $field  = '<div class="boostbox-field">';
-            $field .= '<p>' . esc_attr__( 'Trigger type', 'boostbox' ) . '</p>';
-            $field .= '<select id="boostbox_trigger_type" name="boostbox_trigger_type">';
-            // Loop through triggers.
-            if ( ! empty( $triggers ) ) {
-                foreach ( $triggers as $trigger => $value ) {
-                    if ( $trigger == $trigger_type ) {
-                        $selected = 'selected="selected"';
-                    } else {
-                        $selected = '';
-                    }
-                    $field .= '<option value="' . esc_attr( $trigger ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
-                }
-            }
-            $field .= '</select>';
-            $field .= '</div>';
-
-            echo $field;
-
-            // Display speed.
-            $display_speed = get_post_meta( $post->ID, 'boostbox_display_speed', true );
-
-            // Display Speed: Build the field.
-            $field  = '<div class="boostbox-field">';
-            $field .= '<p>' . esc_attr__( 'Display speed (milliseconds)', 'boostbox' ) . '</p>';
-            $field .= '<input type="number" name="boostbox_display_speed" value="' . esc_attr( $display_speed ) . '" class="widefat" />';
             $field .= '</div>';
 
             echo $field;
@@ -221,6 +183,52 @@ function boostbox_display_settings_metabox_content() {
         echo '</div>
 
         <div id="second-panel" class="panel animated slideInRight">';
+
+            $triggers = array(
+                'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
+                'on-scroll'   => esc_attr__( 'On Scroll', 'boostbox' ),
+                'time'        => esc_attr__( 'Time', 'boostbox' ),
+            );
+
+            $triggers = apply_filters( 'boostbox_trigger_type_triggers', $triggers );
+
+            // Popup trigger.
+            $trigger_type = get_post_meta( $post->ID, 'boostbox_trigger_type', true );
+
+            // Select an trigger type: Build the field.
+            $field  = '<div class="boostbox-field">';
+            $field .= '<p>' . esc_attr__( 'Trigger type', 'boostbox' ) . '</p>';
+            $field .= '<select id="boostbox_trigger_type" name="boostbox_trigger_type">';
+            // Loop through triggers.
+            if ( ! empty( $triggers ) ) {
+                foreach ( $triggers as $trigger => $value ) {
+                    if ( $trigger == $trigger_type ) {
+                        $selected = 'selected="selected"';
+                    } else {
+                        $selected = '';
+                    }
+                    $field .= '<option value="' . esc_attr( $trigger ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
+                }
+            }
+            $field .= '</select>';
+            $field .= '</div>';
+
+            echo $field;
+
+            // Display speed.
+            $display_speed = get_post_meta( $post->ID, 'boostbox_display_speed', true );
+
+            // Display Speed: Build the field.
+            $field  = '<div class="boostbox-field display-speed">';
+            $field .= '<p>' . esc_attr__( 'Display speed (milliseconds)', 'boostbox' ) . '</p>';
+            $field .= '<input type="number" name="boostbox_display_speed" value="' . esc_attr( $display_speed ) . '" class="widefat" />';
+            $field .= '</div>';
+
+            echo $field;
+
+        echo '</div>
+
+        <div id="third-panel" class="panel animated slideInRight">';
             $placements = array(
                 'outside' => esc_attr__( 'Outside', 'boostbox' ),
                 'inside'  => esc_attr__( 'Inside', 'boostbox' ),
