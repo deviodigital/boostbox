@@ -53,17 +53,21 @@ function boostbox_display_settings_metabox_content() {
     echo '<div class="radio-tabs">
 
     <input class="state" type="radio" title="' . esc_attr__( 'General', 'boostbox' ) . '" name="input-state" id="radio1" checked />
-    <input class="state" type="radio" title="' . esc_attr__( 'Trigger', 'boostbox' ) . '" name="input-state" id="radio2" />
-    <input class="state" type="radio" title="' . esc_attr__( 'Close Button', 'boostbox' ) . '" name="input-state" id="radio3" />
+    <input class="state" type="radio" title="' . esc_attr__( 'Animation', 'boostbox' ) . '" name="input-state" id="radio2" />
+    <input class="state" type="radio" title="' . esc_attr__( 'Trigger', 'boostbox' ) . '" name="input-state" id="radio3" />
+    <input class="state" type="radio" title="' . esc_attr__( 'Close Button', 'boostbox' ) . '" name="input-state" id="radio4" />
 
     <div class="tabs">
         <label for="radio1" id="first-tab" class="tab">
             <div class="tab-label">' . esc_attr__( 'General', 'boostbox' ) . '</div>
         </label>
         <label for="radio2" id="second-tab" class="tab">
-            <div class="tab-label">' . esc_attr__( 'Triggers', 'boostbox' ) . '</div>
+            <div class="tab-label">' . esc_attr__( 'Animation', 'boostbox' ) . '</div>
         </label>
         <label for="radio3" id="third-tab" class="tab">
+            <div class="tab-label">' . esc_attr__( 'Trigger', 'boostbox' ) . '</div>
+        </label>
+        <label for="radio4" id="fourth-tab" class="tab">
             <div class="tab-label">' . esc_attr__( 'Close Button', 'boostbox' ) . '</div>
         </label>
     </div>
@@ -110,6 +114,32 @@ function boostbox_display_settings_metabox_content() {
             $field .= '</div>';
 
             echo $field;
+
+            // Max width.
+            $max_width = get_post_meta( $post->ID, 'boostbox_display_max_width', true );
+
+            // Max width: Build the field.
+            $field  = '<div class="boostbox-field">';
+            $field .= '<p>' . esc_attr__( 'Max width', 'boostbox' ) . '</p>';
+            $field .= '<input type="text" name="boostbox_display_max_width" value="' . esc_attr( $max_width ) . '" class="widefat" />';
+            $field .= '</div>';
+
+            echo $field;
+
+            // Cookie Days.
+            $cookie_days = get_post_meta( $post->ID, 'boostbox_cookie_days', true );
+
+            // Cookie Days: Build the field.
+            $field  = '<div class="boostbox-field">';
+            $field .= '<p>' . esc_attr__( 'Cookie days (overrides global setting)', 'boostbox' ) . '</p>';
+            $field .= '<input type="number" name="boostbox_cookie_days" value="' . esc_attr( $cookie_days ) . '" class="widefat" />';
+            $field .= '</div>';
+
+            echo $field;
+
+        echo '</div>
+
+        <div id="second-panel" class="panel animated slideInRight">';
 
             $animations = array(
                 ''            => esc_attr__( '--', 'boostbox' ),
@@ -158,31 +188,9 @@ function boostbox_display_settings_metabox_content() {
 
             echo $field;
 
-            // Max width.
-            $max_width = get_post_meta( $post->ID, 'boostbox_display_max_width', true );
-
-            // Max width: Build the field.
-            $field  = '<div class="boostbox-field">';
-            $field .= '<p>' . esc_attr__( 'Max width', 'boostbox' ) . '</p>';
-            $field .= '<input type="text" name="boostbox_display_max_width" value="' . esc_attr( $max_width ) . '" class="widefat" />';
-            $field .= '</div>';
-
-            echo $field;
-
-            // Cookie Days.
-            $cookie_days = get_post_meta( $post->ID, 'boostbox_cookie_days', true );
-
-            // Cookie Days: Build the field.
-            $field  = '<div class="boostbox-field">';
-            $field .= '<p>' . esc_attr__( 'Cookie days (overrides global setting)', 'boostbox' ) . '</p>';
-            $field .= '<input type="number" name="boostbox_cookie_days" value="' . esc_attr( $cookie_days ) . '" class="widefat" />';
-            $field .= '</div>';
-
-            echo $field;
-
         echo '</div>
 
-        <div id="second-panel" class="panel animated slideInRight">';
+        <div id="third-panel" class="panel animated slideInRight">';
 
             $triggers = array(
                 'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
@@ -232,14 +240,14 @@ function boostbox_display_settings_metabox_content() {
             // Scroll distance: Build the field.
             $field  = '<div class="boostbox-field on-scroll">';
             $field .= '<p>' . esc_attr__( 'Scroll distance', 'boostbox' ) . '</p>';
-            $field .= '<input type="number" name="boostbox_scroll_distance" value="' . esc_attr( $scroll_distance ) . '" class="widefat" />';
+            $field .= '<input type="text" name="boostbox_scroll_distance" value="' . esc_attr( $scroll_distance ) . '" class="widefat" />';
             $field .= '</div>';
 
             echo $field;
 
         echo '</div>
 
-        <div id="third-panel" class="panel animated slideInRight">';
+        <div id="fourth-panel" class="panel animated slideInRight">';
             $placements = array(
                 'outside' => esc_attr__( 'Outside', 'boostbox' ),
                 'inside'  => esc_attr__( 'Inside', 'boostbox' ),
@@ -324,6 +332,7 @@ function boostbox_display_settings_metabox_save( $post_id, $post ) {
     $settings_meta['boostbox_close_icon_color']     = sanitize_hex_color( filter_input( INPUT_POST, 'boostbox_close_icon_color' ) );
     $settings_meta['boostbox_close_icon_placement'] = filter_input( INPUT_POST, 'boostbox_close_icon_placement' );
     $settings_meta['boostbox_cookie_days']          = filter_input( INPUT_POST, 'boostbox_cookie_days' );
+    $settings_meta['boostbox_scroll_distance']      = filter_input( INPUT_POST, 'boostbox_scroll_distance' );
 
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {
