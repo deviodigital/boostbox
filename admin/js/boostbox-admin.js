@@ -98,7 +98,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // Assuming boostbox_trigger_type is the ID of the input field.
+    // Set variables for trigger targeting.
     var boostboxTriggerType = $('#boostbox_trigger_type');
     var timeTriggerDiv = $('.display-speed');
     var onScrollTriggerDiv = $('.on-scroll');
@@ -111,7 +111,7 @@ jQuery(document).ready(function ($) {
         onScrollTriggerDiv.addClass('active');
         timeTriggerDiv.addClass('hidden');
     } else {
-        timeTriggerDiv.removeClass('hidden');
+        timeTriggerDiv.addClass('hidden');
         onScrollTriggerDiv.addClass('hidden');
     }
 
@@ -127,12 +127,14 @@ jQuery(document).ready(function ($) {
             timeTriggerDiv.hiddenClass('hidden');
         } else {
             timeTriggerDiv.removeClass('active');
+            timeTriggerDiv.addClass('hidden');
             onScrollTriggerDiv.removeClass('active');
+            onScrollTriggerDiv.addClass('hidden');
         }
     });
 });
 
-// Add a filter to modify the group variations
+// Add a filter to modify the group variations.
 function customizeGroupVariations(groupVariations) {
     return groupVariations.map((variation) => {
         // Add the 'padding' attribute to each variation
