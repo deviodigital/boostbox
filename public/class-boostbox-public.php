@@ -95,11 +95,18 @@ class BoostBox_Public {
         if ( ! $milliseconds ) {
             $milliseconds = 0;
         }
+        // Scroll distance.
+        if ( get_post_meta( $popup_id, 'boostbox_scroll_distance', true ) ) {
+            $scroll_distance = get_post_meta( $popup_id, 'boostbox_scroll_distance', true );
+        } else {
+            $scroll_distance = '32px';
+        }
         // Create localize script args.
         $localize_args = array(
             'popup_id'             => $popup_id,
             'milliseconds'         => $milliseconds,
             'cookie_days'          => $cookie_days,
+            'scroll_distance'      => $scroll_distance,
             'trigger'              => get_post_meta( $popup_id, 'boostbox_trigger_type', true ),
             'close_icon_placement' => get_post_meta( $popup_id, 'boostbox_close_icon_placement', true ),
             'ajax_url'             => admin_url( 'admin-ajax.php' ),
