@@ -44,17 +44,25 @@ jQuery(document).ready(function ($) {
     if (triggerType === "on-scroll" && !Cookies.get('boostbox_popup_' + popupID)) {
         // Add class after scrolling X pixels.
         $(window).scroll(function () {
-            if (!popupClosed && !popupViewCountIncremented) { // Check if the popup is not closed and the count has not been incremented
-                if (!popupClosed) { // Check if the popup is not closed
-                    var windowY = 32; //<-- @TODO Make this number dynamic
+            if (!popupClosed && !popupViewCountIncremented) {
+                if (!popupClosed) {
+                    var triggerValue = boostbox_settings.scroll_distance;
                     var scrolledY = $(window).scrollTop();
-                    var percentResult = percentage(windowY, innerHeight);
 
-                    if (scrolledY > percentResult) {
+                    var isPercentage = triggerValue.includes('%');
+                    var windowY = isPercentage ? percentageToPixels(triggerValue, innerHeight) : parseInt(triggerValue, 10);
+
+                    if (scrolledY > windowY) {
                         $(".boostbox-popup-overlay").addClass('active');
                         incrementPopupViewCount();
                         popupViewCountIncremented = true; // Set the flag to true.
                     }
+                }
+
+                // Function to convert percentage to pixels
+                function percentageToPixels(percentage, containerHeight) {
+                    var percent = parseInt(percentage, 10);
+                    return (percent / 100) * containerHeight;
                 }
             }
         });
