@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,16 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 4. BoostBox popup display settings
 
 == Changelog ==
+
+= 1.3.1 =
+*   Added 'scroll distance' setting when 'on-scroll' trigger is selected in `admin/js/boostbox-admin.js`
+*   Added 'scroll distance' setting when 'on-scroll' trigger is selected in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated metabox tabs to separate 'triggers' settings in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated display settings to show/hide trigger settings based on trigger type in `admin/js/boostbox-admin.js`
+*   Updated localize script to pass custom scroll distance in `public/class-boostbox-public.php`
+*   Updated JS that controlls scroll trigger while including custom scroll distance in `public/js/boostbox-public.js`
+*   Updated display settings tab organization in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated display settings metabox image in `assets/screenshot-4.jpg`
 
 = 1.3.0 =
 *   Added cookie days setting to popup display settings in `admin/metaboxes/boostbox-display-settings.php`
