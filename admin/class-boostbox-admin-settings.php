@@ -579,7 +579,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
             $size  = isset( $args['size'] ) && ! null === $args['size'] ? $args['size'] : '500px';
 
-            echo '<div style="max-width: ' . esc_attr( $size ) . ';">';
+            echo wp_kses_post( '<div style="max-width: ' . esc_attr( $size ) . ';">' );
 
             $editor_settings = array(
                 'teeny'         => true,
@@ -593,7 +593,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             wp_editor( $value, $args['section'] . '-' . $args['id'], $editor_settings );
 
-            echo '</div>';
+            echo wp_kses( '</div>', boostbox_allowed_tags() );
 
             echo $this->get_field_description( $args );
         }
@@ -800,7 +800,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             <div class="metabox-holder">
                 <?php foreach ( $this->sections_array as $form ) { ?>
                     <!-- style="display: none;" -->
-                    <div id="<?php echo esc_attr( $form['id'] ); ?>" class="group" >
+                    <div id="<?php esc_attr_e( $form['id'] ); ?>" class="group">
                         <form method="post" action="options.php">
                             <?php
                             do_action( 'boostbox_form_top_' . $form['id'], $form );

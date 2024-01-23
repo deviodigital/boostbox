@@ -75,7 +75,7 @@ function boostbox_metrics_metabox_content() {
     $html .= '</div><!-- /.boostbox-metrics-container-wrapper -->';
     $html .= '<button id="reset-metrics" class="button is-primary" type="button">' . esc_html__( 'Reset Metrics', 'boostbox' ) . '</button>';
 
-    echo $html;
+    echo wp_kses( $html, boostbox_allowed_tags() );
 }
 
 /**

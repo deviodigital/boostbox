@@ -86,25 +86,25 @@ function boostbox_popup_settings_metabox_content() {
     $popup_selected = get_post_meta( $post->ID, 'boostbox_popup_selected', true );
 
     // Select a Popup: Build the field.
-    echo '<div class="boostbox-field">';
-    echo '<p>' . esc_attr__( 'Select popup to display', 'boostbox' ) . '</p>';
-    echo '<select id="boostbox_popup_selected" name="boostbox_popup_selected">';
-    echo '<option value="popup_disabled">' . esc_attr__( 'Disable Popup', 'boostbox' ) . '</option>';
-    echo '<option value="">' . esc_attr__( 'Global Popup', 'boostbox' ) . '</option>';
+    $field = '<div class="boostbox-field">';
+    $field .= '<p>' . esc_attr__( 'Select popup to display', 'boostbox' ) . '</p>';
+    $field .= '<select id="boostbox_popup_selected" name="boostbox_popup_selected">';
+    $field .= '<option value="popup_disabled">' . esc_attr__( 'Disable Popup', 'boostbox' ) . '</option>';
+    $field .= '<option value="">' . esc_attr__( 'Global Popup', 'boostbox' ) . '</option>';
     // Loop through popups.
     if ( ! empty( $popups ) ) {
         foreach ( $popups as $popup ) {
+            $selected = '';
             if ( $popup->ID == $popup_selected ) {
                 $selected = 'selected="selected"';
-            } else {
-                $selected = '';
             }
-            printf( '<option value="%s" '. $selected .'>%s</option>', esc_attr( $popup->ID ), esc_html( $popup->post_title ) );
+            $field .= '<option value="' . esc_attr( $popup->ID ) . '" '. $selected .'>' . esc_html( $popup->post_title ) . '</option>';
         }
     }
-    echo '</select>';
-    echo '</div>';
+    $field .= '</select>';
+    $field .= '</div>';
 
+    echo wp_kses( $field, boostbox_allowed_tags() );
 }
 
 /**
