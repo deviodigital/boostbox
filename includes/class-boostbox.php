@@ -127,6 +127,12 @@ class BoostBox {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-boostbox-admin.php';
 
         /**
+         * The class responsible for defining all actions that add custom columns 
+         * to the boostbox_popups screen.
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-boostbox-cpt-columns.php';
+
+        /**
          * The file responsible for defining the popups custom post type
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-custom-post-type.php';
