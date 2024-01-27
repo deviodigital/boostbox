@@ -64,6 +64,7 @@ jQuery(document).ready(function ($) {
     $( '#boostbox_animation_type' ).select2();
     $( '#boostbox_trigger_type' ).select2();
     $( '#boostbox_close_icon_placement' ).select2();
+    $( '#boostbox_popup_selected' ).select2();
 
     // Reset the metrics when button is clicked in metabox.
     $('#reset-metrics').on('click', function () {

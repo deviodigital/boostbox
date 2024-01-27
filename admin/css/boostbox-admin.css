@@ -12,6 +12,10 @@ body.boostbox_popups_page_analytics ul#adminmenu>li.current>a.current:after {
     display: none;
 }
 
+.boostbox-field .select2-container {
+    width: 100% !important;
+}
+
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;

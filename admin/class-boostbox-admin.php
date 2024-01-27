@@ -67,7 +67,10 @@ class BoostBox_Admin {
         // Get current screen.
         $current_screen = get_current_screen();
         // Check if you're on the edit screen for BoostBox popups.
-        if ( is_admin() && $current_screen && 'boostbox_popups' === $current_screen->post_type ) {    
+        if ( is_admin() && $current_screen && (
+            in_array( $current_screen->post_type, array( 'boostbox_popups', 'post', 'page' ) ) ||
+            ( 'post' === $current_screen->base && 'post-new.php' === $current_screen->id )
+        ) ) {
             // General: Select2 CSS.
             wp_enqueue_style( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'css/select2.min.css', array(), $this->version, 'all' );
         }
@@ -135,7 +138,10 @@ class BoostBox_Admin {
             'popup_conversions' => $popup_conversions
         ) );
         // Check if you're on the edit screen for the "boostbox_popups" Custom Post Type
-        if ( is_admin() && $current_screen && 'boostbox_popups' === $current_screen->post_type ) {
+        if ( is_admin() && $current_screen && (
+            in_array( $current_screen->post_type, array( 'boostbox_popups', 'post', 'page' ) ) ||
+            ( 'post' === $current_screen->base && 'post-new.php' === $current_screen->id )
+        ) ) {
             // General: Select2 JS.
             wp_enqueue_script( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'js/select2.min.js', array( 'jquery' ), $this->version, false );
         }
