@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.2
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,8 +45,19 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 2. Example popup using a pattern from the Powder theme
 3. BoostBox admin settings page
 4. BoostBox popup display settings
+5. BoostBox metrics displayed on the Popups screen
 
 == Changelog ==
+
+= 1.4.0 =
+*   Added BoostBox_CPT_Columns class in `admin/class-boostbox-cpt-columns.php`
+*   Added metrics to popup list view in dashboard in `admin/boostbox-custom-post-type.php`
+*   Added `boostbox_popup_conversion_rate` helper function in `includes/boostbox-helper-functions.php`
+*   Updated popup conversion rate output to use new helper function in `admin/metaboxes/boostbox-metrics-settings.php`
+*   Updated popup conversion rate output to use new helper function in `admin/boostbox-custom-post-type.php`
+*   Updated various html elements with escaping functions in various files throughout the plugin
+*   Updated popup metabox with select2 for the dropdown in `admin/class-boostbox-admin.php`
+*   Updated popup metabox with select2 for the dropdown in `admin/js/boostbox-admin.js`
 
 = 1.3.1 =
 *   Added 'scroll distance' setting when 'on-scroll' trigger is selected in `admin/js/boostbox-admin.js`
