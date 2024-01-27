@@ -218,7 +218,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
                 if ( has_post_thumbnail( $post_id ) ) {
                     the_post_thumbnail( $column['size'] );
                 } else {
-                    echo esc_html__( 'N/A', 'wp-dispensary' );
+                    echo esc_html__( 'N/A', 'boostbox' );
                 }
                 break;
             case 'post_meta':
@@ -292,7 +292,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          */
         function add_column( $key, $args ) {
             $def = array(
-                'label'    => esc_html__( 'Column label', 'wp-dispensary' ), 
+                'label'    => esc_html__( 'Column label', 'boostbox' ), 
                 'size'     => array( '80', '80' ),
                 'taxonomy' => '',
                 'meta_key' => '',

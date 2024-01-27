@@ -113,7 +113,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '</select>';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
             // Max width.
             $max_width = get_post_meta( $post->ID, 'boostbox_display_max_width', true );
@@ -124,7 +124,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '<input type="text" name="boostbox_display_max_width" value="' . esc_attr( $max_width ) . '" class="widefat" />';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
             // Cookie Days.
             $cookie_days = get_post_meta( $post->ID, 'boostbox_cookie_days', true );
@@ -135,7 +135,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '<input type="number" name="boostbox_cookie_days" value="' . esc_attr( $cookie_days ) . '" class="widefat" />';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
         echo '</div>
 
@@ -175,7 +175,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '</select>';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
             // Popup animation.
             $animation_speed = get_post_meta( $post->ID, 'boostbox_animation_speed', true );
@@ -186,7 +186,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '<input type="number" name="boostbox_animation_speed" value="' . esc_attr( $animation_speed ) . '" class="widefat" />';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
         echo '</div>
 
@@ -221,7 +221,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '</select>';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
             // Display speed.
             $display_speed = get_post_meta( $post->ID, 'boostbox_display_speed', true );
@@ -232,7 +232,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '<input type="number" name="boostbox_display_speed" value="' . esc_attr( $display_speed ) . '" class="widefat" />';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
             // Scroll distance.
             $scroll_distance = get_post_meta( $post->ID, 'boostbox_scroll_distance', true );
@@ -243,7 +243,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '<input type="text" name="boostbox_scroll_distance" value="' . esc_attr( $scroll_distance ) . '" class="widefat" />';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
         echo '</div>
 
@@ -277,7 +277,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '</select>';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
 
             // Close color.
             $close_color = get_post_meta( $post->ID, 'boostbox_close_icon_color', true );
@@ -292,7 +292,7 @@ function boostbox_display_settings_metabox_content() {
             $field .= '<input type="text" class="boostbox-close-icon-color-picker" name="boostbox_close_icon_color" value="' . esc_attr( $close_color ) . '" />';
             $field .= '</div>';
 
-            echo $field;
+            echo wp_kses( $field, boostbox_allowed_tags() );
         echo '</div>
     </div>
 
