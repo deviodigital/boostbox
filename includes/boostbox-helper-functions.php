@@ -168,3 +168,36 @@ function get_cover_block_styles( $post_id ) {
     // Return an empty string if no cover block or alignment found.
     return '';
 }
+
+/**
+ * Get popup conversion rate
+ * 
+ * @param int $popup_id - the Popup ID to retrieve data for.
+ * 
+ * @return string
+ */
+function boostbox_popup_conversion_rate( $popup_id ) {
+    // Check if $popup_id is provided and is an integer.
+    if ( ! isset( $popup_id ) || ! is_int( $popup_id ) ) {
+        return '';
+    }
+
+    // Get the impression count.
+    $impressions = get_post_meta( $popup_id, 'boostbox_popup_impressions', true );
+    if ( ! $impressions ) {
+        $impressions = 0;
+    }
+    // Get the conversion count.
+    $conversions = get_post_meta( $popup_id, 'boostbox_popup_conversions', true );
+    if ( ! $conversions) {
+        $conversions = 0;
+    }
+
+    // Calculate the conversion percentage.
+    $conversion_percentage = ( $impressions > 0 ) ? ( $conversions / $impressions ) * 100 : 0;
+
+    // Format the percentage with 2 decimal places and add the percentage symbol.
+    $formatted_percentage = number_format( $conversion_percentage, 2 ) . '%';
+
+    return $formatted_percentage;
+}

@@ -187,23 +187,7 @@ add_filter( 'columns_custom_html_conversions', 'boostbox_add_conversions_column_
  * @return string
  */
 function boostbox_add_conversion_rate_column_to_admin_screen_filter( $post_id, $column, $column_name ) {
-    // Get the impression count.
-    $impressions = get_post_meta( $column, 'boostbox_popup_impressions', true );
-    if ( ! $impressions ) {
-        $impressions = 0;
-    }
-    // Get the conversion count.
-    $conversions = get_post_meta( $column, 'boostbox_popup_conversions', true );
-    if ( ! $conversions) {
-        $conversions = 0;
-    }
-
-    // Calculate the conversion percentage.
-    $conversion_percentage = ( $impressions > 0 ) ? ( $conversions / $impressions ) * 100 : 0;
-
-    // Format the percentage with 2 decimal places and add the percentage symbol.
-    $formatted_percentage = number_format( $conversion_percentage, 2 ) . '%';
-
-    return $formatted_percentage;
+    // Return the conversion rate.
+    return boostbox_popup_conversion_rate( $column );
 }
 add_filter( 'columns_custom_html_conversion_rate', 'boostbox_add_conversion_rate_column_to_admin_screen_filter', 20, 3 );

@@ -56,21 +56,15 @@ function boostbox_metrics_metabox_content() {
     }
     // Get the conversion count.
     $conversions = get_post_meta( $post->ID, 'boostbox_popup_conversions', true );
-    if ( ! $conversions) {
+    if ( ! $conversions ) {
         $conversions = 0;
     }
-
-    // Calculate the conversion percentage.
-    $conversion_percentage = ( $impressions > 0 ) ? ( $conversions / $impressions ) * 100 : 0;
-
-    // Format the percentage with 2 decimal places and add the percentage symbol.
-    $formatted_percentage = number_format( $conversion_percentage, 2 ) . '%';
 
     $html  = '<div id="boostbox-metrics-container-wrapper">';
     $html .= '<div id="boostbox-metrics-container">';
     $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Impressions', 'boostbox' ) . ':</strong></div><div class="metric-value">' . $impressions . '</div></div>';
     $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Conversions', 'boostbox' ) . ':</strong></div><div class="metric-value">' . $conversions . '</div></div>';
-    $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Conversion Rate', 'boostbox' ) . ':</strong></div><div class="metric-value">' . $formatted_percentage  . '</div></div>';
+    $html .= '<div class="boostbox-metrics"><div clas="metric-name"><strong>' . esc_html__( 'Conversion Rate', 'boostbox' ) . ':</strong></div><div class="metric-value">' . boostbox_popup_conversion_rate( $post->ID )  . '</div></div>';
     $html .= '</div><!-- /.boostbox-metrics-container -->';
     $html .= '</div><!-- /.boostbox-metrics-container-wrapper -->';
     $html .= '<button id="reset-metrics" class="button is-primary" type="button">' . esc_html__( 'Reset Metrics', 'boostbox' ) . '</button>';
