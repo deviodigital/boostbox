@@ -155,3 +155,37 @@ class BoostBox_Admin {
     }
 
 }
+
+/**
+ * Insert Popups Block
+ * 
+ * This block will let users insert a popup directly into their post content
+ * 
+ * @TODO figure out how to track metrics for times it's viewed in content and not the regular popup way
+ * 
+ * @since  1.5.0
+ * @return void
+ */
+function boostbox_enqueue_boostbox_popups_block() {
+    wp_enqueue_script(
+        'boostbox-popups-block',
+        plugin_dir_url( __FILE__ ) . '/js/boostbox-popups-block.js',
+        array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-data' ),
+        BOOSTBOX_VERSION
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'boostbox_enqueue_boostbox_popups_block' );
+
+/**
+ * Run on save post
+ * 
+ * @param int $post_id - the post ID.
+ * @param object $post - the post data.
+ */
+function save_boostbox_popups_block( $post_id, $post ) {
+    if ( $post->post_type === 'post' ) {
+        $selected_popup = isset( $_POST['attributes']['selectedPopup'] ) ? absint( $_POST['attributes']['selectedPopup'] ) : 0;
+        update_post_meta( $post_id, '_selected_popup', $selected_popup );
+    }
+}
+add_action( 'save_post', 'save_boostbox_popups_block', 10, 2 );
