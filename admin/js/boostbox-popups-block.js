@@ -4,7 +4,7 @@ const { withSelect, withDispatch } = wp.data;
 
 const BoostBoxPopupsBlock = registerBlockType('boostbox/popups-block', {
     title: wp.i18n.__('BoostBox Popups', 'boostbox'),
-    icon: 'admin-generic',
+    icon: 'cover-image',
     category: 'common',
     attributes: {
         selectedPopup: {
@@ -21,16 +21,15 @@ const BoostBoxPopupsBlock = registerBlockType('boostbox/popups-block', {
     })(
         withDispatch((dispatch) => {
             return {
-                insertBlocks: dispatch('core/block-editor').insertBlocks,
-                removeBlocks: dispatch('core/block-editor').removeBlocks,
                 replaceBlocks: dispatch('core/block-editor').replaceBlocks,
+                removeBlocks: dispatch('core/block-editor').removeBlocks,
             };
-        })(({ posts, attributes, setAttributes, insertBlocks, removeBlocks, replaceBlocks, currentPostId, selectedBlockClientId }) => {
+        })(({ posts, attributes, setAttributes, replaceBlocks, removeBlocks, currentPostId, selectedBlockClientId }) => {
             const onInsertClick = async () => {
                 if (attributes.selectedPopup !== 0) {
                     const post = posts.find((p) => String(p.id) === String(attributes.selectedPopup));
 
-                    if (post && currentPostId && selectedBlockClientId) {
+                    if (post && currentPostId) {
                         try {
                             // Check if the selected post is the current post
                             if (currentPostId === attributes.selectedPopup) {
@@ -52,26 +51,25 @@ const BoostBoxPopupsBlock = registerBlockType('boostbox/popups-block', {
                                 };
                             }
 
-                            // Remove existing BoostBox Popups blocks
+                            // Replace the entire content of the selected block with the parsed blocks
+                            replaceBlocks(selectedBlockClientId, parsedBlocks);
+
+                            // Remove existing BoostBox Popups block
                             removeBlocks(selectedBlockClientId);
-
-                            // Insert the new blocks
-                            if (parsedBlocks.length > 0) {
-                                const newBlockClientId = parsedBlocks[0].clientId;
-                                const currentBlockClientId = select('core/block-editor').getSelectedBlockClientId();
-
-                                // Replace the current block with the new block
-                                replaceBlocks(currentBlockClientId, parsedBlocks[0]);
-
-                                // Set the selection to the newly inserted block
-                                dispatch('core/block-editor').selectBlock(newBlockClientId);
-                            }
                         } catch (error) {
                             console.error(wp.i18n.__('Error fetching post content:', 'boostbox'), error);
                         }
                     }
                 }
             };
+
+            const options = [
+                { label: wp.i18n.__('--', 'boostbox'), value: 0 },
+                ...posts.map((post) => ({
+                    label: post.title.raw,
+                    value: post.id,
+                })),
+            ];
 
             return wp.element.createElement(
                 'div',
@@ -80,10 +78,7 @@ const BoostBoxPopupsBlock = registerBlockType('boostbox/popups-block', {
                 wp.element.createElement(SelectControl, {
                     label: wp.i18n.__('Select a BoostBox Popup', 'boostbox'),
                     value: attributes.selectedPopup,
-                    options: posts.map((post) => ({
-                        label: post.title.raw,
-                        value: post.id,
-                    })),
+                    options,
                     onChange: (value) => setAttributes({ selectedPopup: value }),
                 }),
                 wp.element.createElement(
