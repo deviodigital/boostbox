@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
-Tested up to: 6.4.2
-Stable tag: 1.4.0
+Tested up to: 6.4.3
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,14 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 5. BoostBox metrics displayed on the Popups screen
 
 == Changelog ==
+
+= 1.5.0 =
+*   Added 'BoostBox Popups' block in `admin/class-boostbox-admin.php`
+*   Added 'BoostBox Popups' block in `admin/js/boostbox-popups-block.js`
+*   Added 'boostbox_popup_settings_popups_options' filter in `admin/boostbox-admin-settings.php`
+*   Added 'boostbox_restrict_posts_redirect_url' filter in `admin/boostbox-custom-post-type.php`
+*   Added 'boostbox_popup_conversion_rate_formatted_percentage' filter in `includes/boostbox-helper-functions.php`
+*   General code cleanup throughout multiple files of the plugin
 
 = 1.4.0 =
 *   Added BoostBox_CPT_Columns class in `admin/class-boostbox-cpt-columns.php`
