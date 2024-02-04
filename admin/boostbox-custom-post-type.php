@@ -91,7 +91,7 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
  * 
  * @return void
  */
-function restrict_boostbox_posts() {
+function boostbox_restrict_posts() {
     // Check if it's a single post.
     if (is_single()) {
         global $post;
@@ -99,12 +99,12 @@ function restrict_boostbox_posts() {
         // Check if the post type is "boostbox_popups".
         if ( $post->post_type === 'boostbox_popups' ) {
             // Redirect to the homepage or a custom URL.
-            wp_redirect( home_url() ); // @TODO make a filter?
+            wp_redirect( apply_filters( 'boostbox_restrict_posts_redirect_url', home_url() ) ); // @TODO make a filter?
             exit();
         }
     }
 }
-add_action( 'template_redirect', 'restrict_boostbox_posts' );
+add_action( 'template_redirect', 'boostbox_restrict_posts' );
 
 /**
  * Add Metrics columns to BoostBox admin screen

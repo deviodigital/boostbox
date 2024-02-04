@@ -84,7 +84,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * @param string  $cpt     - custom post type name
          * @param boolean $replace - (optional) replace or add
          * 
-         * @since 4.3.0
+         * @since 1.4.0
          */
         function __construct( $cpt = '', $replace = false ) {
             $this->name = $cpt;
@@ -106,7 +106,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @param array $defaults 
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return array
          */
         function _columns( $defaults ) {
@@ -144,7 +144,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @param array $columns 
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return array         
          */
         function _columns_remove( $columns ) {
@@ -164,7 +164,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @param array $columns 
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return array
          */
         function _sortable_columns( $columns ) {
@@ -185,7 +185,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * @param string $column_name - column name
          * @param int    $post_id     - post ID
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return void
          */
         function _custom_column( $column_name, $post_id ) {
@@ -203,7 +203,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * @param array  $column      - column args
          * @param string $column_name - column name
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return void
          */
         function do_column( $post_id, $column, $column_name ) {
@@ -258,7 +258,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @param object $query 
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return void
          */
         function _column_orderby( $query ) {
@@ -287,7 +287,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * @param string $key  - column ID.
          * @param array  $args - column arguments
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return void
          */
         function add_column( $key, $args ) {
@@ -319,7 +319,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @param string $key - column key to be removed
          * 
-         * @since  4.3.0
+         * @since  1.4.0
          * @return void
          */
         function remove_column( $key ) {

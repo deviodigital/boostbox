@@ -11,6 +11,11 @@
  * @since      1.0.0
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * Allowed HTML tags
  * 
@@ -88,7 +93,6 @@ function get_first_block_width( $post_id ) {
     if ( ! empty( $post_content ) ) {
         // Parse the post content to get blocks
         $blocks = parse_blocks( $post_content );
-
 
         // Check if there are blocks
         if (!empty($blocks)) {
@@ -199,5 +203,5 @@ function boostbox_popup_conversion_rate( $popup_id ) {
     // Format the percentage with 2 decimal places and add the percentage symbol.
     $formatted_percentage = number_format( $conversion_percentage, 2 ) . '%';
 
-    return $formatted_percentage;
+    return apply_filters( 'boostbox_popup_conversion_rate_formatted_percentage', $formatted_percentage, $conversion_percentage );
 }

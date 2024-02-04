@@ -64,9 +64,14 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
             '' => esc_attr__( '--', 'boostbox' )
         );
 
+        // Loop through the popups.
         foreach ( $popups as $popup ) {
+            // Update the otpions array.
             $options[$popup->ID] = get_the_title( $popup->ID );
         }
+
+        // Filter the options array.
+        $options = apply_filters( 'boostbox_popup_settings_popups_options', $options );
 
         // Section: General.
         $boostbox_obj->add_section(
