@@ -137,9 +137,9 @@ function boostbox_display_settings_metabox_content() {
 
             echo wp_kses( $field, boostbox_allowed_tags() );
 
-        echo '</div>
+        echo wp_kses( '</div>
 
-        <div id="second-panel" class="panel animated slideInRight">';
+        <div id="second-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
 
             $animations = array(
                 ''            => esc_attr__( '--', 'boostbox' ),
@@ -188,9 +188,9 @@ function boostbox_display_settings_metabox_content() {
 
             echo wp_kses( $field, boostbox_allowed_tags() );
 
-        echo '</div>
+        echo wp_kses( '</div>
 
-        <div id="third-panel" class="panel animated slideInRight">';
+        <div id="third-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
 
             $triggers = array(
                 'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
@@ -245,9 +245,9 @@ function boostbox_display_settings_metabox_content() {
 
             echo wp_kses( $field, boostbox_allowed_tags() );
 
-        echo '</div>
+        echo wp_kses( '</div>
 
-        <div id="fourth-panel" class="panel animated slideInRight">';
+        <div id="fourth-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
             $placements = array(
                 'outside' => esc_attr__( 'Outside', 'boostbox' ),
                 'inside'  => esc_attr__( 'Inside', 'boostbox' ),
@@ -293,10 +293,10 @@ function boostbox_display_settings_metabox_content() {
             $field .= '</div>';
 
             echo wp_kses( $field, boostbox_allowed_tags() );
-        echo '</div>
+        echo wp_kses( '</div>
     </div>
 
-</div>';
+</div>', boostbox_allowed_tags() );
 }
 
 /**
