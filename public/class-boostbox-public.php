@@ -96,10 +96,16 @@ class BoostBox_Public {
             $milliseconds = 0;
         }
         // Scroll distance.
+        $scroll_distance = '32px';
         if ( get_post_meta( $popup_id, 'boostbox_scroll_distance', true ) ) {
             $scroll_distance = get_post_meta( $popup_id, 'boostbox_scroll_distance', true );
-        } else {
-            $scroll_distance = '32px';
+        }
+        // Disable anaytics.
+        $disable_analytics = true;
+        if ( ! isset( $settings['boostbox_privacy_disable_analytics'] ) ) {
+            $disable_analytics = false;
+        } elseif ( isset( $settings['boostbox_privacy_disable_analytics'] ) && 'on' !== $settings['boostbox_privacy_disable_analytics'] ) {
+            $disable_analytics = false;
         }
         // Create localize script args.
         $localize_args = array(
@@ -110,7 +116,8 @@ class BoostBox_Public {
             'trigger'              => get_post_meta( $popup_id, 'boostbox_trigger_type', true ),
             'close_icon_placement' => get_post_meta( $popup_id, 'boostbox_close_icon_placement', true ),
             'ajax_url'             => admin_url( 'admin-ajax.php' ),
-            'nonce'                => wp_create_nonce( 'boostbox_nonce' ),        
+            'nonce'                => wp_create_nonce( 'boostbox_nonce' ),  
+            'disable_analytics'    => $disable_analytics     
         );
         // Filter the args.
         $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );

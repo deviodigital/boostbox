@@ -5,6 +5,8 @@ jQuery(document).ready(function ($) {
 	var triggerType = boostbox_settings.trigger;
 	// Milliseconds.
 	var milliseconds = boostbox_settings.milliseconds;
+    // Disable analytics?
+    var disableAnalytics = boostbox_settings.disable_analytics;
     // Window inner height.
     var innerHeight = window.innerHeight;
     // Check to see if the cookie exists already.
@@ -111,49 +113,56 @@ jQuery(document).ready(function ($) {
 
     // Increment popup view count.
     function incrementPopupViewCount() {
-        // AJAX request to increment view count.
-        $.ajax({
-            url: boostbox_settings.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'increment_popup_view_count',
-                popup_id: popupID,
-                nonce: boostbox_settings.nonce,
-            },
-            success: function (response) {
-                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                //console.log('[SUCCESS] Impression tracking complete!');
-                //console.log(response);
-            },
-            error: function (error) {
-                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                //console.log('[ERROR] Impression tracking failed!');
-                //console.log(error);
-            }
-        });
+        // Only do this if analytics is not disabled.
+        if (!disableAnalytics) {
+            console.log('Disable Analytics: ' + disableAnalytics);
+            // AJAX request to increment view count.
+            $.ajax({
+                url: boostbox_settings.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'increment_popup_view_count',
+                    popup_id: popupID,
+                    nonce: boostbox_settings.nonce,
+                },
+                success: function (response) {
+                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                    //console.log('[SUCCESS] Impression tracking complete!');
+                    //console.log(response);
+                },
+                error: function (error) {
+                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                    //console.log('[ERROR] Impression tracking failed!');
+                    //console.log(error);
+                }
+            });
+        }
     }
 
     // Increment popup conversion count.
     function trackConversion() {
-        // AJAX request to track conversion.
-        $.ajax({
-            url: boostbox_settings.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'track_popup_conversion',
-                popup_id: popupID,
-                nonce: boostbox_settings.nonce,
-            },
-            success: function (response) {
-                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                //console.log('[SUCCESS] Conversion tracking complete!');
-                //console.log(response);
-            },
-            error: function (error) {
-                // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                //console.log('[ERROR] Conversion tracking failed!');
-                //console.log(error);
-            }
-        });
+        // Only do this if analytics is not disabled.
+        if (!disableAnalytics) {
+            // AJAX request to track conversion.
+            $.ajax({
+                url: boostbox_settings.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'track_popup_conversion',
+                    popup_id: popupID,
+                    nonce: boostbox_settings.nonce,
+                },
+                success: function (response) {
+                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                    //console.log('[SUCCESS] Conversion tracking complete!');
+                    //console.log(response);
+                },
+                error: function (error) {
+                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
+                    //console.log('[ERROR] Conversion tracking failed!');
+                    //console.log(error);
+                }
+            });
+        }
     }
 });
