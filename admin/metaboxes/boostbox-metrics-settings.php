@@ -25,6 +25,11 @@
  * @since      1.3.0
  */
 function boostbox_metrics_metabox() {
+    // Bail early if analytics is disabled.
+    if ( boostbox_settings_disable_analytics() ) {
+        return;
+    }
+    
     // Add Metabox.
     add_meta_box(
         'boostbox_metrics',
@@ -44,6 +49,11 @@ add_action( 'add_meta_boxes', 'boostbox_metrics_metabox' );
  * @return void
  */
 function boostbox_metrics_metabox_content() {
+    // Bail early if analytics is disabled.
+    if ( boostbox_settings_disable_analytics() ) {
+        return;
+    }
+
     global $post;
 
     // Noncename needed to verify where the data originated.

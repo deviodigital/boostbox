@@ -113,18 +113,8 @@ add_action( 'template_redirect', 'boostbox_restrict_posts' );
  * @return void
  */
 function boostbox_add_metrics_columns_to_admin_screen() {
-    // Get general settings.
-    $settings = get_option( 'boostbox_general' );
-    // Disable anaytics?
-    $disable_analytics = true;
-    if ( ! isset( $settings['boostbox_privacy_disable_analytics'] ) ) {
-        $disable_analytics = false;
-    } elseif ( isset( $settings['boostbox_privacy_disable_analytics'] ) && 'on' !== $settings['boostbox_privacy_disable_analytics'] ) {
-        $disable_analytics = false;
-    }
-
     // Bail early if analytics is disabled.
-    if ( $disable_analytics ) { return; }
+    if ( boostbox_settings_disable_analytics() ) { return; }
 
     // Create an instance.
     $boostbox_columns = new BoostBox_CPT_Columns( 'boostbox_popups' );
