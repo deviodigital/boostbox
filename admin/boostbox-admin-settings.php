@@ -103,6 +103,17 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
                 'placeholder' => '',
             )
         );
+
+        // Field: Privacy - Disable analytics
+        $boostbox_obj->add_field(
+            'boostbox_general',
+            array(
+                'id'   => 'boostbox_privacy_disable_analytics',
+                'type' => 'checkbox',
+                'name' => esc_attr__( 'Disable Tracking', 'boostbox' ),
+                'desc' => esc_attr__( 'Turn off the impression and conversion tracking', 'boostbox' ),
+            )
+        );
     }
     add_action( 'init', 'boostbox_initialize_admin_settings', 100 );
 }
