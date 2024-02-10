@@ -38,11 +38,12 @@ function boostbox_allowed_tags() {
     );
     // form fields - input
     $my_allowed['input'] = array(
-        'class' => array(),
-        'id'    => array(),
-        'name'  => array(),
-        'value' => array(),
-        'type'  => array(),
+        'class'   => array(),
+        'id'      => array(),
+        'name'    => array(),
+        'value'   => array(),
+        'type'    => array(),
+        'checked' => array(),
     );
     // select
     $my_allowed['select'] = array(
