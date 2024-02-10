@@ -206,3 +206,23 @@ function boostbox_popup_conversion_rate( $popup_id ) {
 
     return apply_filters( 'boostbox_popup_conversion_rate_formatted_percentage', $formatted_percentage, $conversion_percentage );
 }
+
+/**
+ * Settings - Disable analytics
+ * 
+ * @since  1.6.0
+ * @return bool
+ */
+function boostbox_settings_disable_analytics() {
+    // Get the general settings.
+    $settings = get_option( 'boostbox_general' );
+    // Disable anaytics.
+    $disable_analytics = true;
+    if ( ! isset( $settings['boostbox_privacy_disable_analytics'] ) ) {
+        $disable_analytics = false;
+    } elseif ( isset( $settings['boostbox_privacy_disable_analytics'] ) && 'on' !== $settings['boostbox_privacy_disable_analytics'] ) {
+        $disable_analytics = false;
+    }
+
+    return $disable_analytics;
+}
