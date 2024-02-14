@@ -80,16 +80,6 @@ class BoostBox_Public {
     public function enqueue_scripts() {
         // Popup ID.
         $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
-        // Cookie days.
-        $settings    = get_option( 'boostbox_general' );
-        $cookie_days = 30;
-        if ( isset( $settings['boostbox_cookie_days'] ) ) {
-            $cookie_days = $settings['boostbox_cookie_days'];
-        }
-        // Override global cookie days with popup setting.
-        if ( get_post_meta( $popup_id, 'boostbox_cookie_days', true ) ) {
-            $cookie_days = get_post_meta( $popup_id, 'boostbox_cookie_days', true );
-        }
         // Milliseconds.
         $milliseconds = get_post_meta( $popup_id, 'boostbox_display_speed', true );
         if ( ! $milliseconds ) {
@@ -104,7 +94,7 @@ class BoostBox_Public {
         $localize_args = array(
             'popup_id'             => $popup_id,
             'milliseconds'         => $milliseconds,
-            'cookie_days'          => $cookie_days,
+            'cookie_days'          => boostbox_settings_cookie_days( $popup_id ),
             'scroll_distance'      => $scroll_distance,
             'trigger'              => get_post_meta( $popup_id, 'boostbox_trigger_type', true ),
             'close_icon_placement' => get_post_meta( $popup_id, 'boostbox_close_icon_placement', true ),
