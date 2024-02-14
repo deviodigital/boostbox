@@ -250,5 +250,5 @@ function boostbox_settings_cookie_days( $popup_id = null ) {
         $cookie_days = get_post_meta( $popup_id, 'boostbox_cookie_days', true );
     }
 
-    return $cookie_days;
+    return apply_filters( 'boostbox_settings_cookie_days', $cookie_days, $popup_id );
 }
