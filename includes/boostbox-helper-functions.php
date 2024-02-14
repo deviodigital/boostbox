@@ -224,7 +224,7 @@ function boostbox_settings_disable_analytics() {
         $disable_analytics = false;
     }
 
-    return $disable_analytics;
+    return apply_filters( 'boostbox_settings_disable_analytics', $disable_analytics );
 }
 
 /**
