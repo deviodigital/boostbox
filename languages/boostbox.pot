@@ -2,15 +2,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BoostBox\n"
-"POT-Creation-Date: 2022-08-01 16:36-0400\n"
-"PO-Revision-Date: 2022-08-01 16:36-0400\n"
+"POT-Creation-Date: 2024-02-14 17:59-0500\n"
+"PO-Revision-Date: 2024-02-14 17:59-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: boostbox.php\n"
@@ -21,20 +21,37 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: admin/boostbox-admin-settings.php:64
+#: admin/boostbox-admin-settings.php:64 admin/js/boostbox-popups-block.js:67
+#: admin/metaboxes/boostbox-display-settings.php:145
 msgid "--"
 msgstr ""
 
-#: admin/boostbox-admin-settings.php:75
+#: admin/boostbox-admin-settings.php:80
 msgid "General Settings"
 msgstr ""
 
-#: admin/boostbox-admin-settings.php:85
+#: admin/boostbox-admin-settings.php:90
 msgid "Global popup"
 msgstr ""
 
-#: admin/boostbox-admin-settings.php:86
+#: admin/boostbox-admin-settings.php:91
 msgid "Select the popup used whenever the global option is set on posts/pages"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:101
+msgid "Cookie days"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:102
+msgid "Set the days a cookie is stored after the user closes a popup"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:113
+msgid "Disable Tracking"
+msgstr ""
+
+#: admin/boostbox-admin-settings.php:114
+msgid "Turn off the impression and conversion tracking"
 msgstr ""
 
 #: admin/boostbox-custom-post-type.php:24
@@ -146,12 +163,27 @@ msgstr ""
 msgid "Filter popups list"
 msgstr ""
 
-#: admin/boostbox-custom-post-type.php:59
+#: admin/boostbox-custom-post-type.php:59 admin/js/boostbox-popups-block.js:6
+#: admin/js/boostbox-popups-block.js:77
 msgid "BoostBox Popups"
 msgstr ""
 
 #: admin/boostbox-custom-post-type.php:60
-msgid "Build custom popups with the core editor"
+msgid "Build popups with the core editor"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:125
+#: admin/metaboxes/boostbox-metrics-settings.php:75
+msgid "Impressions"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:135
+#: admin/metaboxes/boostbox-metrics-settings.php:76
+msgid "Conversions"
+msgstr ""
+
+#: admin/boostbox-custom-post-type.php:145
+msgid "Conversion rate"
 msgstr ""
 
 #: admin/class-boostbox-admin-settings.php:613
@@ -163,7 +195,7 @@ msgid "Choose Image"
 msgstr ""
 
 #: admin/class-boostbox-admin-settings.php:727
-#: admin/metaboxes/boostbox-popup-settings.php:34
+#: admin/metaboxes/boostbox-popup-settings.php:39
 msgid "BoostBox Settings"
 msgstr ""
 
@@ -189,16 +221,212 @@ msgstr ""
 msgid "Twitter"
 msgstr ""
 
-#: admin/metaboxes/boostbox-popup-settings.php:85
+#: admin/class-boostbox-cpt-columns.php:221
+msgid "N/A"
+msgstr ""
+
+#: admin/class-boostbox-cpt-columns.php:295
+msgid "Column label"
+msgstr ""
+
+#: admin/js/boostbox-popups-block.js:36
+msgid "Selected post is the current post. Do nothing."
+msgstr ""
+
+#: admin/js/boostbox-popups-block.js:60
+msgid "Error fetching post content:"
+msgstr ""
+
+#: admin/js/boostbox-popups-block.js:79
+msgid "Select a BoostBox Popup"
+msgstr ""
+
+#: admin/js/boostbox-popups-block.js:90
+msgid "Insert"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:31
+msgid "Display Settings"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:55
+#: admin/metaboxes/boostbox-display-settings.php:62
+msgid "General"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:56
+#: admin/metaboxes/boostbox-display-settings.php:65
+msgid "Animation"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:57
+#: admin/metaboxes/boostbox-display-settings.php:68
+msgid "Trigger"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:58
+#: admin/metaboxes/boostbox-display-settings.php:71
+msgid "Close Button"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:78
+msgid "Top Left"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:79
+msgid "Top Center"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:80
+msgid "Top Right"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:81
+msgid "Center Left"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:82
+msgid "Center Center"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:83
+msgid "Center Right"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:84
+msgid "Bottom Left"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:85
+msgid "Bottom Center"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:86
+msgid "Bottom Right"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:100
+msgid "Display location"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:123
+msgid "Max width"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:134
+msgid "Cookie days (overrides global setting)"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:146
+msgid "Fade in"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:147
+msgid "Slide up"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:148
+msgid "Slide down"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:149
+msgid "Slide left"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:150
+msgid "Slide right"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:151
+msgid "Pop swirl"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:152
+msgid "Anvil"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:162
+msgid "Animation type"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:185
+msgid "Animation speed (milliseconds)"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:196
+msgid "Auto open"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:197
+msgid "On Scroll"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:198
+msgid "Time"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:208
+msgid "Trigger type"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:231
+msgid "Display speed (milliseconds)"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:242
+msgid "Scroll distance"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:252
+msgid "Outside"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:253
+msgid "Inside"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:254
+msgid "Hidden"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:264
+msgid "Close icon placement"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:291
+msgid "Close icon color"
+msgstr ""
+
+#: admin/metaboxes/boostbox-metrics-settings.php:36
+msgid "Metrics"
+msgstr ""
+
+#: admin/metaboxes/boostbox-metrics-settings.php:77
+msgid "Conversion Rate"
+msgstr ""
+
+#: admin/metaboxes/boostbox-metrics-settings.php:80
+msgid "Reset Metrics"
+msgstr ""
+
+#: admin/metaboxes/boostbox-popup-settings.php:90
 msgid "Select popup to display"
 msgstr ""
 
-#: admin/metaboxes/boostbox-popup-settings.php:87
+#: admin/metaboxes/boostbox-popup-settings.php:92
 msgid "Disable Popup"
 msgstr ""
 
-#: admin/metaboxes/boostbox-popup-settings.php:88
+#: admin/metaboxes/boostbox-popup-settings.php:93
 msgid "Global Popup"
+msgstr ""
+
+#: public/boostbox-popups.php:72
+msgid " "
+msgstr ""
+
+#: public/boostbox-popups.php:102
+msgid "inside"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -207,8 +435,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Build popups for lead generation, content promotion and more using the "
-"core editor."
+"Build popups for lead generation, content promotion and more using the core "
+"editor."
 msgstr ""
 
 #. Author URI of the plugin/theme
