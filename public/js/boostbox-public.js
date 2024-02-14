@@ -115,7 +115,6 @@ jQuery(document).ready(function ($) {
     function incrementPopupViewCount() {
         // Only do this if analytics is not disabled.
         if (!disableAnalytics) {
-            console.log('Disable Analytics: ' + disableAnalytics);
             // AJAX request to increment view count.
             $.ajax({
                 url: boostbox_settings.ajax_url,
