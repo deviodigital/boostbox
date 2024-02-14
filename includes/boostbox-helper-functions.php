@@ -226,3 +226,29 @@ function boostbox_settings_disable_analytics() {
 
     return $disable_analytics;
 }
+
+/**
+ * Settings - Cookie days
+ * 
+ * @param int $popup_id - the popup ID to check for overrides from
+ * 
+ * @since  1.6.0
+ * @return int
+ */
+function boostbox_settings_cookie_days( $popup_id = null ) {
+    // Cookie days.
+    $settings    = get_option( 'boostbox_general' );
+    $cookie_days = 30;
+
+    // Check if the setting is filled out.
+    if ( isset( $settings['boostbox_cookie_days'] ) ) {
+        $cookie_days = $settings['boostbox_cookie_days'];
+    }
+
+    // Override global cookie days with popup setting.
+    if ( isset( $popup_id ) && get_post_meta( $popup_id, 'boostbox_cookie_days', true ) ) {
+        $cookie_days = get_post_meta( $popup_id, 'boostbox_cookie_days', true );
+    }
+
+    return $cookie_days;
+}
