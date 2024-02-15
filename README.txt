@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.3
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,20 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 5. BoostBox metrics displayed on the Popups screen
 
 == Changelog ==
+
+= 1.6.0 =
+*   Added 'boostbox_settings_disable_analytics' helper function in `includes/boostbox-helper-functions.php`
+*   Added 'boostbox_settings_disable_analytics' filter in `includes/boostbox-helper-functions.php`
+*   Added 'boostbox_settings_cookie_days' helper function in `includes/boostbox-helper-functions.php`
+*   Added 'boostbox_settings_cookie_days' filter in `includes/boostbox-helper-functions.php`
+*   Added 'Disable analytics' setting in `admin/boostbox-admin-settings.php`
+*   Updated impressions/conversions to turn off if analytics is disabled in multiple files throughout the plugin
+*   Updated boostbox_settings_disable_analytics() checks in multiple files throughout the plugin
+*   Updated metabox HTML elements to use echo with `wp_kses` in `admin/metaboxes/boostbox-display-settings.php`
+*   Updated input allowed tags to include checked attribute in `includes/boostbox-helper-functions.php`
+*   Updated localize script to use new `boostbox_settings_cookie_days` helper function in `public/class-boostbox-public.php`
+*   Updated text strings for localization in `languages/boostbox.pot`
+*   General code cleanup throughout multiple files throughout the plugin
 
 = 1.5.0 =
 *   Added 'BoostBox Popups' block in `admin/class-boostbox-admin.php`
