@@ -11,6 +11,11 @@
  * @since      1.0.0
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    wp_die();
+}
+
 /**
  * The public-facing functionality of the plugin.
  *

@@ -12,6 +12,11 @@
  * @since      1.1.0
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    wp_die();
+}
+
 /**
  * Display Settings metabox
  *

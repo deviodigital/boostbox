@@ -9,7 +9,12 @@
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
  * @since      1.0.0
-  */
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    wp_die();
+}
 
 /**
  * The admin-specific functionality of the plugin.
