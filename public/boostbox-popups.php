@@ -31,7 +31,7 @@ function boostbox_popup_html() {
     // Get the popup ID.
     $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
     // Check for global popup.
-    if ( '' == $popup_id ) {
+    if ( '' == $popup_id && '' !== $settings ) {
         $popup_id = $settings['boostbox_global_popup'];
     }
     // Bail early?
