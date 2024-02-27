@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.4.3
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 5. BoostBox metrics displayed on the Popups screen
 
 == Changelog ==
+
+= 1.6.1 =
+*   Bugfix for fatal error when plugin is first installed and settings return empty in `public/boostbox-popups.php`
 
 = 1.6.0 =
 *   Added 'boostbox_settings_disable_analytics' helper function in `includes/boostbox-helper-functions.php`
