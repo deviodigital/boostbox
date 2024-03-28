@@ -40,6 +40,13 @@
                     "boostbox_cookie_days": 30
                 }
             }
+        },
+        {
+            "step": "importFile",
+            "file": {
+                "resource": "url",
+                "url": "https://boostbox.pro/boostbox-blueprint-playground-demo-content.xml"
+            }
         }
     ]
 }
