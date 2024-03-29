@@ -28,17 +28,6 @@
             "themeZipFile": {
                 "resource": "wordpress.org\/themes",
                 "slug": "olliewp"
-            },
-            "options": {
-                "activate": true
-            }
-        },
-        {
-            "step": "setSiteOptions",
-            "options": {
-                "boostbox_general": {
-                    "boostbox_cookie_days": 30
-                }
             }
         },
         {
