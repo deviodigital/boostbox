@@ -34,7 +34,7 @@
             "step": "importFile",
             "file": {
                 "resource": "url",
-                "url": "https://boostbox.pro/boostbox-blueprint-playground-demo-content.xml"
+                "url": "https://raw.githubusercontent.com/deviodigital/boostbox/main/assets/blueprints/boostbox-blueprint-playground-demo-content.xml"
             }
         }
     ]
