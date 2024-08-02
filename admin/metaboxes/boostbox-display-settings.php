@@ -79,6 +79,7 @@ function boostbox_display_settings_metabox_content() {
 
     <div class="panels">
         <div id="first-panel" class="panel active animated slideInRight">';
+            // Create an array of locations.
             $locations = array(
                 'top-left'      => esc_attr__( 'Top Left', 'boostbox' ),
                 'top-center'    => esc_attr__( 'Top Center', 'boostbox' ),
@@ -91,6 +92,7 @@ function boostbox_display_settings_metabox_content() {
                 'bottom-right'  => esc_attr__( 'Bottom Right', 'boostbox' ),
             );
 
+            // Filter the locations.
             $locations = apply_filters( 'boostbox_display_location_locations', $locations );
 
             // Display location.
@@ -107,10 +109,9 @@ function boostbox_display_settings_metabox_content() {
             // Loop through locations.
             if ( ! empty( $locations ) ) {
                 foreach ( $locations as $location => $value ) {
+                    $selected = '';
                     if ( $location == $display_location ) {
                         $selected = 'selected="selected"';
-                    } else {
-                        $selected = '';
                     }
                     $field .= '<option value="' . esc_attr( $location ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
                 }
@@ -145,8 +146,8 @@ function boostbox_display_settings_metabox_content() {
         echo wp_kses( '</div>
 
         <div id="second-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
-
-            $animations = array(
+            // Create an array of animations.
+            $animations = [
                 ''            => esc_attr__( '--', 'boostbox' ),
                 'fade-in'     => esc_attr__( 'Fade in', 'boostbox' ),
                 'slide-up'    => esc_attr__( 'Slide up', 'boostbox' ),
@@ -155,8 +156,9 @@ function boostbox_display_settings_metabox_content() {
                 'slide-right' => esc_attr__( 'Slide right', 'boostbox' ),
                 'pop-swirl'   => esc_attr__( 'Pop swirl', 'boostbox' ),
                 'anvil'       => esc_attr__( 'Anvil', 'boostbox' ),
-            );
+            ];
 
+            // Filter the animations.
             $animations = apply_filters( 'boostbox_animation_type_animations', $animations );
 
             // Popup animation.
@@ -169,10 +171,9 @@ function boostbox_display_settings_metabox_content() {
             // Loop through animations.
             if ( ! empty( $animations ) ) {
                 foreach ( $animations as $animation => $value ) {
+                    $selected = '';
                     if ( $animation == $popup_animation ) {
                         $selected = 'selected="selected"';
-                    } else {
-                        $selected = '';
                     }
                     $field .= '<option value="' . esc_attr( $animation ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
                 }
@@ -196,13 +197,14 @@ function boostbox_display_settings_metabox_content() {
         echo wp_kses( '</div>
 
         <div id="third-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
-
-            $triggers = array(
+            // Create an array of triggers.
+            $triggers = [
                 'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
                 'on-scroll'   => esc_attr__( 'On Scroll', 'boostbox' ),
                 'time'        => esc_attr__( 'Time', 'boostbox' ),
-            );
+            ];
 
+            // Filter the triggers.
             $triggers = apply_filters( 'boostbox_trigger_type_triggers', $triggers );
 
             // Popup trigger.
@@ -215,10 +217,9 @@ function boostbox_display_settings_metabox_content() {
             // Loop through triggers.
             if ( ! empty( $triggers ) ) {
                 foreach ( $triggers as $trigger => $value ) {
+                    $selected = '';
                     if ( $trigger == $trigger_type ) {
                         $selected = 'selected="selected"';
-                    } else {
-                        $selected = '';
                     }
                     $field .= '<option value="' . esc_attr( $trigger ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
                 }
@@ -253,12 +254,14 @@ function boostbox_display_settings_metabox_content() {
         echo wp_kses( '</div>
 
         <div id="fourth-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
-            $placements = array(
+            // Create an array of placements.
+            $placements = [
                 'outside' => esc_attr__( 'Outside', 'boostbox' ),
                 'inside'  => esc_attr__( 'Inside', 'boostbox' ),
                 'hidden'  => esc_attr__( 'Hidden', 'boostbox' )
-            );
+            ];
         
+            // Filter the placement.
             $close_icon_placement = apply_filters( 'boostbox_close_icon_placements', $placements );
 
             // Icon placement.
@@ -271,10 +274,9 @@ function boostbox_display_settings_metabox_content() {
             // Loop through animations.
             if ( ! empty( $close_icon_placement ) ) {
                 foreach ( $close_icon_placement as $placement => $value ) {
+                    $selected = '';
                     if ( $placement == $icon_placement ) {
                         $selected = 'selected="selected"';
-                    } else {
-                        $selected = '';
                     }
                     $field .= '<option value="' . esc_attr( $placement ) . '" '. $selected .'>' . esc_html( $value ) . '</option>';
                 }

@@ -33,9 +33,9 @@ function boostbox_popup_settings_metabox() {
     // Get all registered post types.
     $post_types = get_post_types();
     // Remove unnecessary post types.
-    $post_types = array_diff( $post_types, array( 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache', 'user_request', 'wp_block' ) );
+    $post_types = array_diff( $post_types, [ 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache', 'user_request', 'wp_block' ] );
     // Filter the post types.
-    $post_types = apply_filters( 'boostbox_popup_settings_metabox_post_types', array( 'products', 'post', 'page' ) );
+    $post_types = apply_filters( 'boostbox_popup_settings_metabox_post_types', [ 'products', 'post', 'page' ] );
     // Loop through the post types.
     foreach ( $post_types as $post_type ) {
         // Add Metabox.
@@ -64,7 +64,7 @@ function boostbox_popup_settings_metabox_content() {
     wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
     // Args for popups.
-    $args = array(
+    $args = [
         'hierarchical' => 1,
         'exclude'      => '',
         'include'      => '',
@@ -80,7 +80,7 @@ function boostbox_popup_settings_metabox_content() {
         'post_status'  => 'publish',
         'orderby'      => 'title',
         'order'        => 'ASC'
-    );
+    ];
 
     $args = apply_filters( 'boostbox_popup_settings_args', $args );
 

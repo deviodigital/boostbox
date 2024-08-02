@@ -73,14 +73,14 @@ class BoostBox_Admin {
         $current_screen = get_current_screen();
         // Check if you're on the edit screen for BoostBox popups.
         if ( is_admin() && $current_screen && (
-            in_array( $current_screen->post_type, array( 'boostbox_popups', 'post', 'page' ) ) ||
+            in_array( $current_screen->post_type, [ 'boostbox_popups', 'post', 'page' ] ) ||
             ( 'post' === $current_screen->base && 'post-new.php' === $current_screen->id )
         ) ) {
             // General: Select2 CSS.
-            wp_enqueue_style( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'css/select2.min.css', array(), $this->version, 'all' );
+            wp_enqueue_style( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'css/select2.min.css', [], $this->version, 'all' );
         }
         // General: Admin CSS.
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-admin.min.css', array(), $this->version, 'all' );
+        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-admin.min.css', [], $this->version, 'all' );
     }
 
     /**
@@ -94,7 +94,7 @@ class BoostBox_Admin {
         $current_screen = get_current_screen();
 
         // Args for popups.
-        $args = array(
+        $args = [
             'hierarchical' => 1,
             'exclude'      => '',
             'include'      => '',
@@ -110,16 +110,17 @@ class BoostBox_Admin {
             'post_status'  => 'publish',
             'orderby'      => 'title',
             'order'        => 'ASC'
-        );
+        ];
 
+        // Filter the args.
         $args = apply_filters( 'boostbox_popup_settings_args', $args );
 
         // Get all popups.
         $popups = get_posts( $args );
 
         // Generate empty arrays.
-        $popup_conversions = array();
-        $popup_impressions = array();
+        $popup_conversions = [];
+        $popup_impressions = [];
         // Initialize total counters.
         $total_impressions = 0;
         $total_conversions = 0;
@@ -135,28 +136,28 @@ class BoostBox_Admin {
             $total_conversions += (int)$popup_conversions[$popup->ID];
         }
         // General: Charts JS.
-        wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/charts.js', array( 'jquery' ), $this->version, false );
-        wp_localize_script( $this->plugin_name . '-charts', 'chart_vars', array(
+        wp_enqueue_script( $this->plugin_name . '-charts', plugin_dir_url( __FILE__ ) . 'js/charts.js', [ 'jquery' ], $this->version, false );
+        wp_localize_script( $this->plugin_name . '-charts', 'chart_vars', [
             'total_impressions' => $total_impressions,
             'total_conversions' => $total_conversions,
             'popup_impressions' => $popup_impressions,
             'popup_conversions' => $popup_conversions
-        ) );
+        ] );
         // Check if you're on the edit screen for the "boostbox_popups" Custom Post Type
         if ( is_admin() && $current_screen && (
-            in_array( $current_screen->post_type, array( 'boostbox_popups', 'post', 'page' ) ) ||
+            in_array( $current_screen->post_type, [ 'boostbox_popups', 'post', 'page' ] ) ||
             ( 'post' === $current_screen->base && 'post-new.php' === $current_screen->id )
         ) ) {
             // General: Select2 JS.
-            wp_enqueue_script( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'js/select2.min.js', array( 'jquery' ), $this->version, false );
+            wp_enqueue_script( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'js/select2.min.js', [ 'jquery' ], $this->version, false );
         }
         // General: Admin JS.
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', array( 'jquery', 'wp-hooks', 'wp-blocks', 'wp-color-picker', 'boostbox-select2' ), $this->version, false );
-        wp_localize_script( $this->plugin_name, 'script_vars', array(
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', [ 'jquery', 'wp-hooks', 'wp-blocks', 'wp-color-picker', 'boostbox-select2' ], $this->version, false );
+        wp_localize_script( $this->plugin_name, 'script_vars', [
             'stylesheet_url'      => get_stylesheet_directory_uri(),
             'popup_id'            => json_encode( get_the_ID() ),
             'metrics_reset_nonce' => wp_create_nonce( 'boostbox_metrics_reset_nonce' ),
-        ) );
+        ] );
     }
 
 }
@@ -175,7 +176,7 @@ function boostbox_enqueue_boostbox_popups_block() {
     wp_enqueue_script(
         'boostbox-popups-block',
         plugin_dir_url( __FILE__ ) . '/js/boostbox-popups-block.js',
-        array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-data' ),
+        [ 'wp-blocks', 'wp-components', 'wp-editor', 'wp-data' ],
         BOOSTBOX_VERSION
     );
 }
@@ -184,8 +185,8 @@ add_action( 'enqueue_block_editor_assets', 'boostbox_enqueue_boostbox_popups_blo
 /**
  * Run on save post
  * 
- * @param int $post_id - the post ID.
- * @param object $post - the post data.
+ * @param int    $post_id - the post ID.
+ * @param object $post    - the post data.
  */
 function save_boostbox_popups_block( $post_id, $post ) {
     if ( $post->post_type === 'post' ) {
