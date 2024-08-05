@@ -40,7 +40,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @var array
          */
-        public $columns = array();
+        public $columns = [];
 
         /**
          * $remove_columns
@@ -49,7 +49,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @var array
          */
-        public $remove_columns = array();
+        public $remove_columns = [];
 
         /**
          * $sortable_columns
@@ -58,7 +58,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * 
          * @var array
          */
-        public $sortable_columns = array();
+        public $sortable_columns = [];
 
         /**
          * $name 
@@ -90,15 +90,15 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
             $this->name = $cpt;
             $this->replace  = $replace;
             // add columns.
-            add_filter( "manage_{$cpt}_posts_columns", array( $this,'_columns' ), 50 );
+            add_filter( "manage_{$cpt}_posts_columns", [ $this,'_columns' ], 50 );
             // remove columns.
-            add_filter( "manage_{$cpt}_posts_columns", array( $this,'_columns_remove' ), 60 );
+            add_filter( "manage_{$cpt}_posts_columns", [ $this,'_columns_remove' ], 60 );
             // display columns.
-            add_action( "manage_{$cpt}_posts_custom_column", array( $this,'_custom_column' ), 50, 2 );
+            add_action( "manage_{$cpt}_posts_custom_column", [ $this,'_custom_column' ], 50, 2 );
             // sortable columns.
-            add_filter( "manage_edit-{$cpt}_sortable_columns", array( $this, '_sortable_columns' ), 50 );
+            add_filter( "manage_edit-{$cpt}_sortable_columns", [ $this, '_sortable_columns' ], 50 );
             // sort order.
-            add_filter( 'pre_get_posts', array( $this, '_column_orderby' ), 50 );
+            add_filter( 'pre_get_posts', [ $this, '_column_orderby' ], 50 );
         }
  
         /**
@@ -112,7 +112,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
         function _columns( $defaults ) {
             global $typenow;
             if ( $this->name == $typenow ) {
-                $tmp = array();
+                $tmp = [];
                 if ( $this->replace ) {
                     foreach ( $this->columns as $key => $args ) {
                         $tmp[ $key ] = $args[ 'label' ];
@@ -129,7 +129,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
                         } else {
                             $defaults = array_merge( $defaults, $tmp );
                         }
-                        $tmp = array();
+                        $tmp = [];
                     }
                 }
             }
@@ -207,7 +207,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * @return void
          */
         function do_column( $post_id, $column, $column_name ) {
-            if ( in_array( $column['type'], array( 'text', 'thumb', 'post_meta', 'custom_tax', 'custom_html' ) ) ) {
+            if ( in_array( $column['type'], [ 'text', 'thumb', 'post_meta', 'custom_tax', 'custom_html' ] ) ) {
                 echo $column['prefix'];
             }
             switch ( $column['type'] ) {
@@ -246,7 +246,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
                 break;
             }
             // Display column.
-            if ( in_array( $column['type'], array( 'text', 'thumb', 'post_meta', 'custom_tax', 'custom_html' ) ) ) {
+            if ( in_array( $column['type'], [ 'text', 'thumb', 'post_meta', 'custom_tax', 'custom_html' ] ) ) {
                 echo $column['suffix'];
             }
         }
@@ -291,9 +291,9 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
          * @return void
          */
         function add_column( $key, $args ) {
-            $def = array(
+            $def = [
                 'label'    => esc_html__( 'Column label', 'boostbox' ), 
-                'size'     => array( '80', '80' ),
+                'size'     => [ '80', '80' ],
                 'taxonomy' => '',
                 'meta_key' => '',
                 'sortable' => false,
@@ -303,7 +303,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
                 'prefix'   => '',
                 'suffix'   => '',
                 'std'      => '',
-            );
+            ];
 
             $this->columns[$key] = array_merge( $def, $args );
  

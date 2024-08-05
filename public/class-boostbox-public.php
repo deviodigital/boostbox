@@ -73,7 +73,7 @@ class BoostBox_Public {
      */
     public function enqueue_styles() {
         // Publc CSS.
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', array(), $this->version, 'all' );
+        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', [], $this->version, 'all' );
     }
 
     /**
@@ -96,7 +96,7 @@ class BoostBox_Public {
             $scroll_distance = get_post_meta( $popup_id, 'boostbox_scroll_distance', true );
         }
         // Create localize script args.
-        $localize_args = array(
+        $localize_args = [
             'popup_id'             => $popup_id,
             'milliseconds'         => $milliseconds,
             'cookie_days'          => boostbox_settings_cookie_days( $popup_id ),
@@ -106,12 +106,12 @@ class BoostBox_Public {
             'ajax_url'             => admin_url( 'admin-ajax.php' ),
             'nonce'                => wp_create_nonce( 'boostbox_nonce' ),  
             'disable_analytics'    => boostbox_settings_disable_analytics()    
-        );
+        ];
         // Filter the args.
         $localize_args = apply_filters( 'boostbox_localize_scripts_args', $localize_args );
         // Public JS.
-        wp_enqueue_script( $this->plugin_name . '-js-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.min.js', array( 'jquery' ), $this->version, false );
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-public.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name . '-js-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.min.js', [ 'jquery' ], $this->version, false );
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-public.js', [ 'jquery' ], $this->version, false );
         wp_localize_script( $this->plugin_name, 'boostbox_settings', $localize_args );
     }
 

@@ -20,7 +20,7 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
     // Register Custom Post Type.
     function boostbox_popups() {
 
-        $labels = array(
+        $labels = [
             'name'                  => _x( 'Popups', 'Post Type General Name', 'boostbox' ),
             'singular_name'         => _x( 'Popup', 'Post Type Singular Name', 'boostbox' ),
             'menu_name'             => esc_html__( 'BoostBox', 'boostbox' ),
@@ -48,19 +48,19 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
             'items_list'            => esc_html__( 'Popups list', 'boostbox' ),
             'items_list_navigation' => esc_html__( 'Popups list navigation', 'boostbox' ),
             'filter_items_list'     => esc_html__( 'Filter popups list', 'boostbox' ),
-        );
-        $rewrite = array(
+        ];
+        $rewrite = [
             'slug'                  => 'boostbox',
             'with_front'            => true,
             'pages'                 => true,
             'feeds'                 => true,
-        );
-        $args = array(
+        ];
+        $args = [
             'label'                 => esc_html__( 'BoostBox Popups', 'boostbox' ),
             'description'           => esc_html__( 'Build popups with the core editor', 'boostbox' ),
             'labels'                => $labels,
-            'supports'              => array( 'title', 'editor', 'thumbnail' ),
-            'taxonomies'            => array(),
+            'supports'              => [ 'title', 'editor', 'thumbnail' ],
+            'taxonomies'            => [],
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -78,7 +78,7 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
             'capability_type'       => 'post',
             'show_in_rest'          => true,
             'rest_base'             => 'popups',
-        );
+        ];
         register_post_type( 'boostbox_popups', $args );
 
     }
@@ -121,32 +121,32 @@ function boostbox_add_metrics_columns_to_admin_screen() {
 
     // Add impressions column.
     $boostbox_columns->add_column( 'impressions',
-        array(
+        [
             'label' => esc_html__( 'Impressions', 'boostbox' ),
             'type'  => 'custom_html',
             'order' => '2',
             'html'  => '' // pass empty to utilize filter below
-        )
+        ]
     );
 
     // Add conversions column.
     $boostbox_columns->add_column( 'conversions',
-        array(
+        [
             'label' => esc_html__( 'Conversions', 'boostbox' ),
             'type'  => 'custom_html',
             'order' => '3',
             'html'  => '' // pass empty to utilize filter below
-        )
+        ]
     );
 
     // Add conversion rate column.
     $boostbox_columns->add_column( 'conversion_rate',
-        array(
+        [
             'label' => esc_html__( 'Conversion rate', 'boostbox' ),
             'type'  => 'custom_html',
             'order' => '4',
             'html'  => '' // pass empty to utilize filter below
-        )
+        ]
     );
 }
 add_action( 'admin_init', 'boostbox_add_metrics_columns_to_admin_screen' );

@@ -38,7 +38,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          * @var   array
          * @since 1.0.0
          */
-        private $_sections_array = array();
+        private $_sections_array = [];
 
         /**
          * Fields array.
@@ -46,7 +46,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          * @var   array
          * @since 1.0.0
          */
-        private $_fields_array = array();
+        private $_fields_array = [];
 
         /**
          * Constructor.
@@ -55,13 +55,13 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function __construct() {
             // Enqueue the admin scripts.
-            add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+            add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 
             // Hook it up.
-            add_action( 'admin_init', array( $this, 'admin_init' ) );
+            add_action( 'admin_init', [ $this, 'admin_init' ] );
 
             // Menu.
-            add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+            add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 
         }
 
@@ -78,7 +78,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             wp_enqueue_script(
                 'iris',
                 admin_url( 'js/iris.min.js' ),
-                array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
+                [ 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ],
                 false,
                 1
             );
@@ -96,7 +96,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function set_sections( $sections ) {
             // Bail if not array.
-            if ( ! is_array( $sections ) ) {
+            if ( ! is_[ $sections ] ) {
                 return false;
             }
 
@@ -115,7 +115,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function add_section( $section ) {
             // Bail if not array.
-            if ( ! is_array( $section ) ) {
+            if ( ! is_[ $section ] ) {
                 return false;
             }
 
@@ -133,7 +133,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function set_fields( $fields ) {
             // Bail if not array.
-            if ( ! is_array( $fields ) ) {
+            if ( ! is_[ $fields ] ) {
                 return false;
             }
 
@@ -152,12 +152,12 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function add_field( $section, $field_array ) {
             // Set the defaults
-            $defaults = array(
+            $defaults = [
                 'id'   => '',
                 'name' => '',
                 'desc' => '',
                 'type' => 'text',
-            );
+            ];
 
             // Combine the defaults with user's arguements.
             $arg = wp_parse_args( $field_array, $defaults );
@@ -287,7 +287,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                     // Sanitize Callback.
                     $sanitize_callback = isset( $field['sanitize_callback'] ) ? $field['sanitize_callback'] : '';
 
-                    $args = array(
+                    $args = [
                         'id'                => $the_id,
                         'type'              => $type,
                         'name'              => $name,
@@ -299,7 +299,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                         'std'               => $default,
                         'placeholder'       => $placeholder,
                         'sanitize_callback' => $sanitize_callback,
-                    );
+                    ];
 
                     /**
                      * Add a new field to a section of a settings page.
@@ -309,7 +309,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                      * @param callable $callback
                      * @param string   $page
                      * @param string   $section = 'default'
-                     * @param array    $args = array()
+                     * @param array    $args = []
                      * @since 1.0.0
                      */
 
@@ -319,7 +319,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                     add_settings_field(
                         $field_id,
                         $name,
-                        array( $this, 'callback_' . $type ),
+                        [ $this, 'callback_' . $type ],
                         $section,
                         $section,
                         $args
@@ -337,7 +337,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                  * @param callable  $sanitize_callback = ''
                  * @since 1.0.0
                  */
-                register_setting( $section['id'], $section['id'], array( $this, 'sanitize_fields' ) );
+                register_setting( $section['id'], $section['id'], [ $this, 'sanitize_fields' ] );
             } // foreach ended.
 
         } // admin_init() ended.
@@ -581,13 +581,13 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             echo wp_kses_post( '<div style="max-width: ' . esc_attr( $size ) . ';">' );
 
-            $editor_settings = array(
+            $editor_settings = [
                 'teeny'         => true,
                 'textarea_name' => $args['section'] . '[' . $args['id'] . ']',
                 'textarea_rows' => 10,
-            );
+            ];
 
-            if ( isset( $args['options'] ) && is_array( $args['options'] ) ) {
+            if ( isset( $args['options'] ) && is_[ $args['options'] ] ) {
                 $editor_settings = array_merge( $editor_settings, $args['options'] );
             }
 
@@ -728,7 +728,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                 esc_attr__( 'Settings', 'boostbox' ),
                 'manage_options',
                 'settings',
-                array( $this, 'plugin_page' )
+                [ $this, 'plugin_page' ]
             );
         }
 

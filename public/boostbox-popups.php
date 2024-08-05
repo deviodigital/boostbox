@@ -72,13 +72,13 @@ function boostbox_popup_html() {
     <div class="<?php esc_attr_e( $popup_content_classes ); ?> <?php esc_html_e( $popup_position . ' ' . $popup_animation ); ?>"<?php echo wp_kses_post( $max_width ); ?>>
         <?php
         // Query args.
-        $args = array(
+        $args = [
             'post_type'           => 'boostbox_popups',
             'post_status'         => 'publish',
             'p'                   => $popup_id,
             'no_found_rows'       => true,
             'ignore_sticky_posts' => true
-        );
+        ];
 
         // Filter the args.
         $args = apply_filters( 'boostbox_popup_html_wp_query_args', $args );

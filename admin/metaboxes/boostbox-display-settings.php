@@ -80,7 +80,7 @@ function boostbox_display_settings_metabox_content() {
     <div class="panels">
         <div id="first-panel" class="panel active animated slideInRight">';
             // Create an array of locations.
-            $locations = array(
+            $locations = [
                 'top-left'      => esc_attr__( 'Top Left', 'boostbox' ),
                 'top-center'    => esc_attr__( 'Top Center', 'boostbox' ),
                 'top-right'     => esc_attr__( 'Top Right', 'boostbox' ),
@@ -90,7 +90,7 @@ function boostbox_display_settings_metabox_content() {
                 'bottom-left'   => esc_attr__( 'Bottom Left', 'boostbox' ),
                 'bottom-center' => esc_attr__( 'Bottom Center', 'boostbox' ),
                 'bottom-right'  => esc_attr__( 'Bottom Right', 'boostbox' ),
-            );
+            ];
 
             // Filter the locations.
             $locations = apply_filters( 'boostbox_display_location_locations', $locations );

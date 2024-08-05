@@ -37,7 +37,7 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
         $boostbox_obj = new BoostBox_OSA();
 
         // Args for popups.
-        $args = array(
+        $args = [
             'hierarchical' => 1,
             'exclude'      => '',
             'include'      => '',
@@ -53,16 +53,16 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
             'post_status'  => 'publish',
             'orderby'      => 'title',
             'order'        => 'ASC'
-        );
+        ];
 
         $args = apply_filters( 'boostbox_popup_settings_args', $args );
 
         // Get all popups.
         $popups = get_posts( $args );
 
-        $options = array(
+        $options = [
             '' => esc_attr__( '--', 'boostbox' )
-        );
+        ];
 
         // Loop through the popups.
         foreach ( $popups as $popup ) {
@@ -75,44 +75,44 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
 
         // Section: General.
         $boostbox_obj->add_section(
-            array(
+            [
                 'id'    => 'boostbox_general',
                 'title' => esc_attr__( 'General Settings', 'boostbox' ),
-            )
+            ]
         );
 
         // Field: Global popup.
         $boostbox_obj->add_field(
             'boostbox_general',
-            array(
+            [
                 'id'      => 'boostbox_global_popup',
                 'type'    => 'select',
                 'name'    => esc_attr__( 'Global popup', 'boostbox' ),
                 'desc'    => esc_attr__( 'Select the popup used whenever the global option is set on posts/pages', 'boostbox' ),
                 'options' => $options,
-            )
+            ]
         );
         // Field: Cookie days.
         $boostbox_obj->add_field(
             'boostbox_general',
-            array(
+            [
                 'id'          => 'boostbox_cookie_days',
                 'type'        => 'number',
                 'name'        => esc_attr__( 'Cookie days', 'boostbox' ),
                 'desc'        => esc_attr__( 'Set the days a cookie is stored after the user closes a popup', 'boostbox' ),
                 'placeholder' => '',
-            )
+            ]
         );
 
         // Field: Privacy - Disable analytics
         $boostbox_obj->add_field(
             'boostbox_general',
-            array(
+            [
                 'id'   => 'boostbox_privacy_disable_analytics',
                 'type' => 'checkbox',
                 'name' => esc_attr__( 'Disable Tracking', 'boostbox' ),
                 'desc' => esc_attr__( 'Turn off the impression and conversion tracking', 'boostbox' ),
-            )
+            ]
         );
     }
     add_action( 'init', 'boostbox_initialize_admin_settings', 100 );
