@@ -96,7 +96,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function set_sections( $sections ) {
             // Bail if not array.
-            if ( ! is_[ $sections ] ) {
+            if ( ! is_array( $sections ) ) {
                 return false;
             }
 
@@ -115,7 +115,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function add_section( $section ) {
             // Bail if not array.
-            if ( ! is_[ $section ] ) {
+            if ( ! is_array( $section ) ) {
                 return false;
             }
 
@@ -133,7 +133,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         public function set_fields( $fields ) {
             // Bail if not array.
-            if ( ! is_[ $fields ] ) {
+            if ( ! is_array( $fields ) ) {
                 return false;
             }
 
@@ -587,7 +587,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
                 'textarea_rows' => 10,
             ];
 
-            if ( isset( $args['options'] ) && is_[ $args['options'] ] ) {
+            if ( isset( $args['options'] ) && is_array( $args['options'] ) ) {
                 $editor_settings = array_merge( $editor_settings, $args['options'] );
             }
 
