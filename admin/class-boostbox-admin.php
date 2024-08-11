@@ -38,7 +38,7 @@ class BoostBox_Admin {
      * @access private
      * @var    string  $_plugin_name - The ID of this plugin.
      */
-    private $_plugin_name;
+    private $plugin_name;
 
     /**
      * The version of this plugin.
@@ -47,7 +47,7 @@ class BoostBox_Admin {
      * @access private
      * @var    string  $_version - The current version of this plugin.
      */
-    private $_version;
+    private $version;
 
     /**
      * Initialize the class and set its properties.

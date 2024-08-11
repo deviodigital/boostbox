@@ -38,7 +38,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          * @var   array
          * @since 1.0.0
          */
-        private $_sections_array = [];
+        private $sections_array = [];
 
         /**
          * Fields array.
@@ -46,7 +46,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          * @var   array
          * @since 1.0.0
          */
-        private $_fields_array = [];
+        private $fields_array = [];
 
         /**
          * Constructor.
