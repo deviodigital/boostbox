@@ -55,27 +55,43 @@ function boostbox_display_settings_metabox_content() {
     echo '<input type="hidden" name="boostbox_display_settings_meta_noncename" id="boostbox_display_settings_meta_noncename" value="' .
     wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
-    echo '<div class="radio-tabs">
+    $tabs = [
+        esc_attr__( 'General', 'boostbox' ),
+        esc_attr__( 'Animation', 'boostbox' ),
+        esc_attr__( 'Trigger', 'boostbox' ),
+        esc_attr__( 'Close Button', 'boostbox' )
+    ];
 
-    <input class="state" type="radio" title="' . esc_attr__( 'General', 'boostbox' ) . '" name="input-state" id="radio1" checked />
-    <input class="state" type="radio" title="' . esc_attr__( 'Animation', 'boostbox' ) . '" name="input-state" id="radio2" />
-    <input class="state" type="radio" title="' . esc_attr__( 'Trigger', 'boostbox' ) . '" name="input-state" id="radio3" />
-    <input class="state" type="radio" title="' . esc_attr__( 'Close Button', 'boostbox' ) . '" name="input-state" id="radio4" />
+    // Tab label ID names.
+    $tab_labels = ['first', 'second', 'third', 'fourth'];
 
-    <div class="tabs">
-        <label for="radio1" id="first-tab" class="tab">
-            <div class="tab-label">' . esc_attr__( 'General', 'boostbox' ) . '</div>
-        </label>
-        <label for="radio2" id="second-tab" class="tab">
-            <div class="tab-label">' . esc_attr__( 'Animation', 'boostbox' ) . '</div>
-        </label>
-        <label for="radio3" id="third-tab" class="tab">
-            <div class="tab-label">' . esc_attr__( 'Trigger', 'boostbox' ) . '</div>
-        </label>
-        <label for="radio4" id="fourth-tab" class="tab">
-            <div class="tab-label">' . esc_attr__( 'Close Button', 'boostbox' ) . '</div>
-        </label>
-    </div>
+    echo '<div class="radio-tabs">';
+
+    $i = 0;
+
+    // Loop through the tabs.
+    foreach ( $tabs as $tab ) {
+        $i++;
+        // Add the tab.
+        echo '<input class="state" type="radio" title="' . esc_html( $tab ) . '" name="input-state" id="radio' . $i . '" checked />';
+    }
+
+    echo '<div class="tabs">';
+
+    $i = 0;
+
+    // Loop through the tabs.
+    foreach ( $tabs as $tab ) {
+        $i++;
+        // Get the current tab's label.
+        $tab_label = isset( $tab_labels[$i - 1] ) ? $tab_labels[$i - 1] : 'tab' . $i;
+        // Add the corresponding label with the dynamic ID.
+        echo '<label for="radio' . $i . '" id="' . $tab_label . '-tab" class="tab">
+                <div class="tab-label">' . esc_html( $tab ) . '</div>
+            </label>';
+    }
+
+    echo '</div>
 
     <div class="panels">
         <div id="first-panel" class="panel active animated slideInRight">';
