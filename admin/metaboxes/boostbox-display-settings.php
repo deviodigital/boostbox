@@ -58,12 +58,13 @@ function boostbox_display_settings_metabox_content() {
     $tabs = [
         esc_attr__( 'General', 'boostbox' ),
         esc_attr__( 'Animation', 'boostbox' ),
+        esc_attr__( 'Target', 'boostbox' ),
         esc_attr__( 'Trigger', 'boostbox' ),
-        esc_attr__( 'Close Button', 'boostbox' )
+        esc_attr__( 'Close Button', 'boostbox' ),
     ];
 
     // Tab label ID names.
-    $tab_labels = ['first', 'second', 'third', 'fourth'];
+    $tab_labels = ['first', 'second', 'third', 'fourth', 'fifth'];
 
     echo '<div class="radio-tabs">';
 
@@ -72,8 +73,13 @@ function boostbox_display_settings_metabox_content() {
     // Loop through the tabs.
     foreach ( $tabs as $tab ) {
         $i++;
+        if ( $i == 1 ) {
+            $checked = 'checked';
+        } else {
+            $checked = '';
+        }
         // Add the tab.
-        echo '<input class="state" type="radio" title="' . esc_html( $tab ) . '" name="input-state" id="radio' . $i . '" checked />';
+        echo '<input class="state" type="radio" title="' . esc_html( $tab ) . '" name="input-state" id="radio' . $i . '" ' . $checked . ' />';
     }
 
     echo '<div class="tabs">';
@@ -213,6 +219,12 @@ function boostbox_display_settings_metabox_content() {
         echo wp_kses( '</div>
 
         <div id="third-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
+
+        echo display_custom_post_type_select();
+
+        echo wp_kses( '</div>
+
+        <div id="fourth-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
             // Create an array of triggers.
             $triggers = [
                 'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
@@ -269,7 +281,7 @@ function boostbox_display_settings_metabox_content() {
 
         echo wp_kses( '</div>
 
-        <div id="fourth-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
+        <div id="fifth-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
             // Create an array of placements.
             $placements = [
                 'outside' => esc_attr__( 'Outside', 'boostbox' ),
@@ -333,16 +345,26 @@ function boostbox_display_settings_metabox_content() {
  */
 function boostbox_display_settings_metabox_save( $post_id, $post ) {
     /**
-     * Verify this came from the our screen and with proper authorization,
+     * Verify this came from our screen and with proper authorization,
      * because save_post can be triggered at other times
      */
-    if ( ! isset( $_POST['boostbox_display_settings_meta_noncename' ] ) || ! wp_verify_nonce( $_POST['boostbox_display_settings_meta_noncename'], plugin_basename( __FILE__ ) ) ) {
+    if ( ! isset( $_POST['boostbox_display_settings_meta_noncename'] ) || ! wp_verify_nonce( $_POST['boostbox_display_settings_meta_noncename'], 'boostbox_display_settings_meta_nonce_action' ) ) {
         return $post->ID;
     }
 
     // Is the user allowed to edit the post or page?
-    if ( ! current_user_can( 'edit_post', $post->ID ) ) {
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
         return $post->ID;
+    }
+
+    // Don't save during autosave.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return $post->ID;
+    }
+
+    // Don't save during post revision.
+    if ( 'revision' === $post->post_type ) {
+        return;
     }
 
     // Display settings.
@@ -357,22 +379,45 @@ function boostbox_display_settings_metabox_save( $post_id, $post ) {
     $settings_meta['boostbox_cookie_days']          = filter_input( INPUT_POST, 'boostbox_cookie_days' );
     $settings_meta['boostbox_scroll_distance']      = filter_input( INPUT_POST, 'boostbox_scroll_distance' );
 
+    // Save custom post types (as an array).
+    if ( isset( $_POST['custom_post_types'] ) ) {
+        $custom_post_types = array_map( 'sanitize_text_field', (array) $_POST['custom_post_types'] );
+        update_post_meta( $post_id, '_custom_post_types', $custom_post_types );
+    } else {
+        delete_post_meta( $post_id, '_custom_post_types' );
+    }
+
+    // Save selected posts (as an array).
+    if ( isset( $_POST['posts'] ) ) {
+        $selected_posts = array_map( 'sanitize_text_field', (array) $_POST['posts'] );
+        update_post_meta( $post_id, '_selected_posts', $selected_posts );
+    } else {
+        delete_post_meta( $post_id, '_selected_posts' );
+    }
+
+    // Save general field (as an array).
+    if ( isset( $_POST['general_field'] ) && is_array( $_POST['general_field'] ) ) {
+        $general_field = array_map( 'sanitize_text_field', $_POST['general_field'] ); // Sanitize each value
+        update_post_meta( $post_id, '_general_field', $general_field );
+    } else {
+        delete_post_meta( $post_id, '_general_field' );
+    }
+
     // Save $settings_meta as metadata.
     foreach ( $settings_meta as $key => $value ) {
-        // Bail on post revisions.
-        if ( 'revision' === $post->post_type ) {
-            return;
-        }
-        $value = implode( ',', (array) $value );
+        // Check if the value is an array or a single value.
+        $value = is_array( $value ) ? $value : sanitize_text_field( $value );
+
         // Check for meta value and either update or add the metadata.
-        if ( get_post_meta( $post->ID, $key, false ) ) {
-            update_post_meta( $post->ID, $key, $value );
+        if ( get_post_meta( $post_id, $key, false ) ) {
+            update_post_meta( $post_id, $key, $value );
         } else {
-            add_post_meta( $post->ID, $key, $value );
+            add_post_meta( $post_id, $key, $value );
         }
-        // Delete the metavalue if blank.
-        if ( ! $value ) {
-            delete_post_meta( $post->ID, $key );
+
+        // Delete the meta value if blank.
+        if ( empty( $value ) ) {
+            delete_post_meta( $post_id, $key );
         }
     }
 }
