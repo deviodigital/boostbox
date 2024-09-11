@@ -157,6 +157,7 @@ class BoostBox_Admin {
             'stylesheet_url'      => get_stylesheet_directory_uri(),
             'popup_id'            => json_encode( get_the_ID() ),
             'metrics_reset_nonce' => wp_create_nonce( 'boostbox_metrics_reset_nonce' ),
+            'ajax_url'            => admin_url( 'admin-ajax.php' )
         ] );
     }
 
@@ -195,3 +196,84 @@ function save_boostbox_popups_block( $post_id, $post ) {
     }
 }
 add_action( 'save_post', 'save_boostbox_popups_block', 10, 2 );
+
+/**
+ * Fetch posts by post type
+ * 
+ * @since  2.0.0
+ * @return void
+ */
+function fetch_posts_by_post_type() {
+    // Get the selected post types (can be multiple).
+    $post_types = isset( $_POST['post_types'] ) ? array_map( 'sanitize_text_field', (array) $_POST['post_types'] ) : [];
+
+    if ( empty( $post_types ) ) {
+        wp_send_json_error( 'No post type selected' );
+    }
+
+    // Get posts from the selected post types.
+    $args = [
+        'post_type'      => $post_types,
+        'posts_per_page' => -1,
+    ];
+
+    $posts = get_posts( $args );
+
+    $output = [];
+
+    // Loop through the posts.
+    foreach ( $posts as $post ) {
+        $output[] = array(
+            'id'    => $post->ID,
+            'title' => $post->post_title,
+        );
+    }
+
+    wp_send_json_success( $output );
+}
+add_action( 'wp_ajax_fetch_posts_by_post_type', 'fetch_posts_by_post_type' );
+add_action( 'wp_ajax_nopriv_fetch_posts_by_post_type', 'fetch_posts_by_post_type' );
+
+/**
+ * Fetch posts by search
+ * 
+ * @since  2.0.0
+ * @return void
+ */
+function fetch_posts_by_search() {
+    // Check if the search term exists.
+    $search_term = isset( $_POST['search_term'] ) ? sanitize_text_field( $_POST['search_term'] ) : '';
+
+    // If search term is empty, return no results.
+    if ( empty( $search_term ) ) {
+        wp_send_json_error( 'No search term provided.' );
+    }
+
+    // Get all public post types (including custom post types).
+    $post_types = get_post_types( [ 'public' => true ], 'names' );
+
+    // Fetch posts based on the search term across all post types.
+    $args = [
+        's'              => $search_term, // Search term for post title
+        'post_type'      => $post_types,  // Search all public post types
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    ];
+
+    $posts = get_posts( $args );
+
+    $output = [];
+
+    // Loop through the posts and prepare output for Select2.
+    foreach ( $posts as $post ) {
+        $output[] = [
+            'id'    => $post->ID,
+            'text'  => $post->post_title,
+        ];
+    }
+
+    // Return the posts as a JSON response.
+    wp_send_json_success( $output );
+}
+add_action( 'wp_ajax_fetch_posts_by_search', 'fetch_posts_by_search' );
+add_action( 'wp_ajax_nopriv_fetch_posts_by_search', 'fetch_posts_by_search' );
