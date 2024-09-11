@@ -1145,7 +1145,8 @@ img.icon {
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio1:focus ~ .tabs #first-tab,
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio2:focus ~ .tabs #second-tab,
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio3:focus ~ .tabs #third-tab,
-.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:focus ~ .tabs #fourth-tab  {
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:focus ~ .tabs #fourth-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio5:focus ~ .tabs #fifth-tab  {
 }
 
 /* Tab button container */
@@ -1180,7 +1181,8 @@ img.icon {
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio1:checked ~ .tabs #first-tab,
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio2:checked ~ .tabs #second-tab,
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio3:checked ~ .tabs #third-tab,
-.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:checked ~ .tabs #fourth-tab{
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:checked ~ .tabs #fourth-tab,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio5:checked ~ .tabs #fifth-tab {
     background-color: #007cba;
     color: #fff;
     cursor: default;
@@ -1207,7 +1209,8 @@ img.icon {
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio1:checked ~ .panels #first-panel,
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio2:checked ~ .panels #second-panel,
 .edit-post-meta-boxes-area #boostbox_display_settings .inside #radio3:checked ~ .panels #third-panel,
-.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:checked ~ .panels #fourth-panel{
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio4:checked ~ .panels #fourth-panel,
+.edit-post-meta-boxes-area #boostbox_display_settings .inside #radio5:checked ~ .panels #fifth-panel {
     display: block;
 }
 
