@@ -66,6 +66,47 @@ jQuery(document).ready(function ($) {
     $( '#boostbox_close_icon_placement' ).select2();
     $( '#boostbox_popup_selected' ).select2();
 
+    // Initialize Select2 for Custom Post Types.
+    $('#custom_post_types').select2({
+        placeholder: "Select Post Type(s)"
+    });
+
+    // Initialize Select2 for General Settings with multiple selection enabled
+    $('#general_field').select2({
+        placeholder: "Select General Settings",
+        multiple: true // Explicitly enabling multiple
+    });
+
+    // Initialize Select2 for Posts with AJAX search.
+    $('#posts').select2({
+        placeholder: "Search and Select Post(s)",
+        ajax: {
+            url: ajax_object.ajax_url,
+            method: 'POST',
+            dataType: 'json',
+            delay: 250, // Delay for better performance
+            data: function (params) {
+                return {
+                    action: 'fetch_posts_by_search', // AJAX action
+                    search_term: params.term // Search term entered by user
+                };
+            },
+            processResults: function (response) {
+                if (response.success) {
+                    return {
+                        results: response.data
+                    };
+                } else {
+                    return {
+                        results: []
+                    };
+                }
+            },
+            cache: true
+        },
+        minimumInputLength: 3 // Minimum characters before search
+    });
+
     // Reset the metrics when button is clicked in metabox.
     $('#reset-metrics').on('click', function () {
         var postId = script_vars.popup_id;
