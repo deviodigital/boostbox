@@ -25,84 +25,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function boostbox_popup_html() {
-    global $content_width;
-    // Settings.
-    $settings = get_option( 'boostbox_general' );
-    // Get the popup ID.
-    $popup_id = get_post_meta( get_the_ID(), 'boostbox_popup_selected', true );
-    // Check for global popup.
-    if ( '' == $popup_id && '' !== $settings ) {
-        $popup_id = $settings['boostbox_global_popup'];
-    }
-    // Bail early?
-    if ( ! $popup_id || 'popup_disabled' == $popup_id ) { return; }
+    // Check popups for post ID's.
+    $popup_check = boostbox_popup_post_check( get_the_ID() );
 
-    // Set popup width from popup meta.
-    $popup_width = 'max-width: ' . get_post_meta( $popup_id, 'boostbox_display_max_width', true );
-    // Set width based on the first block, or defaults as a fallback.
-    if ( ! get_post_meta( $popup_id, 'boostbox_display_max_width', true ) ) {
-        $popup_width = get_cover_block_styles( $popup_id );
+    // Loop through popup checks.
+    foreach ( $popup_check as $popup_id ) {
+        echo boostbox_popup_build_html( $popup_id );
     }
-    // Get the popup max width (if any).
-    $max_width = 'style="' . $popup_width . '"';
-    // Popup position.
-    $popup_position = get_post_meta( $popup_id, 'boostbox_display_location', true );
-    // Popup animation.
-    $popup_animation = get_post_meta( $popup_id, 'boostbox_animation_type', true );
-    // Close icon color.
-    $close_color = get_post_meta( $popup_id, 'boostbox_close_icon_color', true );
-    if ( ! $close_color ) {
-        $close_color = '#FFFFFF';
-    }
-    // Close icon placement.
-    $close_placement = get_post_meta( $popup_id, 'boostbox_close_icon_placement', true );
-    if ( ! $close_placement ) {
-        $close_placement = 'outside';
-    }
-    // @TODO set custom icon options in the settings for users to choose from.
-    $close_icon = apply_filters( 'boostbox_popup_close_icon', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="' . $close_color . '" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>', $close_color );
-    // Popup overlay classes.
-    $popup_overlay_classes = apply_filters( 'boostbox_popup_overlay_classes', 'boostbox-popup-overlay' );
-    // Popup content classes.
-    $popup_content_classes = apply_filters( 'boostbox_popup_content_classes', 'boostbox-popup-content' );
-    ?>
-    <!--Creates the popup body-->
-    <div class="<?php esc_attr_e( $popup_overlay_classes ); ?>" role="dialog">
-    <!--Creates the popup content-->
-    <div class="<?php esc_attr_e( $popup_content_classes ); ?> <?php esc_html_e( $popup_position . ' ' . $popup_animation ); ?>"<?php echo wp_kses_post( $max_width ); ?>>
-        <?php
-        // Query args.
-        $args = [
-            'post_type'           => 'boostbox_popups',
-            'post_status'         => 'publish',
-            'p'                   => $popup_id,
-            'no_found_rows'       => true,
-            'ignore_sticky_posts' => true
-        ];
-
-        // Filter the args.
-        $args = apply_filters( 'boostbox_popup_html_wp_query_args', $args );
-
-        // Build the query.
-        $query = new WP_Query( $args );
-
-        // Check if there are any posts.
-        if ( $query->have_posts() ) {
-            // Loop through the posts.
-            while ( $query->have_posts() ) {
-                $query->the_post();
-                    the_content();
-            }
-            // Restore original post data.
-            wp_reset_postdata();
-        }
-        ?>
-        <!--popup's close button-->
-        <?php if ( $close_placement !== 'hidden' ) { ?>
-        <button class="boostbox-close <?php if ( $close_placement == 'inside' ) { esc_html_e( 'inside' ); } ?>"><?php print_r( $close_icon ); ?></button>
-        <?php } ?>
-    </div>
-    </div>
-    <?php
 }
 add_action( 'template_redirect', 'boostbox_popup_html' );
