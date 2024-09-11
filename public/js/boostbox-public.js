@@ -1,167 +1,141 @@
 jQuery(document).ready(function ($) {
-	// Popup ID.
-	var popupID = boostbox_settings.popup_id;
-	// Trigger type.
-	var triggerType = boostbox_settings.trigger;
-	// Milliseconds.
-	var milliseconds = boostbox_settings.milliseconds;
-    // Disable analytics?
-    var disableAnalytics = boostbox_settings.disable_analytics;
-    // Window inner height.
-    var innerHeight = window.innerHeight;
-    // Check to see if the cookie exists already.
-	var cookieCheck = Cookies.get( 'boostbox_popup_' + popupID + '' );
+    if (typeof boostbox_settings !== 'undefined' && Array.isArray(boostbox_settings.popups)) {
+        // Loop through each popup's settings.
+        boostbox_settings.popups.forEach(function (popup) {
+            // Popup ID.
+            var popupID = popup.popup_id;
+            console.log('Processing popup ID:', popupID);
 
-	// If there's a cookie saved, bail early.
-    if ( cookieCheck != null ) { return; }
+            // Trigger type.
+            var triggerType = popup.trigger;
+            console.log('Trigger type for popup', popupID, ':', triggerType);
 
-    // Trigger - auto open.
-    if ( triggerType === "auto-open" ) {
-        if (!Cookies.get( 'boostbox_popup_' + popupID + '' )) {
-            // Add class after X seconds.
-            window.setTimeout(function(){
-                $(".boostbox-popup-overlay").addClass('active');
-                incrementPopupViewCount();
-            }, 0);
-        }
-    }
+            // Milliseconds.
+            var milliseconds = popup.milliseconds;
+            // Disable analytics?
+            var disableAnalytics = popup.disable_analytics;
+            // Window inner height.
+            var innerHeight = window.innerHeight;
+            // Scroll distance.
+            var scrollDistance = popup.scroll_distance;
+            // Check to see if the cookie exists already.
+            var cookieCheck = Cookies.get('boostbox_popup_' + popupID);
+            console.log('Cookie check for popup', popupID, ':', cookieCheck);
 
-    // Trigger - time.
-    if ( triggerType === "time" ) {
-        if (!Cookies.get( 'boostbox_popup_' + popupID + '' )) {
-            // Add class after X seconds.
-            window.setTimeout(function(){
-                $(".boostbox-popup-overlay").addClass('active');
-                incrementPopupViewCount();
-            }, milliseconds);
-        }
-    }
+            // If there's a cookie saved, bail early.
+            if (cookieCheck != null) {
+                console.log('Popup', popupID, 'skipped due to cookie');
+                return; // Skip if cookie exists
+            }
 
-    // Variable to track if the popup is closed
-    var popupClosed = false;
-    // Set a flag to track whether incrementPopupViewCount has been executed
-    let popupViewCountIncremented = false;
+            // Trigger - auto open.
+            if (triggerType === "auto-open") {
+                console.log('Auto-open trigger detected for popup', popupID);
+                window.setTimeout(function () {
+                    console.log('Activating auto-open popup:', popupID);
+                    $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
+                    incrementPopupViewCount(popupID, popup.nonce);
+                }, 0);
+            }
 
-    // Trigger - on scroll.
-    if (triggerType === "on-scroll" && !Cookies.get('boostbox_popup_' + popupID)) {
-        // Add class after scrolling X pixels.
-        $(window).scroll(function () {
-            if (!popupClosed && !popupViewCountIncremented) {
-                if (!popupClosed) {
-                    var triggerValue = boostbox_settings.scroll_distance;
+            // Trigger - time.
+            if (triggerType === "time") {
+                console.log('Time trigger detected for popup', popupID, 'Milliseconds:', milliseconds);
+                window.setTimeout(function () {
+                    console.log('Activating time-based popup:', popupID);
+                    $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
+                    incrementPopupViewCount(popupID, popup.nonce);
+                }, milliseconds);
+            }
+
+            // Trigger - on scroll.
+            if (triggerType === "on-scroll") {
+                console.log('Scroll trigger detected for popup', popupID, 'Scroll Distance:', scrollDistance);
+                $(window).scroll(function () {
                     var scrolledY = $(window).scrollTop();
+                    var isPercentage = scrollDistance.includes('%');
+                    var triggerValue = isPercentage ? percentageToPixels(scrollDistance, innerHeight) : parseInt(scrollDistance, 10);
 
-                    var isPercentage = triggerValue.includes('%');
-                    var windowY = isPercentage ? percentageToPixels(triggerValue, innerHeight) : parseInt(triggerValue, 10);
-
-                    if (scrolledY > windowY) {
-                        $(".boostbox-popup-overlay").addClass('active');
-                        incrementPopupViewCount();
-                        popupViewCountIncremented = true; // Set the flag to true.
+                    if (scrolledY > triggerValue) {
+                        console.log('Activating scroll-based popup:', popupID);
+                        $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
+                        incrementPopupViewCount(popupID, popup.nonce);
                     }
-                }
+                });
+            }
 
-                // Function to convert percentage to pixels
-                function percentageToPixels(percentage, containerHeight) {
-                    var percent = parseInt(percentage, 10);
-                    return (percent / 100) * containerHeight;
-                }
+            // Trigger - exit intent.
+            if (triggerType === "exit-intent") {
+                console.log('Exit-intent trigger detected for popup', popupID);
+                $(document).on('mouseleave', function (e) {
+                    if (e.clientY < 0) {
+                        console.log('Activating exit-intent popup:', popupID);
+                        $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
+                        incrementPopupViewCount(popupID, popup.nonce);
+                    }
+                });
+            }
+
+            // Set the click class used to close the popup.
+            var closeClickClass = (popup.close_icon_placement === 'hidden') ? '.boostbox-popup-overlay[data-popup-id="' + popupID + '"]' : '.boostbox-close[data-popup-id="' + popupID + '"]';
+
+            // Close popup when 'close' button is clicked.
+            $(document).on("click", closeClickClass, function (event) {
+                console.log('Closing popup:', popupID);
+                $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").removeClass("active");
+                var expirationDate = new Date();
+                expirationDate.setTime(expirationDate.getTime() + (popup.cookie_days * 24 * 60 * 60 * 1000));
+                Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
+            });
+
+            // Track conversion when any button/link within the popup is clicked.
+            $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").on("click", ":button:not('.boostbox-close'), button:not('.boostbox-close'), a, input[type='submit'], [role='button']", function () {
+                trackConversion(popupID, popup.nonce);
+            });
+        });
+    }
+
+    // Function to convert percentage to pixels.
+    function percentageToPixels(percentage, containerHeight) {
+        var percent = parseInt(percentage, 10);
+        return (percent / 100) * containerHeight;
+    }
+
+    // Increment popup view count.
+    function incrementPopupViewCount(popupID, nonce) {
+        $.ajax({
+            url: boostbox_settings.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'increment_popup_view_count',
+                popup_id: popupID,
+                nonce: nonce,
+            },
+            success: function (response) {
+                console.log('[SUCCESS] Impression tracking complete for popup ' + popupID);
+            },
+            error: function (error) {
+                console.log('[ERROR] Impression tracking failed for popup ' + popupID);
             }
         });
     }
 
-    // Set the click class used to close the popup.
-    if (boostbox_settings.close_icon_placement == 'hidden') {
-        var closeClickClass = '.boostbox-popup-overlay';
-    } else {
-        var closeClickClass = '.boostbox-close';
-    }
-
-    // Close popup when 'close' button is clicked.
-    $(closeClickClass).on("click", function (event) {
-        if (boostbox_settings.close_icon_placement == 'hidden') {
-            // Check if the clicked element is not within the .boostbox-popup-content class
-            if (!$(event.target).closest('.boostbox-popup-content').length) {
-                $(".boostbox-popup-overlay").removeClass("active");
-                popupClosed = true; // Set the variable to true when the popup is closed.
-                var expirationDate = new Date();
-                var expirationMilliseconds = expirationDate.getTime() + (boostbox_settings.cookie_days * 24 * 60 * 60 * 1000);
-                expirationDate.setTime(expirationMilliseconds);
-                Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
-            }
-        } else {
-            // Check if the clicked element is .boostbox-close
-            $(".boostbox-popup-overlay").removeClass("active");
-            popupClosed = true; // Set the variable to true when the popup is closed
-            var expirationDate = new Date();
-            var expirationMilliseconds = expirationDate.getTime() + (boostbox_settings.cookie_days * 24 * 60 * 60 * 1000);
-            expirationDate.setTime(expirationMilliseconds);
-            Cookies.set('boostbox_popup_' + popupID, 'hidden', { expires: expirationDate });
-        }
-    });
-
-    // Track conversion when any button/link within the popup is clicked.
-    // @TODO figure ways to make the tracking dynamic between buttons, links, form submissions, etc.
-    $(".boostbox-popup-overlay").on("click", ":button:not('.boostbox-close'), button:not('.boostbox-close'), a, input[type='submit'], [role='button']", function () {
-        trackConversion();
-    });
-
-    // Get percentage of number.
-    function percentage(percent, total) {
-        return ((percent/ 100) * total)
-    }
-
-    // Increment popup view count.
-    function incrementPopupViewCount() {
-        // Only do this if analytics is not disabled.
-        if (!disableAnalytics) {
-            // AJAX request to increment view count.
-            $.ajax({
-                url: boostbox_settings.ajax_url,
-                type: 'POST',
-                data: {
-                    action: 'increment_popup_view_count',
-                    popup_id: popupID,
-                    nonce: boostbox_settings.nonce,
-                },
-                success: function (response) {
-                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                    //console.log('[SUCCESS] Impression tracking complete!');
-                    //console.log(response);
-                },
-                error: function (error) {
-                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                    //console.log('[ERROR] Impression tracking failed!');
-                    //console.log(error);
-                }
-            });
-        }
-    }
-
     // Increment popup conversion count.
-    function trackConversion() {
-        // Only do this if analytics is not disabled.
-        if (!disableAnalytics) {
-            // AJAX request to track conversion.
-            $.ajax({
-                url: boostbox_settings.ajax_url,
-                type: 'POST',
-                data: {
-                    action: 'track_popup_conversion',
-                    popup_id: popupID,
-                    nonce: boostbox_settings.nonce,
-                },
-                success: function (response) {
-                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                    //console.log('[SUCCESS] Conversion tracking complete!');
-                    //console.log(response);
-                },
-                error: function (error) {
-                    // Turned off console log message (for now) @TODO - set up a "debug" option that turns this back on.
-                    //console.log('[ERROR] Conversion tracking failed!');
-                    //console.log(error);
-                }
-            });
-        }
+    function trackConversion(popupID, nonce) {
+        $.ajax({
+            url: boostbox_settings.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'track_popup_conversion',
+                popup_id: popupID,
+                nonce: nonce,
+            },
+            success: function (response) {
+                console.log('[SUCCESS] Conversion tracking complete for popup ' + popupID);
+            },
+            error: function (error) {
+                console.log('[ERROR] Conversion tracking failed for popup ' + popupID);
+            }
+        });
     }
 });
