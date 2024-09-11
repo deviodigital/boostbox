@@ -85,11 +85,6 @@ class BoostBox_Public {
     public function enqueue_scripts() {
         // Check popups for post ID's.
         $popup_check = boostbox_popup_post_check( get_the_ID() );
-   
-        
-        echo '<pre>';
-        var_dump( $popup_check );
-        echo '</pre>';
 
         // Initialize an array to hold all popup data.
         $all_popups_data = [];
