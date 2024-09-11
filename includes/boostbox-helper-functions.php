@@ -350,12 +350,47 @@ function display_custom_post_type_select() {
 }
 
 /**
- * Check if a given post ID is found in the _selected_posts metadata
- * for any published post of the boostbox_popups post type.
+ * Detect the current page context for displaying the popup.
+ * 
+ * @since  2.0.0
+ * @return string The detected context for the current page (e.g., 'home_page', 'search_results').
+ */
+function boostbox_detect_page_context() {
+    $context = '';
+
+    // Detect the page type using standard WordPress conditionals.
+    if ( is_home() || is_front_page() ) {
+        $context = 'home_page';
+    } elseif ( is_search() ) {
+        $context = 'search_results';
+    } elseif ( is_404() ) {
+        $context = '404_page';
+    } elseif ( is_archive() ) {
+        $context = 'posts_archive';
+    }
+
+    // Get all public post types.
+    $public_post_types = get_post_types( [ 'public' => true ], 'names' );
+
+    // Loop through each public post type and check if we are viewing a single post of that type.
+    foreach ( $public_post_types as $post_type ) {
+        if ( is_singular( $post_type ) ) {
+            $context = 'single_' . $post_type; // Dynamically set the context for single post types.
+            break; // Exit the loop once a matching post type is found.
+        }
+    }
+
+    // Allow developers to modify or add custom contexts using a filter.
+    return apply_filters( 'boostbox_detect_page_context', $context );
+}
+
+/**
+ * Check if a given post ID is found in the _selected_posts metadata,
+ * matches the general options, or matches custom post types in the boostbox_popups metadata.
  *
  * @param int $post_id The ID of the post to check.
  * 
- * @since  2.0.0
+ * @since 2.0.0
  * @return array|false An array of boostbox_popups post IDs if found, false otherwise.
  */
 function boostbox_popup_post_check( $post_id ) {
@@ -364,6 +399,9 @@ function boostbox_popup_post_check( $post_id ) {
 
     // Array to store boostbox_popups post IDs where the $post_id is found.
     $found_in_popups = [];
+
+    // Get the current page context using the new filterable function.
+    $context = boostbox_detect_page_context();
 
     // Query all published posts of type 'boostbox_popups'.
     $query = new WP_Query( [
@@ -390,11 +428,42 @@ function boostbox_popup_post_check( $post_id ) {
             if ( in_array( $post_id, $selected_posts, true ) ) {
                 $found_in_popups[] = $popup_post_id; // Store the boostbox_popups post ID.
             }
+
+            // Get the general options from the _general_field metadata.
+            $popup_general_options = get_post_meta( $popup_post_id, '_general_field', true );
+
+            // Handle empty or false meta fields to avoid warnings.
+            if ( $popup_general_options === false ) {
+                continue;
+            }
+
+            // Check if the popup should be displayed site-wide.
+            if ( is_array( $popup_general_options ) && in_array( 'site_wide', $popup_general_options, true ) ) {
+                $found_in_popups[] = $popup_post_id; // Add if site-wide is selected.
+                continue; // No need for further checks if it's site-wide.
+            }
+
+            // Check specific page contexts.
+            if ( is_array( $popup_general_options ) && ! empty( $context ) && in_array( $context, $popup_general_options, true ) ) {
+                $found_in_popups[] = $popup_post_id; // Add if the current page context matches.
+            }
+
+            // Check the current post type against the custom post types saved in the metadata.
+            $custom_post_types = get_post_meta( $popup_post_id, '_custom_post_types', true );
+
+            if ( is_array( $custom_post_types ) ) {
+                $current_post_type = get_post_type();
+                
+                // Check if the current post type matches any of the saved custom post types in the metadata.
+                if ( in_array( $current_post_type, $custom_post_types, true ) ) {
+                    $found_in_popups[] = $popup_post_id; // Add if the current post type matches.
+                }
+            }
         }
     }
 
     // If found in any boostbox_popups posts, return the array of post IDs, otherwise return false.
-    return ! empty( $found_in_popups ) ? $found_in_popups : false;
+    return ! empty( $found_in_popups ) ? array_unique( $found_in_popups ) : false;
 }
 
 /**
