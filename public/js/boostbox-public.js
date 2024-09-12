@@ -19,7 +19,6 @@ jQuery(document).ready(function ($) {
 
             // Track conversion when any button/link within the popup is clicked.
             $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").on("click", ":button:not('.boostbox-close'), button:not('.boostbox-close'), a, input[type='submit'], [role='button']", function () {
-                console.log("Click Tracked ...");
                 trackConversion(popupID);
             });
         });
@@ -148,10 +147,10 @@ jQuery(document).ready(function ($) {
                 nonce: boostbox_settings.nonce,
             },
             success: function (response) {
-                console.log('[SUCCESS] Conversion tracking complete for popup ' + popupID);
+                //console.log('[SUCCESS] Conversion tracking complete for popup ' + popupID);
             },
             error: function (error) {
-                console.log('[ERROR] Conversion tracking failed for popup ' + popupID);
+                //console.log('[ERROR] Conversion tracking failed for popup ' + popupID);
             }
         });
     }
