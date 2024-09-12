@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
     // Construct the path to the theme.json file.
     const themeJsonPath = script_vars.stylesheet_url + '/theme.json';
     // Declare colorPalette outside the fetch scope.
@@ -81,7 +81,7 @@ jQuery(document).ready(function ($) {
     $('#posts').select2({
         placeholder: "Search and Select Post(s)",
         ajax: {
-            url: ajax_object.ajax_url,
+            url: script_vars.ajax_url,
             method: 'POST',
             dataType: 'json',
             delay: 250, // Delay for better performance
