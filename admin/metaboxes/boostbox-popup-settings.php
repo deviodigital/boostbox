@@ -59,57 +59,20 @@ add_action( 'add_meta_boxes', 'boostbox_popup_settings_metabox' );
 function boostbox_popup_settings_metabox_content() {
     global $post;
 
-    // Noncename needed to verify where the data originated.
+    // Nonce for verification.
     echo '<input type="hidden" name="boostbox_popup_settings_meta_noncename" id="boostbox_popup_settings_meta_noncename" value="' .
     wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
-    // Args for popups.
-    $args = [
-        'hierarchical' => 1,
-        'exclude'      => '',
-        'include'      => '',
-        'meta_key'     => '',
-        'meta_value'   => '',
-        'authors'      => '',
-        'child_of'     => 0,
-        'parent'       => -1,
-        'exclude_tree' => '',
-        'number'       => '',
-        'offset'       => 0,
-        'post_type'    => 'boostbox_popups',
-        'post_status'  => 'publish',
-        'orderby'      => 'title',
-        'order'        => 'ASC'
-    ];
+    // Retrieve the current value for disabling the popup.
+    $popup_disabled = get_post_meta( $post->ID, 'boostbox_popup_disabled', true );
 
-    $args = apply_filters( 'boostbox_popup_settings_args', $args );
-
-    // Get all popups.
-    $popups = get_posts( $args );
-
-    // Popup selected.
-    $popup_selected = get_post_meta( $post->ID, 'boostbox_popup_selected', true );
-
-    // Select a Popup: Build the field.
-    $field = '<div class="boostbox-field">';
-    $field .= '<p>' . esc_attr__( 'Select popup to display', 'boostbox' ) . '</p>';
-    $field .= '<select id="boostbox_popup_selected" name="boostbox_popup_selected">';
-    $field .= '<option value="popup_disabled">' . esc_attr__( 'Disable Popup', 'boostbox' ) . '</option>';
-    $field .= '<option value="">' . esc_attr__( 'Global Popup', 'boostbox' ) . '</option>';
-    // Loop through popups.
-    if ( ! empty( $popups ) ) {
-        foreach ( $popups as $popup ) {
-            $selected = '';
-            if ( $popup->ID == $popup_selected ) {
-                $selected = 'selected="selected"';
-            }
-            $field .= '<option value="' . esc_attr( $popup->ID ) . '" '. $selected .'>' . esc_html( $popup->post_title ) . '</option>';
-        }
-    }
-    $field .= '</select>';
-    $field .= '</div>';
-
-    echo wp_kses( $field, boostbox_allowed_tags() );
+    // Build the checkbox field.
+    echo '<div class="boostbox-field">';
+    echo '<label for="boostbox_popup_disabled">';
+    echo '<input type="checkbox" id="boostbox_popup_disabled" name="boostbox_popup_disabled" value="1" ' . checked( 1, $popup_disabled, false ) . '/>';
+    echo esc_html__( 'Disable Popups', 'boostbox' );
+    echo '</label>';
+    echo '</div>';
 }
 
 /**
@@ -122,39 +85,24 @@ function boostbox_popup_settings_metabox_content() {
  */
 function boostbox_popup_settings_metabox_save( $post_id, $post ) {
 
-    /**
-     * Verify this came from the our screen and with proper authorization,
-     * because save_post can be triggered at other times
-     */
+    // Verify this came from our screen and with proper authorization.
     if ( ! isset( $_POST['boostbox_popup_settings_meta_noncename' ] ) || ! wp_verify_nonce( $_POST['boostbox_popup_settings_meta_noncename'], plugin_basename( __FILE__ ) ) ) {
         return $post->ID;
     }
 
-    // Is the user allowed to edit the post or page?
+    // Check if the user has permission to edit the post/page.
     if ( ! current_user_can( 'edit_post', $post->ID ) ) {
         return $post->ID;
     }
 
-    // Popup settings.
-    $settings_meta['boostbox_popup_selected'] = filter_input( INPUT_POST, 'boostbox_popup_selected' );
+    // Checkbox value for disabling the popup.
+    $popup_disabled = isset( $_POST['boostbox_popup_disabled'] ) ? 1 : 0;
 
-    // Save $settings_meta as metadata.
-    foreach ( $settings_meta as $key => $value ) {
-        // Bail on post revisions.
-        if ( 'revision' === $post->post_type ) {
-            return;
-        }
-        $value = implode( ',', (array) $value );
-        // Check for meta value and either update or add the metadata.
-        if ( get_post_meta( $post->ID, $key, false ) ) {
-            update_post_meta( $post->ID, $key, $value );
-        } else {
-            add_post_meta( $post->ID, $key, $value );
-        }
-        // Delete the metavalue if blank.
-        if ( ! $value ) {
-            delete_post_meta( $post->ID, $key );
-        }
+    // Update or delete the meta value based on the checkbox state.
+    if ( $popup_disabled ) {
+        update_post_meta( $post->ID, 'boostbox_popup_disabled', $popup_disabled );
+    } else {
+        delete_post_meta( $post->ID, 'boostbox_popup_disabled' );
     }
 }
 add_action( 'save_post', 'boostbox_popup_settings_metabox_save', 1, 2 );

@@ -81,17 +81,6 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
             ]
         );
 
-        // Field: Global popup.
-        $boostbox_obj->add_field(
-            'boostbox_general',
-            [
-                'id'      => 'boostbox_global_popup',
-                'type'    => 'select',
-                'name'    => esc_attr__( 'Global popup', 'boostbox' ),
-                'desc'    => esc_attr__( 'Select the popup used whenever the global option is set on posts/pages', 'boostbox' ),
-                'options' => $options,
-            ]
-        );
         // Field: Cookie days.
         $boostbox_obj->add_field(
             'boostbox_general',

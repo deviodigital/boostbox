@@ -402,6 +402,12 @@ function boostbox_popup_post_check( $post_id ) {
     // Ensure the $post_id is an integer.
     $post_id = (int) $post_id;
 
+    $popup_disabled = get_post_meta( $post_id, 'boostbox_popup_disabled', true );
+    if ( $popup_disabled ) {
+        // Skip showing the popup for this post.
+        return false;
+    }
+
     // Array to store boostbox_popups post IDs where the $post_id is found.
     $found_in_popups = [];
 
