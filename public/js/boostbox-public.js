@@ -19,7 +19,8 @@ jQuery(document).ready(function ($) {
 
             // Track conversion when any button/link within the popup is clicked.
             $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").on("click", ":button:not('.boostbox-close'), button:not('.boostbox-close'), a, input[type='submit'], [role='button']", function () {
-                trackConversion(popupID, popup.nonce);
+                console.log("Click Tracked ...");
+                trackConversion(popupID);
             });
         });
     }
@@ -32,7 +33,7 @@ jQuery(document).ready(function ($) {
         if (triggerType === "auto-open") {
             window.setTimeout(function () {
                 $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
-                incrementPopupViewCount(popupID, popup.nonce);
+                incrementPopupViewCount(popupID);
             }, 0);
         }
 
@@ -60,7 +61,7 @@ jQuery(document).ready(function ($) {
 
                         if (scrolledY > windowY) {
                             $(".boostbox-popup-overlay").addClass('active');
-                            incrementPopupViewCount(popupID, popup.nonce); // Pass popupID and nonce
+                            incrementPopupViewCount(popupID);
                             popupViewCountIncremented = true; // Set the flag to true.
                         }
                     }
@@ -78,7 +79,7 @@ jQuery(document).ready(function ($) {
             $(document).on('mouseleave', function (e) {
                 if (e.clientY < 0) {
                     $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
-                    incrementPopupViewCount(popupID, popup.nonce);
+                    incrementPopupViewCount(popupID);
                 }
             });
         }
@@ -115,38 +116,36 @@ jQuery(document).ready(function ($) {
     }
 
     // Function to increment popup view count.
-    function incrementPopupViewCount(popupID, nonce) {
-        console.log('Nonce:', boostbox_settings.nonce);
-
+    function incrementPopupViewCount(popupID) {
         $.ajax({
             url: boostbox_settings.ajax_url,
             type: 'POST',
             data: {
                 action: 'increment_popup_view_count',
                 popup_id: popupID,
-                nonce: boostbox_settings.nonce, // Ensure you're using the nonce from boostbox_settings
+                nonce: boostbox_settings.nonce,
             },
             success: function (response) {
-                console.log('[SUCCESS] Impression tracking complete for popup ' + popupID + ' ' + response);
+                //console.log('[SUCCESS] Impression tracking complete for popup ' + popupID + ' ' + response);
             },
             error: function (xhr, status, error) {
-                console.log('[ERROR] Impression tracking failed for popup ' + popupID);
-                console.log('XHR:', xhr);
-                console.log('Status:', status);
-                console.log('Error:', error);
+                //console.log('[ERROR] Impression tracking failed for popup ' + popupID);
+                //console.log('XHR:', xhr);
+                //console.log('Status:', status);
+                //console.log('Error:', error);
             }
         });
     }
 
     // Function to track conversions.
-    function trackConversion(popupID, nonce) {
+    function trackConversion(popupID) {
         $.ajax({
             url: boostbox_settings.ajax_url,
             type: 'POST',
             data: {
                 action: 'track_popup_conversion',
                 popup_id: popupID,
-                nonce: nonce,
+                nonce: boostbox_settings.nonce,
             },
             success: function (response) {
                 console.log('[SUCCESS] Conversion tracking complete for popup ' + popupID);
