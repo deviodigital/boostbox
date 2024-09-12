@@ -362,23 +362,25 @@ function boostbox_detect_page_context() {
     if ( is_front_page() ) {
         $context = 'home_page';
     } elseif ( is_home() ) {
-        $context = 'home_page';
+        $context = 'posts_archive'; // Default blog post archive.
     } elseif ( is_search() ) {
         $context = 'search_results';
     } elseif ( is_404() ) {
         $context = '404_page';
-    } elseif ( is_archive() ) {
-        $context = 'posts_archive';
     } else {
         // Get all public post types.
         $public_post_types = get_post_types( [ 'public' => true ], 'names' );
 
-        // Loop through each public post type and check if we are viewing a single post of that type.
+        // Loop through each public post type and check if we are viewing a single post or archive of that type.
         foreach ( $public_post_types as $post_type ) {
             if ( is_singular( $post_type ) ) {
                 // Dynamically set the context for single post types.
                 $context = 'single_' . $post_type;
                 break; // Exit the loop once a matching post type is found.
+            } elseif ( is_post_type_archive( $post_type ) ) {
+                // Dynamically set the context for custom post type archives.
+                $context = 'archive_' . $post_type;
+                break; // Exit the loop once a matching archive is found.
             }
         }
     }
