@@ -359,7 +359,9 @@ function boostbox_detect_page_context() {
     $context = '';
 
     // Detect the page type using standard WordPress conditionals.
-    if ( is_home() || is_front_page() ) {
+    if ( is_front_page() ) {
+        $context = 'home_page';
+    } elseif ( is_home() ) {
         $context = 'home_page';
     } elseif ( is_search() ) {
         $context = 'search_results';
@@ -367,16 +369,17 @@ function boostbox_detect_page_context() {
         $context = '404_page';
     } elseif ( is_archive() ) {
         $context = 'posts_archive';
-    }
+    } else {
+        // Get all public post types.
+        $public_post_types = get_post_types( [ 'public' => true ], 'names' );
 
-    // Get all public post types.
-    $public_post_types = get_post_types( [ 'public' => true ], 'names' );
-
-    // Loop through each public post type and check if we are viewing a single post of that type.
-    foreach ( $public_post_types as $post_type ) {
-        if ( is_singular( $post_type ) ) {
-            $context = 'single_' . $post_type; // Dynamically set the context for single post types.
-            break; // Exit the loop once a matching post type is found.
+        // Loop through each public post type and check if we are viewing a single post of that type.
+        foreach ( $public_post_types as $post_type ) {
+            if ( is_singular( $post_type ) ) {
+                // Dynamically set the context for single post types.
+                $context = 'single_' . $post_type;
+                break; // Exit the loop once a matching post type is found.
+            }
         }
     }
 
@@ -445,7 +448,9 @@ function boostbox_popup_post_check( $post_id ) {
 
             // Check specific page contexts.
             if ( is_array( $popup_general_options ) && ! empty( $context ) && in_array( $context, $popup_general_options, true ) ) {
-                $found_in_popups[] = $popup_post_id; // Add if the current page context matches.
+                $found_in_popups[] = $popup_post_id;
+            } else {
+                error_log('Context mismatch: ' . $context . ' not found in ' . print_r($popup_general_options, true));
             }
 
             // Check the current post type against the custom post types saved in the metadata.
