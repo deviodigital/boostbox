@@ -72,8 +72,13 @@ class BoostBox_Public {
      * @return void
      */
     public function enqueue_styles() {
-        // Publc CSS.
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', [], $this->version, 'all' );
+        // Check popups for post ID's.
+        $popup_check = boostbox_popup_post_check( get_the_ID() );    
+        // Ensure that there are popups to process.
+        if ( $popup_check && is_array( $popup_check ) ) {
+            // Publc CSS.
+            wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/boostbox-public.min.css', [], $this->version, 'all' );
+        }
     }
 
     /**
