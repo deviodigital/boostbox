@@ -346,6 +346,9 @@ function display_custom_post_type_select() {
     $field .= '</select>';
     $field .= '</div>';
 
+    // Filter the fields.
+    $field = apply_filters( 'display_custom_post_type_select_fields', $field );
+
     echo $field;
 }
 
