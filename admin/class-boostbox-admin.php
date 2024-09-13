@@ -145,20 +145,20 @@ class BoostBox_Admin {
         ] );
         // Check if you're on the edit screen for the "boostbox_popups" Custom Post Type
         if ( is_admin() && $current_screen && (
-            in_array( $current_screen->post_type, [ 'boostbox_popups', 'post', 'page' ] ) ||
+            in_array( $current_screen->post_type, [ 'boostbox_popups' ] ) ||
             ( 'post' === $current_screen->base && 'post-new.php' === $current_screen->id )
         ) ) {
             // General: Select2 JS.
             wp_enqueue_script( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'js/select2.min.js', [ 'jquery' ], $this->version, false );
+            // General: Admin JS.
+            wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', [ 'jquery', 'wp-hooks', 'wp-blocks', 'wp-color-picker', 'boostbox-select2' ], $this->version, false );
+            wp_localize_script( $this->plugin_name, 'script_vars', [
+                'stylesheet_url'      => get_stylesheet_directory_uri(),
+                'popup_id'            => json_encode( get_the_ID() ),
+                'metrics_reset_nonce' => wp_create_nonce( 'boostbox_metrics_reset_nonce' ),
+                'ajax_url'            => admin_url( 'admin-ajax.php' )
+            ] );
         }
-        // General: Admin JS.
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/boostbox-admin.js', [ 'jquery', 'wp-hooks', 'wp-blocks', 'wp-color-picker', 'boostbox-select2' ], $this->version, false );
-        wp_localize_script( $this->plugin_name, 'script_vars', [
-            'stylesheet_url'      => get_stylesheet_directory_uri(),
-            'popup_id'            => json_encode( get_the_ID() ),
-            'metrics_reset_nonce' => wp_create_nonce( 'boostbox_metrics_reset_nonce' ),
-            'ajax_url'            => admin_url( 'admin-ajax.php' )
-        ] );
     }
 
 }
