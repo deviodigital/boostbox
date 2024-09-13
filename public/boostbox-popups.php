@@ -33,4 +33,4 @@ function boostbox_popup_html() {
         echo boostbox_popup_build_html( $popup_id );
     }
 }
-add_action( 'template_redirect', 'boostbox_popup_html' );
+add_action( 'wp_footer', 'boostbox_popup_html' );
