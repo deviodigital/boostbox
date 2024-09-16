@@ -49,6 +49,24 @@ Using WordPress blocks, columns, groups and patterns, the style possibilities fo
 
 == Changelog ==
 
+= 2.0.0 =
+*   Added 2 new AJAX functions for fetching posts in `admin/class-boostbox-admin.php`
+*   Added Trigger options to display settings metabox in `admin/metaboxes/boostbox-display-settings.php`
+*   Added 4 new helper functions in `includes/boostbox-helper-functions.php`
+*   Updated the `boostbox_allowed_tags` function's svg options in `includes/boostbox-helper-functions.php`
+*   Updated JS to include new trigger options in `admin/js/boostbox-admin.js`
+*   Updated localize scripts with code for multiple popups in `public/class-boostbox-public.php`
+*   Updated CSS to include new Trigger tab in `admin/css/boostbox-admin.css`
+*   Updated `boostbox_popup_post_check` to include CPTs and general targets in `includes/boostbox-helper-functions.php`
+*   Updated impression and conversion tracking to work with multiple popups in `public/class-boostbox-public.php`
+*   Updated the public JS to include functionaliy for multiple popups in `public/js/boostbox-public.js`
+*   Updated popup metabox with checkbox option to disable popups on a page-by-page basis in `admin/metaboxes/boostbox-popup-settings.php`
+*   Updated CSS to only enqueue if popups are present on the page in `public/class-boostbox-public.php`
+*   Updated `boostbox_popup_html` to use `wp_footer` instead of `template_redirect` in `public/boostbox-popups.php`
+*   Updated admin JS to only load if you are on the edit screen in `admin/class-boostbox-admin.php`
+*   Optimized the display settings metabox tabbed content in `admin/metaboxes/boostbox-display-settings.php`
+*   General code cleanup throughout multiple files of the plugin
+
 = 1.6.2 =
 *   Updated variables to fix deprecation notices throughout multiple files of the plugin
 *   Updated array to shorthand syntax throughout multiple files of the plugin

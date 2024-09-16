@@ -10,24 +10,18 @@ No more trying to learn *another popup plugin* and their unique design experienc
 
 ## Key Features
 
-:white_check_mark: Build popups directly within the WordPress editor using blocks, columns, groups, and patterns.
-
-:white_check_mark: Style and configure each popup with custom animation and targeting options.
-
-:white_check_mark: Display popups to capture leads, promote content, showcase products, drive sales funnels, and more.
+* :white_check_mark: Build popups directly within the WordPress editor using blocks, columns, groups, and patterns.
+* :white_check_mark: Style and configure each popup with custom animation and targeting options.
+* :white_check_mark: Display popups to capture leads, promote content, showcase products, drive sales funnels, and more.
 
 ### Custom Popup Types
 With **BoostBox**, you have the flexibility to create a variety of popup types for different needs:
 
-:email: **Email Signups**: Capture and grow your email list with targeted popups.
-
-:camera: **Product Showcases**: Highlight featured products or services to boost conversions.
-
-:calendar: **Event Promotion**: Promote upcoming events or announcements with ease.
-
-:money_with_wings: **Lead Generation**: Build custom forms and popups to attract leads.
-
-:dart: **Custom Campaigns**: Tailor popups to your specific goals with advanced targeting.
+* :email: **Email Signups**: Capture and grow your email list with targeted popups.
+* :camera: **Product Showcases**: Highlight featured products or services to boost conversions.
+* :calendar: **Event Promotion**: Promote upcoming events or announcements with ease.
+* :money_with_wings: **Lead Generation**: Build custom forms and popups to attract leads.
+* :dart: **Custom Campaigns**: Tailor popups to your specific goals with advanced targeting.
 
 ### Full-Site Editing (FSE) Integration
 **BoostBox** takes full advantage of WordPress's Full-Site Editing (FSE) capabilities. By leveraging WordPress blocks and patterns, you can design popups that align with your site's theme and branding. 
