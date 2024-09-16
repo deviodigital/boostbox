@@ -36,16 +36,16 @@ There's no need to use third-party popup builders — **BoostBox** integrates na
 - **Cookie Days**: Configure the cookie expiration to control when users will see the popup again (overrides the global setting).
 
 ### Animation Settings
-- **Type**: Choose from several animation options (none, fade in, slide up, slide down, slide left, slide right).
+- **Type**: Choose from several animation options (none, fade in, slide up, slide down, slide left, slide right, pop swirl and anvil).
 - **Animation Speed**: Set the speed of the animation in milliseconds to match your design preferences.
 
 ### Targeting Options
-- **General**: Target popups on home pages, search results, blog indexes, or archives.
+- **General**: Target popups sitewide, on home pages, search results, 404 pages and blog indexes.
 - **Custom Post Types**: Display popups across all content for specific custom post types.
 - **Post/Page**: Target individual posts or pages for granular control over popup placement.
 
 ### Trigger Options
-- **Instant**: Show the popup immediately on page load.
+- **Auto Open**: Show the popup immediately on page load.
 - **On Scroll**: Trigger the popup when the user scrolls a specific percentage down the page.
 - **Timer**: Delay the popup for a set time after the page loads.
 
