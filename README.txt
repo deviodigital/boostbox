@@ -45,6 +45,36 @@ Whether you're looking to capture leads, promote events, showcase products, or d
 2. Install and activate the plugin directly in your admin panel
 3. Pat yourself on the back for a job well done :)
 
+== Frequently Asked Questions ==
+
+= Can I use BoostBox without any coding knowledge? =
+
+Yes, BoostBox is designed to work seamlessly within the WordPress editor, using the familiar block-based interface. No coding skills are needed to create beautiful, functional popups.
+
+= What types of popups can I create with BoostBox? =
+
+BoostBox allows you to create various types of popups including:
+
+* Email signups
+* Product showcases
+* Event promotions
+* Lead generation forms
+* Basically, the ideas are only limited to your imagination
+
+= How can I customize the appearance and behavior of my popups? =
+
+BoostBox provides a wide range of customization options beyond the actual popup built in the editor, including:
+
+* Setting max width for the popup
+* Choosing from various animation styles (fade, slide, pop swirl, and more)
+* Configuring popup triggers (on page load, scroll, or timer)
+* Targeting specific pages, posts, or custom post types
+* Customizing the look and placement of the close button
+
+= Is BoostBox compatible with other WordPress themes and plugins? =
+
+Yes, BoostBox is designed to be compatible with most WordPress themes and plugins. It integrates directly with the core WordPress editor, so it should work smoothly across most environments.
+
 == Screenshots ==
 
 1. Example popup display using a simple pattern
