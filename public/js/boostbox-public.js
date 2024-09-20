@@ -11,10 +11,10 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
-            // Trigger handling (auto-open, on-scroll, exit-intent)
+            // Trigger handling (auto-open, on-scroll, time).
             handlePopupTrigger(popup);
 
-            // Close behavior handling (inside/outside/hide)
+            // Close behavior handling (inside/outside/hide).
             setupCloseBehavior(popupID, popup.close_icon_placement, popup.cookie_days);
 
             // Track conversion when any button/link within the popup is clicked.
@@ -28,18 +28,25 @@ jQuery(document).ready(function ($) {
     function handlePopupTrigger(popup) {
         var popupID = popup.popup_id;
         var triggerType = popup.trigger;
+        var popupClosed = false;
 
-        if (triggerType === "auto-open") {
+        let popupViewCountIncremented = false;
+
+        if (triggerType === "auto-open" && !Cookies.get('boostbox_popup_' + popupID)) {
             window.setTimeout(function () {
                 $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
                 incrementPopupViewCount(popupID);
             }, 0);
         }
 
-        // Variable to track if the popup is closed
-        var popupClosed = false;
-        // Set a flag to track whether incrementPopupViewCount has been executed
-        let popupViewCountIncremented = false;
+        // Trigger - time.
+        if ( triggerType === "time" && !Cookies.get( 'boostbox_popup_' + popupID + '' )) {
+            // Add class after X seconds.
+            window.setTimeout(function(){
+                $(".boostbox-popup-overlay").addClass('active');
+                incrementPopupViewCount();
+            }, popup.milliseconds);
+        }
 
         // Trigger - on scroll.
         if (triggerType === "on-scroll" && !Cookies.get('boostbox_popup_' + popupID)) {
@@ -70,15 +77,6 @@ jQuery(document).ready(function ($) {
                         var percent = parseInt(percentage, 10);
                         return (percent / 100) * containerHeight;
                     }
-                }
-            });
-        }
-
-        if (triggerType === "exit-intent") {
-            $(document).on('mouseleave', function (e) {
-                if (e.clientY < 0) {
-                    $(".boostbox-popup-overlay[data-popup-id='" + popupID + "']").addClass('active');
-                    incrementPopupViewCount(popupID);
                 }
             });
         }
