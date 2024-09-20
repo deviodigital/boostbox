@@ -52,6 +52,7 @@ Whether you're looking to capture leads, promote events, showcase products, or d
 3. BoostBox admin settings page
 4. BoostBox popup display settings
 5. BoostBox metrics displayed on the Popups screen
+6. Another example popup using a pattern from the Powder theme
 
 == Changelog ==
 
