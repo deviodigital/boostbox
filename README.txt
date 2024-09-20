@@ -12,26 +12,32 @@ Build popups with the core editor for lead generation, content promotion and mor
 
 == Description ==
 
-**BoostBox** helps you increase conversion rates, customer retention and revenue.
+**BoostBox** is a powerful WordPress plugin designed to increase conversion rates, customer retention, and revenue by offering flexible, customizable popups, modals, and content overlays.
 
-Build popups for lead generation, content promotion and more using the core WordPress editor. 
+With **BoostBox**, you can effortlessly build popups directly within the WordPress editor using blocks, columns, groups, and patterns—no need to learn a new interface or design tool. It's a seamless integration with the editor you're already familiar with, enabling you to create targeted popups that drive engagement and conversions.
 
-Easily style your popups, modals, and content overlays in the editor you are already used to. No more trying to learn *another popup plugin* and their unique design experience.
+Whether you're looking to capture leads, promote events, showcase products, or drive sales, **BoostBox** has you covered. The plugin's versatility allows you to:
 
-With **BoostBox**, the type of popup you build is limitless.
-
-*   Generate email signups
-*   Giveaway free downloads
-*   Build a sales funnel
+*   Capture email signups
 *   Showcase featured products
 *   Promote upcoming events
+*   Build custom sales funnels
+*   Launch targeted campaigns
 *   ... and more!
 
-### FSE popup builder
+### Full-Site Editing (FSE) Integration
 
-The **BoostBox** plugin was created to give website owners the ability to create popups within the core editor, and it succeeds flawlessly in this mission.
+**BoostBox** leverages WordPress Full-Site Editing (FSE) capabilities, enabling you to design popups that perfectly match your site’s branding and layout. Say goodbye to third-party builders—**BoostBox** works natively within WordPress, making popup creation fast and intuitive.
 
-Using WordPress blocks, columns, groups and patterns, the style possibilities for the popups you build with the **BoostBox** plugin are endless.
+### Key Features
+
+*   Create popups, modals, and overlays using WordPress blocks and patterns
+*   Customize animations, display settings, and targeting options
+*   Support for custom post types and granular targeting of specific pages or posts
+*   Multiple trigger options including auto-open, scroll, and timer-based popups
+*   Full control over popup design and placement without leaving the WordPress editor
+
+**BoostBox** is your go-to plugin for building popups that enhance engagement, increase conversions, and improve overall site functionality—all without adding complexity to your workflow.
 
 == Installation ==
 
