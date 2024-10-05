@@ -13,7 +13,7 @@
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Current plugin version.
-define( 'BOOSTBOX_VERSION', '2.0.0' );
+define( 'BOOSTBOX_VERSION', '2.0.1' );
 
 // Plugin basename.
 $plugin_name = plugin_basename( __FILE__ );
@@ -114,3 +114,28 @@ function boostbox_redirect() {
     }
 }
 add_action( 'admin_init', 'boostbox_redirect' );
+
+/**
+ * Display a custom admin notice to inform users about plugin update issues.
+ *
+ * This function displays a dismissible admin notice warning users about 
+ * restrictions imposed by WordPress leadership that may impact automatic 
+ * plugin updates. It provides a link to a resource where users can learn how 
+ * to continue receiving updates.
+ *
+ * @since  2.0.1
+ * @return void
+ */
+function custom_update_notice() {
+    // Translating the notice text using WordPress translation functions.
+    $notice_text = sprintf(
+        esc_html__( 'Important Notice: Due to recent changes initiated by WordPress leadership, access to the plugin repository is being restricted for certain hosting providers and developers. This may impact automatic updates for your plugins. To ensure you continue receiving updates and to learn about the next steps, please visit %s.', 'dispensary-age-verification' ),
+        '<a href="https://www.robertdevore.com/wordpress-plugin-updates/" target="_blank">this page</a>'
+    );
+
+    // Display the admin notice.
+    echo '<div class="notice notice-warning is-dismissible">
+        <p>' . $notice_text . '</p>
+    </div>';
+}
+add_action( 'admin_notices', 'custom_update_notice' );

@@ -288,14 +288,14 @@ function display_custom_post_type_select() {
 
     // Get all public post types (including built-in ones).
     $args = [
-        'public'   => true,
+        'public' => true,
     ];
     $custom_post_types = get_post_types( $args, 'objects' );
 
     // General Field (Home Page, Search Results, etc.)
     $field  = '<div class="boostbox-field">';
     $field .= '<p><label for="general_field">' . esc_html__( 'General Pages', 'boostbox' ) . ':</label></p>';
-    $field .= '<select id="general_field" name="general_field[]" multiple>'; // Change to array name 'general_field[]'
+    $field .= '<select id="general_field" name="general_field[]" multiple>';
     $general_options = [
         'site_wide'      => esc_html__( 'Sitewide', 'boostbox' ),
         'home_page'      => esc_html__( 'Home Page', 'boostbox' ),

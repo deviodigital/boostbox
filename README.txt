@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
 Tested up to: 6.6.2
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,9 @@ Yes, BoostBox is designed to be compatible with most WordPress themes and plugin
 6. Another example popup using a pattern from the Powder theme
 
 == Changelog ==
+
+= 2.0.1 =
+*   Added notice about potential disruption to plugin updates by Matthew Mullenweg and what our next steps will be in `boostbox.php`
 
 = 2.0.0 =
 *   Added 2 new AJAX functions for fetching posts in `admin/class-boostbox-admin.php`
