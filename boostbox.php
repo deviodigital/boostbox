@@ -119,23 +119,53 @@ add_action( 'admin_init', 'boostbox_redirect' );
  * Display a custom admin notice to inform users about plugin update issues.
  *
  * This function displays a dismissible admin notice warning users about 
- * restrictions imposed by WordPress leadership that may impact automatic 
+ * restrictions imposed by WordPress® leadership that may impact automatic 
  * plugin updates. It provides a link to a resource where users can learn how 
  * to continue receiving updates.
  *
- * @since  2.0.1
+ * @since  2.0.2
  * @return void
  */
-function custom_update_notice() {
-    // Translating the notice text using WordPress translation functions.
-    $notice_text = sprintf(
-        esc_html__( 'Important Notice: Due to recent changes initiated by WordPress leadership, access to the plugin repository is being restricted for certain hosting providers and developers. This may impact automatic updates for your plugins. To ensure you continue receiving updates and to learn about the next steps, please visit %s.', 'dispensary-age-verification' ),
-        '<a href="https://www.robertdevore.com/wordpress-plugin-updates/" target="_blank">this page</a>'
-    );
+function boostbox_custom_update_notice() {
+    // Check if the notice has been dismissed.
+    if ( get_option( 'boostbox_custom_update_notice_dismissed' ) ) {
+        return;
+    }
 
+    // Translating the notice text using WordPress® translation functions.
+    $notice_text = sprintf(
+        __( 'Important Notice: Due to recent changes initiated by WordPress® leadership, access to the plugin repository is being restricted for certain hosting providers and developers. This may impact automatic updates for your plugins. To ensure you continue receiving updates and to learn about the next steps, please visit %s.', 'dispensary-age-verification' ),
+        '<a href="https://www.robertdevore.com" target="_blank">this page</a>'
+    );
+    
     // Display the admin notice.
-    echo '<div class="notice notice-warning is-dismissible">
+    echo '<div class="notice notice-warning is-dismissible" id="custom-update-notice">
         <p>' . $notice_text . '</p>
     </div>';
 }
-add_action( 'admin_notices', 'custom_update_notice' );
+add_action( 'admin_notices', 'boostbox_custom_update_notice' );
+
+/**
+ * Enqueue the JavaScript to handle the dismissal of the notice.
+ * 
+ * @since  2.0.2
+ * @return void
+ */
+function boostbox_custom_update_notice_scripts() {
+    wp_enqueue_script( 'boostbox-custom-notice-dismiss', plugin_dir_url( __FILE__ ) . 'public/js/custom-notice-dismiss.js', array( 'jquery' ), false, true );
+    wp_localize_script( 'boostbox-custom-notice-dismiss', 'custom_notice', array(
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+        'nonce'    => wp_create_nonce( 'boostbox_custom_notice_dismiss_nonce' ),
+    ) );
+}
+add_action( 'admin_enqueue_scripts', 'boostbox_custom_update_notice_scripts' );
+
+/**
+ * AJAX handler to mark the notice as dismissed.
+ */
+function boostbox_custom_dismiss_update_notice() {
+    check_ajax_referer( 'boostbox_custom_notice_dismiss_nonce', 'nonce' );
+    update_option( 'boostbox_custom_update_notice_dismissed', 1 );
+    wp_send_json_success();
+}
+add_action( 'wp_ajax_boostbox_custom_dismiss_update_notice', 'boostbox_custom_dismiss_update_notice' );
