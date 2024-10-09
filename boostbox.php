@@ -13,7 +13,7 @@
  * Plugin Name:       BoostBox
  * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
- * Version:           2.1.0
+ * Version:           2.0.1
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -123,7 +123,7 @@ add_action( 'admin_init', 'boostbox_redirect' );
  * plugin updates. It provides a link to a resource where users can learn how 
  * to continue receiving updates.
  *
- * @since  2.0.2
+ * @since  2.0.1
  * @return void
  */
 function boostbox_custom_update_notice() {
@@ -134,10 +134,10 @@ function boostbox_custom_update_notice() {
 
     // Translating the notice text using WordPress® translation functions.
     $notice_text = sprintf(
-        __( 'Important Notice: Due to recent changes initiated by WordPress® leadership, access to the plugin repository is being restricted for certain hosting providers and developers. This may impact automatic updates for your plugins. To ensure you continue receiving updates and to learn about the next steps, please visit %s.', 'dispensary-age-verification' ),
-        '<a href="https://www.robertdevore.com" target="_blank">this page</a>'
+        __( 'Important Notice: Due to recent changes initiated by WordPress® leadership, access to the plugin repository is being restricted for certain hosting providers and developers. This may impact automatic updates for your plugins. To ensure you continue receiving updates for BoostBox and to learn about the next steps, please visit %s.', 'boostbox' ),
+        '<a href="https://robertdevore.com/wordpress-plugin-updates/" target="_blank">this page</a>'
     );
-    
+
     // Display the admin notice.
     echo '<div class="notice notice-warning is-dismissible" id="custom-update-notice">
         <p>' . $notice_text . '</p>
@@ -148,20 +148,23 @@ add_action( 'admin_notices', 'boostbox_custom_update_notice' );
 /**
  * Enqueue the JavaScript to handle the dismissal of the notice.
  * 
- * @since  2.0.2
+ * @since  2.0.1
  * @return void
  */
 function boostbox_custom_update_notice_scripts() {
     wp_enqueue_script( 'boostbox-custom-notice-dismiss', plugin_dir_url( __FILE__ ) . 'public/js/custom-notice-dismiss.js', array( 'jquery' ), false, true );
-    wp_localize_script( 'boostbox-custom-notice-dismiss', 'custom_notice', array(
+    wp_localize_script( 'boostbox-custom-notice-dismiss', 'custom_notice', [
         'ajax_url' => admin_url( 'admin-ajax.php' ),
         'nonce'    => wp_create_nonce( 'boostbox_custom_notice_dismiss_nonce' ),
-    ) );
+    ] );
 }
 add_action( 'admin_enqueue_scripts', 'boostbox_custom_update_notice_scripts' );
 
 /**
  * AJAX handler to mark the notice as dismissed.
+ * 
+ * @since  2.0.1
+ * @return void
  */
 function boostbox_custom_dismiss_update_notice() {
     check_ajax_referer( 'boostbox_custom_notice_dismiss_nonce', 'nonce' );

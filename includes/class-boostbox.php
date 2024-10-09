@@ -1,7 +1,5 @@
 <?php
 
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
 /**
  * The file that defines the core plugin class
  *
@@ -79,7 +77,7 @@ class BoostBox {
      */
     public function __construct() {
         $this->plugin_name = 'boostbox';
-        $this->version     = '2.1.0';
+        $this->version     = '2.0.1';
 
         if ( defined( 'BOOSTBOX_VERSION' ) ) {
             $this->version = BOOSTBOX_VERSION;
@@ -87,7 +85,6 @@ class BoostBox {
 
         $this->load_dependencies();
         $this->set_locale();
-        $this->update_checker();
         $this->define_admin_hooks();
         $this->define_public_hooks();
 
@@ -128,11 +125,6 @@ class BoostBox {
          * The file responsible for defining all core helper functions
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/boostbox-helper-functions.php';
-
-        /**
-         * The file responsible for including the plugin update checker functionality.
-         */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugin-update-checker/plugin-update-checker.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
@@ -196,25 +188,6 @@ class BoostBox {
 
         $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
-    }
-
-    /**
-     * Plugin update checker
-     * 
-     * @since  2.1.0
-     * @access private
-     * @return void
-     */
-    private function update_checker() {
-
-        $myUpdateChecker = PucFactory::buildUpdateChecker(
-            'https://github.com/deviodigital/boostbox/',
-            __FILE__,
-            'boostbox'
-        );
-
-        // Set the branch that contains the stable release.
-        $myUpdateChecker->setBranch( 'main' );
     }
 
     /**
