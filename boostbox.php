@@ -11,7 +11,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       BoostBox
- * Plugin URI:        https://deviodigital.com/boostbox-lead-generation-plugin
+ * Plugin URI:        https://robertdevore.com/boostbox-wordpress-popup-builder-for-the-core-editor/
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
  * Version:           2.0.1
  * Author:            Devio Digital
@@ -26,6 +26,18 @@
 if ( ! defined( 'WPINC' ) ) {
     wp_die();
 }
+
+require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/deviodigital/boostbox/',
+	__FILE__,
+	'boostbox'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch( 'main' );
 
 // Current plugin version.
 define( 'BOOSTBOX_VERSION', '2.0.1' );
