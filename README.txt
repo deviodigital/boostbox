@@ -86,6 +86,9 @@ Yes, BoostBox is designed to be compatible with most WordPress themes and plugin
 
 == Changelog ==
 
+= 2.1.0 =
+*   Added `PluginUpdateChecker` to serve plugin updates directly from GitHub instead of wp.org in `boostbox.php`
+
 = 2.0.1 =
 *   Added notice about potential disruption to plugin updates by Matthew Mullenweg and what our next steps will be in `boostbox.php`
 

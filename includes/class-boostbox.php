@@ -77,7 +77,7 @@ class BoostBox {
      */
     public function __construct() {
         $this->plugin_name = 'boostbox';
-        $this->version     = '2.0.1';
+        $this->version     = '2.1.0';
 
         if ( defined( 'BOOSTBOX_VERSION' ) ) {
             $this->version = BOOSTBOX_VERSION;
