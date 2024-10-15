@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BoostBox\n"
-"POT-Creation-Date: 2024-03-28 19:01-0400\n"
-"PO-Revision-Date: 2024-02-14 17:59-0500\n"
+"POT-Creation-Date: 2024-10-15 00:54-0400\n"
+"PO-Revision-Date: 2024-10-15 00:54-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "X-Poedit-WPHeader: boostbox.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: admin/boostbox-admin-settings.php:64 admin/js/boostbox-popups-block.js:67
-#: admin/metaboxes/boostbox-display-settings.php:145
+#: admin/metaboxes/boostbox-display-settings.php:173
 msgid "--"
 msgstr ""
 
@@ -31,26 +31,18 @@ msgid "General Settings"
 msgstr ""
 
 #: admin/boostbox-admin-settings.php:90
-msgid "Global popup"
-msgstr ""
-
-#: admin/boostbox-admin-settings.php:91
-msgid "Select the popup used whenever the global option is set on posts/pages"
-msgstr ""
-
-#: admin/boostbox-admin-settings.php:101
 msgid "Cookie days"
 msgstr ""
 
-#: admin/boostbox-admin-settings.php:102
+#: admin/boostbox-admin-settings.php:91
 msgid "Set the days a cookie is stored after the user closes a popup"
 msgstr ""
 
-#: admin/boostbox-admin-settings.php:113
+#: admin/boostbox-admin-settings.php:102
 msgid "Disable Tracking"
 msgstr ""
 
-#: admin/boostbox-admin-settings.php:114
+#: admin/boostbox-admin-settings.php:103
 msgid "Turn off the impression and conversion tracking"
 msgstr ""
 
@@ -173,12 +165,12 @@ msgid "Build popups with the core editor"
 msgstr ""
 
 #: admin/boostbox-custom-post-type.php:125
-#: admin/metaboxes/boostbox-metrics-settings.php:75
+#: admin/metaboxes/boostbox-metrics-settings.php:80
 msgid "Impressions"
 msgstr ""
 
 #: admin/boostbox-custom-post-type.php:135
-#: admin/metaboxes/boostbox-metrics-settings.php:76
+#: admin/metaboxes/boostbox-metrics-settings.php:81
 msgid "Conversions"
 msgstr ""
 
@@ -195,12 +187,12 @@ msgid "Choose Image"
 msgstr ""
 
 #: admin/class-boostbox-admin-settings.php:727
-#: admin/metaboxes/boostbox-popup-settings.php:39
+#: admin/metaboxes/boostbox-popup-settings.php:44
 msgid "BoostBox Settings"
 msgstr ""
 
 #: admin/class-boostbox-admin-settings.php:728
-#: admin/class-boostbox-admin-settings.php:745 boostbox.php:96
+#: admin/class-boostbox-admin-settings.php:745 boostbox.php:108
 msgid "Settings"
 msgstr ""
 
@@ -245,192 +237,280 @@ msgstr ""
 msgid "Insert"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:31
+#: admin/metaboxes/boostbox-display-settings.php:36
 msgid "Display Settings"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:55
-#: admin/metaboxes/boostbox-display-settings.php:62
+#: admin/metaboxes/boostbox-display-settings.php:59
 msgid "General"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:56
-#: admin/metaboxes/boostbox-display-settings.php:65
+#: admin/metaboxes/boostbox-display-settings.php:60
 msgid "Animation"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:57
-#: admin/metaboxes/boostbox-display-settings.php:68
+#: admin/metaboxes/boostbox-display-settings.php:61
+msgid "Target"
+msgstr ""
+
+#: admin/metaboxes/boostbox-display-settings.php:62
 msgid "Trigger"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:58
-#: admin/metaboxes/boostbox-display-settings.php:71
+#: admin/metaboxes/boostbox-display-settings.php:63
 msgid "Close Button"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:78
+#: admin/metaboxes/boostbox-display-settings.php:106
 msgid "Top Left"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:79
+#: admin/metaboxes/boostbox-display-settings.php:107
 msgid "Top Center"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:80
+#: admin/metaboxes/boostbox-display-settings.php:108
 msgid "Top Right"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:81
+#: admin/metaboxes/boostbox-display-settings.php:109
 msgid "Center Left"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:82
+#: admin/metaboxes/boostbox-display-settings.php:110
 msgid "Center Center"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:83
+#: admin/metaboxes/boostbox-display-settings.php:111
 msgid "Center Right"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:84
+#: admin/metaboxes/boostbox-display-settings.php:112
 msgid "Bottom Left"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:85
+#: admin/metaboxes/boostbox-display-settings.php:113
 msgid "Bottom Center"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:86
+#: admin/metaboxes/boostbox-display-settings.php:114
 msgid "Bottom Right"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:100
+#: admin/metaboxes/boostbox-display-settings.php:129
 msgid "Display location"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:123
+#: admin/metaboxes/boostbox-display-settings.php:151
 msgid "Max width"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:134
+#: admin/metaboxes/boostbox-display-settings.php:162
 msgid "Cookie days (overrides global setting)"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:146
+#: admin/metaboxes/boostbox-display-settings.php:174
 msgid "Fade in"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:147
+#: admin/metaboxes/boostbox-display-settings.php:175
 msgid "Slide up"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:148
+#: admin/metaboxes/boostbox-display-settings.php:176
 msgid "Slide down"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:149
+#: admin/metaboxes/boostbox-display-settings.php:177
 msgid "Slide left"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:150
+#: admin/metaboxes/boostbox-display-settings.php:178
 msgid "Slide right"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:151
+#: admin/metaboxes/boostbox-display-settings.php:179
 msgid "Pop swirl"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:152
+#: admin/metaboxes/boostbox-display-settings.php:180
 msgid "Anvil"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:162
+#: admin/metaboxes/boostbox-display-settings.php:191
 msgid "Animation type"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:185
+#: admin/metaboxes/boostbox-display-settings.php:213
 msgid "Animation speed (milliseconds)"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:196
+#: admin/metaboxes/boostbox-display-settings.php:230
 msgid "Auto open"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:197
+#: admin/metaboxes/boostbox-display-settings.php:231
 msgid "On Scroll"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:198
+#: admin/metaboxes/boostbox-display-settings.php:232
 msgid "Time"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:208
+#: admin/metaboxes/boostbox-display-settings.php:243
 msgid "Trigger type"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:231
+#: admin/metaboxes/boostbox-display-settings.php:265
 msgid "Display speed (milliseconds)"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:242
+#: admin/metaboxes/boostbox-display-settings.php:276
 msgid "Scroll distance"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:252
+#: admin/metaboxes/boostbox-display-settings.php:287
 msgid "Outside"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:253
+#: admin/metaboxes/boostbox-display-settings.php:288
 msgid "Inside"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:254
+#: admin/metaboxes/boostbox-display-settings.php:289
 msgid "Hidden"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:264
+#: admin/metaboxes/boostbox-display-settings.php:300
 msgid "Close icon placement"
 msgstr ""
 
-#: admin/metaboxes/boostbox-display-settings.php:291
+#: admin/metaboxes/boostbox-display-settings.php:326
 msgid "Close icon color"
 msgstr ""
 
-#: admin/metaboxes/boostbox-metrics-settings.php:36
+#: admin/metaboxes/boostbox-metrics-settings.php:41
 msgid "Metrics"
 msgstr ""
 
-#: admin/metaboxes/boostbox-metrics-settings.php:77
+#: admin/metaboxes/boostbox-metrics-settings.php:82
 msgid "Conversion Rate"
 msgstr ""
 
-#: admin/metaboxes/boostbox-metrics-settings.php:80
+#: admin/metaboxes/boostbox-metrics-settings.php:85
 msgid "Reset Metrics"
 msgstr ""
 
-#: admin/metaboxes/boostbox-popup-settings.php:90
-msgid "Select popup to display"
+#: admin/metaboxes/boostbox-popup-settings.php:73
+msgid "Disable Popups"
 msgstr ""
 
-#: admin/metaboxes/boostbox-popup-settings.php:92
-msgid "Disable Popup"
+#: boostbox.php:149
+#, php-format
+msgid ""
+"Important Notice: Due to recent changes initiated by WordPress® leadership, "
+"access to the plugin repository is being restricted for certain hosting "
+"providers and developers. This may impact automatic updates for your "
+"plugins. To ensure you continue receiving updates for BoostBox and to learn "
+"about the next steps, please visit %s."
 msgstr ""
 
-#: admin/metaboxes/boostbox-popup-settings.php:93
-msgid "Global Popup"
+#: includes/boostbox-helper-functions.php:297
+msgid "General Pages"
 msgstr ""
 
-#: public/boostbox-popups.php:72
+#: includes/boostbox-helper-functions.php:300
+msgid "Sitewide"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:301
+msgid "Home Page"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:302
+msgid "Search Results"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:303
+msgid "404 Page"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:304
+msgid "Posts Archive"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:321
+msgid "Custom Post Type(s)"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:323
+msgid "Select Post Type(s)"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:336
+msgid "Singular Content"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:338
+msgid "Search and Select Post(s)"
+msgstr ""
+
+#: includes/boostbox-helper-functions.php:525
 msgid " "
 msgstr ""
 
-#: public/boostbox-popups.php:102
-msgid "inside"
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:56
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:56
+msgid "View details"
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:79
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:79
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:130
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:130
+msgid "Check for updates"
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:217
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:219
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:219
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:221
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:221
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:227
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:227
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v5p4/Vcs/PluginUpdateChecker.php:113
+#: plugin-update-checker/Puc/v5p4/Vcs/PluginUpdateChecker.php:113
+msgid "There is no changelog available."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://deviodigital.com/boostbox-lead-generation-plugin"
+msgid ""
+"https://robertdevore.com/boostbox-wordpress-popup-builder-for-the-core-"
+"editor/"
 msgstr ""
 
 #. Description of the plugin/theme
