@@ -393,7 +393,7 @@ function boostbox_detect_page_context() {
 }
 
 /**
- * Check if a given post ID is found in the _selected_posts metadata,
+ * Check if a given post ID or page context is found in the _selected_posts metadata,
  * matches the general options, or matches custom post types in the boostbox_popups metadata.
  *
  * @param int $post_id The ID of the post to check.
@@ -405,17 +405,8 @@ function boostbox_popup_post_check( $post_id ) {
     // Ensure the $post_id is an integer.
     $post_id = (int) $post_id;
 
-    $popup_disabled = get_post_meta( $post_id, 'boostbox_popup_disabled', true );
-    if ( $popup_disabled ) {
-        // Skip showing the popup for this post.
-        return false;
-    }
-
-    // Array to store boostbox_popups post IDs where the $post_id is found.
+    // Array to store boostbox_popups post IDs where the $post_id or context is found.
     $found_in_popups = [];
-
-    // Get the current page context using the new filterable function.
-    $context = boostbox_detect_page_context();
 
     // Query all published posts of type 'boostbox_popups'.
     $query = new WP_Query( [
@@ -427,52 +418,85 @@ function boostbox_popup_post_check( $post_id ) {
     // Loop through the found posts.
     if ( $query->have_posts() ) {
         foreach ( $query->posts as $popup_post_id ) {
-            // Get the _selected_posts metadata.
-            $selected_posts = get_post_meta( $popup_post_id, '_selected_posts', true );
-
-            // Ensure it's always an array.
-            if ( ! is_array( $selected_posts ) ) {
-                $selected_posts = ! empty( $selected_posts ) ? (array) $selected_posts : [];
-            }
-
-            // Convert all post IDs in _selected_posts to integers for reliable comparison.
-            $selected_posts = array_map( 'intval', $selected_posts );
-
-            // Check if the provided $post_id exists in the selected posts array.
-            if ( in_array( $post_id, $selected_posts, true ) ) {
-                $found_in_popups[] = $popup_post_id; // Store the boostbox_popups post ID.
-            }
-
-            // Get the general options from the _general_field metadata.
+            // Get the _general_field metadata (general options).
             $popup_general_options = get_post_meta( $popup_post_id, '_general_field', true );
 
-            // Handle empty or false meta fields to avoid warnings.
-            if ( $popup_general_options === false ) {
-                continue;
-            }
-
-            // Check if the popup should be displayed site-wide.
+            // If "site_wide" is selected, the popup should be shown on all pages.
             if ( is_array( $popup_general_options ) && in_array( 'site_wide', $popup_general_options, true ) ) {
-                $found_in_popups[] = $popup_post_id; // Add if site-wide is selected.
-                continue; // No need for further checks if it's site-wide.
-            }
-
-            // Check specific page contexts.
-            if ( is_array( $popup_general_options ) && ! empty( $context ) && in_array( $context, $popup_general_options, true ) ) {
                 $found_in_popups[] = $popup_post_id;
-            } else {
-                error_log('Context mismatch: ' . $context . ' not found in ' . print_r($popup_general_options, true));
+                continue;  // Skip further checks for this popup since it's site-wide.
             }
 
-            // Check the current post type against the custom post types saved in the metadata.
-            $custom_post_types = get_post_meta( $popup_post_id, '_custom_post_types', true );
+            // Check for home page.
+            if ( is_front_page() ) {
+                if ( is_array( $popup_general_options ) && in_array( 'home_page', $popup_general_options, true ) ) {
+                    $found_in_popups[] = $popup_post_id;
+                }
+            }
 
-            if ( is_array( $custom_post_types ) ) {
-                $current_post_type = get_post_type();
-                
-                // Check if the current post type matches any of the saved custom post types in the metadata.
-                if ( in_array( $current_post_type, $custom_post_types, true ) ) {
-                    $found_in_popups[] = $popup_post_id; // Add if the current post type matches.
+            // Check for blog post archive - the default posts archive page.
+            if ( is_home() && ! is_front_page() ) {
+                if ( is_array( $popup_general_options ) && in_array( 'posts_archive', $popup_general_options, true ) ) {
+                    $found_in_popups[] = $popup_post_id;
+                }
+            }
+
+            // Check for search results.
+            if ( is_search() ) {
+                if ( is_array( $popup_general_options ) && in_array( 'search_results', $popup_general_options, true ) ) {
+                    $found_in_popups[] = $popup_post_id;
+                }
+            }
+
+            // Check for 404 page.
+            if ( is_404() ) {
+                if ( is_array( $popup_general_options ) && in_array( '404_page', $popup_general_options, true ) ) {
+                    $found_in_popups[] = $popup_post_id;
+                }
+            }
+
+            // Check for custom post type archives.
+            if ( is_post_type_archive() ) {
+                $current_post_type = get_query_var( 'post_type' );
+                if ( is_array( $popup_general_options ) && in_array( 'archive_' . $current_post_type, $popup_general_options, true ) ) {
+                    $found_in_popups[] = $popup_post_id; // Add if the archive for this post type matches.
+                }
+            }
+
+            // Continue checking regular posts, CPT archives, and taxonomies if we're not on a special page.
+            if ( ! is_front_page() && ! is_home() && ! is_search() && ! is_404() && ! is_archive() ) {
+                // Check if the popup is disabled for this specific post.
+                $popup_disabled = get_post_meta( $post_id, 'boostbox_popup_disabled', true );
+                if ( $popup_disabled ) {
+                    // Skip showing the popup for this post.
+                    continue;
+                }
+
+                // Get the _selected_posts metadata.
+                $selected_posts = get_post_meta( $popup_post_id, '_selected_posts', true );
+
+                // Ensure it's always an array.
+                if ( ! is_array( $selected_posts ) ) {
+                    $selected_posts = ! empty( $selected_posts ) ? (array) $selected_posts : [];
+                }
+
+                // Convert all post IDs in _selected_posts to integers for reliable comparison.
+                $selected_posts = array_map( 'intval', $selected_posts );
+
+                // Check if the provided $post_id exists in the selected posts array.
+                if ( in_array( $post_id, $selected_posts, true ) ) {
+                    $found_in_popups[] = $popup_post_id; // Store the boostbox_popups post ID.
+                }
+
+                // Check the current post type against the custom post types saved in the metadata.
+                $custom_post_types = get_post_meta( $popup_post_id, '_custom_post_types', true );
+                if ( is_array( $custom_post_types ) ) {
+                    $current_post_type = get_post_type();
+
+                    // Check if the current post type matches any of the saved custom post types in the metadata.
+                    if ( in_array( $current_post_type, $custom_post_types, true ) ) {
+                        $found_in_popups[] = $popup_post_id; // Add if the current post type matches.
+                    }
                 }
             }
         }
