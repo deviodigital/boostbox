@@ -164,7 +164,7 @@ add_action( 'admin_notices', 'boostbox_custom_update_notice' );
  * @return void
  */
 function boostbox_custom_update_notice_scripts() {
-    wp_enqueue_script( 'boostbox-custom-notice-dismiss', plugin_dir_url( __FILE__ ) . 'public/js/custom-notice-dismiss.js', array( 'jquery' ), false, true );
+    wp_enqueue_script( 'boostbox-custom-notice-dismiss', plugin_dir_url( __FILE__ ) . 'public/js/custom-notice-dismiss.js', [ 'jquery' ], false, true );
     wp_localize_script( 'boostbox-custom-notice-dismiss', 'custom_notice', [
         'ajax_url' => admin_url( 'admin-ajax.php' ),
         'nonce'    => wp_create_nonce( 'boostbox_custom_notice_dismiss_nonce' ),
@@ -184,3 +184,61 @@ function boostbox_custom_dismiss_update_notice() {
     wp_send_json_success();
 }
 add_action( 'wp_ajax_boostbox_custom_dismiss_update_notice', 'boostbox_custom_dismiss_update_notice' );
+
+/**
+ * Add Go Pro link on plugin page
+ *
+ * @param array $links an array of links related to the plugin.
+ * 
+ * @since  2.1.1
+ * @return array updatead array of links related to the plugin.
+ */
+function boostbox_go_pro_link( $links ) {
+    // Pro link.
+    $pro_link = '<a href="https://deviodigital.com/product/boostbox-pro" target="_blank" style="font-weight:700;">' . esc_attr__( 'Go Pro', 'boostbox' ) . '</a>';
+
+    if ( ! function_exists( 'run_boostbox_pro' ) ) {
+        array_unshift( $links, $pro_link );
+    }
+    return $links;
+}
+add_filter( "plugin_action_links_$plugin_name", 'boostbox_go_pro_link' );
+
+/**
+ * Check BoostBox Pro version number.
+ *
+ * If the BoostBox Pro version number is less than what's defined below, there will
+ * be a notice added to the admin screen letting the user know there's a new
+ * version of the BoostBox Pro plugin available.
+ *
+ * @since  2.1.1
+ * @return void
+ */
+function boostbox_check_pro_version() {
+    // Only run if BoostBox Pro is active.
+    if ( function_exists( 'run_boostbox_pro' ) ) {
+        // Check if BoostBox Pro version is defined.
+        if ( ! defined( 'BOOSTBOX_PRO_VERSION' ) ) {
+            define( 'BOOSTBOX_PRO_VERSION', 0 ); // default to zero.
+        }
+        // Set pro version number.
+        $pro_version = BOOSTBOX_PRO_VERSION;
+        if ( '0' == $pro_version || $pro_version < '1.0.0' ) {
+            add_action( 'admin_notices', 'boostbox_update_boostbox_pro_notice' );
+        }
+    }
+}
+add_action( 'admin_init', 'boostbox_check_pro_version' );
+
+/**
+ * Error notice - Runs if BoostBox Pro is out of date.
+ *
+ * @see    boostbox_check_pro_version()
+ * @since  2.1.1
+ * @return void
+ */
+function boostbox_update_boostbox_pro_notice() {
+    $boostbox_orders = '<a href="https://www.deviodigital.com/my-account/orders/" target="_blank">' . esc_attr__( 'Orders', 'boostbox' ) . '</a>';
+    $error       = sprintf( esc_html__( 'There is a new version of BoostBox Pro available. Download your copy from the %1$s page on Devio Digital.', 'boostbox' ), $boostbox_orders );
+    echo '<div class="notice notice-info"><p>' . $error . '</p></div>';
+}
