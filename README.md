@@ -1,8 +1,8 @@
-# BoostBox Plugin for WordPress
+# BoostBox Plugin for WordPress®
 
 :rocket: Increase conversion rates, customer retention and revenue.
 
-**BoostBox** is a WordPress plugin designed to create flexible and customizable popups, modals, and content overlays within the core WordPress editor. 
+**BoostBox** is a WordPress® plugin designed to create flexible and customizable popups, modals, and content overlays within the core WordPress® editor. 
 
 Without requiring additional design interfaces or tools, **BoostBox** integrates seamlessly with the editor you're already familiar with, offering the ability to build effective and targeted popups to improve engagement, conversions, and overall website functionality.
 
@@ -10,7 +10,7 @@ No more trying to learn *another popup plugin* and their unique design experienc
 
 ## Key Features
 
-:white_check_mark: Build popups directly within the WordPress editor using blocks, columns, groups, and patterns.  
+:white_check_mark: Build popups directly within the WordPress® editor using blocks, columns, groups, and patterns.  
 :white_check_mark: Style and configure each popup with custom animation and targeting options.  
 :white_check_mark: Display popups to capture leads, promote content, showcase products, drive sales funnels, and more.
 
@@ -24,9 +24,9 @@ With **BoostBox**, you have the flexibility to create a variety of popup types f
 :dart: **Custom Campaigns**: Tailor popups to your specific goals with advanced targeting.  
 
 ### Full-Site Editing (FSE) Integration
-**BoostBox** takes full advantage of WordPress's Full-Site Editing (FSE) capabilities. By leveraging WordPress blocks and patterns, you can design popups that align with your site's theme and branding. 
+**BoostBox** takes full advantage of WordPress®'s Full-Site Editing (FSE) capabilities. By leveraging WordPress® blocks and patterns, you can design popups that align with your site's theme and branding. 
 
-There's no need to use third-party popup builders — **BoostBox** integrates natively with the WordPress editor, ensuring a seamless and familiar experience.
+There's no need to use third-party popup builders — **BoostBox** integrates natively with the WordPress® editor, ensuring a seamless and familiar experience.
 
 ## Settings Overview
 
@@ -56,6 +56,6 @@ There's no need to use third-party popup builders — **BoostBox** integrates na
 ## Getting Started
 
 ### Installation
-1. Upload the **BoostBox** plugin files to the `/wp-content/plugins/boostbox/` directory, install it directly from the WordPress Plugin Repository or by searching for **BoostBox** in your WordPress dashboard.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Upload the **BoostBox** plugin files to the `/wp-content/plugins/boostbox/` directory, install it directly from the WordPress® Plugin Repository or by searching for **BoostBox** in your WordPress® dashboard.
+2. Activate the plugin through the 'Plugins' menu in WordPress®.
 3. Navigate to `BoosBox -> Add New` to configure your first popup.
