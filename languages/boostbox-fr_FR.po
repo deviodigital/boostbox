@@ -1,0 +1,575 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BoostBox\n"
+"POT-Creation-Date: 2024-12-22 01:05-0500\n"
+"PO-Revision-Date: 2024-12-22 01:07-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: boostbox.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: plugin-update-checker/vendor\n"
+
+#: admin/boostbox-admin-settings.php:64 admin/js/boostbox-popups-block.js:67
+#: admin/metaboxes/boostbox-display-settings.php:173
+msgid "--"
+msgstr "--"
+
+#: admin/boostbox-admin-settings.php:80
+msgid "General Settings"
+msgstr "Réglages généraux"
+
+#: admin/boostbox-admin-settings.php:90
+msgid "Cookie days"
+msgstr "Jours de biscuits"
+
+#: admin/boostbox-admin-settings.php:91
+msgid "Set the days a cookie is stored after the user closes a popup"
+msgstr ""
+"Définir la durée de conservation d'un cookie après la fermeture d'une "
+"fenêtre contextuelle par l'utilisateur"
+
+#: admin/boostbox-admin-settings.php:102
+msgid "Disable Tracking"
+msgstr "Désactiver le suivi"
+
+#: admin/boostbox-admin-settings.php:103
+msgid "Turn off the impression and conversion tracking"
+msgstr "Désactiver le suivi des impressions et des conversions"
+
+#: admin/boostbox-custom-post-type.php:24
+msgctxt "Post Type General Name"
+msgid "Popups"
+msgstr "PopUps"
+
+#: admin/boostbox-custom-post-type.php:25
+msgctxt "Post Type Singular Name"
+msgid "Popup"
+msgstr "Popup"
+
+#. Plugin Name of the plugin/theme
+#: admin/boostbox-custom-post-type.php:26
+#: admin/class-boostbox-admin-settings.php:745
+msgid "BoostBox"
+msgstr "BoostBox"
+
+#: admin/boostbox-custom-post-type.php:27
+msgid "Popup"
+msgstr "Popup"
+
+#: admin/boostbox-custom-post-type.php:28
+msgid "Popup Archives"
+msgstr "Archives des fenêtres contextuelles"
+
+#: admin/boostbox-custom-post-type.php:29
+msgid "Popup Attributes"
+msgstr "Attributs de la fenêtre contextuelle"
+
+#: admin/boostbox-custom-post-type.php:30
+msgid "Parent Popup:"
+msgstr "Popup parent :"
+
+#: admin/boostbox-custom-post-type.php:31
+msgid "All Popups"
+msgstr "Tous les pop-up"
+
+#: admin/boostbox-custom-post-type.php:32
+msgid "Add New Popup"
+msgstr "Ajouter un nouveau PopUp"
+
+#: admin/boostbox-custom-post-type.php:33
+msgid "Add New"
+msgstr "Ajouter"
+
+#: admin/boostbox-custom-post-type.php:34
+msgid "New Popup"
+msgstr "Nouveau Popup"
+
+#: admin/boostbox-custom-post-type.php:35
+msgid "Edit Popup"
+msgstr "Modifier PopUp"
+
+#: admin/boostbox-custom-post-type.php:36
+msgid "Update Popup"
+msgstr "Mettre à jour"
+
+#: admin/boostbox-custom-post-type.php:37
+#: admin/boostbox-custom-post-type.php:38
+msgid "View Popup"
+msgstr "Voir la popup"
+
+#: admin/boostbox-custom-post-type.php:39
+msgid "Search Popup"
+msgstr "Rechercher une popup"
+
+#: admin/boostbox-custom-post-type.php:40
+msgid "Not found"
+msgstr "Non trouvé"
+
+#: admin/boostbox-custom-post-type.php:41
+msgid "Not found in Trash"
+msgstr "Non trouvé dans la corbeille"
+
+#: admin/boostbox-custom-post-type.php:42
+msgid "Featured Image"
+msgstr "Image à la une"
+
+#: admin/boostbox-custom-post-type.php:43
+msgid "Set featured image"
+msgstr "Définir l’image sélectionnée"
+
+#: admin/boostbox-custom-post-type.php:44
+msgid "Remove featured image"
+msgstr "Supprimer l'image mise en avant"
+
+#: admin/boostbox-custom-post-type.php:45
+msgid "Use as featured image"
+msgstr "Utiliser comme image mise en avant"
+
+#: admin/boostbox-custom-post-type.php:46
+msgid "Insert into popup"
+msgstr "Insérer dans popup"
+
+#: admin/boostbox-custom-post-type.php:47
+msgid "Uploaded to this popup"
+msgstr "Téléchargé sur ce popup"
+
+#: admin/boostbox-custom-post-type.php:48
+msgid "Popups list"
+msgstr "Liste des popups"
+
+#: admin/boostbox-custom-post-type.php:49
+msgid "Popups list navigation"
+msgstr "Navigation de la liste des popups"
+
+#: admin/boostbox-custom-post-type.php:50
+msgid "Filter popups list"
+msgstr "Filtrer la liste"
+
+#: admin/boostbox-custom-post-type.php:59 admin/js/boostbox-popups-block.js:6
+#: admin/js/boostbox-popups-block.js:77
+#, fuzzy
+msgid "BoostBox Popups"
+msgstr "Pop-ups BoostBox"
+
+#: admin/boostbox-custom-post-type.php:60
+msgid "Build popups with the core editor"
+msgstr "Créer des fenêtres contextuelles avec l'éditeur principal"
+
+#: admin/boostbox-custom-post-type.php:125
+#: admin/metaboxes/boostbox-metrics-settings.php:80
+msgid "Impressions"
+msgstr "Impressions"
+
+#: admin/boostbox-custom-post-type.php:135
+#: admin/metaboxes/boostbox-metrics-settings.php:81
+msgid "Conversions"
+msgstr "Conversions"
+
+#: admin/boostbox-custom-post-type.php:145
+msgid "Conversion rate"
+msgstr "Taux de conversion"
+
+#: admin/class-boostbox-admin-settings.php:613
+msgid "Choose File"
+msgstr "Choisissez un fichier"
+
+#: admin/class-boostbox-admin-settings.php:634
+msgid "Choose Image"
+msgstr "Choisir une image"
+
+#: admin/class-boostbox-admin-settings.php:727
+#: admin/metaboxes/boostbox-popup-settings.php:44
+msgid "BoostBox Settings"
+msgstr "Paramètres de BoostBox"
+
+#: admin/class-boostbox-admin-settings.php:728
+#: admin/class-boostbox-admin-settings.php:745 boostbox.php:108
+msgid "Settings"
+msgstr "Paramètres"
+
+#: admin/class-boostbox-admin-settings.php:744
+msgid "Visit Devio Digital"
+msgstr "Visiter Devio Digital"
+
+#. Author of the plugin/theme
+#: admin/class-boostbox-admin-settings.php:764
+msgid "Devio Digital"
+msgstr "Devio Digital"
+
+#: admin/class-boostbox-admin-settings.php:765
+msgid "Docs"
+msgstr "Docs"
+
+#: admin/class-boostbox-admin-settings.php:766
+msgid "Twitter"
+msgstr "Twitter"
+
+#: admin/class-boostbox-cpt-columns.php:221
+msgid "N/A"
+msgstr "N/A"
+
+#: admin/class-boostbox-cpt-columns.php:295
+msgid "Column label"
+msgstr "Intitulé de colonne"
+
+#: admin/js/boostbox-popups-block.js:36
+msgid "Selected post is the current post. Do nothing."
+msgstr "Le message sélectionné est le message actuel. Ne rien faire."
+
+#: admin/js/boostbox-popups-block.js:60
+#, fuzzy
+msgid "Error fetching post content:"
+msgstr "Erreur lors de la récupération du contenu du message :"
+
+#: admin/js/boostbox-popups-block.js:79
+msgid "Select a BoostBox Popup"
+msgstr "Sélectionner une BoostBox Popup"
+
+#: admin/js/boostbox-popups-block.js:90
+msgid "Insert"
+msgstr "Insérer"
+
+#: admin/metaboxes/boostbox-display-settings.php:36
+msgid "Display Settings"
+msgstr "Paramètres d'affichage"
+
+#: admin/metaboxes/boostbox-display-settings.php:59
+msgid "General"
+msgstr "Général"
+
+#: admin/metaboxes/boostbox-display-settings.php:60
+msgid "Animation"
+msgstr "Animation"
+
+#: admin/metaboxes/boostbox-display-settings.php:61
+msgid "Target"
+msgstr "Cible"
+
+#: admin/metaboxes/boostbox-display-settings.php:62
+msgid "Trigger"
+msgstr "Déclencheur"
+
+#: admin/metaboxes/boostbox-display-settings.php:63
+msgid "Close Button"
+msgstr "Bouton Fermer"
+
+#: admin/metaboxes/boostbox-display-settings.php:106
+msgid "Top Left"
+msgstr "En haut à gauche"
+
+#: admin/metaboxes/boostbox-display-settings.php:107
+msgid "Top Center"
+msgstr "En haut au centre"
+
+#: admin/metaboxes/boostbox-display-settings.php:108
+msgid "Top Right"
+msgstr "En haut à droite"
+
+#: admin/metaboxes/boostbox-display-settings.php:109
+msgid "Center Left"
+msgstr "Centré à gauche"
+
+#: admin/metaboxes/boostbox-display-settings.php:110
+msgid "Center Center"
+msgstr "Centre centre"
+
+#: admin/metaboxes/boostbox-display-settings.php:111
+msgid "Center Right"
+msgstr "Centré à droite"
+
+#: admin/metaboxes/boostbox-display-settings.php:112
+msgid "Bottom Left"
+msgstr "En bas à gauche"
+
+#: admin/metaboxes/boostbox-display-settings.php:113
+msgid "Bottom Center"
+msgstr "Bas Centre"
+
+#: admin/metaboxes/boostbox-display-settings.php:114
+msgid "Bottom Right"
+msgstr "En bas à droite"
+
+#: admin/metaboxes/boostbox-display-settings.php:129
+msgid "Display location"
+msgstr "Afficher l’emplacement"
+
+#: admin/metaboxes/boostbox-display-settings.php:151
+msgid "Max width"
+msgstr "Largeur maximum"
+
+#: admin/metaboxes/boostbox-display-settings.php:162
+msgid "Cookie days (overrides global setting)"
+msgstr "Jours de cookies (remplace le paramètre global)"
+
+#: admin/metaboxes/boostbox-display-settings.php:174
+msgid "Fade in"
+msgstr "En fondu"
+
+#: admin/metaboxes/boostbox-display-settings.php:175
+msgid "Slide up"
+msgstr "Glissement vers le haut"
+
+#: admin/metaboxes/boostbox-display-settings.php:176
+msgid "Slide down"
+msgstr "Glisse vers le bas"
+
+#: admin/metaboxes/boostbox-display-settings.php:177
+msgid "Slide left"
+msgstr "Glisse vers la gauche"
+
+#: admin/metaboxes/boostbox-display-settings.php:178
+msgid "Slide right"
+msgstr "Glisse vers la droite"
+
+#: admin/metaboxes/boostbox-display-settings.php:179
+msgid "Pop swirl"
+msgstr "Tourbillon pop"
+
+#: admin/metaboxes/boostbox-display-settings.php:180
+msgid "Anvil"
+msgstr "Enclume"
+
+#: admin/metaboxes/boostbox-display-settings.php:191
+msgid "Animation type"
+msgstr "Type d’animation"
+
+#: admin/metaboxes/boostbox-display-settings.php:213
+msgid "Animation speed (milliseconds)"
+msgstr "Vitesse d'animation (millisecondes)"
+
+#: admin/metaboxes/boostbox-display-settings.php:230
+msgid "Auto open"
+msgstr "Ouverture automatique"
+
+#: admin/metaboxes/boostbox-display-settings.php:231
+msgid "On Scroll"
+msgstr "En défilement"
+
+#: admin/metaboxes/boostbox-display-settings.php:232
+msgid "Time"
+msgstr "Heure"
+
+#: admin/metaboxes/boostbox-display-settings.php:243
+msgid "Trigger type"
+msgstr "Type de déclenchement"
+
+#: admin/metaboxes/boostbox-display-settings.php:265
+msgid "Display speed (milliseconds)"
+msgstr "Vitesse d'affichage (millisecondes)"
+
+#: admin/metaboxes/boostbox-display-settings.php:276
+msgid "Scroll distance"
+msgstr "Distance de défilement"
+
+#: admin/metaboxes/boostbox-display-settings.php:287
+msgid "Outside"
+msgstr "Extérieur"
+
+#: admin/metaboxes/boostbox-display-settings.php:288
+msgid "Inside"
+msgstr "Intérieur"
+
+#: admin/metaboxes/boostbox-display-settings.php:289
+msgid "Hidden"
+msgstr "Masqué"
+
+#: admin/metaboxes/boostbox-display-settings.php:300
+msgid "Close icon placement"
+msgstr "Placement de l'icône de fermeture"
+
+#: admin/metaboxes/boostbox-display-settings.php:326
+msgid "Close icon color"
+msgstr "Fermer la couleur de l’icône"
+
+#: admin/metaboxes/boostbox-metrics-settings.php:41
+msgid "Metrics"
+msgstr "Métriques"
+
+#: admin/metaboxes/boostbox-metrics-settings.php:82
+msgid "Conversion Rate"
+msgstr "Taux de conversion"
+
+#: admin/metaboxes/boostbox-metrics-settings.php:85
+msgid "Reset Metrics"
+msgstr "Réinitialiser les métriques"
+
+#: admin/metaboxes/boostbox-popup-settings.php:73
+msgid "Disable Popups"
+msgstr "Désactiver les fenêtres pop-up"
+
+#: boostbox.php:149
+#, php-format
+msgid ""
+"Important Notice: Due to recent changes initiated by WordPress® leadership, "
+"access to the plugin repository is being restricted for certain hosting "
+"providers and developers. This may impact automatic updates for your "
+"plugins. To ensure you continue receiving updates for BoostBox and to learn "
+"about the next steps, please visit %s."
+msgstr ""
+"Avis important : En raison de changements récents initiés par le leadership "
+"de WordPress®, l'accès au dépôt de plugins est restreint pour certains "
+"hébergeurs et développeurs. Ceci peut avoir un impact sur les mises à jour "
+"automatiques de vos plugins. Pour vous assurer de continuer à recevoir les "
+"mises à jour de BoostBox et pour connaître les prochaines étapes, veuillez "
+"visiter %s."
+
+#: boostbox.php:198
+msgid "Go Pro"
+msgstr "Go Pro"
+
+#: boostbox.php:241
+msgid "Orders"
+msgstr "Commandes"
+
+#: boostbox.php:242
+#, php-format
+msgid ""
+"There is a new version of BoostBox Pro available. Download your copy from "
+"the %1$s page on Devio Digital."
+msgstr ""
+"Une nouvelle version de BoostBox Pro est disponible. Téléchargez votre "
+"copie à partir de la page %1$s sur Devio Digital."
+
+#: boostbox.php:306
+#, php-format
+msgid ""
+"My Plugin has been deactivated because it cannot be used on WordPress.com-"
+"hosted websites. %s"
+msgstr ""
+"Mon plugin a été désactivé car il ne peut pas être utilisé sur les sites "
+"hébergés par WordPress.com. %s"
+
+#: boostbox.php:307 boostbox.php:335
+msgid "Learn more"
+msgstr "En savoir plus"
+
+#: boostbox.php:332 boostbox.php:338
+msgid "Plugin Activation Blocked"
+msgstr "Activation du plugin bloquée"
+
+#: boostbox.php:333
+msgid ""
+"This plugin cannot be activated on WordPress.com-hosted websites. It is "
+"restricted due to concerns about WordPress.com policies impacting the "
+"community."
+msgstr ""
+"Ce plugin ne peut pas être activé sur les sites web hébergés par WordPress."
+"com. Il est restreint en raison de préoccupations concernant les politiques "
+"de WordPress.com ayant un impact sur la communauté."
+
+#: includes/boostbox-helper-functions.php:297
+msgid "General Pages"
+msgstr "Pages générales"
+
+#: includes/boostbox-helper-functions.php:300
+msgid "Sitewide"
+msgstr "Site large"
+
+#: includes/boostbox-helper-functions.php:301
+msgid "Home Page"
+msgstr "Page d'accueil"
+
+#: includes/boostbox-helper-functions.php:302
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+#: includes/boostbox-helper-functions.php:303
+msgid "404 Page"
+msgstr "Page 404"
+
+#: includes/boostbox-helper-functions.php:304
+msgid "Posts Archive"
+msgstr "Archive des Articles"
+
+#: includes/boostbox-helper-functions.php:321
+msgid "Custom Post Type(s)"
+msgstr "Type(s) d'article(s) personnalisé(s)"
+
+#: includes/boostbox-helper-functions.php:323
+msgid "Select Post Type(s)"
+msgstr "Sélectionner type(s) de publication(s)"
+
+#: includes/boostbox-helper-functions.php:336
+msgid "Singular Content"
+msgstr "Contenu simple (singular)"
+
+#: includes/boostbox-helper-functions.php:338
+msgid "Search and Select Post(s)"
+msgstr "Rechercher et sélectionner un ou plusieurs messages"
+
+#: includes/boostbox-helper-functions.php:549
+msgid " "
+msgstr " "
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:56
+msgid "View details"
+msgstr "Voir les détails"
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:79
+#, php-format
+msgid "More information about %s"
+msgstr "Plus d’informations sur %s"
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:130
+msgid "Check for updates"
+msgstr "Vérifier les mises à jour"
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "Le plugin %s est à jour."
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:219
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Une nouvelle version de l'extension %s est disponible."
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:221
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+"Impossible de déterminer si des mises à jour sont disponibles pour %s."
+
+#: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:227
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Mise à jour inconnue statut \"%s\""
+
+#: plugin-update-checker/Puc/v5p4/Vcs/PluginUpdateChecker.php:113
+msgid "There is no changelog available."
+msgstr "Aucun registre de modifications disponible."
+
+#. Plugin URI of the plugin/theme
+msgid ""
+"https://robertdevore.com/boostbox-wordpress-popup-builder-for-the-core-"
+"editor/"
+msgstr ""
+"https://robertdevore.com/boostbox-wordpress-popup-builder-for-the-core-"
+"editor/"
+
+#. Description of the plugin/theme
+msgid ""
+"Build popups for lead generation, content promotion and more using the core "
+"editor."
+msgstr ""
+"Créez des fenêtres contextuelles pour la génération de leads, la promotion "
+"de contenu et bien plus encore à l'aide de l'éditeur principal."
+
+#. Author URI of the plugin/theme
+msgid "https://deviodigital.com"
+msgstr "https://deviodigital.com"
