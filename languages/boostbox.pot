@@ -2,15 +2,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BoostBox\n"
-"POT-Creation-Date: 2024-10-15 00:54-0400\n"
-"PO-Revision-Date: 2024-10-15 00:54-0400\n"
+"POT-Creation-Date: 2024-12-22 01:05-0500\n"
+"PO-Revision-Date: 2024-12-22 01:05-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: boostbox.php\n"
@@ -20,6 +20,7 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: plugin-update-checker/vendor\n"
 
 #: admin/boostbox-admin-settings.php:64 admin/js/boostbox-popups-block.js:67
 #: admin/metaboxes/boostbox-display-settings.php:173
@@ -415,6 +416,43 @@ msgid ""
 "about the next steps, please visit %s."
 msgstr ""
 
+#: boostbox.php:198
+msgid "Go Pro"
+msgstr ""
+
+#: boostbox.php:241
+msgid "Orders"
+msgstr ""
+
+#: boostbox.php:242
+#, php-format
+msgid ""
+"There is a new version of BoostBox Pro available. Download your copy from "
+"the %1$s page on Devio Digital."
+msgstr ""
+
+#: boostbox.php:306
+#, php-format
+msgid ""
+"My Plugin has been deactivated because it cannot be used on WordPress.com-"
+"hosted websites. %s"
+msgstr ""
+
+#: boostbox.php:307 boostbox.php:335
+msgid "Learn more"
+msgstr ""
+
+#: boostbox.php:332 boostbox.php:338
+msgid "Plugin Activation Blocked"
+msgstr ""
+
+#: boostbox.php:333
+msgid ""
+"This plugin cannot be activated on WordPress.com-hosted websites. It is "
+"restricted due to concerns about WordPress.com policies impacting the "
+"community."
+msgstr ""
+
 #: includes/boostbox-helper-functions.php:297
 msgid "General Pages"
 msgstr ""
@@ -455,54 +493,46 @@ msgstr ""
 msgid "Search and Select Post(s)"
 msgstr ""
 
-#: includes/boostbox-helper-functions.php:525
+#: includes/boostbox-helper-functions.php:549
 msgid " "
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:56
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:56
 msgid "View details"
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:79
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:79
 #, php-format
 msgid "More information about %s"
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:130
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:130
 msgid "Check for updates"
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:217
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:217
 #, php-format
 msgctxt "the plugin title"
 msgid "The %s plugin is up to date."
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:219
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:219
 #, php-format
 msgctxt "the plugin title"
 msgid "A new version of the %s plugin is available."
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:221
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:221
 #, php-format
 msgctxt "the plugin title"
 msgid "Could not determine if updates are available for %s."
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Plugin/Ui.php:227
 #: plugin-update-checker/Puc/v5p4/Plugin/Ui.php:227
 #, php-format
 msgid "Unknown update checker status \"%s\""
 msgstr ""
 
-#: includes/plugin-update-checker/Puc/v5p4/Vcs/PluginUpdateChecker.php:113
 #: plugin-update-checker/Puc/v5p4/Vcs/PluginUpdateChecker.php:113
 msgid "There is no changelog available."
 msgstr ""
