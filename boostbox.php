@@ -13,7 +13,7 @@
  * Plugin Name:       BoostBox
  * Plugin URI:        https://robertdevore.com/boostbox-wordpress-popup-builder-for-the-core-editor/
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
- * Version:           2.1.1
+ * Version:           2.2.0
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -40,7 +40,7 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 $myUpdateChecker->setBranch( 'main' );
 
 // Current plugin version.
-define( 'BOOSTBOX_VERSION', '2.1.1' );
+define( 'BOOSTBOX_VERSION', '2.2.0' );
 
 // Plugin basename.
 $plugin_name = plugin_basename( __FILE__ );
@@ -303,8 +303,8 @@ function wpcom_admin_notice() {
                 <?php
                 echo wp_kses_post(
                     sprintf(
-                        __( 'My Plugin has been deactivated because it cannot be used on WordPress.com-hosted websites. %s', 'plugin-name' ),
-                        '<a href="' . esc_url( $notice_link ) . '" target="_blank" rel="noopener">' . __( 'Learn more', 'plugin-name' ) . '</a>'
+                        __( 'My Plugin has been deactivated because it cannot be used on WordPress.com-hosted websites. %s', 'boostbox' ),
+                        '<a href="' . esc_url( $notice_link ) . '" target="_blank" rel="noopener">' . __( 'Learn more', 'boostbox' ) . '</a>'
                     )
                 );
                 ?>
@@ -329,13 +329,13 @@ function wpcom_activation_check() {
             wp_kses_post(
                 sprintf(
                     '<h1>%s</h1><p>%s</p><p><a href="%s" target="_blank" rel="noopener">%s</a></p>',
-                    __( 'Plugin Activation Blocked', 'plugin-name' ),
-                    __( 'This plugin cannot be activated on WordPress.com-hosted websites. It is restricted due to concerns about WordPress.com policies impacting the community.', 'plugin-name' ),
+                    __( 'Plugin Activation Blocked', 'boostbox' ),
+                    __( 'This plugin cannot be activated on WordPress.com-hosted websites. It is restricted due to concerns about WordPress.com policies impacting the community.', 'boostbox' ),
                     esc_url( 'https://robertdevore.com/why-this-plugin-doesnt-support-wordpress-com-hosting/' ),
-                    __( 'Learn more', 'plugin-name' )
+                    __( 'Learn more', 'boostbox' )
                 )
             ),
-            esc_html__( 'Plugin Activation Blocked', 'plugin-name' ),
+            esc_html__( 'Plugin Activation Blocked', 'boostbox' ),
             [ 'back_link' => true ]
         );
     }
