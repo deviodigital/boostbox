@@ -126,7 +126,6 @@ function get_first_block_width( $post_id ) {
     return false;
 }
 
-
 /**
  * Get the alignment of the first cover block in WordPress post content.
  * Apply CSS styles based on the alignment.
@@ -283,8 +282,8 @@ function display_custom_post_type_select() {
     $saved_general_field     = get_post_meta( $post->ID, '_general_field', true ); // New general field value
 
     // Ensure the retrieved values are arrays to avoid issues.
-    $saved_custom_post_types = !empty($saved_custom_post_types) ? (array) $saved_custom_post_types : [];
-    $saved_selected_posts    = !empty($saved_selected_posts) ? (array) $saved_selected_posts : [];
+    $saved_custom_post_types = ! empty( $saved_custom_post_types ) ? (array) $saved_custom_post_types : [];
+    $saved_selected_posts    = ! empty( $saved_selected_posts ) ? (array) $saved_selected_posts : [];
 
     // Get all public post types (including built-in ones).
     $args = [

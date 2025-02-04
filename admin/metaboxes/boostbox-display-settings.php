@@ -227,9 +227,9 @@ function boostbox_display_settings_metabox_content() {
         <div id="fourth-panel" class="panel animated slideInRight">', boostbox_allowed_tags() );
             // Create an array of triggers.
             $triggers = [
-                'auto-open'   => esc_attr__( 'Auto open', 'boostbox' ),
-                'on-scroll'   => esc_attr__( 'On Scroll', 'boostbox' ),
-                'time'        => esc_attr__( 'Time', 'boostbox' ),
+                'auto-open' => esc_attr__( 'Auto open', 'boostbox' ),
+                'on-scroll' => esc_attr__( 'On Scroll', 'boostbox' ),
+                'time'      => esc_attr__( 'Time', 'boostbox' ),
             ];
 
             // Filter the triggers.

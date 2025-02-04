@@ -28,6 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
  * @link       https://deviodigital.com
  * @since      1.0.0
+ * @return     void
  */
 function boostbox_popup_settings_metabox() {
     // Get all registered post types.
@@ -54,6 +55,7 @@ add_action( 'add_meta_boxes', 'boostbox_popup_settings_metabox' );
 /**
  * Build the Popup Settings metabox
  * 
+ * @since  1.0.0
  * @return void
  */
 function boostbox_popup_settings_metabox_content() {
@@ -81,6 +83,7 @@ function boostbox_popup_settings_metabox_content() {
  * @param int    $post_id 
  * @param object $post 
  * 
+ * @since  1.0.0
  * @return void
  */
 function boostbox_popup_settings_metabox_save( $post_id, $post ) {

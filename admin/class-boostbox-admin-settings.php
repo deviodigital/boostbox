@@ -87,7 +87,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             wp_enqueue_media();
         }
 
-
         /**
          * Set Sections.
          *
@@ -125,7 +124,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             return $this;
         }
 
-
         /**
          * Set Fields.
          *
@@ -142,8 +140,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             return $this;
         }
-
-
 
         /**
          * Add a single field.
@@ -168,8 +164,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             return $this;
         }
 
-
-
         /**
          * Initialize API.
          *
@@ -181,21 +175,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
         function admin_init() {
             /**
              * Register the sections.
-             *
-             * Sections array is like this:
-             *
-             * $_sections_array = array (
-             *   $section_array,
-             *   $section_array,
-             *   $section_array,
-             * );
-             *
-             * Section array is like this:
-             *
-             * $section_array = array (
-             *   'id'    => 'section_id',
-             *   'title' => 'Section Title'
-             * );
              *
              * @since 1.0.0
              */
@@ -235,23 +214,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             /**
              * Register settings fields.
-             *
-             * Fields array is like this:
-             *
-             * $_fields_array = array (
-             *   $section => $field_array,
-             *   $section => $field_array,
-             *   $section => $field_array,
-             * );
-             *
-             *
-             * Field array is like this:
-             *
-             * $field_array = array (
-             *   'id'   => 'id',
-             *   'name' => 'Name',
-             *   'type' => 'text',
-             * );
              *
              * @since 1.0.0
              */
@@ -342,7 +304,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
         } // admin_init() ended.
 
-
         /**
          * Sanitize callback for Settings API fields.
          *
@@ -361,7 +322,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             return $fields;
         }
-
 
         /**
          * Get sanitization callback for given option slug
@@ -390,7 +350,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             return false;
         }
 
-
         /**
          * Get field description for display
          *
@@ -405,7 +364,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             return $desc;
         }
-
 
         /**
          * Displays a title field for a settings field
@@ -424,7 +382,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
-
         /**
          * Displays a text field for a settings field
          *
@@ -441,7 +398,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
 
             echo wp_kses( $html, boostbox_allowed_tags() );
         }
-
 
         /**
          * Displays a url field for a settings field
@@ -563,7 +519,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          * Displays a textarea for a settings field
          *
          * @param array $args settings field args.
-         * @return string
+         * @return void
          */
         function callback_html( $args ) {
             echo $this->get_field_description( $args );
@@ -605,10 +561,10 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         function callback_file( $args ) {
 
-            $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
-            $size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-            $the_id    = $args['section'] . '[' . $args['id'] . ']';
-            $label = isset( $args['options']['button_label'] ) ?
+            $value  = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+            $size   = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+            $the_id = $args['section'] . '[' . $args['id'] . ']';
+            $label  = isset( $args['options']['button_label'] ) ?
             $args['options']['button_label'] :
             __( 'Choose File' );
 
@@ -626,10 +582,10 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
          */
         function callback_image( $args ) {
 
-            $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
-            $size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-            $the_id    = $args['section'] . '[' . $args['id'] . ']';
-            $label = isset( $args['options']['button_label'] ) ?
+            $value  = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+            $size   = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+            $the_id = $args['section'] . '[' . $args['id'] . ']';
+            $label  = isset( $args['options']['button_label'] ) ?
             $args['options']['button_label'] :
             __( 'Choose Image' );
 
@@ -673,7 +629,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             echo wp_kses( $html, boostbox_allowed_tags() );
         }
 
-
         /**
          * Displays a separator field for a settings field
          *
@@ -686,7 +641,6 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
             $html .= '<div class="wpsa-settings-separator"></div>';
             echo wp_kses( $html, boostbox_allowed_tags() );
         }
-
 
         /**
          * Get the value of a settings field
@@ -735,7 +689,7 @@ if ( ! class_exists( 'BoostBox_OSA' ) ) :
         /**
          * Plugin page
          * 
-         * @return string
+         * @return void
          */
         public function plugin_page() { ?>
             <div class="wrap boostbox">

@@ -93,7 +93,7 @@ if ( class_exists( 'BoostBox_OSA' ) ) {
             ]
         );
 
-        // Field: Privacy - Disable analytics
+        // Field: Privacy - Disable analytics.
         $boostbox_obj->add_field(
             'boostbox_general',
             [

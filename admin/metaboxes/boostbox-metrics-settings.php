@@ -34,7 +34,7 @@ function boostbox_metrics_metabox() {
     if ( boostbox_settings_disable_analytics() ) {
         return;
     }
-    
+
     // Add Metabox.
     add_meta_box(
         'boostbox_metrics',
@@ -105,14 +105,14 @@ function boostbox_reset_metrics() {
     // Reset metrics to zero.
     update_post_meta( $post_id, 'boostbox_popup_impressions', 0 );
     update_post_meta( $post_id, 'boostbox_popup_conversions', 0 );
-    
+
     // Render the updated metabox content
     boostbox_metrics_metabox_content();
 
     // Include the updated nonce in the response
     echo '<input type="hidden" name="boostbox_metrics_reset_nonce" id="boostbox_metrics_reset_nonce" value="' .
         wp_create_nonce( 'boostbox_metrics_reset_nonce' ) . '" />';
-    
+
     exit;
 }
 add_action( 'wp_ajax_reset_boostbox_metrics', 'boostbox_reset_metrics' );

@@ -89,11 +89,12 @@ if ( ! function_exists( 'boostbox_popups' ) ) {
 /**
  * Function to check and redirect single posts with the post type "boostbox."
  * 
+ * @since  1.0.0
  * @return void
  */
 function boostbox_restrict_posts() {
     // Check if it's a single post.
-    if (is_single()) {
+    if ( is_single() ) {
         global $post;
 
         // Check if the post type is "boostbox_popups".

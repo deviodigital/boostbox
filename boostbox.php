@@ -31,9 +31,9 @@ require 'plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://github.com/deviodigital/boostbox/',
-	__FILE__,
-	'boostbox'
+    'https://github.com/deviodigital/boostbox/',
+    __FILE__,
+    'boostbox'
 );
 
 //Set the branch that contains the stable release.
@@ -58,6 +58,7 @@ $plugin_name = plugin_basename( __FILE__ );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-boostbox-activator.php
  * 
+ * @since  1.0.0
  * @return void
  */
 function activate_boostbox() {
@@ -69,6 +70,7 @@ function activate_boostbox() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-boostbox-deactivator.php
  * 
+ * @since  1.0.0
  * @return void
  */
 function deactivate_boostbox() {
@@ -83,6 +85,7 @@ register_deactivation_hook( __FILE__, 'deactivate_boostbox' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  * 
+ * @since  1.0.0
  * @return void
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-boostbox.php';
