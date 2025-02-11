@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: popup, lead-generation, marketing, popups, exit-intent
 Requires at least: 3.0.1
-Tested up to: 6.6.2
-Stable tag: 2.2.0
+Tested up to: 6.7.2
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,16 @@ Yes, BoostBox is designed to be compatible with most WordPress® themes and plug
 6. Another example popup using a pattern from the Powder theme
 
 == Changelog ==
+
+= 2.2.1 =
+*   Added German translation file in `languages/boostbox-de_DE.po`
+*   Added German translation file in `languages/boostbox-de_DE.mo`
+*   Added Afrikkans translation file in `languages/boostbox-af.po`
+*   Added Afrikkans translation file in `languages/boostbox-af.mo`
+*   Added Italian translation file in `languages/boostbox-it_IT.po`
+*   Added Italian translation file in `languages/boostbox-it_IT.mo`
+*   Updated text strings for localization
+*   General code cleanup throughout multiple files in the plugin
 
 = 2.2.0 =
 *   Added Spanish translation file in `languages/boostbox-es_MX.po`

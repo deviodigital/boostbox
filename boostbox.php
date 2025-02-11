@@ -13,7 +13,7 @@
  * Plugin Name:       BoostBox
  * Plugin URI:        https://robertdevore.com/project/boostbox/
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
- * Version:           2.2.0
+ * Version:           2.2.1
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -40,7 +40,7 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 $myUpdateChecker->setBranch( 'main' );
 
 // Current plugin version.
-define( 'BOOSTBOX_VERSION', '2.2.0' );
+define( 'BOOSTBOX_VERSION', '2.2.1' );
 
 // Check if Composer's autoloader is already registered globally.
 if ( ! class_exists( 'RobertDevore\WPComCheck\WPComPluginHandler' ) ) {
