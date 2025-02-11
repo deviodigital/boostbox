@@ -1,0 +1,501 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BoostBox\n"
+"POT-Creation-Date: 2025-02-11 12:09-0500\n"
+"PO-Revision-Date: 2025-02-11 12:11-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: boostbox.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: admin/boostbox-admin-settings.php:64 admin/js/boostbox-popups-block.js:67
+#: admin/metaboxes/boostbox-display-settings.php:169
+msgid "--"
+msgstr "--"
+
+#: admin/boostbox-admin-settings.php:80
+msgid "General Settings"
+msgstr "Algemene Verstellings"
+
+#: admin/boostbox-admin-settings.php:90
+msgid "Cookie days"
+msgstr "Koekie dae"
+
+#: admin/boostbox-admin-settings.php:91
+msgid "Set the days a cookie is stored after the user closes a popup"
+msgstr ""
+"Stel die dae wat 'n koekie gestoor word nadat die gebruiker 'n opspringer "
+"toegemaak het"
+
+#: admin/boostbox-admin-settings.php:102
+msgid "Disable Tracking"
+msgstr "Deaktiveer dop"
+
+#: admin/boostbox-admin-settings.php:103
+msgid "Turn off the impression and conversion tracking"
+msgstr "Skakel die indruk- en omskakelnasporing af"
+
+#: admin/boostbox-admin.php:30 admin/class-boostbox-admin-settings.php:682
+#: admin/class-boostbox-admin-settings.php:699
+msgid "Settings"
+msgstr "Vertellings"
+
+#: admin/boostbox-admin.php:71
+#, php-format
+msgid ""
+"Important Notice: Due to recent changes initiated by WordPress® leadership, "
+"access to the plugin repository is being restricted for certain hosting "
+"providers and developers. This may impact automatic updates for your "
+"plugins. To ensure you continue receiving updates for BoostBox and to learn "
+"about the next steps, please visit %s."
+msgstr ""
+"Belangrike kennisgewing: As gevolg van onlangse veranderinge wat deur "
+"WordPress®-leierskap geïnisieer is, word toegang tot die inpropbewaarplek "
+"vir sekere gasheerverskaffers en ontwikkelaars beperk. Dit kan outomatiese "
+"opdaterings vir jou inproppe beïnvloed. Om te verseker dat jy voortgaan om "
+"opdaterings vir BoostBox te ontvang en om meer te wete te kom oor die "
+"volgende stappe, besoek asseblief %s."
+
+#: admin/boostbox-admin.php:120
+msgid "Go Pro"
+msgstr "Gaan professioneel"
+
+#: admin/boostbox-admin.php:163
+msgid "Orders"
+msgstr "Bestellings"
+
+#: admin/boostbox-admin.php:164
+#, php-format
+msgid ""
+"There is a new version of BoostBox Pro available. Download your copy from "
+"the %1$s page on Devio Digital."
+msgstr ""
+"Daar is 'n nuwe weergawe van BoostBox Pro beskikbaar. Laai jou kopie af "
+"vanaf die %1$s-bladsy op Devio Digital."
+
+#: admin/boostbox-custom-post-type.php:24
+msgctxt "Post Type General Name"
+msgid "Popups"
+msgstr "Opspringers"
+
+#: admin/boostbox-custom-post-type.php:25
+msgctxt "Post Type Singular Name"
+msgid "Popup"
+msgstr "Popup"
+
+#. Plugin Name of the plugin/theme
+#: admin/boostbox-custom-post-type.php:26
+#: admin/class-boostbox-admin-settings.php:699
+msgid "BoostBox"
+msgstr "BoostBox"
+
+#: admin/boostbox-custom-post-type.php:27
+msgid "Popup"
+msgstr "Popup"
+
+#: admin/boostbox-custom-post-type.php:28
+msgid "Popup Archives"
+msgstr "Opspringargiewe"
+
+#: admin/boostbox-custom-post-type.php:29
+msgid "Popup Attributes"
+msgstr "Opspring-kenmerke"
+
+#: admin/boostbox-custom-post-type.php:30
+msgid "Parent Popup:"
+msgstr "Ouer-opspringer:"
+
+#: admin/boostbox-custom-post-type.php:31
+msgid "All Popups"
+msgstr "Alle opspringers"
+
+#: admin/boostbox-custom-post-type.php:32
+msgid "Add New Popup"
+msgstr "Voeg nuwe opspringer by"
+
+#: admin/boostbox-custom-post-type.php:33
+msgid "Add New"
+msgstr "Skep Nuwe"
+
+#: admin/boostbox-custom-post-type.php:34
+msgid "New Popup"
+msgstr "Nuwe opspringer"
+
+#: admin/boostbox-custom-post-type.php:35
+msgid "Edit Popup"
+msgstr "Wysig opspringer"
+
+#: admin/boostbox-custom-post-type.php:36
+msgid "Update Popup"
+msgstr "Dateer opspringer op"
+
+#: admin/boostbox-custom-post-type.php:37
+#: admin/boostbox-custom-post-type.php:38
+msgid "View Popup"
+msgstr "Bekyk opspringer"
+
+#: admin/boostbox-custom-post-type.php:39
+msgid "Search Popup"
+msgstr "Soek opspringer"
+
+#: admin/boostbox-custom-post-type.php:40
+msgid "Not found"
+msgstr "Nie gevind nie"
+
+#: admin/boostbox-custom-post-type.php:41
+msgid "Not found in Trash"
+msgstr "Nie in die asblik gevind nie"
+
+#: admin/boostbox-custom-post-type.php:42
+msgid "Featured Image"
+msgstr "Hooffoto"
+
+#: admin/boostbox-custom-post-type.php:43
+msgid "Set featured image"
+msgstr "Stel uitgestalde prent"
+
+#: admin/boostbox-custom-post-type.php:44
+msgid "Remove featured image"
+msgstr "Verwyder uitstalprent"
+
+#: admin/boostbox-custom-post-type.php:45
+msgid "Use as featured image"
+msgstr "Gebruik as primêre foto"
+
+#: admin/boostbox-custom-post-type.php:46
+msgid "Insert into popup"
+msgstr "Plaas in pop-up"
+
+#: admin/boostbox-custom-post-type.php:47
+msgid "Uploaded to this popup"
+msgstr "Opgelaai na hierdie opspringer"
+
+#: admin/boostbox-custom-post-type.php:48
+msgid "Popups list"
+msgstr "Pop-ups lys"
+
+#: admin/boostbox-custom-post-type.php:49
+msgid "Popups list navigation"
+msgstr "Pop-ups lys navigasie"
+
+#: admin/boostbox-custom-post-type.php:50
+msgid "Filter popups list"
+msgstr "Filter opspringlys"
+
+#: admin/boostbox-custom-post-type.php:59 admin/js/boostbox-popups-block.js:6
+#: admin/js/boostbox-popups-block.js:77
+msgid "BoostBox Popups"
+msgstr "BoostBox-opspringers"
+
+#: admin/boostbox-custom-post-type.php:60
+msgid "Build popups with the core editor"
+msgstr "Bou opspringers met die kernredigeerder"
+
+#: admin/boostbox-custom-post-type.php:126
+#: admin/metaboxes/boostbox-metrics-settings.php:80
+msgid "Impressions"
+msgstr "Indrukke"
+
+#: admin/boostbox-custom-post-type.php:136
+#: admin/metaboxes/boostbox-metrics-settings.php:81
+msgid "Conversions"
+msgstr "Omskakelings"
+
+#: admin/boostbox-custom-post-type.php:146
+msgid "Conversion rate"
+msgstr "Omskakelingskoers"
+
+#: admin/class-boostbox-admin-settings.php:569
+msgid "Choose File"
+msgstr "Kies lêer"
+
+#: admin/class-boostbox-admin-settings.php:590
+msgid "Choose Image"
+msgstr "Kies prent"
+
+#: admin/class-boostbox-admin-settings.php:681
+#: admin/metaboxes/boostbox-popup-settings.php:45
+msgid "BoostBox Settings"
+msgstr "BoostBox-instellings"
+
+#: admin/class-boostbox-admin-settings.php:698
+msgid "Visit Devio Digital"
+msgstr "Besoek Devio Digital"
+
+#. Author of the plugin/theme
+#: admin/class-boostbox-admin-settings.php:718
+msgid "Devio Digital"
+msgstr "Devio Digital"
+
+#: admin/class-boostbox-admin-settings.php:719
+msgid "Docs"
+msgstr "Dokumente"
+
+#: admin/class-boostbox-admin-settings.php:720
+msgid "Twitter"
+msgstr "Twitter"
+
+#: admin/class-boostbox-cpt-columns.php:221
+msgid "N/A"
+msgstr "N.V.T"
+
+#: admin/class-boostbox-cpt-columns.php:295
+msgid "Column label"
+msgstr "Kolom etiket"
+
+#: admin/js/boostbox-popups-block.js:36
+msgid "Selected post is the current post. Do nothing."
+msgstr "Geselekteerde pos is die huidige pos. Doen niks."
+
+#: admin/js/boostbox-popups-block.js:60
+msgid "Error fetching post content:"
+msgstr "Kon nie plasinginhoud haal nie:"
+
+#: admin/js/boostbox-popups-block.js:79
+msgid "Select a BoostBox Popup"
+msgstr "Kies 'n BoostBox-opspringer"
+
+#: admin/js/boostbox-popups-block.js:90
+msgid "Insert"
+msgstr "Voeg by"
+
+#: admin/metaboxes/boostbox-display-settings.php:32
+msgid "Display Settings"
+msgstr "Vertoon instellings"
+
+#: admin/metaboxes/boostbox-display-settings.php:55
+msgid "General"
+msgstr "Algemeen"
+
+#: admin/metaboxes/boostbox-display-settings.php:56
+msgid "Animation"
+msgstr "Animasie"
+
+#: admin/metaboxes/boostbox-display-settings.php:57
+msgid "Target"
+msgstr "Teiken"
+
+#: admin/metaboxes/boostbox-display-settings.php:58
+msgid "Trigger"
+msgstr "Sneller"
+
+#: admin/metaboxes/boostbox-display-settings.php:59
+msgid "Close Button"
+msgstr "Maak toe-knoppie"
+
+#: admin/metaboxes/boostbox-display-settings.php:102
+msgid "Top Left"
+msgstr "Bo Links"
+
+#: admin/metaboxes/boostbox-display-settings.php:103
+msgid "Top Center"
+msgstr "Top Sentrum"
+
+#: admin/metaboxes/boostbox-display-settings.php:104
+msgid "Top Right"
+msgstr "Bo Regs"
+
+#: admin/metaboxes/boostbox-display-settings.php:105
+msgid "Center Left"
+msgstr "Sentrum links"
+
+#: admin/metaboxes/boostbox-display-settings.php:106
+msgid "Center Center"
+msgstr "Sentrum Sentrum"
+
+#: admin/metaboxes/boostbox-display-settings.php:107
+msgid "Center Right"
+msgstr "Middel regs"
+
+#: admin/metaboxes/boostbox-display-settings.php:108
+msgid "Bottom Left"
+msgstr "Onder Links"
+
+#: admin/metaboxes/boostbox-display-settings.php:109
+msgid "Bottom Center"
+msgstr "Onderste middel"
+
+#: admin/metaboxes/boostbox-display-settings.php:110
+msgid "Bottom Right"
+msgstr "Onder Regs"
+
+#: admin/metaboxes/boostbox-display-settings.php:125
+msgid "Display location"
+msgstr "Vertoon ligging"
+
+#: admin/metaboxes/boostbox-display-settings.php:147
+msgid "Max width"
+msgstr "Maksimum breedte"
+
+#: admin/metaboxes/boostbox-display-settings.php:158
+msgid "Cookie days (overrides global setting)"
+msgstr "Koekie dae (oorheers globale instelling)"
+
+#: admin/metaboxes/boostbox-display-settings.php:170
+msgid "Fade in"
+msgstr "Vervaag in"
+
+#: admin/metaboxes/boostbox-display-settings.php:171
+msgid "Slide up"
+msgstr "Skuif op"
+
+#: admin/metaboxes/boostbox-display-settings.php:172
+msgid "Slide down"
+msgstr "Gly af"
+
+#: admin/metaboxes/boostbox-display-settings.php:173
+msgid "Slide left"
+msgstr "Skuif links"
+
+#: admin/metaboxes/boostbox-display-settings.php:174
+msgid "Slide right"
+msgstr "Skuif regs"
+
+#: admin/metaboxes/boostbox-display-settings.php:175
+msgid "Pop swirl"
+msgstr "Pop warrel"
+
+#: admin/metaboxes/boostbox-display-settings.php:176
+msgid "Anvil"
+msgstr "Aambeeld"
+
+#: admin/metaboxes/boostbox-display-settings.php:187
+msgid "Animation type"
+msgstr "Animasie tipe"
+
+#: admin/metaboxes/boostbox-display-settings.php:209
+msgid "Animation speed (milliseconds)"
+msgstr "Animasiespoed (millisekondes)"
+
+#: admin/metaboxes/boostbox-display-settings.php:226
+msgid "Auto open"
+msgstr "Auto oop"
+
+#: admin/metaboxes/boostbox-display-settings.php:227
+msgid "On Scroll"
+msgstr "Op Scroll"
+
+#: admin/metaboxes/boostbox-display-settings.php:228
+msgid "Time"
+msgstr "Tyd"
+
+#: admin/metaboxes/boostbox-display-settings.php:239
+msgid "Trigger type"
+msgstr "Sneller tipe"
+
+#: admin/metaboxes/boostbox-display-settings.php:261
+msgid "Display speed (milliseconds)"
+msgstr "Vertoonspoed (millisekondes)"
+
+#: admin/metaboxes/boostbox-display-settings.php:272
+msgid "Scroll distance"
+msgstr "Rol afstand"
+
+#: admin/metaboxes/boostbox-display-settings.php:283
+msgid "Outside"
+msgstr "Buite"
+
+#: admin/metaboxes/boostbox-display-settings.php:284
+msgid "Inside"
+msgstr "Binne"
+
+#: admin/metaboxes/boostbox-display-settings.php:285
+msgid "Hidden"
+msgstr "Verborge"
+
+#: admin/metaboxes/boostbox-display-settings.php:296
+msgid "Close icon placement"
+msgstr "Maak ikoonplasing toe"
+
+#: admin/metaboxes/boostbox-display-settings.php:322
+msgid "Close icon color"
+msgstr "Maak ikoonkleur toe"
+
+#: admin/metaboxes/boostbox-metrics-settings.php:41
+msgid "Metrics"
+msgstr "Metrieke"
+
+#: admin/metaboxes/boostbox-metrics-settings.php:82
+msgid "Conversion Rate"
+msgstr "Omskakelingkoers"
+
+#: admin/metaboxes/boostbox-metrics-settings.php:85
+msgid "Reset Metrics"
+msgstr "Stel maatstawwe terug"
+
+#: admin/metaboxes/boostbox-popup-settings.php:75
+msgid "Disable Popups"
+msgstr "Deaktiveer opspringers"
+
+#: includes/boostbox-helper-functions.php:296
+msgid "General Pages"
+msgstr "Algemene bladsye"
+
+#: includes/boostbox-helper-functions.php:299
+msgid "Sitewide"
+msgstr "Werfwyd"
+
+#: includes/boostbox-helper-functions.php:300
+msgid "Home Page"
+msgstr "Tuisblad"
+
+#: includes/boostbox-helper-functions.php:301
+msgid "Search Results"
+msgstr "Soekresultate"
+
+#: includes/boostbox-helper-functions.php:302
+msgid "404 Page"
+msgstr "404 Bladsy"
+
+#: includes/boostbox-helper-functions.php:303
+msgid "Posts Archive"
+msgstr "Poste Argief"
+
+#: includes/boostbox-helper-functions.php:320
+msgid "Custom Post Type(s)"
+msgstr "Gepasmaakte plasingtipe(s)"
+
+#: includes/boostbox-helper-functions.php:322
+msgid "Select Post Type(s)"
+msgstr "Kies plasingtipe(s)"
+
+#: includes/boostbox-helper-functions.php:335
+msgid "Singular Content"
+msgstr "Enkelvoudige inhoud"
+
+#: includes/boostbox-helper-functions.php:337
+msgid "Search and Select Post(s)"
+msgstr "Soek en kies plasing(e)"
+
+#: includes/boostbox-helper-functions.php:548
+msgid " "
+msgstr " "
+
+#. Plugin URI of the plugin/theme
+msgid "https://robertdevore.com/project/boostbox/"
+msgstr "https://robertdevore.com/project/boostbox/"
+
+#. Description of the plugin/theme
+msgid ""
+"Build popups for lead generation, content promotion and more using the core "
+"editor."
+msgstr ""
+"Bou opspringers vir loodgenerering, inhoudbevordering en meer deur die "
+"kernredigeerder te gebruik."
+
+#. Author URI of the plugin/theme
+msgid "https://deviodigital.com"
+msgstr "https://deviodigital.com"
