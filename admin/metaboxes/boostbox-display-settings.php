@@ -22,12 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Adds a display settings metabox to the BoostBox post type.
  *
- * @package    BoostBox
- * @subpackage BoostBox/admin
- * @author     Devio Digital <contact@deviodigital.com>
- * @license    GPL-2.0+ https://www.gnu.org/licenses/gpl-2.0.txt
- * @link       https://deviodigital.com
- * @since      1.1.0
+ * @since  1.1.0
+ * @return void
  */
 function boostbox_display_settings_metabox() {
     // Add Metabox.
@@ -341,7 +337,7 @@ function boostbox_display_settings_metabox_content() {
  * @param object $post 
  * 
  * @since  1.1.0
- * @return void
+ * @return mixed
  */
 function boostbox_display_settings_metabox_save( $post_id, $post ) {
     /**

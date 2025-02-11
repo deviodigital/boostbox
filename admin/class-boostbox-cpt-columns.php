@@ -298,7 +298,7 @@ if ( ! class_exists( 'BoostBox_CPT_Columns' ) ) {
                 'meta_key' => '',
                 'sortable' => false,
                 'text'     => '',
-                'type'     => 'native', // 'native', 'post_meta', 'custom_tax', text
+                'type'     => 'native',
                 'orderby'  => 'meta_value',
                 'prefix'   => '',
                 'suffix'   => '',

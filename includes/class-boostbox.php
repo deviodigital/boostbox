@@ -158,6 +158,11 @@ class BoostBox {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-admin-settings.php';
 
         /**
+         * The file responsible for defining the plugin admin functionality
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/boostbox-admin.php';
+
+        /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */

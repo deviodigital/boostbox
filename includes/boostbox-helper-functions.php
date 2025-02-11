@@ -99,20 +99,20 @@ function boostbox_allowed_tags() {
  * @return int|false Width of the first block, or false on failure.
  */
 function get_first_block_width( $post_id ) {
-    // Get the post content
+    // Get the post content.
     $post_content = get_post_field( 'post_content', $post_id );
 
-    // Check if the post content is not empty
+    // Check if the post content is not empty.
     if ( ! empty( $post_content ) ) {
-        // Parse the post content to get blocks
+        // Parse the post content to get blocks.
         $blocks = parse_blocks( $post_content );
 
-        // Check if there are blocks
-        if (!empty($blocks)) {
-            // Get the first block
+        // Check if there are blocks.
+        if ( ! empty( $blocks ) ) {
+            // Get the first block.
             $first_block = $blocks[0];
 
-            // Check if the block has attributes and a width attribute
+            // Check if the block has attributes and a width attribute.
             if ( isset( $first_block['attrs']['width'] ) ) {
                 // Return the width of the first block.
                 return $first_block['attrs']['width'];
@@ -122,7 +122,7 @@ function get_first_block_width( $post_id ) {
         }
     }
 
-    // Return false if unable to get the width
+    // Return false if unable to get the width.
     return false;
 }
 
@@ -244,7 +244,7 @@ function boostbox_settings_disable_analytics() {
  * @param int $popup_id - the popup ID to check for overrides from
  * 
  * @since  1.6.0
- * @return int
+ * @return mixed
  */
 function boostbox_settings_cookie_days( $popup_id = null ) {
     // Cookie days.
@@ -355,7 +355,7 @@ function display_custom_post_type_select() {
  * Detect the current page context for displaying the popup.
  * 
  * @since  2.0.0
- * @return string The detected context for the current page (e.g., 'home_page', 'search_results').
+ * @return mixed
  */
 function boostbox_detect_page_context() {
     $context = '';
@@ -397,7 +397,7 @@ function boostbox_detect_page_context() {
  *
  * @param int $post_id The ID of the post to check.
  * 
- * @since 2.0.0
+ * @since  2.0.0
  * @return array|false An array of boostbox_popups post IDs if found, false otherwise.
  */
 function boostbox_popup_post_check( $post_id ) {

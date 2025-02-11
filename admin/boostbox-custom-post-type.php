@@ -100,7 +100,7 @@ function boostbox_restrict_posts() {
         // Check if the post type is "boostbox_popups".
         if ( $post->post_type === 'boostbox_popups' ) {
             // Redirect to the homepage or a custom URL.
-            wp_redirect( apply_filters( 'boostbox_restrict_posts_redirect_url', home_url() ) ); // @TODO make a filter?
+            wp_redirect( apply_filters( 'boostbox_restrict_posts_redirect_url', home_url() ) );
             exit();
         }
     }

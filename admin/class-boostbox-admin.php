@@ -223,10 +223,10 @@ function fetch_posts_by_post_type() {
 
     // Loop through the posts.
     foreach ( $posts as $post ) {
-        $output[] = array(
+        $output[] = [
             'id'    => $post->ID,
             'title' => $post->post_title,
-        );
+        ];
     }
 
     wp_send_json_success( $output );
