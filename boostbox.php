@@ -11,7 +11,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       BoostBox
- * Plugin URI:        https://robertdevore.com/boostbox-wordpress-popup-builder-for-the-core-editor/
+ * Plugin URI:        https://robertdevore.com/project/boostbox/
  * Description:       Build popups for lead generation, content promotion and more using the core editor.
  * Version:           2.2.0
  * Author:            Devio Digital
